@@ -31,7 +31,7 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	Sound* snd = nullptr;
 	System_Create(&sys);
 	sys->init(10, FMOD_INIT_NORMAL, nullptr);
-	sys->createStream("F:\\Music\\GUMI - ECHO.mp3", FMOD_DEFAULT, nullptr, &snd);
+    sys->createStream("/home/nihil/音乐/CloudMusic/雄之助 - PaⅢ. SENSATION.mp3", FMOD_DEFAULT, nullptr, &snd);
 	sys->playSound(snd, nullptr, false, nullptr);
 }
 
