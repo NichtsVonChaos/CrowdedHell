@@ -28,7 +28,7 @@ ____
 ### 借用项目
 ### Reference
 ____
-本项目的诞生离不开以下开源项目。
+本项目的诞生离不开以下开源项目。  
 This project cannot be without following open-source project.
 * [GMK-Splitter](https://github.com/Medo42/Gmk-Splitter)
 ____
