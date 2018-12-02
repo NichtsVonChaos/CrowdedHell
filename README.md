@@ -19,6 +19,12 @@ ____
 * 许可：[GNU通用公共许可协议v3](https://zh.wikipedia.org/wiki/GNU%E9%80%9A%E7%94%A8%E5%85%AC%E5%85%B1%E8%AE%B8%E5%8F%AF%E8%AF%81 "维基百科：GNU通用公共许可协议")  
  License: [GNU GPLv3](https://en.wikipedia.org/wiki/GNU_General_Public_License "Wikipedia: GNU General Public License")  
 ____
+### 环境需求
+### Enviroment requirement
+____
+* [Java运行环境(JRE)](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html "Java SE Runtime Environment  8 Download")高于1.6版本（GMK-Splitter需求）  
+ [Java Runtime Enviroment](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html "Java SE Runtime Environment  8 Download") over version 1.6 (required by GMK-Splitter)
+____
 ### 借用项目
 ### Reference
 ____
