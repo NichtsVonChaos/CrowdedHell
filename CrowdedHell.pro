@@ -28,7 +28,7 @@ INCLUDEPATH += \
         $$PWD/FMOD/inc
 
 LIBS += \
-        -L$$PWD/FMOD/lib -lfmod -lfmodL
+        -L$$PWD/FMOD/lib -lfmod64_vc -lfmodL64_vc
 
 SOURCES += \
         main.cpp \

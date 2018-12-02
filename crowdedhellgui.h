@@ -6,6 +6,9 @@
 #include <QTranslator>
 #include <QDebug>
 #include "display/avoidancedisplaywidget.h"
+#include "fmod.hpp"
+
+using namespace FMOD;
 
 namespace Ui {
 	class CrowdedHellGUI;
