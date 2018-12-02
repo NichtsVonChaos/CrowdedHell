@@ -39,7 +39,7 @@ ____
 ### About compiler
 ____
 ##### Windows:
- 请使用"-L$$PWD/FMOD/lib -lfmod64_vc -lfmodL64_vc"作为.pro文件的LIBS参数。
+ 请使用"-L$$PWD/FMOD/lib -lfmod64_vc -lfmodL64_vc"作为.pro文件的LIBS参数。  
  Plz use "-L$$PWD/FMOD/lib -lfmod64_vc -lfmodL64_vc" as the argument of LIBS in .pro file.
 ##### Linux:
 ____
