@@ -36,12 +36,16 @@ ____
 * [FMOD](https://www.fmod.com/)
 ____
 ### 关于编译
-### About compiler
+### About compiling
 ____
 ##### Windows:
- 请使用"-L$$PWD/FMOD/lib -lfmod64_vc -lfmodL64_vc"作为.pro文件的LIBS参数。  
+* 请使用"-L$$PWD/FMOD/lib -lfmod64_vc -lfmodL64_vc"作为.pro文件的LIBS参数。  
  Plz use "-L$$PWD/FMOD/lib -lfmod64_vc -lfmodL64_vc" as the argument of LIBS in .pro file.
+* 请使用MSVC_x64作为Qt的编译器。  
+ Plz use MSVC_x64 as the compiler of Qt.
 ##### Linux:
+* 请使用"-L$$PWD/FMOD/lib -lfmod -lfmodL"作为.pro文件的LIBS参数。  
+ Plz use "-L$$PWD/FMOD/lib -lfmod -lfmodL" as the argument of LIBS in .pro file.
 ____
 ### 联系方式
 ### Contact to me
