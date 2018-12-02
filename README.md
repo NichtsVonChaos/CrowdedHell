@@ -28,9 +28,12 @@ ____
 ### 借用项目
 ### Reference
 ____
-本项目的诞生离不开以下开源项目。  
-This project cannot be without following open-source project.
+##### 本项目的诞生离不开以下开源项目。
+##### This project cannot be without following open-source projects.
 * [GMK-Splitter](https://github.com/Medo42/Gmk-Splitter)
+##### 以下项目并非开源项目，但是拥有免费使用的许可证。
+##### Following projects are not open-source, but have limitted free lisence.
+* [FMOD](https://www.fmod.com/)
 ____
 ### 联系方式
 ### Contact to me
