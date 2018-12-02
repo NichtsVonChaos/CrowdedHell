@@ -2,6 +2,9 @@
 #define CROWDEDHELLGUI_H
 
 #include <QMainWindow>
+#include <QMap>
+#include <QTranslator>
+#include <QDebug>
 
 namespace Ui {
 	class CrowdedHellGUI;
@@ -15,8 +18,29 @@ public:
 	explicit CrowdedHellGUI(QWidget *parent = nullptr);
 	~CrowdedHellGUI();
 
+	void changeEvent(QEvent *event);
+
+private slots:
+	void on_actionSimplifiedChinese_triggered();
+
+	void on_actionEnglish_triggered();
+
+	void on_actionTraditionalChinese_triggered();
+
+	void on_actionJapanese_triggered();
+
 private:
 	Ui::CrowdedHellGUI *ui;
+
+	enum class Language
+	{
+		EN, ZH_CN, ZH_TW, JP
+	};
+
+	QMap<Language, QTranslator*> m_translators;
+	QMap<Language, QAction*> m_languageActions;
+
+	void __refreshTranslation(Language language);
 };
 
 #endif // CROWDEDHELLGUI_H

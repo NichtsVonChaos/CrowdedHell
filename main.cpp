@@ -6,9 +6,6 @@ int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
 	CrowdedHellGUI w;
-
-	w.move((qApp->desktop()->availableGeometry().width() - w.width()) / 2 + qApp->desktop()->availableGeometry().x(),
-			   (qApp->desktop()->availableGeometry().height() - w.height()) / 2 + qApp->desktop()->availableGeometry().y());
 	w.show();
 
 	return a.exec();
