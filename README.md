@@ -4,8 +4,8 @@
 ____
 * 项目：Crowded Hell  
  Project: Crowded Hell
-* 描述：基于Qt和openGL的I Wanna耐久制作工具。  
- Description: An avoidance-making tool for IWBTG fangames based on Qt and openGL.
+* 描述：基于Qt和openGL的GameMaker8耐久制作工具。  
+ Description: An avoidance-making tool for GameMaker8 based on Qt and openGL.
 * 制作者：Nihil  
  Creator: Nihil
 * 开发环境：[Qt](https://www.qt.io/ )  
