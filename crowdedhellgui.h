@@ -5,6 +5,7 @@
 #include <QMap>
 #include <QTranslator>
 #include <QDebug>
+#include "display/avoidancedisplaywidget.h"
 
 namespace Ui {
 	class CrowdedHellGUI;
@@ -39,6 +40,8 @@ private:
 
 	QMap<Language, QTranslator*> m_translators;
 	QMap<Language, QAction*> m_languageActions;
+
+	AvoidanceDisplayWidget *m_displayWidget;
 
 	void __refreshTranslation(Language language);
 };

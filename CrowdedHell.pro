@@ -26,10 +26,12 @@ CONFIG += c++17
 
 SOURCES += \
         main.cpp \
-        crowdedhellgui.cpp
+        crowdedhellgui.cpp \
+    display/avoidancedisplaywidget.cpp
 
 HEADERS += \
-        crowdedhellgui.h
+        crowdedhellgui.h \
+    display/avoidancedisplaywidget.h
 
 FORMS += \
         crowdedhellgui.ui

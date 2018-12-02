@@ -7,6 +7,7 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 {
 	ui->setupUi(this);
 
+	// Set up languages.
 	m_languageActions.insert(Language::EN, ui->actionEnglish);
 	m_languageActions.insert(Language::ZH_CN, ui->actionSimplifiedChinese);
 	m_languageActions.insert(Language::ZH_TW, ui->actionTraditionalChinese);
@@ -18,6 +19,11 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	m_translators[Language::ZH_TW]->load(":/translations/Trans_zh_tw.qm");
 	m_translators.insert(Language::JP, new QTranslator(this));
 	m_translators[Language::JP]->load(":/translations/Trans_jp.qm");
+
+	// Initialize openGL widget
+	m_displayWidget = new AvoidanceDisplayWidget(this);
+	m_displayWidget->setFixedSize(QSize(800, 608));
+	m_displayWidget->hide();
 }
 
 CrowdedHellGUI::~CrowdedHellGUI()
