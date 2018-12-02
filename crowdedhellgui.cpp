@@ -1,5 +1,7 @@
 #include "crowdedhellgui.h"
 #include "ui_crowdedhellgui.h"
+#include "fmod.hpp"
+using namespace FMOD;
 
 CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	QMainWindow(parent),
@@ -24,6 +26,13 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	m_displayWidget = new AvoidanceDisplayWidget(this);
 	m_displayWidget->setFixedSize(QSize(800, 608));
 	m_displayWidget->hide();
+
+	System* sys = nullptr;
+	Sound* snd = nullptr;
+	System_Create(&sys);
+	sys->init(10, FMOD_INIT_NORMAL, nullptr);
+	sys->createStream("F:\\Music\\GUMI - ECHO.mp3", FMOD_DEFAULT, nullptr, &snd);
+	sys->playSound(snd, nullptr, false, nullptr);
 }
 
 CrowdedHellGUI::~CrowdedHellGUI()

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui opengl
+QT       += core gui opengl multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -23,6 +23,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 CONFIG += c++17
+
+INCLUDEPATH += \
+        $$PWD/FMOD/inc
+
+LIBS += \
+        -L$$PWD/FMOD/lib -lfmod64_vc -lfmodL64_vc
 
 SOURCES += \
         main.cpp \
