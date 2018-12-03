@@ -23,7 +23,7 @@ ____
 ### Running enviroment requirement
 ____
 * [Java运行环境(JRE)](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html "Java SE Runtime Environment 8 Download")高于1.6版本（GMK-Splitter需求）  
- [Java Runtime Enviroment](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html "Java SE Runtime Environment 8 Download") over version 1.6 (required by GMK-Splitter)
+ [Java Runtime Enviroment](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html "Java SE Runtime Environment 8 Download") above version 1.6 (required by GMK-Splitter)
 ____
 ### 借用项目
 ### Reference
