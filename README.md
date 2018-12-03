@@ -45,6 +45,18 @@ ____
 * 请使用"-L$$PWD/FMOD/lib -lfmod -lfmodL"作为.pro文件的LIBS参数。  
  Plz use "-L$$PWD/FMOD/lib -lfmod -lfmodL" as the argument of LIBS in .pro file.
 ____
+### 寻求合作
+### Cooperation Wanted
+____
+* 英语及日语的翻译修正。  
+ Fix the tanslations of English and Japanese.
+* 增加更多语言的翻译。  
+ Translations for more language.
+* 界面美化。  
+ Beautify UI.
+* 运行测试。  
+ Bug test.
+____
 ### 联系方式
 ### Contact to me
 ____
