@@ -2,6 +2,8 @@
 #define CROWDEDHELLGUI_H
 
 #include <QMainWindow>
+#include <QFileDialog>
+#include <QMessageBox>
 #include <QMap>
 #include <QTranslator>
 #include <QDebug>
@@ -32,6 +34,10 @@ private slots:
 	void on_actionTraditionalChinese_triggered();
 
 	void on_actionJapanese_triggered();
+
+	void on_actionAddSoundEffect_triggered();
+
+	void on_actionReselectMusic_triggered();
 
 private:
 	Ui::CrowdedHellGUI *ui;

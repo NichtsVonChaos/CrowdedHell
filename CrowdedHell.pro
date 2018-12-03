@@ -33,11 +33,15 @@ LIBS += \
 SOURCES += \
         main.cpp \
         crowdedhellgui.cpp \
-    display/avoidancedisplaywidget.cpp
+    display/avoidancedisplaywidget.cpp \
+    barrage/metabarrage.cpp \
+    audio/audioplayerslider.cpp
 
 HEADERS += \
         crowdedhellgui.h \
-    display/avoidancedisplaywidget.h
+    display/avoidancedisplaywidget.h \
+    barrage/metabarrage.h \
+    audio/audioplayerslider.h
 
 FORMS += \
         crowdedhellgui.ui
@@ -55,4 +59,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES +=
 
 RESOURCES += \
-    translation.qrc
+    translation.qrc \
+    icons.qrc

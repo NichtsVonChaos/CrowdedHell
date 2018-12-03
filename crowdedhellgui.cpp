@@ -24,6 +24,7 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	m_displayWidget = new AvoidanceDisplayWidget(this);
 	m_displayWidget->setFixedSize(QSize(800, 608));
 	m_displayWidget->hide();
+
 }
 
 CrowdedHellGUI::~CrowdedHellGUI()
@@ -74,4 +75,14 @@ void CrowdedHellGUI::__refreshTranslation(CrowdedHellGUI::Language language)
 			itr.value()->setChecked(false);
 
 	ui->retranslateUi(this);
+}
+
+void CrowdedHellGUI::on_actionAddSoundEffect_triggered()
+{
+
+}
+
+void CrowdedHellGUI::on_actionReselectMusic_triggered()
+{
+	QString musicFilePath = QFileDialog::getOpenFileName(this, tr("Select Music File"), qApp->applicationDirPath(), tr("Music File(*.mp3 *.wav)"));
 }

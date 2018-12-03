@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Icons/Grid.png</file>
+        <file>Icons/Grid - Pressed.png</file>
+        <file>Icons/Grid Tilt - Pressed.png</file>
+        <file>Icons/Grid Tilt.png</file>
+    </qresource>
+</RCC>

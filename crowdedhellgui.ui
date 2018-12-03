@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
-    <height>810</height>
+    <width>1400</width>
+    <height>880</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -21,47 +21,28 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>1200</width>
-    <height>810</height>
+    <width>1400</width>
+    <height>880</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1200</width>
-    <height>810</height>
+    <width>1400</width>
+    <height>880</height>
    </size>
   </property>
   <property name="windowTitle">
    <string notr="true">Crowded Hell</string>
   </property>
+  <property name="toolTip">
+   <string/>
+  </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="gridLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>201</width>
-      <height>781</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout"/>
-   </widget>
-   <widget class="QWidget" name="gridLayoutWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>1000</x>
-      <y>0</y>
-      <width>201</width>
-      <height>781</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout_2"/>
-   </widget>
    <widget class="QGraphicsView" name="gameView">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>0</y>
+      <x>300</x>
+      <y>24</y>
       <width>800</width>
       <height>608</height>
      </rect>
@@ -79,13 +60,219 @@
      </size>
     </property>
    </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>1100</x>
+      <y>0</y>
+      <width>301</width>
+      <height>851</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tabBarrages">
+     <attribute name="title">
+      <string>Barrages</string>
+     </attribute>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="geometry">
+       <rect>
+        <x>-1</x>
+        <y>-1</y>
+        <width>300</width>
+        <height>831</height>
+       </rect>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>298</width>
+         <height>829</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="spacing">
+         <number>2</number>
+        </property>
+       </layout>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tabAttributes">
+     <attribute name="title">
+      <string>Attributes</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tableActions">
+     <attribute name="title">
+      <string>Actions</string>
+     </attribute>
+    </widget>
+   </widget>
+   <widget class="QTreeView" name="treeViewResources">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>300</width>
+      <height>850</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="AudioPlayerSlider" name="audioSlider">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>781</y>
+      <width>641</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>0</y>
+      <width>801</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>4</number>
+     </property>
+     <property name="leftMargin">
+      <number>4</number>
+     </property>
+     <property name="rightMargin">
+      <number>4</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="lableGridX">
+       <property name="text">
+        <string>Grid-X</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit">
+       <property name="maximumSize">
+        <size>
+         <width>32</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>32</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelGridY">
+       <property name="text">
+        <string>Grid-Y</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_2">
+       <property name="maximumSize">
+        <size>
+         <width>32</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QlineEdit {width: 40;}</string>
+       </property>
+       <property name="text">
+        <string>32</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonGrid">
+       <property name="toolTip">
+        <string>Grid On/Off</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {width: 16;height: 16; border: none; background-color: transparent; background-image:url(:/Icons/Grid.png);} QPushButton:checked {background-image:url(:/Icons/Grid - Pressed.png);}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonGridTilt">
+       <property name="toolTip">
+        <string>Grid Tilt/Vertical</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {width: 16;height: 16; border: none; background-color: transparent; background-image:url(:/Icons/Grid Tilt.png);} QPushButton:checked {background-image:url(:/Icons/Grid Tilt- Pressed.png);}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1200</width>
+     <width>1400</width>
      <height>25</height>
     </rect>
    </property>
@@ -93,6 +280,23 @@
     <property name="title">
      <string>File</string>
     </property>
+    <widget class="QMenu" name="menuExport">
+     <property name="title">
+      <string>Export</string>
+     </property>
+     <addaction name="actionGM80Project"/>
+    </widget>
+    <addaction name="actionNewProject"/>
+    <addaction name="actionOpenProject"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSaveTo"/>
+    <addaction name="menuExport"/>
+    <addaction name="separator"/>
+    <addaction name="actionClose"/>
+    <addaction name="actionSaveAndClose"/>
+    <addaction name="separator"/>
+    <addaction name="actionEixt"/>
    </widget>
    <widget class="QMenu" name="menuWindow">
     <property name="title">
@@ -109,7 +313,18 @@
     </widget>
     <addaction name="menuLanguage"/>
    </widget>
+   <widget class="QMenu" name="menuResources">
+    <property name="title">
+     <string>Resources</string>
+    </property>
+    <addaction name="actionAdd_Sprite"/>
+    <addaction name="actionAdd_Background"/>
+    <addaction name="actionAddSoundEffect"/>
+    <addaction name="separator"/>
+    <addaction name="actionReselectMusic"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuResources"/>
    <addaction name="menuWindow"/>
   </widget>
   <action name="actionEnglish">
@@ -147,8 +362,87 @@
     <string>Japanese</string>
    </property>
   </action>
+  <action name="actionAddSoundEffect">
+   <property name="text">
+    <string>Add Sound Effect</string>
+   </property>
+  </action>
+  <action name="actionReselectMusic">
+   <property name="text">
+    <string>Reselect Music</string>
+   </property>
+  </action>
+  <action name="actionNewProject">
+   <property name="text">
+    <string>New Project</string>
+   </property>
+  </action>
+  <action name="actionOpenProject">
+   <property name="text">
+    <string>Open Project</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionSaveTo">
+   <property name="text">
+    <string>Save To ...</string>
+   </property>
+   <property name="iconText">
+    <string>Save To ...</string>
+   </property>
+   <property name="toolTip">
+    <string>Save To ...</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </action>
+  <action name="actionSaveAndClose">
+   <property name="text">
+    <string>Save and Close</string>
+   </property>
+   <property name="iconText">
+    <string>Save and Close</string>
+   </property>
+   <property name="toolTip">
+    <string>Save and Close</string>
+   </property>
+  </action>
+  <action name="actionEixt">
+   <property name="text">
+    <string>Eixt</string>
+   </property>
+  </action>
+  <action name="actionGM80Project">
+   <property name="text">
+    <string>GM8.0 project (.gmk)</string>
+   </property>
+  </action>
+  <action name="actionAdd_Sprite">
+   <property name="text">
+    <string>Add Sprite</string>
+   </property>
+  </action>
+  <action name="actionAdd_Background">
+   <property name="text">
+    <string>Add Background</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>AudioPlayerSlider</class>
+   <extends>QSlider</extends>
+   <header location="global">audio/audioplayerslider.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
