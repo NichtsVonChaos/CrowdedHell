@@ -5,6 +5,7 @@
 
 class AudioPlayerSlider : public QSlider
 {
+	Q_OBJECT
 public:
 	AudioPlayerSlider(QWidget *parent = Q_NULLPTR);
 };

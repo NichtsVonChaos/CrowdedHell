@@ -65,12 +65,20 @@
      <rect>
       <x>1100</x>
       <y>0</y>
-      <width>301</width>
+      <width>300</width>
       <height>851</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTabWidget{border: none; background: rgb(170, 191, 232);} QTabBar::tab {width: 92; height: 32; background: rgb(43, 87, 154); border-left: 2px solid #12244C; border-top: none; border-bottom: 2px solid #12244C; border-right: 2px solid #12244C; color:rgb(227, 234, 242); padding: 2px} QTabBar::tab:selected {background: rgb(170, 191, 232); border-top: 2px solid #12244C; border-bottom: none;} QWidget#tableBarrages {border: none; background: rgb(170, 191, 232);} QWidget#tabAttributes {border: none; background: rgb(170, 191, 232);} QWidget#tableActions {border: none; background: rgb(170, 191, 232);}</string>
+    </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tabBarrages">
      <attribute name="title">
@@ -82,8 +90,11 @@
         <x>-1</x>
         <y>-1</y>
         <width>300</width>
-        <height>831</height>
+        <height>830</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QScollArea {border:none; background-color: rgb(134, 165, 221);}</string>
       </property>
       <property name="widgetResizable">
        <bool>true</bool>
@@ -94,7 +105,7 @@
          <x>0</x>
          <y>0</y>
          <width>298</width>
-         <height>829</height>
+         <height>828</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -111,6 +122,9 @@
      </attribute>
     </widget>
     <widget class="QWidget" name="tableActions">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <attribute name="title">
       <string>Actions</string>
      </attribute>
@@ -131,7 +145,7 @@
      <rect>
       <x>310</x>
       <y>680</y>
-      <width>571</width>
+      <width>570</width>
       <height>20</height>
      </rect>
     </property>
@@ -271,8 +285,8 @@
      <rect>
       <x>310</x>
       <y>650</y>
-      <width>571</width>
-      <height>21</height>
+      <width>570</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">
@@ -289,8 +303,8 @@
      <rect>
       <x>300</x>
       <y>740</y>
-      <width>801</width>
-      <height>111</height>
+      <width>800</width>
+      <height>110</height>
      </rect>
     </property>
     <property name="readOnly">
@@ -306,9 +320,136 @@
       <height>41</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <property name="spacing">
+      <number>8</number>
+     </property>
+     <item>
+      <spacer name="horizontalSpacer_5">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonPrev50Frames">
+       <property name="toolTip">
+        <string>Previous 50 frames</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Prev 50 Frames.png);} QPushButton:hover {background-color: silver;}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonPrev10Frames">
+       <property name="toolTip">
+        <string>Previous 10 frames</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Prev 10 Frames.png);} QPushButton:hover {background-color: silver;}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonPrevFrame">
+       <property name="toolTip">
+        <string>Previous 1 frame</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Prev Frame.png);} QPushButton:hover {background-color: silver;}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonPause">
+       <property name="toolTip">
+        <string>Play/Pause</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Play.png);} QPushButton:checked {background-image:url(:/Icons/Pause.png);} QPushButton:hover {background-color: silver;}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonNextFrame">
+       <property name="toolTip">
+        <string>Next 1 frame</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Next Frame.png);} QPushButton:hover {background-color: silver;}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonNext10Frames">
+       <property name="toolTip">
+        <string>Next 10 frames</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Next 10 Frames.png);} QPushButton:hover {background-color: silver;}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonNext50Frames">
+       <property name="toolTip">
+        <string>Next 50 frames</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Next 50 Frames.png);} QPushButton:hover {background-color: silver;}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>890</x>
@@ -451,8 +592,11 @@
      <x>0</x>
      <y>0</y>
      <width>1400</width>
-     <height>25</height>
+     <height>26</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QMenuBar {background: rgb(43, 87, 154); border: none;}QMenuBar::item {padding: 3px 20px 3px 20px; background: transparent;}QMenuBar::item:enabled {color: rgb(227, 234, 242);}QMenuBar::item:!enabled {color: rgb(155, 155, 155);}QMenuBar::item:enabled:selected {background: rgba(255, 255, 255, 40);}</string>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
