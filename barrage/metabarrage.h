@@ -27,10 +27,7 @@ public:
 	virtual void setString(int attribute, QString value) = 0;
 	virtual void setPointer(int attribute, void *value) = 0;
 
-	static void re();
-
-signals:
-	virtual void end(QTime time) = 0;
+	static void restart();
 
 public slots:
 	virtual void infer(QTime time) = 0;
