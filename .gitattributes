@@ -1,3 +1,2 @@
 *.ui linguist-language=XML
-*.qss linguist-language=CSS
 *.h linguist-language=C++
