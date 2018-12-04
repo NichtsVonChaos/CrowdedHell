@@ -1,0 +1,4 @@
+*.ui linguist-language=C++
+*.qss linguist-language=C++
+*.h linguist-language=C++
+*.qrc linguist-language=C++
