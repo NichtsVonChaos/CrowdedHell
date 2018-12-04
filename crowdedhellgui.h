@@ -9,6 +9,7 @@
 #include <QFile>
 #include <QTextCodec>
 #include <QDebug>
+#include <QSettings>
 #include "display/avoidancedisplaywidget.h"
 #include "fmod.hpp"
 
@@ -26,7 +27,15 @@ public:
 	explicit CrowdedHellGUI(QWidget *parent = nullptr);
 	~CrowdedHellGUI();
 
+	enum class Language
+	{
+		EN, ZH_CN, ZH_TW, JP
+	};
+
 	void changeEvent(QEvent *event);
+
+signals:
+	void languageChanged(CrowdedHellGUI::Language);
 
 private slots:
 	void on_actionSimplifiedChinese_triggered();
@@ -44,17 +53,11 @@ private slots:
 private:
 	Ui::CrowdedHellGUI *ui;
 
-	enum class Language
-	{
-		EN, ZH_CN, ZH_TW, JP
-	};
-
 	QMap<Language, QTranslator*> m_translators;
-	QMap<Language, QAction*> m_languageActions;
 
 	AvoidanceDisplayWidget *m_displayWidget;
 
-	void __refreshTranslation(Language language);
+	void __updateLanguage(Language language);
 };
 
 #endif // CROWDEDHELLGUI_H

@@ -1,0 +1,223 @@
+/***********所有************/
+* {
+        font-family: "微软雅黑";
+}
+
+/***********主窗口***********/
+QMainWindow {
+        background: rgb(235, 240, 250);
+}
+
+/***********菜单栏***********/
+QMenuBar {
+        border-left: 2px solid #12244C;
+        border-bottom: none;
+        border-right: 2px solid #12244C;
+        background: rgb(43, 87, 154); 
+}
+QMenuBar::item {
+        padding: 3px 20px 3px 20px; 
+        background: transparent;
+}
+QMenuBar::item:enabled {
+        color: rgb(227, 234, 242);
+}
+QMenuBar::item:enabled:selected {
+        background: rgba(255, 255, 255, 40);
+}
+
+/***********标签页***********/
+QTabWidget {
+        border: none; 
+        background: rgb(202, 216, 240);
+} 
+QTabBar::tab {
+        width: 92;
+        height: 32;
+        background: rgb(43, 87, 154);
+        border-left: 2px solid #12244C;
+        border-top: none;
+        border-bottom: 2px solid #12244C;
+        border-right: 2px solid #12244C;
+        color:rgb(227, 234, 242);
+        padding: 2px
+}
+QTabBar::tab:selected {
+        background: rgb(202, 216, 240);
+        border-top: 2px solid #12244C;
+        border-bottom: none;
+        color:rgb(35, 71, 124);
+}
+QTabWidget > QWidget {
+        border-top: none;
+        border-left: 2px solid #12244C;
+        border-bottom: 2px solid #12244C;
+        border-right: 2px solid #12244C;
+        background: rgb(202, 216, 240);
+}
+QScrollArea {
+        border: none;
+}
+QWidget#scrollAreaWidgetContents {
+        border: none;
+        background-color: rgb(202, 216, 240);
+}
+
+/***********资源窗***********/
+QTreeView {
+        border-top: none;
+        border-left: 2px solid #12244C;
+        border-bottom: 2px solid #12244C;
+        border-right: 2px solid #12244C;
+        background-color: rgb(202, 216, 240);
+}
+
+/***********房间编辑视窗***********/
+QGraphicsView {
+        border: none;
+        border-top: 2px solid #12244C;
+        border-bottom: 2px solid #12244C;
+}
+
+/**********数据框***********/
+QLineEdit {
+        border-radius: 4px;
+        border-top: 1px solid #12244C;
+        border-left: 1px solid #12244C;
+        border-bottom: 1px solid #12244C;
+        border-right: 1px solid #12244C;
+}
+
+/**********消息框***********/
+QTextEdit#textEditMessageBox {
+        border: none;
+        border-top: 2px solid #12244C;
+        border-bottom: 2px solid #12244C;
+        background: rgb(202, 216, 240);
+}
+
+/**********标签***********/
+QLabel {
+        color: rgb(18, 36, 76);
+}
+
+/**********下拉框***********/
+QComboBox {
+        border: 1px solid #12244C;
+        border-radius: 4px;
+}
+QComboBox::drop-down {
+        subcontrol-origin: padding;
+        subcontrol-position: top right;
+        width: 20px;
+        border: none;
+        border-right: 1px solid #12244C;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+}
+QComboBox::down-arrow {
+        image: url(":/Themes/Blue/Icons/comboBox.png");
+}
+
+/**********按钮***********/
+QPushButton#buttonGrid {
+        width: 16;
+        height: 16;
+        border: none;
+        background-color: transparent;
+        background-image: url(":/Icons/Grid.png");
+}
+QPushButton#buttonGrid:checked {
+        background-image: url(":/Icons/Grid - Pressed.png");
+}
+
+QPushButton#buttonGridTilt {
+        width: 16;
+        height: 16;
+        border: none;
+        background-color: transparent; 
+        background-image:url(":/Icons/Grid Tilt.png");
+} 
+QPushButton#buttonGridTilt:checked {
+        background-image:url(":/Icons/Grid Tilt - Pressed.png");
+}
+
+QPushButton#buttonPrev50Frames {
+        width: 32;
+        height: 32;
+        border: none; 
+        background-color: transparent;
+        background-image:url(":/Icons/Prev 50 Frames.png");
+}
+ QPushButton#buttonPrev50Frames:hover {
+         background-color: rgb(202, 216, 240);
+}
+
+QPushButton#buttonPrev10Frames {
+        width: 32;
+        height: 32; 
+        border: none; 
+        background-color: transparent;
+        background-image:url(":/Icons/Prev 10 Frames.png");
+} 
+QPushButton#buttonPrev10Frames:hover {
+        background-color: rgb(202, 216, 240);
+}
+
+QPushButton#buttonPrevFrame {
+        width: 32;
+        height: 32; 
+        border: none; 
+        background-color: transparent; 
+        background-image:url(":/Icons/Prev Frame.png");
+}
+ QPushButton#buttonPrevFrame:hover {
+         background-color: rgb(202, 216, 240);
+}
+
+QPushButton#buttonPause {
+        width: 32;
+        height: 32;
+        border: none; 
+        background-color: transparent; 
+        background-image:url(":/Icons/Play.png");
+} 
+QPushButton#buttonPause:checked {
+        background-image:url(":/Icons/Pause.png");
+} 
+QPushButton#buttonPause:hover {
+        background-color: rgb(202, 216, 240);
+}
+
+QPushButton#buttonNextFrame {
+        width: 32;
+        height: 32; 
+        border: none; 
+        background-color: transparent; 
+        background-image:url(":/Icons/Next Frame.png");
+} 
+QPushButton#buttonNextFrame:hover {
+        background-color: rgb(202, 216, 240);
+}
+
+QPushButton#buttonNext10Frames {
+        width: 32;
+        height: 32;
+        border: none;
+        background-color: transparent; 
+        background-image:url(":/Icons/Next 10 Frames.png");
+} 
+QPushButton#buttonNext10Frames:hover {
+        background-color: rgb(202, 216, 240);
+}
+
+QPushButton#buttonNext50Frames {
+        width: 32;
+        height: 32; 
+        border: none; 
+        background-color: transparent;
+        background-image:url(":/Icons/Next 50 Frames.png");
+} 
+QPushButton#buttonNext50Frames:hover {
+        background-color: rgb(202, 216, 240);
+}

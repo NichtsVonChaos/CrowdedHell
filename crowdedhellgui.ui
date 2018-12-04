@@ -65,7 +65,7 @@
      <rect>
       <x>1100</x>
       <y>0</y>
-      <width>300</width>
+      <width>302</width>
       <height>852</height>
      </rect>
     </property>
@@ -227,7 +227,7 @@
         <string>Grid On/Off</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 16;height: 16; border: none; background-color: transparent; background-image:url(:/Icons/Grid.png);} QPushButton:checked {background-image:url(:/Icons/Grid - Pressed.png);}</string>
+        <string notr="true">QPushButton {width: 16;height: 16; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Blue/Icons/Grid.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Blue/Icons/Grid - Pressed.png&quot;);}</string>
        </property>
        <property name="text">
         <string/>
@@ -255,7 +255,7 @@
         <string>Grid Tilt/Vertical</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 16;height: 16; border: none; background-color: transparent; background-image:url(:/Icons/Grid Tilt.png);} QPushButton:checked {background-image:url(:/Icons/Grid Tilt - Pressed.png);}</string>
+        <string notr="true">QPushButton {width: 16;height: 16; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Blue/Icons/Grid Tilt.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Blue/Icons/Grid Tilt - Pressed.png&quot;);}</string>
        </property>
        <property name="text">
         <string/>
@@ -346,7 +346,7 @@
         <string>Previous 50 frames</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Prev 50 Frames.png);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Blue/Icons/Prev 50 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -359,7 +359,7 @@
         <string>Previous 10 frames</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Prev 10 Frames.png);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Blue/Icons/Prev 10 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -372,7 +372,7 @@
         <string>Previous 1 frame</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Prev Frame.png);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Blue/Icons/Prev Frame.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -385,7 +385,7 @@
         <string>Play/Pause</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Play.png);} QPushButton:checked {background-image:url(:/Icons/Pause.png);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Blue/Icons/Play.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Blue/Icons/Pause.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -404,7 +404,7 @@
         <string>Next 1 frame</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Next Frame.png);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Blue/Icons/Next Frame.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -417,7 +417,7 @@
         <string>Next 10 frames</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Next 10 Frames.png);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Blue/Icons/Next 10 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -430,7 +430,7 @@
         <string>Next 50 frames</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Next 50 Frames.png);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Blue/Icons/Next 50 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>

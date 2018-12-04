@@ -8,11 +8,6 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	ui->setupUi(this);
 
 	// Set up languages.
-	m_languageActions.insert(Language::EN, ui->actionEnglish);
-	m_languageActions.insert(Language::ZH_CN, ui->actionSimplifiedChinese);
-	m_languageActions.insert(Language::ZH_TW, ui->actionTraditionalChinese);
-	m_languageActions.insert(Language::JP, ui->actionJapanese);
-
 	m_translators.insert(Language::ZH_CN, new QTranslator(this));
 	m_translators[Language::ZH_CN]->load(":/translations/Trans_zh_cn.qm");
 	m_translators.insert(Language::ZH_TW, new QTranslator(this));
@@ -25,14 +20,7 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	m_displayWidget->setFixedSize(QSize(800, 608));
 	m_displayWidget->hide();
 
-	// Load QSS
-	QFile qssFile(":/qss/Crowded Hell GUI.qss");
-	if(qssFile.open(QIODevice::ReadOnly))
-	{
-		setStyleSheet(qssFile.readAll());
-		qssFile.close();
-	}
-
+	__updateLanguage(Language::EN);
 }
 
 CrowdedHellGUI::~CrowdedHellGUI()
@@ -50,39 +38,102 @@ void CrowdedHellGUI::changeEvent(QEvent *event)
 
 void CrowdedHellGUI::on_actionSimplifiedChinese_triggered()
 {
-	__refreshTranslation(Language::ZH_CN);
+	__updateLanguage(Language::ZH_CN);
 }
 
 void CrowdedHellGUI::on_actionEnglish_triggered()
 {
-	__refreshTranslation(Language::EN);
+	__updateLanguage(Language::EN);
 }
 
 void CrowdedHellGUI::on_actionTraditionalChinese_triggered()
 {
-	__refreshTranslation(Language::ZH_TW);
+	__updateLanguage(Language::ZH_TW);
 }
 
 void CrowdedHellGUI::on_actionJapanese_triggered()
 {
-	__refreshTranslation(Language::JP);
+	__updateLanguage(Language::JP);
 }
 
-void CrowdedHellGUI::__refreshTranslation(CrowdedHellGUI::Language language)
+void CrowdedHellGUI::__updateLanguage(CrowdedHellGUI::Language language)
 {
-	if(language == Language::EN)
-		foreach(auto i, m_translators)
-			qApp->removeTranslator(i);
-	else
-		qApp->installTranslator(m_translators[language]);
+	switch (language)
+	{
+		case Language::EN:
+		{
+			foreach(auto i, m_translators)
+				qApp->removeTranslator(i);
+			ui->actionEnglish->setChecked(true);
+			ui->actionSimplifiedChinese->setChecked(false);
+			ui->actionTraditionalChinese->setChecked(false);
+			ui->actionJapanese->setChecked(false);
 
-	for(auto itr = m_languageActions.begin(); itr != m_languageActions.end(); itr++)
-		if(itr.key() == language)
-			itr.value()->setChecked(true);
-		else
-			itr.value()->setChecked(false);
+			QFile qssFile(":/Themes/Blue/QSS/Blue - EN - Main Window.qss");
+			if(qssFile.open(QIODevice::ReadOnly))
+			{
+				setStyleSheet(qssFile.readAll());
+				qssFile.close();
+			}
+		}
+		break;
+
+		case Language::ZH_CN:
+		{
+			qApp->installTranslator(m_translators[Language::ZH_CN]);
+			ui->actionEnglish->setChecked(false);
+			ui->actionSimplifiedChinese->setChecked(true);
+			ui->actionTraditionalChinese->setChecked(false);
+			ui->actionJapanese->setChecked(false);
+
+			QFile qssFile(":/Themes/Blue/QSS/Blue - ZH_CN - Main Window.qss");
+			if(qssFile.open(QIODevice::ReadOnly))
+			{
+				setStyleSheet(qssFile.readAll());
+				qssFile.close();
+			}
+		}
+		break;
+
+		case Language::ZH_TW:
+		{
+			qApp->installTranslator(m_translators[Language::ZH_TW]);
+			ui->actionEnglish->setChecked(false);
+			ui->actionSimplifiedChinese->setChecked(false);
+			ui->actionTraditionalChinese->setChecked(true);
+			ui->actionJapanese->setChecked(false);
+
+			QFile qssFile(":/Themes/Blue/QSS/Blue - ZH_TW - Main Window.qss");
+			if(qssFile.open(QIODevice::ReadOnly))
+			{
+				setStyleSheet(qssFile.readAll());
+				qssFile.close();
+			}
+		}
+		break;
+
+		case Language::JP:
+		{
+			qApp->installTranslator(m_translators[Language::JP]);
+			ui->actionEnglish->setChecked(false);
+			ui->actionSimplifiedChinese->setChecked(false);
+			ui->actionTraditionalChinese->setChecked(false);
+			ui->actionJapanese->setChecked(true);
+
+			QFile qssFile(":/Themes/Blue/QSS/Blue - JP - Main Window.qss");
+			if(qssFile.open(QIODevice::ReadOnly))
+			{
+				setStyleSheet(qssFile.readAll());
+				qssFile.close();
+			}
+		}
+		break;
+	}
 
 	ui->retranslateUi(this);
+
+	// Sent signal
+	languageChanged(language);
 }
 
 void CrowdedHellGUI::on_actionAddSoundEffect_triggered()

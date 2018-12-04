@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Themes/Blue/Icons/comboBox.png</file>
+        <file>Themes/Blue/Icons/Grid - Pressed.png</file>
+        <file>Themes/Blue/Icons/Grid Tilt - Pressed.png</file>
+        <file>Themes/Blue/Icons/Grid Tilt.png</file>
+        <file>Themes/Blue/Icons/Grid.png</file>
+        <file>Themes/Blue/Icons/Next 10 Frames.png</file>
+        <file>Themes/Blue/Icons/Next 50 Frames.png</file>
+        <file>Themes/Blue/Icons/Next Frame.png</file>
+        <file>Themes/Blue/Icons/Pause.png</file>
+        <file>Themes/Blue/Icons/Play.png</file>
+        <file>Themes/Blue/Icons/Prev 10 Frames.png</file>
+        <file>Themes/Blue/Icons/Prev 50 Frames.png</file>
+        <file>Themes/Blue/Icons/Prev Frame.png</file>
+        <file>Themes/Blue/QSS/Blue - EN - Main Window.qss</file>
+        <file>Themes/Blue/QSS/Blue - JP - Main Window.qss</file>
+        <file>Themes/Blue/QSS/Blue - ZH_CN - Main Window.qss</file>
+        <file>Themes/Blue/QSS/Blue - ZH_TW - Main Window.qss</file>
+    </qresource>
+</RCC>
