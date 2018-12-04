@@ -1,0 +1,97 @@
+/***********主窗口***********/
+QMainWindow {
+        background: rgb(235, 240, 250);
+}
+
+/***********菜单栏***********/
+QMenuBar {
+        background: rgb(43, 87, 154); 
+        border: none;
+}
+QMenuBar::item {
+        padding: 3px 20px 3px 20px; 
+        background: transparent;
+}
+QMenuBar::item:enabled {
+        color: rgb(227, 234, 242);
+}
+QMenuBar::item:!enabled {
+        color: rgb(155, 155, 155);
+}
+QMenuBar::item:enabled:selected {
+        background: rgba(255, 255, 255, 40);
+}
+
+/***********标签页***********/
+QTabWidget {
+        border: none; 
+        background: rgb(202, 216, 240);
+} 
+QTabBar::tab {
+        width: 92;
+        height: 32;
+        background: rgb(43, 87, 154);
+        border-left: 2px solid #12244C;
+        border-top: none;
+        border-bottom: 2px solid #12244C;
+        border-right: 2px solid #12244C;
+        color:rgb(227, 234, 242);
+        padding: 2px
+}
+QTabBar::tab:selected {
+        background: rgb(202, 216, 240);
+        border-top: 2px solid #12244C;
+        border-bottom: none;
+        color:rgb(35, 71, 124);
+}
+QTabWidget > QWidget {
+        border-top: none;
+        border-left: 2px solid #12244C;
+        border-bottom: 2px solid #12244C;
+        border-right: 2px solid #12244C;
+        background: rgb(202, 216, 240);
+}
+QScrollArea {
+        border: none;
+}
+QWidget#scrollAreaWidgetContents {
+        border: none;
+        background-color: rgb(202, 216, 240);
+}
+
+/***********资源窗***********/
+QTreeView {
+        border-top: none;
+        border-left: 2px solid #12244C;
+        border-bottom: 2px solid #12244C;
+        border-right: 2px solid #12244C;
+        background-color: rgb(202, 216, 240);
+}
+
+/***********房间编辑视窗***********/
+QGraphicsView {
+        border: none;
+        border-top: 2px solid #12244C;
+        border-bottom: 2px solid #12244C;
+}
+
+/**********数据框***********/
+QLineEdit {
+        border-top: 1px solid #12244C;
+        border-left: 1px solid #12244C;
+        border-bottom: 1px solid #12244C;
+        border-right: 1px solid #12244C;
+}
+
+/**********消息框***********/
+QTextEdit#textEditMessageBox {
+        border: none;
+        border-top: 2px solid #12244C;
+        border-bottom: 2px solid #12244C;
+        background: rgb(202, 216, 240);
+}
+
+/**********标签***********/
+QLabel {
+        color: rgb(18, 36, 76);
+}

@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qss/Crowded Hell GUI.qss</file>
+    </qresource>
+</RCC>

@@ -25,7 +25,14 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	m_displayWidget->setFixedSize(QSize(800, 608));
 	m_displayWidget->hide();
 
-	ui->scrollArea->viewport()->setStyleSheet("border:none; background-color: rgb(134, 165, 221);");
+	// Load QSS
+	QFile qssFile(":/qss/Crowded Hell GUI.qss");
+	if(qssFile.open(QIODevice::ReadOnly))
+	{
+		setStyleSheet(qssFile.readAll());
+		qssFile.close();
+	}
+
 }
 
 CrowdedHellGUI::~CrowdedHellGUI()

@@ -60,4 +60,5 @@ DISTFILES +=
 
 RESOURCES += \
     translation.qrc \
-    icons.qrc
+    icons.qrc \
+    qss.qrc

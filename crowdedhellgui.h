@@ -6,6 +6,8 @@
 #include <QMessageBox>
 #include <QMap>
 #include <QTranslator>
+#include <QFile>
+#include <QTextCodec>
 #include <QDebug>
 #include "display/avoidancedisplaywidget.h"
 #include "fmod.hpp"

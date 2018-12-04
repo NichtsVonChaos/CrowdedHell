@@ -66,7 +66,7 @@
       <x>1100</x>
       <y>0</y>
       <width>300</width>
-      <height>851</height>
+      <height>852</height>
      </rect>
     </property>
     <property name="font">
@@ -75,10 +75,10 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QTabWidget{border: none; background: rgb(170, 191, 232);} QTabBar::tab {width: 92; height: 32; background: rgb(43, 87, 154); border-left: 2px solid #12244C; border-top: none; border-bottom: 2px solid #12244C; border-right: 2px solid #12244C; color:rgb(227, 234, 242); padding: 2px} QTabBar::tab:selected {background: rgb(170, 191, 232); border-top: 2px solid #12244C; border-bottom: none;} QWidget#tableBarrages {border: none; background: rgb(170, 191, 232);} QWidget#tabAttributes {border: none; background: rgb(170, 191, 232);} QWidget#tableActions {border: none; background: rgb(170, 191, 232);}</string>
+     <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tabBarrages">
      <attribute name="title">
@@ -87,8 +87,8 @@
      <widget class="QScrollArea" name="scrollArea">
       <property name="geometry">
        <rect>
-        <x>-1</x>
-        <y>-1</y>
+        <x>0</x>
+        <y>0</y>
         <width>300</width>
         <height>830</height>
        </rect>
@@ -180,7 +180,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit">
+      <widget class="QLineEdit" name="lineEditGridX">
        <property name="maximumSize">
         <size>
          <width>32</width>
@@ -206,7 +206,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_2">
+      <widget class="QLineEdit" name="lineEditGridY">
        <property name="maximumSize">
         <size>
          <width>32</width>
@@ -460,7 +460,7 @@
     </property>
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="2">
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="labelTotalFrames">
        <property name="font">
         <font>
          <pointsize>10</pointsize>
@@ -484,7 +484,7 @@
       </widget>
      </item>
      <item row="1" column="2">
-      <widget class="QLabel" name="label_3">
+      <widget class="QLabel" name="labelTotalTime">
        <property name="font">
         <font>
          <pointsize>10</pointsize>
@@ -496,7 +496,7 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QLineEdit" name="lineEdit_3">
+      <widget class="QLineEdit" name="lineEditFrames">
        <property name="minimumSize">
         <size>
          <width>50</width>
@@ -518,7 +518,7 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="lineEdit_4">
+      <widget class="QLineEdit" name="lineEditTime">
        <property name="minimumSize">
         <size>
          <width>50</width>
@@ -592,11 +592,11 @@
      <x>0</x>
      <y>0</y>
      <width>1400</width>
-     <height>26</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QMenuBar {background: rgb(43, 87, 154); border: none;}QMenuBar::item {padding: 3px 20px 3px 20px; background: transparent;}QMenuBar::item:enabled {color: rgb(227, 234, 242);}QMenuBar::item:!enabled {color: rgb(155, 155, 155);}QMenuBar::item:enabled:selected {background: rgba(255, 255, 255, 40);}</string>
+    <string notr="true"/>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
