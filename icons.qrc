@@ -12,5 +12,6 @@
         <file>Icons/Next 50 Frames.png</file>
         <file>Icons/Prev 10 Frames.png</file>
         <file>Icons/Prev 50 Frames.png</file>
+        <file>Icons/comboBox.png</file>
     </qresource>
 </RCC>

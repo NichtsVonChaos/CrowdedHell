@@ -145,7 +145,7 @@
      <rect>
       <x>310</x>
       <y>680</y>
-      <width>570</width>
+      <width>551</width>
       <height>20</height>
      </rect>
     </property>
@@ -255,10 +255,13 @@
         <string>Grid Tilt/Vertical</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 16;height: 16; border: none; background-color: transparent; background-image:url(:/Icons/Grid Tilt.png);} QPushButton:checked {background-image:url(:/Icons/Grid Tilt- Pressed.png);}</string>
+        <string notr="true">QPushButton {width: 16;height: 16; border: none; background-color: transparent; background-image:url(:/Icons/Grid Tilt.png);} QPushButton:checked {background-image:url(:/Icons/Grid Tilt - Pressed.png);}</string>
        </property>
        <property name="text">
         <string/>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -285,7 +288,7 @@
      <rect>
       <x>310</x>
       <y>650</y>
-      <width>570</width>
+      <width>551</width>
       <height>20</height>
      </rect>
     </property>
@@ -316,7 +319,7 @@
      <rect>
       <x>310</x>
       <y>700</y>
-      <width>571</width>
+      <width>551</width>
       <height>41</height>
      </rect>
     </property>
@@ -343,7 +346,7 @@
         <string>Previous 50 frames</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Prev 50 Frames.png);} QPushButton:hover {background-color: silver;}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Prev 50 Frames.png);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -356,7 +359,7 @@
         <string>Previous 10 frames</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Prev 10 Frames.png);} QPushButton:hover {background-color: silver;}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Prev 10 Frames.png);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -369,7 +372,7 @@
         <string>Previous 1 frame</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Prev Frame.png);} QPushButton:hover {background-color: silver;}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Prev Frame.png);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -382,7 +385,7 @@
         <string>Play/Pause</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Play.png);} QPushButton:checked {background-image:url(:/Icons/Pause.png);} QPushButton:hover {background-color: silver;}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Play.png);} QPushButton:checked {background-image:url(:/Icons/Pause.png);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -401,7 +404,7 @@
         <string>Next 1 frame</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Next Frame.png);} QPushButton:hover {background-color: silver;}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Next Frame.png);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -414,7 +417,7 @@
         <string>Next 10 frames</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Next 10 Frames.png);} QPushButton:hover {background-color: silver;}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Next 10 Frames.png);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -427,7 +430,7 @@
         <string>Next 50 frames</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Next 50 Frames.png);} QPushButton:hover {background-color: silver;}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(:/Icons/Next 50 Frames.png);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -452,13 +455,59 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>890</x>
-      <y>640</y>
-      <width>213</width>
-      <height>101</height>
+      <x>870</x>
+      <y>630</y>
+      <width>231</width>
+      <height>111</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
+     <item row="2" column="0">
+      <widget class="QLabel" name="labelSpeed">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Speed</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QLabel" name="labelTotalTime">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string notr="true">/0:0.00</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="lineEditFrames">
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>80</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string notr="true">0</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="2">
       <widget class="QLabel" name="labelTotalFrames">
        <property name="font">
@@ -483,45 +532,11 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="2">
-      <widget class="QLabel" name="labelTotalTime">
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string notr="true">/0:0.00</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="lineEditFrames">
-       <property name="minimumSize">
-        <size>
-         <width>50</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>80</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="text">
-        <string notr="true">0</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="1">
       <widget class="QLineEdit" name="lineEditTime">
        <property name="minimumSize">
         <size>
-         <width>50</width>
+         <width>60</width>
          <height>0</height>
         </size>
        </property>
@@ -540,7 +555,7 @@
       </widget>
      </item>
      <item row="1" column="0">
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="labelTime">
        <property name="font">
         <font>
          <pointsize>10</pointsize>
@@ -551,13 +566,90 @@
        </property>
       </widget>
      </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="comboBoxSpeed">
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>80</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+       <property name="currentText">
+        <string notr="true">x 1.0</string>
+       </property>
+       <property name="currentIndex">
+        <number>3</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>x 0.1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>x 0.2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>x 0.5</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>x 1.0</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>x 1.5</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>x 2.0</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>x 5.0</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QLabel" name="labelDefaultSpeed">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>/ x1.0</string>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="3">
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeType">
-        <enum>QSizePolicy::Maximum</enum>
+        <enum>QSizePolicy::Expanding</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -573,7 +665,23 @@
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeType">
-        <enum>QSizePolicy::Maximum</enum>
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="2" column="3">
+      <spacer name="horizontalSpacer_6">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
