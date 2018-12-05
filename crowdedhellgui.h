@@ -58,6 +58,8 @@ private:
 	AvoidanceDisplayWidget *m_displayWidget;
 
 	void __updateLanguage(Language language);
+
+	void __readSettings();
 };
 
 #endif // CROWDEDHELLGUI_H

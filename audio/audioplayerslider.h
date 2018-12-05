@@ -16,6 +16,8 @@ public:
 	void mousePressEvent(QMouseEvent *ev) override;
 	void mouseReleaseEvent(QMouseEvent *ev) override;
 	void mouseMoveEvent(QMouseEvent *ev) override;
+
+
 };
 
 #endif // AUDIOPLAYERSLIDER_H

@@ -41,7 +41,8 @@ HEADERS += \
         crowdedhellgui.h \
     display/avoidancedisplaywidget.h \
     barrage/metabarrage.h \
-    audio/audioplayerslider.h
+    audio/audioplayerslider.h \
+    audio/audioplayer.h
 
 FORMS += \
         crowdedhellgui.ui

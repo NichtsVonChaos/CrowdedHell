@@ -136,6 +136,11 @@ void CrowdedHellGUI::__updateLanguage(CrowdedHellGUI::Language language)
 	languageChanged(language);
 }
 
+void CrowdedHellGUI::__readSettings()
+{
+	QSettings iniFile("settings.ini", QSettings::IniFormat);
+}
+
 void CrowdedHellGUI::on_actionAddSoundEffect_triggered()
 {
 
