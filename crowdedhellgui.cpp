@@ -69,7 +69,7 @@ void CrowdedHellGUI::__updateLanguage(CrowdedHellGUI::Language language)
 			ui->actionTraditionalChinese->setChecked(false);
 			ui->actionJapanese->setChecked(false);
 
-			QFile qssFile(":/Themes/Blue/QSS/Blue - EN - Main Window.qss");
+            QFile qssFile(":/Themes/Deep Blue/QSS/EN - Main Window.qss");
 			if(qssFile.open(QIODevice::ReadOnly))
 			{
 				setStyleSheet(qssFile.readAll());
@@ -86,7 +86,7 @@ void CrowdedHellGUI::__updateLanguage(CrowdedHellGUI::Language language)
 			ui->actionTraditionalChinese->setChecked(false);
 			ui->actionJapanese->setChecked(false);
 
-			QFile qssFile(":/Themes/Blue/QSS/Blue - ZH_CN - Main Window.qss");
+            QFile qssFile(":/Themes/Deep Blue/QSS/ZH_CN - Main Window.qss");
 			if(qssFile.open(QIODevice::ReadOnly))
 			{
 				setStyleSheet(qssFile.readAll());
@@ -103,7 +103,7 @@ void CrowdedHellGUI::__updateLanguage(CrowdedHellGUI::Language language)
 			ui->actionTraditionalChinese->setChecked(true);
 			ui->actionJapanese->setChecked(false);
 
-			QFile qssFile(":/Themes/Blue/QSS/Blue - ZH_TW - Main Window.qss");
+            QFile qssFile(":/Themes/Deep Blue/QSS/ZH_TW - Main Window.qss");
 			if(qssFile.open(QIODevice::ReadOnly))
 			{
 				setStyleSheet(qssFile.readAll());
@@ -120,7 +120,7 @@ void CrowdedHellGUI::__updateLanguage(CrowdedHellGUI::Language language)
 			ui->actionTraditionalChinese->setChecked(false);
 			ui->actionJapanese->setChecked(true);
 
-			QFile qssFile(":/Themes/Blue/QSS/Blue - JP - Main Window.qss");
+            QFile qssFile(":/Themes/Deep Blue/QSS/JP - Main Window.qss");
 			if(qssFile.open(QIODevice::ReadOnly))
 			{
 				setStyleSheet(qssFile.readAll());
