@@ -39,7 +39,7 @@ ____
 ### About compiling
 ____
 ##### Windows:
-* 建议使用MSVC 64位套件编译。
+* 建议使用MSVC 64位套件编译。  
  Suggest that use MSVC x64 kit to compile.
 ____
 ### 寻求合作
