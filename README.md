@@ -39,11 +39,8 @@ ____
 ### About compiling
 ____
 ##### Windows:
-* 请使用"-L$$PWD/FMOD/lib -lfmod64_vc -lfmodL64_vc"作为.pro文件的LIBS参数。建议使用MSVC套件编译。
- Plz use "-L$$PWD/FMOD/lib -lfmod64_vc -lfmodL64_vc" as the argument of LIBS in .pro file. But it doesn't mean that you can only use MSVC compiler. In fact you can use MinGW compiler successfully compiling it. Suggest that use MSVC kit to compile.
-##### Linux:
-* 请使用"-L$$PWD/FMOD/lib -lfmod -lfmodL"作为.pro文件的LIBS参数。  
- Plz use "-L$$PWD/FMOD/lib -lfmod -lfmodL" as the argument of LIBS in .pro file.
+* 建议使用MSVC 64位套件编译。
+ Suggest that use MSVC x64 kit to compile.
 ____
 ### 寻求合作
 ### Cooperation Wanted
