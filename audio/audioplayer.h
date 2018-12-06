@@ -8,6 +8,7 @@
 
 #include "FMOD/inc/fmod.hpp"
 
+class CrowdedHellGUI;
 enum class MessageType;
 enum class Language;
 
@@ -17,49 +18,49 @@ enum class Language;
 
 class AudioPlayer : public QObject
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	AudioPlayer(AudioPlayerSlider *slider);
+    AudioPlayer(AudioPlayerSlider *slider, CrowdedHellGUI *parent);
 
-	bool isValid();
+    bool isValid();
 
-	void timerEvent(QTimerEvent *ev);
+    void timerEvent(QTimerEvent *ev);
 
-	void reselectMusic(const QString &path);
+    void reselectMusic(const QString &path);
 
 signals:
-	void sendMessage(MessageType type, QString module, QString message);
+    void sendMessage(MessageType type, QString module, QString message);
 
-	void playedOrPaused(bool played);
+    void playedOrPaused(bool played);
 
-	void positionChanged(unsigned int pos);
+    void positionChanged(unsigned int pos);
 
 public slots:
-	void playOrPause(bool play);
+    void playOrPause(bool play);
 
-	void changePosition(unsigned int pos);
+    void changePosition(unsigned int pos);
 
 private:
-	bool m_valid;
+    bool m_valid, m_fmodNotInit;
 
-	int m_timer;
+    unsigned int m_pos;
 
-	AudioPlayerSlider *m_slider;
+    int m_timer;
 
-	unsigned int m_pos;
+    float m_volume;
 
-	FMOD::System *m_fmodSystem;
+    CrowdedHellGUI *m_parent;
 
-	FMOD::Sound *m_music;
+    AudioPlayerSlider *m_slider;
 
-	FMOD::Channel *m_channel;
+    FMOD::System *m_fmodSystem;
 
-	bool m_fmodNotInit;
+    FMOD::Sound *m_music;
 
-	float m_volume;
+    FMOD::Channel *m_channel;
 
-	void __initializeFmodSystem();
+    void __initializeFmodSystem();
 };
 
 #endif // AUDIOPLAYER_H

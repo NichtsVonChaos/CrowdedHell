@@ -117,7 +117,7 @@ QComboBox::drop-down {
         border-bottom-left-radius: 4px;
 }
 QComboBox::down-arrow {
-        image: url(":/Themes/Blue/Icons/comboBox.png");
+        image: url(":/Themes/Deep Blue/Icons/comboBox.png");
 }
 
 /**********按钮***********/
@@ -126,10 +126,10 @@ QPushButton#buttonGrid {
         height: 16;
         border: none;
         background-color: transparent;
-        background-image: url(":/Icons/Grid.png");
+        background-image: url(":/Themes/Deep Blue/Icons/Grid.png");
 }
 QPushButton#buttonGrid:checked {
-        background-image: url(":/Icons/Grid - Pressed.png");
+        background-image: url(":/Themes/Deep Blue/Icons/Grid - Pressed.png");
 }
 
 QPushButton#buttonGridTilt {
@@ -137,10 +137,10 @@ QPushButton#buttonGridTilt {
         height: 16;
         border: none;
         background-color: transparent; 
-        background-image:url(":/Icons/Grid Tilt.png");
+        background-image:url(":/Themes/Deep Blue/Icons/Grid Tilt.png");
 } 
 QPushButton#buttonGridTilt:checked {
-        background-image:url(":/Icons/Grid Tilt - Pressed.png");
+        background-image:url(":/Themes/Deep Blue/Icons/Grid Tilt - Pressed.png");
 }
 
 QPushButton#buttonPrev50Frames {
@@ -148,7 +148,7 @@ QPushButton#buttonPrev50Frames {
         height: 32;
         border: none; 
         background-color: transparent;
-        background-image:url(":/Icons/Prev 50 Frames.png");
+        background-image:url(":/Themes/Deep Blue/Icons/Prev 50 Frames.png");
 }
  QPushButton#buttonPrev50Frames:hover {
          background-color: rgb(202, 216, 240);
@@ -159,7 +159,7 @@ QPushButton#buttonPrev10Frames {
         height: 32; 
         border: none; 
         background-color: transparent;
-        background-image:url(":/Icons/Prev 10 Frames.png");
+        background-image:url(":/Themes/Deep Blue/Icons/Prev 10 Frames.png");
 } 
 QPushButton#buttonPrev10Frames:hover {
         background-color: rgb(202, 216, 240);
@@ -170,7 +170,7 @@ QPushButton#buttonPrevFrame {
         height: 32; 
         border: none; 
         background-color: transparent; 
-        background-image:url(":/Icons/Prev Frame.png");
+        background-image:url(":/Themes/Deep Blue/Icons/Prev Frame.png");
 }
  QPushButton#buttonPrevFrame:hover {
          background-color: rgb(202, 216, 240);
@@ -181,10 +181,10 @@ QPushButton#buttonPause {
         height: 32;
         border: none; 
         background-color: transparent; 
-        background-image:url(":/Icons/Play.png");
+        background-image:url(":/Themes/Deep Blue/Icons/Play.png");
 } 
 QPushButton#buttonPause:checked {
-        background-image:url(":/Icons/Pause.png");
+        background-image:url(":/Themes/Deep Blue/Icons/Pause.png");
 } 
 QPushButton#buttonPause:hover {
         background-color: rgb(202, 216, 240);
@@ -195,7 +195,7 @@ QPushButton#buttonNextFrame {
         height: 32; 
         border: none; 
         background-color: transparent; 
-        background-image:url(":/Icons/Next Frame.png");
+        background-image:url(":/Themes/Deep Blue/Icons/Next Frame.png");
 } 
 QPushButton#buttonNextFrame:hover {
         background-color: rgb(202, 216, 240);
@@ -206,7 +206,7 @@ QPushButton#buttonNext10Frames {
         height: 32;
         border: none;
         background-color: transparent; 
-        background-image:url(":/Icons/Next 10 Frames.png");
+        background-image:url(":/Themes/Deep Blue/Icons/Next 10 Frames.png");
 } 
 QPushButton#buttonNext10Frames:hover {
         background-color: rgb(202, 216, 240);
@@ -217,7 +217,7 @@ QPushButton#buttonNext50Frames {
         height: 32; 
         border: none; 
         background-color: transparent;
-        background-image:url(":/Icons/Next 50 Frames.png");
+        background-image:url(":/Themes/Deep Blue/Icons/Next 50 Frames.png");
 } 
 QPushButton#buttonNext50Frames:hover {
         background-color: rgb(202, 216, 240);

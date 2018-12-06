@@ -40,12 +40,21 @@ public:
 	explicit CrowdedHellGUI(QWidget *parent = nullptr);
 	~CrowdedHellGUI();
 
+    void musicInvalid();
+
+    void updateMusicLength(unsigned int miliseconds);
+
 	void changeEvent(QEvent *event);
 
 signals:
 	void languageChanged(Language language);
 
 	void themeChanged(QString theme);
+
+public slots:
+    void musicPositionChanged(unsigned int miliseconds);
+
+    void musicPlayedOrPaused(bool play);
 
 private slots:
 	void on_actionSimplifiedChinese_triggered();
@@ -62,6 +71,8 @@ private slots:
 
 	void sendMessage(MessageType type, QString module, QString message);
 
+    void on_buttonPause_toggled(bool checked);
+
 private:
 	Ui::CrowdedHellGUI *ui;
 
@@ -70,6 +81,8 @@ private:
 	AvoidanceDisplayWidget *m_displayWidget;
 
 	AudioPlayer *m_player;
+
+    QString m_currentMusicName;
 
 	void __updateLanguage(Language language);
 

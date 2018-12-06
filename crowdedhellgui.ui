@@ -42,7 +42,7 @@
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>24</y>
+      <y>32</y>
       <width>800</width>
       <height>608</height>
      </rect>
@@ -159,7 +159,7 @@
       <x>300</x>
       <y>0</y>
       <width>801</width>
-      <height>25</height>
+      <height>35</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -227,7 +227,7 @@
         <string>Grid On/Off</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 16;height: 16; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Blue/Icons/Grid.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Blue/Icons/Grid - Pressed.png&quot;);}</string>
+        <string notr="true">QPushButton {width: 16;height: 16; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Grid.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Deep Blue/Icons/Grid - Pressed.png&quot;);}</string>
        </property>
        <property name="text">
         <string/>
@@ -255,7 +255,7 @@
         <string>Grid Tilt/Vertical</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 16;height: 16; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Blue/Icons/Grid Tilt.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Blue/Icons/Grid Tilt - Pressed.png&quot;);}</string>
+        <string notr="true">QPushButton {width: 16;height: 16; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Grid Tilt.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Deep Blue/Icons/Grid Tilt - Pressed.png&quot;);}</string>
        </property>
        <property name="text">
         <string/>
@@ -283,13 +283,13 @@
      </item>
     </layout>
    </widget>
-   <widget class="QLabel" name="lableMusicName">
+   <widget class="QLabel" name="labelMusicName">
     <property name="geometry">
      <rect>
       <x>310</x>
       <y>650</y>
       <width>551</width>
-      <height>20</height>
+      <height>24</height>
      </rect>
     </property>
     <property name="font">
@@ -298,17 +298,22 @@
      </font>
     </property>
     <property name="text">
-     <string>Background music : Unknown - Unknown</string>
+     <string>Background music: </string>
     </property>
    </widget>
    <widget class="QTextEdit" name="textEditMessageBox">
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>740</y>
+      <y>749</y>
       <width>800</width>
-      <height>110</height>
+      <height>101</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
     </property>
     <property name="readOnly">
      <bool>true</bool>
@@ -346,7 +351,7 @@
         <string>Previous 50 frames</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Blue/Icons/Prev 50 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Prev 50 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -359,7 +364,7 @@
         <string>Previous 10 frames</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Blue/Icons/Prev 10 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Prev 10 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -372,7 +377,7 @@
         <string>Previous 1 frame</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Blue/Icons/Prev Frame.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Prev Frame.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -385,7 +390,7 @@
         <string>Play/Pause</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Blue/Icons/Play.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Blue/Icons/Pause.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Play.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Deep Blue/Icons/Pause.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -404,7 +409,7 @@
         <string>Next 1 frame</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Blue/Icons/Next Frame.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Next Frame.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -417,7 +422,7 @@
         <string>Next 10 frames</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Blue/Icons/Next 10 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Next 10 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -430,7 +435,7 @@
         <string>Next 50 frames</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Blue/Icons/Next 50 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Next 50 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -456,9 +461,9 @@
     <property name="geometry">
      <rect>
       <x>870</x>
-      <y>630</y>
+      <y>640</y>
       <width>231</width>
-      <height>111</height>
+      <height>109</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -700,7 +705,7 @@
      <x>0</x>
      <y>0</y>
      <width>1400</width>
-     <height>25</height>
+     <height>30</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -742,6 +747,8 @@
      <addaction name="actionJapanese"/>
     </widget>
     <addaction name="menuLanguage"/>
+    <addaction name="separator"/>
+    <addaction name="menuHideInfo"/>
    </widget>
    <widget class="QMenu" name="menuResources">
     <property name="title">
@@ -862,6 +869,14 @@
   <action name="actionAdd_Background">
    <property name="text">
     <string>Add Background</string>
+   </property>
+  </action>
+  <action name="menuHideInfo">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Hide &quot;Info&quot; Messages</string>
    </property>
   </action>
  </widget>
