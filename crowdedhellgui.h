@@ -11,13 +11,26 @@
 #include <QDebug>
 #include <QSettings>
 #include "display/avoidancedisplaywidget.h"
-#include "fmod.hpp"
 
-using namespace FMOD;
+class AudioPlayer;
+
+#ifndef AUDIOPLAYER_H
+#include "audio/audioplayer.h"
+#endif
 
 namespace Ui {
 	class CrowdedHellGUI;
 }
+
+enum class Language
+{
+	EN, ZH_CN, ZH_TW, JP
+};
+
+enum class MessageType
+{
+	Info, Error, Warning, Tips
+};
 
 class CrowdedHellGUI : public QMainWindow
 {
@@ -27,15 +40,12 @@ public:
 	explicit CrowdedHellGUI(QWidget *parent = nullptr);
 	~CrowdedHellGUI();
 
-	enum class Language
-	{
-		EN, ZH_CN, ZH_TW, JP
-	};
-
 	void changeEvent(QEvent *event);
 
 signals:
-	void languageChanged(CrowdedHellGUI::Language);
+	void languageChanged(Language language);
+
+	void themeChanged(QString theme);
 
 private slots:
 	void on_actionSimplifiedChinese_triggered();
@@ -50,12 +60,16 @@ private slots:
 
 	void on_actionReselectMusic_triggered();
 
+	void sendMessage(MessageType type, QString module, QString message);
+
 private:
 	Ui::CrowdedHellGUI *ui;
 
 	QMap<Language, QTranslator*> m_translators;
 
 	AvoidanceDisplayWidget *m_displayWidget;
+
+	AudioPlayer *m_player;
 
 	void __updateLanguage(Language language);
 

@@ -15,17 +15,67 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	m_translators.insert(Language::JP, new QTranslator(this));
 	m_translators[Language::JP]->load(":/translations/Trans_jp.qm");
 
+	__updateLanguage(Language::EN);
+
 	// Initialize openGL widget
 	m_displayWidget = new AvoidanceDisplayWidget(this);
 	m_displayWidget->setFixedSize(QSize(800, 608));
 	m_displayWidget->hide();
 
-	__updateLanguage(Language::EN);
+	// Initialize message box.
+	ui->textEditMessageBox->setTextColor(QColor(255,0,255));
+	ui->textEditMessageBox->setText(">>> ");
+
+	// Initialize audio player.
+	m_player = new AudioPlayer(ui->audioSlider);
+	connect(m_player, SIGNAL(sendMessage(CrowdedHellGUI::MessageType, QString, QString)),
+			this, SLOT(sendMessage(CrowdedHellGUI::MessageType, QString, QString)));
+	connect(ui->buttonPause, SIGNAL(toggled(bool)), m_player, SLOT(playerOrPause(bool)));
 }
 
 CrowdedHellGUI::~CrowdedHellGUI()
 {
 	delete ui;
+}
+
+void CrowdedHellGUI::sendMessage(MessageType type, QString module, QString message)
+{
+	switch(type)
+	{
+		case MessageType::Info:
+		{
+			ui->textEditMessageBox->setTextColor(QColor(0,255,0));
+			ui->textEditMessageBox->append(tr("[ Info ] "));
+		}
+		break;
+
+		case MessageType::Error:
+		{
+			ui->textEditMessageBox->setTextColor(QColor(255,0,0));
+			ui->textEditMessageBox->append(tr("[ Error ] "));
+		}
+		break;
+
+		case MessageType::Warning:
+		{
+			ui->textEditMessageBox->setTextColor(QColor(255,128,0));
+			ui->textEditMessageBox->append(tr("[ Warning ] "));
+		}
+		break;
+
+		case MessageType::Tips:
+		{
+			ui->textEditMessageBox->setTextColor(QColor(0,0,255));
+			ui->textEditMessageBox->append(tr("[ Tips ] "));
+		}
+		break;
+	}
+
+	ui->textEditMessageBox->setTextColor(QColor(0,0,0));
+	ui->textEditMessageBox->insertHtml(QString(tr("In module \"<b>%1</b>\" : ")).arg(module));
+	ui->textEditMessageBox->append(message + QString("\n"));
+	ui->textEditMessageBox->setTextColor(QColor(255,0,255));
+	ui->textEditMessageBox->setText(">>> ");
 }
 
 void CrowdedHellGUI::changeEvent(QEvent *event)
@@ -56,7 +106,7 @@ void CrowdedHellGUI::on_actionJapanese_triggered()
 	__updateLanguage(Language::JP);
 }
 
-void CrowdedHellGUI::__updateLanguage(CrowdedHellGUI::Language language)
+void CrowdedHellGUI::__updateLanguage(Language language)
 {
 	switch (language)
 	{
@@ -69,7 +119,7 @@ void CrowdedHellGUI::__updateLanguage(CrowdedHellGUI::Language language)
 			ui->actionTraditionalChinese->setChecked(false);
 			ui->actionJapanese->setChecked(false);
 
-            QFile qssFile(":/Themes/Deep Blue/QSS/EN - Main Window.qss");
+			QFile qssFile(":/Themes/Deep Blue/QSS/EN - Main Window.qss");
 			if(qssFile.open(QIODevice::ReadOnly))
 			{
 				setStyleSheet(qssFile.readAll());
@@ -86,7 +136,7 @@ void CrowdedHellGUI::__updateLanguage(CrowdedHellGUI::Language language)
 			ui->actionTraditionalChinese->setChecked(false);
 			ui->actionJapanese->setChecked(false);
 
-            QFile qssFile(":/Themes/Deep Blue/QSS/ZH_CN - Main Window.qss");
+			QFile qssFile(":/Themes/Deep Blue/QSS/ZH_CN - Main Window.qss");
 			if(qssFile.open(QIODevice::ReadOnly))
 			{
 				setStyleSheet(qssFile.readAll());
@@ -103,7 +153,7 @@ void CrowdedHellGUI::__updateLanguage(CrowdedHellGUI::Language language)
 			ui->actionTraditionalChinese->setChecked(true);
 			ui->actionJapanese->setChecked(false);
 
-            QFile qssFile(":/Themes/Deep Blue/QSS/ZH_TW - Main Window.qss");
+			QFile qssFile(":/Themes/Deep Blue/QSS/ZH_TW - Main Window.qss");
 			if(qssFile.open(QIODevice::ReadOnly))
 			{
 				setStyleSheet(qssFile.readAll());
@@ -120,7 +170,7 @@ void CrowdedHellGUI::__updateLanguage(CrowdedHellGUI::Language language)
 			ui->actionTraditionalChinese->setChecked(false);
 			ui->actionJapanese->setChecked(true);
 
-            QFile qssFile(":/Themes/Deep Blue/QSS/JP - Main Window.qss");
+			QFile qssFile(":/Themes/Deep Blue/QSS/JP - Main Window.qss");
 			if(qssFile.open(QIODevice::ReadOnly))
 			{
 				setStyleSheet(qssFile.readAll());
@@ -149,4 +199,5 @@ void CrowdedHellGUI::on_actionAddSoundEffect_triggered()
 void CrowdedHellGUI::on_actionReselectMusic_triggered()
 {
 	QString musicFilePath = QFileDialog::getOpenFileName(this, tr("Select Music File"), qApp->applicationDirPath(), tr("Music File(*.mp3 *.wav)"));
+	m_player->reselectMusic(musicFilePath);
 }

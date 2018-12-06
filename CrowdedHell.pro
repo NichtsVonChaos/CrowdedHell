@@ -27,15 +27,16 @@ CONFIG += c++17
 INCLUDEPATH += \
         $$PWD/FMOD/inc
 
-LIBS += \
-        -L$$PWD/FMOD/lib -lfmod64_vc -lfmodL64_vc
+win32: LIBS += -L$$PWD/FMOD/lib/ -lfmod64_vc -lfmodL64_vc
+else:unix: LIBS += -L$$PWD/FMOD/lib/ -lfmod -lfmodL
 
 SOURCES += \
         main.cpp \
         crowdedhellgui.cpp \
     display/avoidancedisplaywidget.cpp \
     barrage/metabarrage.cpp \
-    audio/audioplayerslider.cpp
+    audio/audioplayerslider.cpp \
+    audio/audioplayer.cpp
 
 HEADERS += \
         crowdedhellgui.h \

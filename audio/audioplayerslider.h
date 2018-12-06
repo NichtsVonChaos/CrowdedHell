@@ -12,12 +12,9 @@ class AudioPlayerSlider : public QSlider
 public:
 	AudioPlayerSlider(QWidget *parent = Q_NULLPTR);
 
-	void paintEvent(QPaintEvent *ev) override;
 	void mousePressEvent(QMouseEvent *ev) override;
 	void mouseReleaseEvent(QMouseEvent *ev) override;
 	void mouseMoveEvent(QMouseEvent *ev) override;
-
-
 };
 
 #endif // AUDIOPLAYERSLIDER_H
