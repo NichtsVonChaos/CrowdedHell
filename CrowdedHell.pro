@@ -36,14 +36,16 @@ SOURCES += \
     display/avoidancedisplaywidget.cpp \
     barrage/metabarrage.cpp \
     audio/audioplayerslider.cpp \
-    audio/audioplayer.cpp
+    audio/audioplayer.cpp \
+    form.cpp
 
 HEADERS += \
         crowdedhellgui.h \
     display/avoidancedisplaywidget.h \
     barrage/metabarrage.h \
     audio/audioplayerslider.h \
-    audio/audioplayer.h
+    audio/audioplayer.h \
+    form.h
 
 FORMS += \
         crowdedhellgui.ui

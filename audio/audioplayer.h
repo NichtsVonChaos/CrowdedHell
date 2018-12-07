@@ -18,49 +18,53 @@ enum class Language;
 
 class AudioPlayer : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    AudioPlayer(AudioPlayerSlider *slider, CrowdedHellGUI *parent);
+	AudioPlayer(AudioPlayerSlider *slider, CrowdedHellGUI *parent);
 
-    bool isValid();
+	bool isValid();
 
-    void timerEvent(QTimerEvent *ev);
+	void timerEvent(QTimerEvent *ev);
 
-    void reselectMusic(const QString &path);
+	void reselectMusic(const QString &path);
 
 signals:
-    void sendMessage(MessageType type, QString module, QString message);
+	void sendMessage(MessageType type, QString module, QString message);
 
-    void playedOrPaused(bool played);
+	void playedOrPaused(bool played);
 
-    void positionChanged(unsigned int pos);
+	void musicEnd();
+
+	void positionChanged(unsigned int pos);
 
 public slots:
-    void playOrPause(bool play);
+	void playOrPause(bool play);
 
-    void changePosition(unsigned int pos);
+	void changePosition(unsigned int pos);
 
 private:
-    bool m_valid, m_fmodNotInit;
+	bool m_valid, m_fmodNotInit;
 
-    unsigned int m_pos;
+	unsigned int m_pos, m_length;
 
-    int m_timer;
+	int m_timer;
 
-    float m_volume;
+	float m_volume;
 
-    CrowdedHellGUI *m_parent;
+	CrowdedHellGUI *m_parent;
 
-    AudioPlayerSlider *m_slider;
+	AudioPlayerSlider *m_slider;
 
-    FMOD::System *m_fmodSystem;
+	FMOD::System *m_fmodSystem;
 
-    FMOD::Sound *m_music;
+	FMOD::Sound *m_music;
 
-    FMOD::Channel *m_channel;
+	FMOD::Channel *m_channel;
 
-    void __initializeFmodSystem();
+	void __initializeFmodSystem();
+
+	void __startTimer();
 };
 
 #endif // AUDIOPLAYER_H
