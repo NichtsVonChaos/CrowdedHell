@@ -304,6 +304,5 @@ void CrowdedHellGUI::on_lineEditFrames_editingFinished()
 	else
 	{
 		m_player->changePosition(frames * 20);
-		qDebug() << m_player->getPosition();
 	}
 }

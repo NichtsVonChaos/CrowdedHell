@@ -12,7 +12,7 @@ AudioPlayer::AudioPlayer(AudioPlayerSlider *slider, CrowdedHellGUI *parent) :
 
 	__initializeFmodSystem();
 
-	m_timer = QObject::startTimer(10);
+	m_timer = QObject::startTimer(5);
 }
 
 void AudioPlayer::timerEvent(QTimerEvent *ev)
@@ -26,17 +26,20 @@ void AudioPlayer::timerEvent(QTimerEvent *ev)
 			return;
 		}
 
-
 		unsigned int last_pos = m_pos;
 		m_channel->getPosition(&m_pos, FMOD_TIMEUNIT_MS);
 		if(last_pos != m_pos)
 		{
-			positionChanged(m_pos);
 			if(m_pos >= m_length)
+			{
+				sendMessage(MessageType::Info, "FMOD", tr("Music is at the end."));
+				m_pos = m_length;
+				m_channel->setPaused(true);
+				m_channel->setPosition(m_pos, FMOD_TIMEUNIT_MS);
 				playedOrPaused(false);
+			}
+			positionChanged(m_pos);
 		}
-
-		m_fmodSystem->update();
 	}
 }
 
@@ -65,6 +68,7 @@ void AudioPlayer::reselectMusic(const QString &path)
 		sendMessage(MessageType::Info, "FMOD", tr("Loaded sound file %1 .").arg( QString(" \"") + path + QString("\".")));
 
 	result = m_fmodSystem->playSound(m_music, nullptr, true, &m_channel);
+
 	if(result != FMOD_OK)
 	{
 		sendMessage(MessageType::Error, "FMOD", tr("Failed to create channel."));
@@ -75,6 +79,7 @@ void AudioPlayer::reselectMusic(const QString &path)
 		sendMessage(MessageType::Info, "FMOD", tr("Create channel successfully."));
 
 	m_music->getLength(&m_length, FMOD_TIMEUNIT_MS);
+	m_length -= 10;
 	m_parent->updateMusicLength(m_length);
 }
 
@@ -83,7 +88,7 @@ void AudioPlayer::forward(unsigned int frames)
 	if(m_pos / 20 == m_length / 20)
 		changePosition(m_length);
 	else
-		changePosition((m_pos / 20+ frames) * 20);
+		changePosition((m_pos / 20 + frames) * 20);
 }
 
 void AudioPlayer::back(unsigned int frames)
