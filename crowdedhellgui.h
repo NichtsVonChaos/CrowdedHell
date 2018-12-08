@@ -73,6 +73,18 @@ private slots:
 
 	void on_buttonPause_toggled(bool checked);
 
+	void on_buttonNextFrame_clicked();
+
+	void on_buttonPrevFrame_clicked();
+
+	void on_buttonNext10Frames_clicked();
+
+	void on_buttonPrev10Frames_clicked();
+
+	void on_buttonNext50Frames_clicked();
+
+	void on_buttonPrev50Frames_clicked();
+
 private:
 	Ui::CrowdedHellGUI *ui;
 

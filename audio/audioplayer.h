@@ -16,6 +16,10 @@ enum class Language;
 #include "crowdedhellgui.h"
 #endif
 
+/**
+ * @brief The AudioPlayer class
+ * The audio control center.
+ */
 class AudioPlayer : public QObject
 {
 	Q_OBJECT
@@ -23,28 +27,62 @@ class AudioPlayer : public QObject
 public:
 	AudioPlayer(AudioPlayerSlider *slider, CrowdedHellGUI *parent);
 
-	bool isValid();
-
 	void timerEvent(QTimerEvent *ev);
 
+	/**
+	 * @brief reselectMusic
+	 * Reselect music as background music.
+	 * @param path
+	 * File path.
+	 */
 	void reselectMusic(const QString &path);
 
+	/**
+	 * @brief forward
+	 * Let music forward specified frames.
+	 */
+	void forward(unsigned int frames);
+
+	/**
+	 * @brief back
+	 * Let music back specified frames.
+	 */
+	void back(unsigned int frames);
+
 signals:
+	/**
+	 * @see CrowdedHellGUI::sendMessage(MessageType, QString, QString);
+	 */
 	void sendMessage(MessageType type, QString module, QString message);
 
+	/**
+	 * @brief playedOrPaused
+	 * Emit the signal while music played or paused.
+	 */
 	void playedOrPaused(bool played);
 
-	void musicEnd();
-
+	/**
+	 * @brief positionChanged
+	 * Emit the signal while music changed position (milisenconds).
+	 */
 	void positionChanged(unsigned int pos);
 
 public slots:
+
+	/**
+	 * @brief playOrPause
+	 * Play or Pause music.
+	 */
 	void playOrPause(bool play);
 
+	/**
+	 * @brief changePosition
+	 * Change music position (milisenconds).
+	 */
 	void changePosition(unsigned int pos);
 
 private:
-	bool m_valid, m_fmodNotInit;
+	bool m_fmodNotInit;
 
 	unsigned int m_pos, m_length;
 
@@ -63,8 +101,6 @@ private:
 	FMOD::Channel *m_channel;
 
 	void __initializeFmodSystem();
-
-	void __startTimer();
 };
 
 #endif // AUDIOPLAYER_H

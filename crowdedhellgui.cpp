@@ -261,3 +261,33 @@ void CrowdedHellGUI::updateMusicLength(unsigned int miliseconds)
 	time = time.addMSecs(int(miliseconds));
 	ui->labelTotalTime->setText(QString("/") + QString::number(time.hour() * 60 + time.minute()) + QString(":") + QString::number(time.second()) + QString(".") + QString::number(time.msec() / 10));
 }
+
+void CrowdedHellGUI::on_buttonNextFrame_clicked()
+{
+	m_player->forward(1u);
+}
+
+void CrowdedHellGUI::on_buttonPrevFrame_clicked()
+{
+	m_player->back(1u);
+}
+
+void CrowdedHellGUI::on_buttonNext10Frames_clicked()
+{
+	m_player->forward(10u);
+}
+
+void CrowdedHellGUI::on_buttonPrev10Frames_clicked()
+{
+	m_player->back(10u);
+}
+
+void CrowdedHellGUI::on_buttonNext50Frames_clicked()
+{
+	m_player->forward(50u);
+}
+
+void CrowdedHellGUI::on_buttonPrev50Frames_clicked()
+{
+	m_player->back(50u);
+}
