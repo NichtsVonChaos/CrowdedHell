@@ -291,3 +291,19 @@ void CrowdedHellGUI::on_buttonPrev50Frames_clicked()
 {
 	m_player->back(50u);
 }
+
+void CrowdedHellGUI::on_lineEditFrames_editingFinished()
+{
+	bool isConvertOk;
+	unsigned int frames = ui->lineEditFrames->text().toUInt(&isConvertOk);
+	if(!isConvertOk)
+	{
+		sendMessage(MessageType::Warning, "MainWindow", tr("%1 is not a valid number.").arg(QString("\"") + ui->lineEditFrames->text() + QString("\"")));
+		musicPositionChanged(m_player->getPosition());
+	}
+	else
+	{
+		m_player->changePosition(frames * 20);
+		qDebug() << m_player->getPosition();
+	}
+}

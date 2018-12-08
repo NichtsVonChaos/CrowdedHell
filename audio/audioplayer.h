@@ -49,6 +49,12 @@ public:
 	 */
 	void back(unsigned int frames);
 
+	/**
+	 * @brief getPosition
+	 * Get playing position of music (miliseconds).
+	 */
+	unsigned int getPosition();
+
 signals:
 	/**
 	 * @see CrowdedHellGUI::sendMessage(MessageType, QString, QString);

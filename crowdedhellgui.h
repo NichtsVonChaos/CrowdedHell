@@ -85,6 +85,8 @@ private slots:
 
 	void on_buttonPrev50Frames_clicked();
 
+	void on_lineEditFrames_editingFinished();
+
 private:
 	Ui::CrowdedHellGUI *ui;
 

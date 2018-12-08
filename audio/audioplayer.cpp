@@ -96,6 +96,18 @@ void AudioPlayer::back(unsigned int frames)
 		changePosition((m_pos / 20 - frames) * 20);
 }
 
+unsigned int AudioPlayer::getPosition()
+{
+	if(m_channel == nullptr)
+		return 0;
+	else
+	{
+		unsigned int pos;
+		m_channel->getPosition(&pos, FMOD_TIMEUNIT_MS);
+		return pos;
+	}
+}
+
 void AudioPlayer::playOrPause(bool play)
 {
 	FMOD_RESULT result;
@@ -240,20 +252,28 @@ void AudioPlayer::changePosition(unsigned int pos)
 	{
 		sendMessage(MessageType::Warning, "FMOD", tr("Position %1 miliseconds is equal with or larger than music length %2 miliseconds, therefore set the position to the end of music.").arg(QString::number(pos), QString::number(m_length)));
 		m_pos = m_length;
-		m_channel->setPosition(m_pos, FMOD_TIMEUNIT_MS);
+		result = m_channel->setPosition(m_length, FMOD_TIMEUNIT_MS);
+		if(result != FMOD_OK)
+		{
+			sendMessage(MessageType::Error, "FMOD", tr("Failed to set position to %1 miliseconds while the length of music is %2 miliseconds.").arg(QString::number(m_pos), QString::number(m_length)));
+			m_pos = 0;
+			m_channel->setPaused(true);
+			playedOrPaused(false);
+			return;
+		}
 		m_channel->setPaused(true);
 		playedOrPaused(false);
+		positionChanged(m_length);
 		return;
 	}
 
 	m_pos = pos;
-
-	result = m_channel->setPosition(unsigned(m_pos), FMOD_TIMEUNIT_MS);
-
+	result = m_channel->setPosition(m_pos, FMOD_TIMEUNIT_MS);
 	if(result != FMOD_OK)
 	{
 		sendMessage(MessageType::Error, "FMOD", tr("Failed to set position to %1 miliseconds while the length of music is %2 miliseconds.").arg(QString::number(m_pos), QString::number(m_length)));
 		m_pos = 0;
+		m_channel->setPaused(true);
 		playedOrPaused(false);
 		return;
 	}
