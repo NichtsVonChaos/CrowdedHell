@@ -130,7 +130,7 @@
      </attribute>
     </widget>
    </widget>
-   <widget class="QTreeView" name="treeViewResources">
+   <widget class="ResourceTreeView" name="treeViewResources">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -886,6 +886,11 @@
    <class>AudioPlayerSlider</class>
    <extends>QSlider</extends>
    <header location="global">audio/audioplayerslider.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ResourceTreeView</class>
+   <extends>QTreeView</extends>
+   <header location="global">manager/resourcetreeview.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

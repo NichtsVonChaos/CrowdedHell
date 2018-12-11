@@ -17,5 +17,10 @@
         <file>Themes/Deep Blue/QSS/JP - Main Window.qss</file>
         <file>Themes/Deep Blue/QSS/ZH_CN - Main Window.qss</file>
         <file>Themes/Deep Blue/QSS/ZH_TW - Main Window.qss</file>
+        <file>Themes/Deep Blue/Icons/Tree-Branch-Closed.png</file>
+        <file>Themes/Deep Blue/Icons/Tree-Branch-End.png</file>
+        <file>Themes/Deep Blue/Icons/Tree-Branch-More.png</file>
+        <file>Themes/Deep Blue/Icons/Tree-Branch-Open.png</file>
+        <file>Themes/Deep Blue/Icons/Tree-Vline.png</file>
     </qresource>
 </RCC>

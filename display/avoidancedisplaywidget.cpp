@@ -1,6 +1,6 @@
 #include "avoidancedisplaywidget.h"
 
-AvoidanceDisplayWidget::AvoidanceDisplayWidget(QWidget *parent) :
+AvoidanceDisplayWidget::AvoidanceDisplayWidget(CrowdedHellGUI *parent) :
 	QOpenGLWidget(parent)
 {
 

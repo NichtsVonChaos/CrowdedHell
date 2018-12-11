@@ -64,12 +64,50 @@ QWidget#scrollAreaWidgetContents {
 }
 
 /***********资源窗***********/
-QTreeView {
+ResourceTreeView {
         border-top: none;
         border-left: 2px solid #12244C;
         border-bottom: 2px solid #12244C;
         border-right: 2px solid #12244C;
         background-color: rgb(202, 216, 240);
+        color: rgb(30, 60, 104);
+        show-decoration-selected: 1;
+}
+QHeaderView {
+        font-size: 14px;
+}
+QHeaderView::section {
+        background: #12244C;
+        color: rgb(202, 216, 240);
+        height: 25px;
+}
+ResourceTreeView::item:hover,
+ResourceTreeView::branch:hover {
+        background-color: rgb(134, 167, 221);
+}
+ResourceTreeView::item:selected,
+ResourceTreeView::branch:selected {
+        color: rgb(202, 216, 240);
+        background-color: rgb(43, 87, 154);
+}
+ResourceTreeView::branch:has-siblings:!adjoins-item {
+        border-image: url(:/Themes/Deep Blue/Icons/Tree-Vline.png) 0;
+}
+ResourceTreeView::branch:has-siblings:adjoins-item {
+        border-image: url(:/Themes/Deep Blue/Icons/Tree-Branch-More.png) 0;
+}
+ResourceTreeView::branch:!has-children:!has-siblings:adjoins-item {
+        border-image: url(:/Themes/Deep Blue/Icons/Tree-Branch-End.png) 0;
+}
+ResourceTreeView::branch:has-children:!has-siblings:closed,
+ResourceTreeView::branch:closed:has-children:has-siblings {
+        border-image: none;
+        image: url(:/Themes/Deep Blue/Icons/Tree-Branch-Closed.png);
+}
+ResourceTreeView::branch:open:has-children:!has-siblings,
+ResourceTreeView::branch:open:has-children:has-siblings  {
+        border-image: none;
+        image: url(:/Themes/Deep Blue/Icons/Tree-Branch-Open.png);
 }
 
 /***********房间编辑视窗***********/

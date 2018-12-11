@@ -10,12 +10,21 @@
 #include <QTextCodec>
 #include <QDebug>
 #include <QSettings>
+
+class AvoidanceDisplayWidget;
+#ifndef AVOIDANCEDISPLAYWIDGET_H
 #include "display/avoidancedisplaywidget.h"
+#endif
 
 class AudioPlayer;
 
 #ifndef AUDIOPLAYER_H
 #include "audio/audioplayer.h"
+#endif
+
+class ProjectManager;
+#ifndef PROJECTMANAGER_H
+#include "manager/projectmanager.h"
 #endif
 
 namespace Ui {
@@ -95,6 +104,8 @@ private:
 	AvoidanceDisplayWidget *m_displayWidget;
 
 	AudioPlayer *m_player;
+
+	ProjectManager *m_projectManager;
 
 	QString m_currentMusicName;
 

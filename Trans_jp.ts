@@ -4,133 +4,149 @@
 <context>
     <name>AudioPlayer</name>
     <message>
-        <location filename="audio/audioplayer.cpp" line="57"/>
+        <location filename="audio/audioplayer.cpp" line="63"/>
         <source>Failed to load sound file %1 .</source>
         <oldsource>Failed to load sound file %1</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="63"/>
+        <location filename="audio/audioplayer.cpp" line="68"/>
         <source>Loaded sound file %1 .</source>
         <oldsource>Loaded sound file</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="74"/>
+        <location filename="audio/audioplayer.cpp" line="124"/>
+        <location filename="audio/audioplayer.cpp" line="234"/>
         <source>No Background music was selected or selected music is invalid.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="88"/>
+        <location filename="audio/audioplayer.cpp" line="134"/>
+        <location filename="audio/audioplayer.cpp" line="244"/>
         <source>No channel was found. Trying to create channel...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="92"/>
+        <location filename="audio/audioplayer.cpp" line="74"/>
+        <location filename="audio/audioplayer.cpp" line="138"/>
+        <location filename="audio/audioplayer.cpp" line="248"/>
         <source>Failed to create channel.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="98"/>
+        <location filename="audio/audioplayer.cpp" line="35"/>
+        <location filename="audio/audioplayer.cpp" line="163"/>
+        <source>Music is at the end.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="audio/audioplayer.cpp" line="79"/>
+        <location filename="audio/audioplayer.cpp" line="143"/>
+        <location filename="audio/audioplayer.cpp" line="253"/>
         <source>Create channel successfully.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="104"/>
+        <location filename="audio/audioplayer.cpp" line="154"/>
         <source>Failed to set volume to %1 percent.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="110"/>
+        <location filename="audio/audioplayer.cpp" line="159"/>
         <source>Set volume to %1 percent successful.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="116"/>
-        <location filename="audio/audioplayer.cpp" line="126"/>
-        <location filename="audio/audioplayer.cpp" line="185"/>
-        <location filename="audio/audioplayer.cpp" line="194"/>
+        <location filename="audio/audioplayer.cpp" line="173"/>
+        <location filename="audio/audioplayer.cpp" line="263"/>
+        <location filename="audio/audioplayer.cpp" line="279"/>
         <source>Failed to set position to %1 miliseconds while the length of music is %2 miliseconds.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="133"/>
-        <location filename="audio/audioplayer.cpp" line="201"/>
+        <location filename="audio/audioplayer.cpp" line="180"/>
+        <location filename="audio/audioplayer.cpp" line="286"/>
         <source>Set position to %1 miliseconds successfully while the length of music is %2 miliseconds.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="139"/>
+        <location filename="audio/audioplayer.cpp" line="186"/>
         <source>Failed to play music.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="146"/>
+        <location filename="audio/audioplayer.cpp" line="192"/>
         <source>Music Started.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="146"/>
+        <location filename="audio/audioplayer.cpp" line="192"/>
         <source>Music Resumed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="155"/>
+        <location filename="audio/audioplayer.cpp" line="203"/>
         <source>If you have met this message, it means that my codes have logic error. Please report to me, thanks!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="164"/>
+        <location filename="audio/audioplayer.cpp" line="216"/>
         <source>Failed to pause music.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="171"/>
+        <location filename="audio/audioplayer.cpp" line="222"/>
         <source>Music paused.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="208"/>
+        <location filename="audio/audioplayer.cpp" line="258"/>
+        <source>Position %1 miliseconds is equal with or larger than music length %2 miliseconds, therefore set the position to the end of music.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="audio/audioplayer.cpp" line="296"/>
         <source>Trying to create FMOD system...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="216"/>
+        <location filename="audio/audioplayer.cpp" line="301"/>
         <source>Failed to create FMOD system.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="222"/>
+        <location filename="audio/audioplayer.cpp" line="306"/>
         <source>Created FMOD system successfully.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="224"/>
+        <location filename="audio/audioplayer.cpp" line="308"/>
         <source>Trying to load sound drivers...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="230"/>
+        <location filename="audio/audioplayer.cpp" line="314"/>
         <source>Failed to load sound drivers.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="237"/>
+        <location filename="audio/audioplayer.cpp" line="320"/>
         <source>%1 sound driver(s) was found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="242"/>
+        <location filename="audio/audioplayer.cpp" line="325"/>
         <source>Trying to initialize FMOD system...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="246"/>
+        <location filename="audio/audioplayer.cpp" line="329"/>
         <source>Failed to initialize FMOD system.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="audio/audioplayer.cpp" line="252"/>
+        <location filename="audio/audioplayer.cpp" line="334"/>
         <source>Initialize FMOD system successfully.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -392,64 +408,103 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="48"/>
+        <location filename="crowdedhellgui.cpp" line="51"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="55"/>
+        <location filename="crowdedhellgui.cpp" line="58"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="62"/>
+        <location filename="crowdedhellgui.cpp" line="65"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="69"/>
+        <location filename="crowdedhellgui.cpp" line="72"/>
         <source>Tips</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="75"/>
+        <location filename="crowdedhellgui.cpp" line="78"/>
         <source>In module %1 : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="131"/>
+        <location filename="crowdedhellgui.cpp" line="164"/>
         <source>Change language to English.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="149"/>
+        <location filename="crowdedhellgui.cpp" line="182"/>
         <source>Change language to Simpified Chinese.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="167"/>
+        <location filename="crowdedhellgui.cpp" line="200"/>
         <source>Change language to Traditional Chinese.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="185"/>
+        <location filename="crowdedhellgui.cpp" line="218"/>
         <source>Change language to Japanese.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="209"/>
+        <location filename="crowdedhellgui.cpp" line="242"/>
         <source>Select Music File</source>
         <translation type="unfinished">音楽ファイルを選ぶ</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="209"/>
+        <location filename="crowdedhellgui.cpp" line="242"/>
         <source>Music File(*.mp3 *.wav)</source>
         <translation type="unfinished">音楽ファイル(*.mp3 *.wav)</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="191"/>
-        <location filename="crowdedhellgui.cpp" line="213"/>
+        <location filename="crowdedhellgui.cpp" line="304"/>
+        <source>%1 is not a valid number.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="crowdedhellgui.cpp" line="224"/>
+        <location filename="crowdedhellgui.cpp" line="246"/>
         <source>Background Music : </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ResourceManager</name>
+    <message>
+        <location filename="manager/resourcemanager.cpp" line="7"/>
+        <source>Resources Tree</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/resourcemanager.cpp" line="9"/>
+        <source>Sprites</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/resourcemanager.cpp" line="12"/>
+        <location filename="manager/resourcemanager.cpp" line="22"/>
+        <source>Sounds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/resourcemanager.cpp" line="15"/>
+        <source>Backgrounds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/resourcemanager.cpp" line="18"/>
+        <source>Paths</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/resourcemanager.cpp" line="22"/>
+        <source>Test</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

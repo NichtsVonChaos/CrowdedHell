@@ -29,6 +29,9 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 
 	// Initialize audio player.
 	m_player = new AudioPlayer(ui->audioSlider, this);
+
+	// Initialize project manager.
+	m_projectManager = new ProjectManager(this, ui->treeViewResources);
 }
 
 CrowdedHellGUI::~CrowdedHellGUI()

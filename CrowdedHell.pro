@@ -37,7 +37,9 @@ SOURCES += \
     barrage/metabarrage.cpp \
     audio/audioplayerslider.cpp \
     audio/audioplayer.cpp \
-    form.cpp
+    manager/resourcemanager.cpp \
+    manager/projectmanager.cpp \
+    manager/resourcetreeview.cpp
 
 HEADERS += \
         crowdedhellgui.h \
@@ -45,7 +47,9 @@ HEADERS += \
     barrage/metabarrage.h \
     audio/audioplayerslider.h \
     audio/audioplayer.h \
-    form.h
+    manager/projectmanager.h \
+    manager/resourcemanager.h \
+    manager/resourcetreeview.h
 
 FORMS += \
         crowdedhellgui.ui

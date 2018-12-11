@@ -13,6 +13,7 @@
 class MetaBarrage : public QObject
 {
 	Q_OBJECT
+
 public:
 	virtual ~MetaBarrage() = 0;
 	virtual int getInteger(int attribute) = 0;
