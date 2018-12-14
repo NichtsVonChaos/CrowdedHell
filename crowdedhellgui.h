@@ -112,6 +112,8 @@ private:
 	void __updateLanguage(Language language);
 
 	void __readSettings();
+
+	void __updateSettings();
 };
 
 #endif // CROWDEDHELLGUI_H

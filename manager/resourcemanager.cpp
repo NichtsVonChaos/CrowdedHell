@@ -4,24 +4,34 @@ ResourceManager::ResourceManager(CrowdedHellGUI *parent, QTreeView *resourceView
 	QObject(parent)
 {
 	m_model = new QStandardItemModel(resourceView);
-	m_model->setHorizontalHeaderLabels(QStringList() << resourceView->tr("Resources Tree"));
+	m_model->setHorizontalHeaderLabels(QStringList() << tr("Resources Tree"));
 
-	QStandardItem *item = new QStandardItem(resourceView->tr("Sprites"));
+	QStandardItem *item = new QStandardItem(tr("Sprites"));
 	item->setEditable(false);
 	m_model->appendRow(item);
-	item = new QStandardItem(resourceView->tr("Sounds"));
+	item = new QStandardItem(tr("Sounds"));
 	item->setEditable(false);
 	m_model->appendRow(item);
-	item = new QStandardItem(resourceView->tr("Backgrounds"));
+	item = new QStandardItem(tr("Backgrounds"));
 	item->setEditable(false);
 	m_model->appendRow(item);
-	item = new QStandardItem(resourceView->tr("Paths"));
+	item = new QStandardItem(tr("Paths"));
 	item->setEditable(false);
 	m_model->appendRow(item);
 
-	m_model->findItems(resourceView->tr("Sounds"))[0]->appendRow(new QStandardItem(resourceView->tr("Test")));
 	resourceView->setModel(m_model);
 
 	connect(this, SIGNAL(sendMessage(MessageType, QString, QString)), parent, SLOT(sendMessage(MessageType, QString, QString)));
-	sendMessage(MessageType::Info, "Resource Manager", "Initialize resouce manager complete.");
+	connect(parent, SIGNAL(languageChanged(Language)), this, SLOT(changeLanguage(Language)));
+
+	sendMessage(MessageType::Info, "Resource Manager", tr("Initialize resouce manager complete."));
+}
+
+void ResourceManager::changeLanguage(Language language)
+{
+	m_model->setHorizontalHeaderLabels(QStringList() << tr("Resources Tree"));
+	m_model->item(0)->setText(tr("Sprites"));
+	m_model->item(1)->setText(tr("Sounds"));
+	m_model->item(2)->setText(tr("Backgrounds"));
+	m_model->item(3)->setText(tr("Paths"));
 }

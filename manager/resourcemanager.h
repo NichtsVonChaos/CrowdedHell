@@ -49,6 +49,9 @@ public:
 signals:
 	void sendMessage(MessageType type, QString module, QString message);
 
+public slots:
+	void changeLanguage(Language language);
+
 private:
 	QStandardItemModel *m_model;
 

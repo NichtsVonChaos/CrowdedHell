@@ -16,7 +16,7 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	m_translators.insert(Language::JP, new QTranslator(this));
 	m_translators[Language::JP]->load(":/translations/Trans_jp.qm");
 
-	__updateLanguage(Language::EN);
+	__readSettings();
 
 	// Initialize openGL widget
 	m_displayWidget = new AvoidanceDisplayWidget(this);
@@ -225,11 +225,29 @@ void CrowdedHellGUI::__updateLanguage(Language language)
 
 	// Sent signal
 	languageChanged(language);
+	__updateSettings();
 }
 
 void CrowdedHellGUI::__readSettings()
 {
-	QSettings iniFile("settings.ini", QSettings::IniFormat);
+	QSettings iniFile("./settings.ini", QSettings::IniFormat);
+
+	iniFile.beginGroup("MainWindow");
+	__updateLanguage(Language(iniFile.value("Language", 0).toInt()));
+	iniFile.endGroup();
+}
+
+void CrowdedHellGUI::__updateSettings()
+{
+	QSettings iniFile("./settings.ini", QSettings::IniFormat);
+
+	iniFile.beginGroup("MainWindow");
+	iniFile.setValue("Language",
+					 int(log2((ui->actionEnglish->isChecked() << int(Language::EN)) +
+							  (ui->actionSimplifiedChinese->isChecked() << int(Language::ZH_CN)) +
+							  (ui->actionTraditionalChinese->isChecked() << int(Language::ZH_TW)) +
+							  (ui->actionJapanese->isChecked() << int(Language::JP)))));
+	iniFile.endGroup();
 }
 
 void CrowdedHellGUI::on_actionAddSoundEffect_triggered()
