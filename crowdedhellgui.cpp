@@ -232,7 +232,7 @@ void CrowdedHellGUI::__readSettings()
 {
 	QSettings iniFile("./settings.ini", QSettings::IniFormat);
 
-	iniFile.beginGroup("MainWindow");
+	iniFile.beginGroup("Main");
 	__updateLanguage(Language(iniFile.value("Language", 0).toInt()));
 	iniFile.endGroup();
 }
@@ -241,7 +241,7 @@ void CrowdedHellGUI::__updateSettings()
 {
 	QSettings iniFile("./settings.ini", QSettings::IniFormat);
 
-	iniFile.beginGroup("MainWindow");
+	iniFile.beginGroup("Main");
 	iniFile.setValue("Language",
 					 int(log2((ui->actionEnglish->isChecked() << int(Language::EN)) +
 							  (ui->actionSimplifiedChinese->isChecked() << int(Language::ZH_CN)) +
