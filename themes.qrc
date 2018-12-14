@@ -22,5 +22,7 @@
         <file>Themes/Deep Blue/Icons/Tree-Branch-More.png</file>
         <file>Themes/Deep Blue/Icons/Tree-Branch-Open.png</file>
         <file>Themes/Deep Blue/Icons/Tree-Vline.png</file>
+        <file>Themes/Deep Blue/Icons/Slider-Bar.png</file>
+        <file>Themes/Deep Blue/Icons/Slider-Button.png</file>
     </qresource>
 </RCC>

@@ -111,6 +111,14 @@ ResourceTreeView::branch:open:has-children:has-siblings  {
         image: url(:/Themes/Deep Blue/Icons/Tree-Branch-Open.png);
 }
 
+/***********进度条*************/
+AudioPlayerSlider::groove:horizontal {
+        image: url(:/Themes/Deep Blue/Icons/Slider-Bar.png);
+}
+AudioPlayerSlider::handle:horizontal {
+        image: url(:/Themes/Deep Blue/Icons/Slider-Button.png);
+}
+
 /***********房间编辑视窗***********/
 QGraphicsView {
         border: none;

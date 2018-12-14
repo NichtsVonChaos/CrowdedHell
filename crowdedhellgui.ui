@@ -144,9 +144,9 @@
     <property name="geometry">
      <rect>
       <x>310</x>
-      <y>680</y>
+      <y>670</y>
       <width>551</width>
-      <height>20</height>
+      <height>28</height>
      </rect>
     </property>
     <property name="orientation">
@@ -286,9 +286,9 @@
    <widget class="QLabel" name="labelMusicName">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>650</y>
-      <width>551</width>
+      <x>320</x>
+      <y>640</y>
+      <width>531</width>
       <height>24</height>
      </rect>
     </property>
