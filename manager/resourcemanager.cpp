@@ -24,8 +24,8 @@ ResourceManager::ResourceManager(CrowdedHellGUI *parent, QTreeView *resourceView
 	connect(this, SIGNAL(sendMessage(MessageType, QString, QString)), parent, SLOT(sendMessage(MessageType, QString, QString)));
 	connect(parent, SIGNAL(languageChanged(Language)), this, SLOT(changeLanguage(Language)));
 
-	sendMessage(MessageType::Info, "Resource Manager", tr("Initialize resouce manager complete."));
-}
+	emit sendMessage(MessageType::Info, "Resource Manager", tr("Initialize resouce manager complete."));
+};
 
 void ResourceManager::changeLanguage(Language language)
 {
@@ -34,4 +34,4 @@ void ResourceManager::changeLanguage(Language language)
 	m_model->item(1)->setText(tr("Sounds"));
 	m_model->item(2)->setText(tr("Backgrounds"));
 	m_model->item(3)->setText(tr("Paths"));
-}
+};

@@ -8,4 +8,4 @@ void MetaBarrage::restart()
 {
 	m_barrageNumber = 0;
 	m_globalPlaySpeed = 1.0;
-}
+};

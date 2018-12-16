@@ -4,4 +4,4 @@ AvoidanceDisplayWidget::AvoidanceDisplayWidget(CrowdedHellGUI *parent) :
 	QOpenGLWidget(parent)
 {
 
-}
+};

@@ -32,12 +32,12 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 
 	// Initialize project manager.
 	m_projectManager = new ProjectManager(this, ui->treeViewResources);
-}
+};
 
 CrowdedHellGUI::~CrowdedHellGUI()
 {
 	delete ui;
-}
+};
 
 void CrowdedHellGUI::sendMessage(MessageType type, QString module, QString message)
 {
@@ -81,15 +81,13 @@ void CrowdedHellGUI::sendMessage(MessageType type, QString module, QString messa
 	ui->textEditMessageBox->insertHtml(QString("<font color=black>") + message + QString("</font><br />"));
 	ui->textEditMessageBox->moveCursor(QTextCursor::End);
 	ui->textEditMessageBox->insertHtml("<font color=purple>>>></font> ");
-}
+};
 
 void CrowdedHellGUI::changeEvent(QEvent *event)
 {
 	if(event -> type() == QEvent::LanguageChange)
-	{
-
-	}
-}
+		;
+};
 
 void CrowdedHellGUI::musicPositionChanged(unsigned int miliseconds)
 {
@@ -97,7 +95,7 @@ void CrowdedHellGUI::musicPositionChanged(unsigned int miliseconds)
 	QTime time(0, 0);
 	time = time.addMSecs(int(miliseconds));
 	ui->lineEditTime->setText(QString::number(time.hour() * 60 + time.minute()) + QString(":") + QString::number(time.second()) + QString(".") + QString::number(time.msec() / 10));
-}
+};
 
 void CrowdedHellGUI::musicPlayedOrPaused(bool play)
 {
@@ -119,27 +117,27 @@ void CrowdedHellGUI::musicPlayedOrPaused(bool play)
 		if(ui->buttonPause->isChecked())
 			ui->buttonPause->setChecked(false);
 	}
-}
+};
 
 void CrowdedHellGUI::on_actionSimplifiedChinese_triggered()
 {
 	__updateLanguage(Language::ZH_CN);
-}
+};
 
 void CrowdedHellGUI::on_actionEnglish_triggered()
 {
 	__updateLanguage(Language::EN);
-}
+};
 
 void CrowdedHellGUI::on_actionTraditionalChinese_triggered()
 {
 	__updateLanguage(Language::ZH_TW);
-}
+};
 
 void CrowdedHellGUI::on_actionJapanese_triggered()
 {
 	__updateLanguage(Language::JP);
-}
+};
 
 void CrowdedHellGUI::__updateLanguage(Language language)
 {
@@ -224,9 +222,9 @@ void CrowdedHellGUI::__updateLanguage(Language language)
 	ui->labelMusicName->setText(tr("Background Music : ") + m_currentMusicName);
 
 	// Sent signal
-	languageChanged(language);
+	emit languageChanged(language);
 	__updateSettings();
-}
+};
 
 void CrowdedHellGUI::__readSettings()
 {
@@ -235,7 +233,7 @@ void CrowdedHellGUI::__readSettings()
 	iniFile.beginGroup("Main");
 	__updateLanguage(Language(iniFile.value("Language", 0).toInt()));
 	iniFile.endGroup();
-}
+};
 
 void CrowdedHellGUI::__updateSettings()
 {
@@ -248,12 +246,12 @@ void CrowdedHellGUI::__updateSettings()
 							  (ui->actionTraditionalChinese->isChecked() << int(Language::ZH_TW)) +
 							  (ui->actionJapanese->isChecked() << int(Language::JP)))));
 	iniFile.endGroup();
-}
+};
 
 void CrowdedHellGUI::on_actionAddSoundEffect_triggered()
 {
 
-}
+};
 
 void CrowdedHellGUI::on_actionReselectMusic_triggered()
 {
@@ -262,18 +260,18 @@ void CrowdedHellGUI::on_actionReselectMusic_triggered()
 	QString fileName = QFileInfo(musicFilePath).fileName();
 	m_currentMusicName = fileName.remove(fileName.lastIndexOf(QChar('.')), 4);
 	ui->labelMusicName->setText(tr("Background Music : ") + m_currentMusicName);
-}
+};
 
 void CrowdedHellGUI::on_buttonPause_toggled(bool checked)
 {
 	m_player->playOrPause(checked);
-}
+};
 
 void CrowdedHellGUI::musicInvalid()
 {
 	if(ui->buttonPause->isChecked())
 		ui->buttonPause->setChecked(false);
-}
+};
 
 void CrowdedHellGUI::updateMusicLength(unsigned int miliseconds)
 {
@@ -281,37 +279,37 @@ void CrowdedHellGUI::updateMusicLength(unsigned int miliseconds)
 	QTime time(0, 0);
 	time = time.addMSecs(int(miliseconds));
 	ui->labelTotalTime->setText(QString("/") + QString::number(time.hour() * 60 + time.minute()) + QString(":") + QString::number(time.second()) + QString(".") + QString::number(time.msec() / 10));
-}
+};
 
 void CrowdedHellGUI::on_buttonNextFrame_clicked()
 {
 	m_player->forward(1u);
-}
+};
 
 void CrowdedHellGUI::on_buttonPrevFrame_clicked()
 {
 	m_player->back(1u);
-}
+};
 
 void CrowdedHellGUI::on_buttonNext10Frames_clicked()
 {
 	m_player->forward(10u);
-}
+};
 
 void CrowdedHellGUI::on_buttonPrev10Frames_clicked()
 {
 	m_player->back(10u);
-}
+};
 
 void CrowdedHellGUI::on_buttonNext50Frames_clicked()
 {
 	m_player->forward(50u);
-}
+};
 
 void CrowdedHellGUI::on_buttonPrev50Frames_clicked()
 {
 	m_player->back(50u);
-}
+};
 
 void CrowdedHellGUI::on_lineEditFrames_editingFinished()
 {
@@ -323,7 +321,5 @@ void CrowdedHellGUI::on_lineEditFrames_editingFinished()
 		musicPositionChanged(m_player->getPosition());
 	}
 	else
-	{
 		m_player->changePosition(frames * 20);
-	}
-}
+};

@@ -4,4 +4,4 @@ ResourceTreeView::ResourceTreeView(QWidget *parent) :
 	QTreeView(parent)
 {
 
-}
+};
