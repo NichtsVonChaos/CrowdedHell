@@ -10,6 +10,7 @@
 #include <QTextCodec>
 #include <QDebug>
 #include <QSettings>
+#include <cmath>
 
 class AvoidanceDisplayWidget;
 #ifndef AVOIDANCEDISPLAYWIDGET_H
