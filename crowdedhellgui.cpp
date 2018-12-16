@@ -241,10 +241,16 @@ void CrowdedHellGUI::__updateSettings()
 
 	iniFile.beginGroup("Main");
 	iniFile.setValue("Language",
-					 int(log2((ui->actionEnglish->isChecked() << int(Language::EN)) +
-							  (ui->actionSimplifiedChinese->isChecked() << int(Language::ZH_CN)) +
-							  (ui->actionTraditionalChinese->isChecked() << int(Language::ZH_TW)) +
-							  (ui->actionJapanese->isChecked() << int(Language::JP)))));
+						[](int x)
+						{
+							int ans = 0;
+							while((x >>= 1))
+								++ans;
+							return ans;
+						}((ui->actionEnglish->isChecked() << int(Language::EN)) +
+						(ui->actionSimplifiedChinese->isChecked() << int(Language::ZH_CN)) +
+						(ui->actionTraditionalChinese->isChecked() << int(Language::ZH_TW)) +
+						(ui->actionJapanese->isChecked() << int(Language::JP))));
 	iniFile.endGroup();
 };
 
