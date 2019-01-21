@@ -68,4 +68,4 @@ DISTFILES +=
 
 RESOURCES += \
     translation.qrc \
-    themes.qrc
+    DefalutTheme.qrc

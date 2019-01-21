@@ -109,6 +109,8 @@ private:
 
 	QString m_currentMusicName;
 
+    QStringList m_themes;
+
 	void __updateLanguage(Language language);
 
 	void __readSettings();

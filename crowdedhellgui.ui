@@ -159,7 +159,7 @@
       <x>300</x>
       <y>0</y>
       <width>801</width>
-      <height>31</height>
+      <height>35</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -800,7 +800,14 @@
      <addaction name="actionTraditionalChinese"/>
      <addaction name="actionJapanese"/>
     </widget>
+    <widget class="QMenu" name="menuTheme">
+     <property name="title">
+      <string>Theme</string>
+     </property>
+     <addaction name="actionDeep_Blue"/>
+    </widget>
     <addaction name="menuLanguage"/>
+    <addaction name="menuTheme"/>
     <addaction name="separator"/>
     <addaction name="menuHideInfo"/>
    </widget>
@@ -931,6 +938,11 @@
    </property>
    <property name="text">
     <string>Hide &quot;Info&quot; Messages</string>
+   </property>
+  </action>
+  <action name="actionDeep_Blue">
+   <property name="text">
+    <string>Deep Blue</string>
    </property>
   </action>
  </widget>
