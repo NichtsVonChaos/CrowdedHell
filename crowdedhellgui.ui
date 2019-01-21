@@ -759,7 +759,7 @@
      <x>0</x>
      <y>0</y>
      <width>1400</width>
-     <height>30</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -804,7 +804,6 @@
      <property name="title">
       <string>Theme</string>
      </property>
-     <addaction name="actionDeep_Blue"/>
     </widget>
     <addaction name="menuLanguage"/>
     <addaction name="menuTheme"/>
@@ -815,8 +814,8 @@
     <property name="title">
      <string>Resources</string>
     </property>
-    <addaction name="actionAdd_Sprite"/>
-    <addaction name="actionAdd_Background"/>
+    <addaction name="actionAddSprite"/>
+    <addaction name="actionAddBackground"/>
     <addaction name="actionAddSoundEffect"/>
     <addaction name="separator"/>
     <addaction name="actionReselectMusic"/>
@@ -922,12 +921,12 @@
     <string>GM8.0 project (.gmk)</string>
    </property>
   </action>
-  <action name="actionAdd_Sprite">
+  <action name="actionAddSprite">
    <property name="text">
     <string>Add Sprite</string>
    </property>
   </action>
-  <action name="actionAdd_Background">
+  <action name="actionAddBackground">
    <property name="text">
     <string>Add Background</string>
    </property>
@@ -938,11 +937,6 @@
    </property>
    <property name="text">
     <string>Hide &quot;Info&quot; Messages</string>
-   </property>
-  </action>
-  <action name="actionDeep_Blue">
-   <property name="text">
-    <string>Deep Blue</string>
    </property>
   </action>
  </widget>

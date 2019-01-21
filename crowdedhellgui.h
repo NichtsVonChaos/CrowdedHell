@@ -96,10 +96,14 @@ private slots:
 
 	void on_lineEditFrames_editingFinished();
 
+	void on_menuTheme_triggered(QAction *action);
+
 private:
 	Ui::CrowdedHellGUI *ui;
 
 	QMap<Language, QTranslator*> m_translators;
+
+	Language m_currentLanguage;
 
 	AvoidanceDisplayWidget *m_displayWidget;
 
@@ -111,11 +115,15 @@ private:
 
     QStringList m_themes;
 
-	void __updateLanguage(Language language);
+	QString m_currentTheme;
+
+	void __updateUi();
 
 	void __readSettings();
 
 	void __updateSettings();
+
+	void __turnToDefalutTheme();
 };
 
 #endif // CROWDEDHELLGUI_H
