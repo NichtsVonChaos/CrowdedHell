@@ -9,7 +9,7 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	ui->setupUi(this);
 
 	// Connect signals and slots.
-	connect(ui->menuTheme, SIGNAL(triggered(QAction *)), this, SLOT(on_menuTheme_triggered(QAction *)));
+    connect(ui->menuTheme, SIGNAL(hovered(QAction *)), this, SLOT(on_menuTheme_hovered(QAction *)));
 
 	// Set up languages.
 	m_translators.insert(Language::ZH_CN, new QTranslator(this));
@@ -446,7 +446,7 @@ void CrowdedHellGUI::on_lineEditFrames_editingFinished()
 		m_player->changePosition(frames * 20);
 }
 
-void CrowdedHellGUI::on_menuTheme_triggered(QAction *action)
+void CrowdedHellGUI::on_menuTheme_hovered(QAction *action)
 {
 	QList<QAction *> themes = ui->menuTheme->actions();
 	foreach(auto i, themes)

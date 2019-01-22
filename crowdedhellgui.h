@@ -96,7 +96,7 @@ private slots:
 
 	void on_lineEditFrames_editingFinished();
 
-	void on_menuTheme_triggered(QAction *action);
+	void on_menuTheme_hovered(QAction *action);
 
 private:
 	Ui::CrowdedHellGUI *ui;
