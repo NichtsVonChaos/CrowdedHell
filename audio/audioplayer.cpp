@@ -10,6 +10,8 @@ AudioPlayer::AudioPlayer(AudioPlayerSlider *slider, CrowdedHellGUI *parent) :
 
 	connect(this, SIGNAL(positionChanged(unsigned int)), parent, SLOT(musicPositionChanged(unsigned int)));
 
+	m_slider->setAudioPlayer(this);
+
 	__initializeFmodSystem();
 
 	m_timer = QObject::startTimer(5);
@@ -39,13 +41,14 @@ void AudioPlayer::timerEvent(QTimerEvent *ev)
 				emit playedOrPaused(false);
 			}
 			emit positionChanged(m_pos);
+			m_slider->setValue(int(double(m_pos) * 1000 / double(m_length)));
 		}
 	}
 };
 
 void AudioPlayer::reselectMusic(const QString &path)
 {
-	emit playOrPause(false);
+	playOrPause(false);
 
 	if(m_music != nullptr)
 		m_music->release();
@@ -109,6 +112,23 @@ unsigned int AudioPlayer::getPosition()
 		m_channel->getPosition(&pos, FMOD_TIMEUNIT_MS);
 		return pos;
 	}
+}
+
+unsigned int AudioPlayer::getMusicLength()
+{
+	return m_length;
+}
+
+bool AudioPlayer::isPlaying()
+{
+	if(m_music == nullptr)
+		return false;
+	else
+	{
+		bool isPlaying;
+		m_channel->isPlaying(&isPlaying);
+		return isPlaying;
+	}
 };
 
 void AudioPlayer::playOrPause(bool play)
@@ -146,15 +166,27 @@ void AudioPlayer::playOrPause(bool play)
 		if(!isPaused)
 			return;
 
-		result = m_channel->setVolume(m_volume);
+		float volume;
+		result = m_channel->getVolume(&volume);
 		if(result != FMOD_OK)
 		{
-			emit sendMessage(MessageType::Error, "FMOD", tr("Failed to set volume to %1 percent.").arg(QString::number(double(m_volume * 100))));
+			emit sendMessage(MessageType::Error, "FMOD", tr("Failed to get current volume."));
 			emit playedOrPaused(false);
 			return;
 		}
-		else
-			emit sendMessage(MessageType::Info, "FMOD", tr("Set volume to %1 percent successful.").arg(QString::number(double(m_volume * 100))));
+
+		if(abs(volume - m_volume) > 0.0001f)
+		{
+			result = m_channel->setVolume(m_volume);
+			if(result != FMOD_OK)
+			{
+				emit sendMessage(MessageType::Error, "FMOD", tr("Failed to set volume to %1 percent.").arg(QString::number(double(m_volume * 100))));
+				emit playedOrPaused(false);
+				return;
+			}
+			else
+				emit sendMessage(MessageType::Info, "FMOD", tr("Set volume to %1 percent successful.").arg(QString::number(double(m_volume * 100))));
+		}
 
 		if(m_pos >= m_length)
 		{
@@ -281,6 +313,7 @@ void AudioPlayer::changePosition(unsigned int pos)
 		return;
 	}
 
+	m_slider->setValue(int(double(m_pos) * 1000 / double(m_length)));
 	emit sendMessage(MessageType::Info, "FMOD", tr("Set position to %1 miliseconds successfully while the length of music is %2 miliseconds.").arg(QString::number(m_pos), QString::number(m_length)));
 	emit positionChanged(pos);
 };

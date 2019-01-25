@@ -9,7 +9,7 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	ui->setupUi(this);
 
 	// Connect signals and slots.
-    connect(ui->menuTheme, SIGNAL(hovered(QAction *)), this, SLOT(on_menuTheme_hovered(QAction *)));
+	connect(ui->menuTheme, SIGNAL(hovered(QAction *)), this, SLOT(on_menuTheme_hovered(QAction *)));
 
 	// Set up languages.
 	m_translators.insert(Language::ZH_CN, new QTranslator(this));
@@ -31,7 +31,7 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	__readSettings();
 
 	// Initialize audio player.
-	m_player = new AudioPlayer(ui->audioSlider, this);
+	m_audioPlayer = new AudioPlayer(ui->audioSlider, this);
 
 	// Initialize project manager.
 	m_projectManager = new ProjectManager(this, ui->treeViewResources);
@@ -378,7 +378,7 @@ void CrowdedHellGUI::on_actionAddSoundEffect_triggered()
 void CrowdedHellGUI::on_actionReselectMusic_triggered()
 {
 	QString musicFilePath = QFileDialog::getOpenFileName(this, tr("Select Music File"), qApp->applicationDirPath(), tr("Music File(*.mp3 *.wav)"));
-	m_player->reselectMusic(musicFilePath);
+	m_audioPlayer->reselectMusic(musicFilePath);
 	QString fileName = QFileInfo(musicFilePath).fileName();
 	m_currentMusicName = fileName.remove(fileName.lastIndexOf(QChar('.')), 4);
 	ui->labelMusicName->setText(tr("Background Music : ") + m_currentMusicName);
@@ -386,7 +386,7 @@ void CrowdedHellGUI::on_actionReselectMusic_triggered()
 
 void CrowdedHellGUI::on_buttonPause_toggled(bool checked)
 {
-	m_player->playOrPause(checked);
+	m_audioPlayer->playOrPause(checked);
 };
 
 void CrowdedHellGUI::musicInvalid()
@@ -405,32 +405,32 @@ void CrowdedHellGUI::updateMusicLength(unsigned int miliseconds)
 
 void CrowdedHellGUI::on_buttonNextFrame_clicked()
 {
-	m_player->forward(1u);
+	m_audioPlayer->forward(1u);
 };
 
 void CrowdedHellGUI::on_buttonPrevFrame_clicked()
 {
-	m_player->back(1u);
+	m_audioPlayer->back(1u);
 };
 
 void CrowdedHellGUI::on_buttonNext10Frames_clicked()
 {
-	m_player->forward(10u);
+	m_audioPlayer->forward(10u);
 };
 
 void CrowdedHellGUI::on_buttonPrev10Frames_clicked()
 {
-	m_player->back(10u);
+	m_audioPlayer->back(10u);
 };
 
 void CrowdedHellGUI::on_buttonNext50Frames_clicked()
 {
-	m_player->forward(50u);
+	m_audioPlayer->forward(50u);
 };
 
 void CrowdedHellGUI::on_buttonPrev50Frames_clicked()
 {
-	m_player->back(50u);
+	m_audioPlayer->back(50u);
 };
 
 void CrowdedHellGUI::on_lineEditFrames_editingFinished()
@@ -440,10 +440,10 @@ void CrowdedHellGUI::on_lineEditFrames_editingFinished()
 	if(!isConvertOk)
 	{
 		sendMessage(MessageType::Warning, "MainWindow", tr("%1 is not a valid number.").arg(QString("\"") + ui->lineEditFrames->text() + QString("\"")));
-		musicPositionChanged(m_player->getPosition());
+		musicPositionChanged(m_audioPlayer->getPosition());
 	}
 	else
-		m_player->changePosition(frames * 20);
+		m_audioPlayer->changePosition(frames * 20);
 }
 
 void CrowdedHellGUI::on_menuTheme_hovered(QAction *action)

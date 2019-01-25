@@ -6,15 +6,30 @@
 #include <QMouseEvent>
 #include <QPaintEvent>
 
+class AudioPlayer;
+
+#ifndef AUDIOPLAYER_H
+#include "audioplayer.h"
+#endif
+
 class AudioPlayerSlider : public QSlider
 {
 	Q_OBJECT
 public:
 	AudioPlayerSlider(QWidget *parent = Q_NULLPTR);
 
-	void mousePressEvent(QMouseEvent *ev) override;
-	void mouseReleaseEvent(QMouseEvent *ev) override;
-	void mouseMoveEvent(QMouseEvent *ev) override;
+	void setAudioPlayer(AudioPlayer *audioPlayer);
+
+	void mousePressEvent(QMouseEvent *event) override;
+
+	void mouseMoveEvent(QMouseEvent *event) override;
+
+	void mouseReleaseEvent(QMouseEvent *event) override;
+
+private:
+	AudioPlayer *m_audioPlayer;
+
+	bool m_leftButtonPressing;
 };
 
 #endif // AUDIOPLAYERSLIDER_H

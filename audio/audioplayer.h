@@ -4,13 +4,16 @@
 #include <QMessageBox>
 #include <QTime>
 
-#include "audioplayerslider.h"
+class CrowdedHellGUI;
+class AudioPlayerSlider;
+enum class MessageType;
+enum class Language;
 
 #include "FMOD/inc/fmod.hpp"
 
-class CrowdedHellGUI;
-enum class MessageType;
-enum class Language;
+#ifndef AUDIOPLAYERSLIDER_H
+#include "audioplayerslider.h"
+#endif
 
 #ifndef CROWDEDHELLGUI_H
 #include "crowdedhellgui.h"
@@ -54,6 +57,18 @@ public:
 	 * Get playing position of music (miliseconds).
 	 */
 	unsigned int getPosition();
+
+	/**
+	 * @brief getMusicLength
+	 * Get music length (miliseconds),
+	 */
+	unsigned int getMusicLength();
+
+	/**
+	 * @brief isPlaying
+	 * Return if music is playing.
+	 */
+	bool isPlaying();
 
 signals:
 	/**

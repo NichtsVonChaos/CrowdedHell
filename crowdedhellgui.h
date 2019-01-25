@@ -107,7 +107,7 @@ private:
 
 	AvoidanceDisplayWidget *m_displayWidget;
 
-	AudioPlayer *m_player;
+	AudioPlayer *m_audioPlayer;
 
 	ProjectManager *m_projectManager;
 
