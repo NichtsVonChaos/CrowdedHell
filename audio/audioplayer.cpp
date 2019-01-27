@@ -15,6 +15,20 @@ AudioPlayer::AudioPlayer(AudioPlayerSlider *slider, CrowdedHellGUI *parent) :
 	__initializeFmodSystem();
 
 	m_timer = QObject::startTimer(5);
+}
+
+AudioPlayer::~AudioPlayer()
+{
+	playOrPause(false);
+
+	if(m_music != nullptr)
+		m_music->release();
+
+	if(m_channel != nullptr)
+		delete m_channel;
+
+	if(m_fmodSystem != nullptr)
+		m_fmodSystem->release();
 };
 
 void AudioPlayer::timerEvent(QTimerEvent *ev)

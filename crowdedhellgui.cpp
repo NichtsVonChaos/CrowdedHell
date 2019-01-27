@@ -89,6 +89,16 @@ void CrowdedHellGUI::sendMessage(MessageType type, QString module, QString messa
 void CrowdedHellGUI::changeEvent(QEvent *event)
 {
 
+}
+
+QString CrowdedHellGUI::currentTheme()
+{
+	return m_currentTheme;
+}
+
+Language CrowdedHellGUI::currentLanguage()
+{
+	return m_currentLanguage;
 };
 
 void CrowdedHellGUI::musicPositionChanged(unsigned int miliseconds)
@@ -457,3 +467,8 @@ void CrowdedHellGUI::on_menuTheme_hovered(QAction *action)
 	m_currentTheme = action->text();
 	__updateUi();
 };
+
+void CrowdedHellGUI::on_actionNewProject_triggered()
+{
+	m_projectManager->newProject();
+}

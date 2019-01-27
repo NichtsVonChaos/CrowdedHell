@@ -55,6 +55,10 @@ public:
 
 	void changeEvent(QEvent *event);
 
+	QString currentTheme();
+
+	Language currentLanguage();
+
 signals:
 	void languageChanged(Language language);
 
@@ -97,6 +101,8 @@ private slots:
 	void on_lineEditFrames_editingFinished();
 
 	void on_menuTheme_hovered(QAction *action);
+
+	void on_actionNewProject_triggered();
 
 private:
 	Ui::CrowdedHellGUI *ui;

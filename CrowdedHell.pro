@@ -39,7 +39,8 @@ SOURCES += \
     audio/audioplayer.cpp \
     manager/resourcemanager.cpp \
     manager/projectmanager.cpp \
-    manager/resourcetreeview.cpp
+    manager/resourcetreeview.cpp \
+    manager/createprojectwizard.cpp
 
 HEADERS += \
         crowdedhellgui.h \
@@ -49,10 +50,12 @@ HEADERS += \
     audio/audioplayer.h \
     manager/projectmanager.h \
     manager/resourcemanager.h \
-    manager/resourcetreeview.h
+    manager/resourcetreeview.h \
+    manager/createprojectwizard.h
 
 FORMS += \
-        crowdedhellgui.ui
+        crowdedhellgui.ui \
+    manager/createprojectwizard.ui
 
 TRANSLATIONS += \
         Trans_zh_cn.ts \
