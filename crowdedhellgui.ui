@@ -497,6 +497,31 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="buttonMute">
+       <property name="toolTip">
+        <string>Muted</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Volumn.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Deep Blue/Icons/Volumn-Muted.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>61</height>
+        </size>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="horizontalSpacer_4">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>

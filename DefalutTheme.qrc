@@ -24,5 +24,7 @@
         <file>Themes/Deep Blue/Icons/Tree-Vline.png</file>
         <file>Themes/Deep Blue/Icons/Slider-Bar.png</file>
         <file>Themes/Deep Blue/Icons/Slider-Button.png</file>
+        <file>Themes/Deep Blue/Icons/Volumn-Muted.png</file>
+        <file>Themes/Deep Blue/Icons/Volumn.png</file>
     </qresource>
 </RCC>

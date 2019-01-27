@@ -257,3 +257,17 @@ QPushButton#buttonNext50Frames {
 QPushButton#buttonNext50Frames:hover {
         background-color: rgb(202, 216, 240);
 }
+
+QPushButton#buttonVolumn {
+        width: 32;
+        height: 32;
+        border: none;
+        background-color: transparent;
+        background-image:url(":/Themes/Deep Blue/Icons/Volumn.png");
+}
+QPushButton#buttonVolumn:checked{
+        background-image:url(":/Themes/Deep Blue/Icons/Volumn-Muted.png");
+}
+QPushButton#buttonVolumn:hover {
+        background-color: rgb(202, 216, 240);
+}

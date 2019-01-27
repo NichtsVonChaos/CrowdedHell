@@ -148,6 +148,10 @@ private:
 	FMOD::Channel *m_channel;
 
 	void __initializeFmodSystem();
+
+	void __readSettings();
+
+	void __updateSettings();
 };
 
 #endif // AUDIOPLAYER_H

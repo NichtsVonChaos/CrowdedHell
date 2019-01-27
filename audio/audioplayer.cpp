@@ -10,6 +10,8 @@ AudioPlayer::AudioPlayer(AudioPlayerSlider *slider, CrowdedHellGUI *parent) :
 
 	connect(this, SIGNAL(positionChanged(unsigned int)), parent, SLOT(musicPositionChanged(unsigned int)));
 
+	__readSettings();
+
 	m_slider->setAudioPlayer(this);
 
 	__initializeFmodSystem();
@@ -414,4 +416,20 @@ void AudioPlayer::__initializeFmodSystem()
 
 		m_fmodNotInit = false;
 	}
+}
+
+void AudioPlayer::__readSettings()
+{
+	QSettings iniFile("./settings.ini", QSettings::IniFormat);
+	iniFile.beginGroup("Audio");
+	m_volume = iniFile.value("Volume", 0.6f).toFloat();
+	iniFile.endGroup();
+}
+
+void AudioPlayer::__updateSettings()
+{
+	QSettings iniFile("./settings.ini", QSettings::IniFormat);
+	iniFile.beginGroup("Audio");
+	iniFile.setValue("Volume", m_volume);
+	iniFile.endGroup();
 };
