@@ -472,3 +472,40 @@ void CrowdedHellGUI::on_actionNewProject_triggered()
 {
 	m_projectManager->newProject();
 }
+
+void CrowdedHellGUI::on_comboBoxSpeed_currentIndexChanged(int index)
+{
+	switch(index)
+	{
+		case 0:
+			m_audioPlayer->changeSpeed(0.1f);
+		break;
+
+		case 1:
+			m_audioPlayer->changeSpeed(0.2f);
+		break;
+
+		case 2:
+			m_audioPlayer->changeSpeed(0.5f);
+		break;
+
+		case 3:
+			m_audioPlayer->changeSpeed(1.0f);
+		break;
+
+		case 4:
+			m_audioPlayer->changeSpeed(1.5f);
+		break;
+
+		case 5:
+			m_audioPlayer->changeSpeed(2.0f);
+		break;
+
+		case 6:
+			m_audioPlayer->changeSpeed(5.0f);
+		break;
+
+		default:
+			m_audioPlayer->changeSpeed(1.0f);
+	}
+}

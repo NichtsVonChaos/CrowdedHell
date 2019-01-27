@@ -71,6 +71,12 @@ public:
 	unsigned int getMusicLength();
 
 	/**
+	 * @brief getSpeed
+	 * Get music speed;
+	 */
+	float getSpeed();
+
+	/**
 	 * @brief isPlaying
 	 * Return if music is playing.
 	 */
@@ -94,6 +100,12 @@ signals:
 	 */
 	void positionChanged(unsigned int pos);
 
+	/**
+	 * @brief speedChanged
+	 * Emit the signal while music changed speed.
+	 */
+	void speedChanged(float speed);
+
 public slots:
 
 	/**
@@ -108,12 +120,20 @@ public slots:
 	 */
 	void changePosition(unsigned int pos);
 
+	/**
+	 * @brief changeSpeed
+	 * Change music speed.
+	 */
+	void changeSpeed(float speed);
+
 private:
 	bool m_fmodNotInit;
 
 	unsigned int m_pos, m_length;
 
 	int m_timer;
+
+	float m_speed;
 
 	float m_volume;
 

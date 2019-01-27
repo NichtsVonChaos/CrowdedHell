@@ -1,7 +1,7 @@
 #include "audioplayer.h"
 
 AudioPlayer::AudioPlayer(AudioPlayerSlider *slider, CrowdedHellGUI *parent) :
-	m_fmodNotInit(true), m_pos(0), m_length(0), m_volume(0.6f), m_parent(parent), m_slider(slider), m_fmodSystem(nullptr), m_music(nullptr), m_channel(nullptr)
+	m_fmodNotInit(true), m_pos(0), m_length(0), m_speed(1.0f), m_volume(0.6f), m_parent(parent), m_slider(slider), m_fmodSystem(nullptr), m_music(nullptr), m_channel(nullptr)
 {
 	connect(this, SIGNAL(sendMessage(MessageType, QString, QString)),
 			parent, SLOT(sendMessage(MessageType, QString, QString)));
@@ -46,7 +46,7 @@ void AudioPlayer::timerEvent(QTimerEvent *ev)
 		m_channel->getPosition(&m_pos, FMOD_TIMEUNIT_MS);
 		if(last_pos != m_pos)
 		{
-			if(m_pos >= m_length)
+			if(m_pos >= m_length - 5 * m_speed)
 			{
 				emit sendMessage(MessageType::Info, "FMOD", tr("Music is at the end."));
 				m_pos = m_length;
@@ -95,8 +95,18 @@ void AudioPlayer::reselectMusic(const QString &path)
 	else
 		emit sendMessage(MessageType::Info, "FMOD", tr("Create channel successfully."));
 
+	result = m_channel->setPitch(m_speed);
+	if(result != FMOD_OK)
+	{
+		emit sendMessage(MessageType::Error, "FMOD", tr("Failed to set music speed to x%1.").arg(QString::number(double(m_speed), 'g', 2)));
+		emit playedOrPaused(false);
+		return;
+	}
+	else
+		emit sendMessage(MessageType::Info, "FMOD", tr("Set music speed to x%1.").arg(QString::number(double(m_speed), 'g', 2)));
+
 	m_music->getLength(&m_length, FMOD_TIMEUNIT_MS);
-	m_length -= 10;
+	m_length -= 5;
 	m_parent->updateMusicLength(m_length);
 };
 
@@ -131,6 +141,11 @@ unsigned int AudioPlayer::getPosition()
 unsigned int AudioPlayer::getMusicLength()
 {
 	return m_length;
+}
+
+float AudioPlayer::getSpeed()
+{
+	return m_speed;
 }
 
 bool AudioPlayer::isPlaying()
@@ -330,6 +345,25 @@ void AudioPlayer::changePosition(unsigned int pos)
 	m_slider->setValue(int(double(m_pos) * 1000 / double(m_length)));
 	emit sendMessage(MessageType::Info, "FMOD", tr("Set position to %1 miliseconds successfully while the length of music is %2 miliseconds.").arg(QString::number(m_pos), QString::number(m_length)));
 	emit positionChanged(pos);
+}
+
+void AudioPlayer::changeSpeed(float speed)
+{
+	m_speed = speed;
+	if(m_channel != nullptr)
+	{
+		FMOD_RESULT result = m_channel->setPitch(m_speed);
+		if(result != FMOD_OK)
+		{
+			emit sendMessage(MessageType::Error, "FMOD", tr("Failed to set music speed to x%1.").arg(QString::number(double(m_speed), 'g', 2)));
+			emit playedOrPaused(false);
+			return;
+		}
+		else
+			emit sendMessage(MessageType::Info, "FMOD", tr("Set music speed to x%1.").arg(QString::number(double(m_speed), 'g', 2)));
+	}
+
+	emit speedChanged(speed);
 };
 
 void AudioPlayer::__initializeFmodSystem()

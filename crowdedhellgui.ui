@@ -648,10 +648,10 @@
         <enum>Qt::RightToLeft</enum>
        </property>
        <property name="currentText">
-        <string notr="true">x 1.0</string>
+        <string notr="true">x 0.1</string>
        </property>
        <property name="currentIndex">
-        <number>3</number>
+        <number>0</number>
        </property>
        <item>
         <property name="text">

@@ -104,6 +104,8 @@ private slots:
 
 	void on_actionNewProject_triggered();
 
+	void on_comboBoxSpeed_currentIndexChanged(int index);
+
 private:
 	Ui::CrowdedHellGUI *ui;
 
