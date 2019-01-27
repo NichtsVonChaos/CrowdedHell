@@ -35,6 +35,9 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 
 	// Initialize project manager.
 	m_projectManager = new ProjectManager(this, ui->treeViewResources);
+
+	if(!ui->actionHideInfo->isChecked())
+		sendMessage(MessageType::Tips, "MainWindow", tr("You can hide all \"Info\" messages by selecting <font color=red>Window => Hide \"Info\" Messages</font>."));
 };
 
 CrowdedHellGUI::~CrowdedHellGUI()
@@ -48,7 +51,7 @@ void CrowdedHellGUI::sendMessage(MessageType type, QString module, QString messa
 	{
 		case MessageType::Info:
 		{
-			if(ui->menuHideInfo->isChecked())
+			if(ui->actionHideInfo->isChecked())
 				return;
 			ui->textEditMessageBox->moveCursor(QTextCursor::End);
 			ui->textEditMessageBox->insertHtml(QString("<font color=black><b>[ <font color=green>") + tr("Info") + QString("</font> ]</b></font> "));
@@ -288,6 +291,7 @@ void CrowdedHellGUI::__readSettings()
 
 	iniFile.beginGroup("Main");
 	m_currentLanguage = Language(iniFile.value("Language", 0).toInt());
+	ui->actionHideInfo->setChecked(iniFile.value("HideInfo", false).toBool());
 
 	// Read themes
 	m_themes.clear();
@@ -365,6 +369,7 @@ void CrowdedHellGUI::__updateSettings()
 	iniFile.beginGroup("Main");
 	iniFile.setValue("Language", int(m_currentLanguage));
 	iniFile.setValue("Theme", m_currentTheme);
+	iniFile.setValue("HideInfo", ui->actionHideInfo->isChecked());
 	iniFile.endGroup();
 }
 
@@ -508,4 +513,9 @@ void CrowdedHellGUI::on_comboBoxSpeed_currentIndexChanged(int index)
 		default:
 			m_audioPlayer->changeSpeed(1.0f);
 	}
+}
+
+void CrowdedHellGUI::on_actionHideInfo_changed()
+{
+	__updateSettings();
 }

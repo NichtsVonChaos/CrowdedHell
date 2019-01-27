@@ -648,10 +648,10 @@
         <enum>Qt::RightToLeft</enum>
        </property>
        <property name="currentText">
-        <string notr="true">x 0.1</string>
+        <string notr="true">x 1.0</string>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>3</number>
        </property>
        <item>
         <property name="text">
@@ -808,7 +808,7 @@
     <addaction name="menuLanguage"/>
     <addaction name="menuTheme"/>
     <addaction name="separator"/>
-    <addaction name="menuHideInfo"/>
+    <addaction name="actionHideInfo"/>
    </widget>
    <widget class="QMenu" name="menuResources">
     <property name="title">
@@ -931,7 +931,7 @@
     <string>Add Background</string>
    </property>
   </action>
-  <action name="menuHideInfo">
+  <action name="actionHideInfo">
    <property name="checkable">
     <bool>true</bool>
    </property>

@@ -106,6 +106,8 @@ private slots:
 
 	void on_comboBoxSpeed_currentIndexChanged(int index);
 
+	void on_actionHideInfo_changed();
+
 private:
 	Ui::CrowdedHellGUI *ui;
 
