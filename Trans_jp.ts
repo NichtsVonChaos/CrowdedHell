@@ -240,6 +240,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="manager/createprojectwizard.cpp" line="9"/>
+        <source>Create Project Wizard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="manager/createprojectwizard.cpp" line="80"/>
         <source>Select a directory to save your project</source>
         <translation type="unfinished"></translation>
@@ -300,7 +305,8 @@
     </message>
     <message>
         <location filename="crowdedhellgui.ui" line="405"/>
-        <source>To zero position.</source>
+        <source>To zero position</source>
+        <oldsource>To zero position.</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -610,17 +616,20 @@
     <name>ProjectManager</name>
     <message>
         <location filename="manager/projectmanager.cpp" line="26"/>
-        <source>Selected directory is not existing, try to make this directory, at : &quot;%1.&quot;</source>
+        <source>Selected directory is not existing, try to make this directory, at : &quot;%1&quot;.</source>
+        <oldsource>Selected directory is not existing, try to make this directory, at : &quot;%1.&quot;</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="manager/projectmanager.cpp" line="29"/>
-        <source>Make selected directory failed, at : &quot;%1.&quot;</source>
+        <source>Make selected directory failed, at : &quot;%1&quot;.</source>
+        <oldsource>Make selected directory failed, at : &quot;%1.&quot;</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="manager/projectmanager.cpp" line="38"/>
-        <source>Create project file failed, at : &quot;%1&quot;</source>
+        <source>Create project file failed, at : &quot;%1&quot;.</source>
+        <oldsource>Create project file failed, at : &quot;%1&quot;</oldsource>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -6,7 +6,7 @@ CreateProjectWizard::CreateProjectWizard(CrowdedHellGUI *parent) :
 	ui(new Ui::CreateProjectWizard)
 {
 	ui->setupUi(this);
-	setWindowTitle("Create Prject Wizard");
+	setWindowTitle(tr("Create Project Wizard"));
 
 	QString QSSfile = "Theme/%1/QSS/%2 - Main Window.qss";
 

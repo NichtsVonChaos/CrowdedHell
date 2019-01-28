@@ -51,18 +51,18 @@
         <location filename="audio/audioplayer.cpp" line="103"/>
         <location filename="audio/audioplayer.cpp" line="391"/>
         <source>Failed to set music speed to x%1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">设置播放速度到x%1失败。</translation>
     </message>
     <message>
         <location filename="audio/audioplayer.cpp" line="108"/>
         <location filename="audio/audioplayer.cpp" line="393"/>
         <source>Set music speed to x%1.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">设置播放速度到x%1。</translation>
     </message>
     <message>
         <location filename="audio/audioplayer.cpp" line="209"/>
         <source>Failed to get current volume.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">获取当前音量失败。</translation>
     </message>
     <message>
         <location filename="audio/audioplayer.cpp" line="219"/>
@@ -77,31 +77,31 @@
     <message>
         <location filename="audio/audioplayer.cpp" line="231"/>
         <source>Failed to get mute.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">获取当前静音状态失败。</translation>
     </message>
     <message>
         <location filename="audio/audioplayer.cpp" line="242"/>
         <location filename="audio/audioplayer.cpp" line="425"/>
         <source>Failed to mute music.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">静音失败。</translation>
     </message>
     <message>
         <location filename="audio/audioplayer.cpp" line="244"/>
         <location filename="audio/audioplayer.cpp" line="427"/>
         <source>Mute music.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">静音。</translation>
     </message>
     <message>
         <location filename="audio/audioplayer.cpp" line="249"/>
         <location filename="audio/audioplayer.cpp" line="432"/>
         <source>Failed to unmute music.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">解除静音失败。</translation>
     </message>
     <message>
         <location filename="audio/audioplayer.cpp" line="251"/>
         <location filename="audio/audioplayer.cpp" line="434"/>
         <source>Unmute music.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">解除静音。</translation>
     </message>
     <message>
         <location filename="audio/audioplayer.cpp" line="267"/>
@@ -154,12 +154,12 @@
     <message>
         <location filename="audio/audioplayer.cpp" line="406"/>
         <source>Failed to set music volume to %1/100.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">设置音量至%1/100失败。</translation>
     </message>
     <message>
         <location filename="audio/audioplayer.cpp" line="408"/>
         <source>Set music volume to %1/100.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">设置音量至%1/100。</translation>
     </message>
     <message>
         <location filename="audio/audioplayer.cpp" line="446"/>
@@ -217,12 +217,12 @@
     <message>
         <location filename="manager/createprojectwizard.ui" line="32"/>
         <source>Project Name :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">项目名：</translation>
     </message>
     <message>
         <location filename="manager/createprojectwizard.ui" line="50"/>
         <source>Path :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">路径：</translation>
     </message>
     <message>
         <location filename="manager/createprojectwizard.ui" line="64"/>
@@ -232,17 +232,22 @@
     <message>
         <location filename="manager/createprojectwizard.ui" line="75"/>
         <source>Author :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">作者：</translation>
     </message>
     <message>
         <location filename="manager/createprojectwizard.ui" line="93"/>
         <source>Create Date :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">创建日期：</translation>
+    </message>
+    <message>
+        <location filename="manager/createprojectwizard.cpp" line="9"/>
+        <source>Create Project Wizard</source>
+        <translation type="unfinished">项目创建向导</translation>
     </message>
     <message>
         <location filename="manager/createprojectwizard.cpp" line="80"/>
         <source>Select a directory to save your project</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">选择项目储存路径</translation>
     </message>
 </context>
 <context>
@@ -265,12 +270,12 @@
     <message>
         <location filename="crowdedhellgui.ui" line="178"/>
         <source>Width</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">宽度</translation>
     </message>
     <message>
         <location filename="crowdedhellgui.ui" line="198"/>
         <source>Height</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">高度</translation>
     </message>
     <message>
         <location filename="crowdedhellgui.ui" line="225"/>
@@ -296,12 +301,13 @@
         <location filename="crowdedhellgui.ui" line="355"/>
         <source>Background music: </source>
         <oldsource>Background music : Unknown - Unknown</oldsource>
-        <translation type="unfinished">背景音乐：</translation>
+        <translation type="unfinished">背景音乐： </translation>
     </message>
     <message>
         <location filename="crowdedhellgui.ui" line="405"/>
-        <source>To zero position.</source>
-        <translation type="unfinished"></translation>
+        <source>To zero position</source>
+        <oldsource>To zero position.</oldsource>
+        <translation type="unfinished">回到音乐开始位置</translation>
     </message>
     <message>
         <location filename="crowdedhellgui.ui" line="418"/>
@@ -341,7 +347,7 @@
     <message>
         <location filename="crowdedhellgui.ui" line="515"/>
         <source>Muted</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">静音</translation>
     </message>
     <message>
         <location filename="crowdedhellgui.ui" line="577"/>
@@ -421,7 +427,7 @@
     <message>
         <location filename="crowdedhellgui.ui" line="850"/>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">主题</translation>
     </message>
     <message>
         <location filename="crowdedhellgui.ui" line="860"/>
@@ -529,7 +535,7 @@
     <message>
         <location filename="crowdedhellgui.cpp" line="46"/>
         <source>You can hide all &quot;Info&quot; messages by selecting &lt;font color=red&gt;Window =&gt; Hide &quot;Info&quot; Messages&lt;/font&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">你可以通过选择菜单中&lt;font color=red&gt;窗口 =&gt; 隐藏&quot;通知&quot;信息&lt;/font&gt;来隐藏所有“通知”系列消息。</translation>
     </message>
     <message>
         <location filename="crowdedhellgui.cpp" line="63"/>
@@ -554,7 +560,7 @@
     <message>
         <location filename="crowdedhellgui.cpp" line="90"/>
         <source>In module %1 : </source>
-        <translation type="unfinished">位于%1模块：</translation>
+        <translation type="unfinished">位于%1模块： </translation>
     </message>
     <message>
         <location filename="crowdedhellgui.cpp" line="203"/>
@@ -562,7 +568,7 @@
         <location filename="crowdedhellgui.cpp" line="254"/>
         <location filename="crowdedhellgui.cpp" line="279"/>
         <source>Cannot open the qss file &quot;%1&quot; for the theme &quot;%2&quot;, therefore use default theme &quot;Deep Blue&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">无法打开主题%2的qss文件%1，因此使用默认主题“Deep Blue”。</translation>
     </message>
     <message>
         <location filename="crowdedhellgui.cpp" line="208"/>
@@ -603,25 +609,28 @@
         <location filename="crowdedhellgui.cpp" line="289"/>
         <location filename="crowdedhellgui.cpp" line="405"/>
         <source>Background Music : </source>
-        <translation type="unfinished">背景音乐：</translation>
+        <translation type="unfinished">背景音乐： </translation>
     </message>
 </context>
 <context>
     <name>ProjectManager</name>
     <message>
         <location filename="manager/projectmanager.cpp" line="26"/>
-        <source>Selected directory is not existing, try to make this directory, at : &quot;%1.&quot;</source>
-        <translation type="unfinished"></translation>
+        <source>Selected directory is not existing, try to make this directory, at : &quot;%1&quot;.</source>
+        <oldsource>Selected directory is not existing, try to make this directory, at : &quot;%1.&quot;</oldsource>
+        <translation type="unfinished">选择的路径“%1”不存在，尝试创建。</translation>
     </message>
     <message>
         <location filename="manager/projectmanager.cpp" line="29"/>
-        <source>Make selected directory failed, at : &quot;%1.&quot;</source>
-        <translation type="unfinished"></translation>
+        <source>Make selected directory failed, at : &quot;%1&quot;.</source>
+        <oldsource>Make selected directory failed, at : &quot;%1.&quot;</oldsource>
+        <translation type="unfinished">创建路径“%1”失败。</translation>
     </message>
     <message>
         <location filename="manager/projectmanager.cpp" line="38"/>
-        <source>Create project file failed, at : &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <source>Create project file failed, at : &quot;%1&quot;.</source>
+        <oldsource>Create project file failed, at : &quot;%1&quot;</oldsource>
+        <translation type="unfinished">创建工程文件“%1”失败。</translation>
     </message>
 </context>
 <context>
@@ -659,7 +668,7 @@
     <message>
         <location filename="manager/resourcemanager.cpp" line="27"/>
         <source>Initialize resouce manager complete.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">初始化资源管理模块成功。</translation>
     </message>
 </context>
 </TS>

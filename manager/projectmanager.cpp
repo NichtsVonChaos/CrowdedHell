@@ -23,10 +23,10 @@ void ProjectManager::newProject()
 	QString projectPath = wizard->getPath();
 	if(!QDir().exists(projectPath))
 	{
-		sendMessage(MessageType::Warning, "Project Manager", tr("Selected directory is not existing, try to make this directory, at : \"%1.\"").arg(projectPath));
+		sendMessage(MessageType::Warning, "Project Manager", tr("Selected directory is not existing, try to make this directory, at : \"%1\".").arg(projectPath));
 		if(!QDir().mkpath(projectPath))
 		{
-			sendMessage(MessageType::Error, "Project Manager", tr("Make selected directory failed, at : \"%1.\"").arg(projectPath));
+			sendMessage(MessageType::Error, "Project Manager", tr("Make selected directory failed, at : \"%1\".").arg(projectPath));
 		}
 	}
 
@@ -35,7 +35,7 @@ void ProjectManager::newProject()
 	QFile projectFile(m_projectPath + QString("/") + m_projectName + QString(".chproj"));
 	if(!projectFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
 	{
-		sendMessage(MessageType::Error, "Project Manager", tr("Create project file failed, at : \"%1\"").arg(m_projectPath + QString("/") + m_projectName + QString(".chproj")));
+		sendMessage(MessageType::Error, "Project Manager", tr("Create project file failed, at : \"%1\".").arg(m_projectPath + QString("/") + m_projectName + QString(".chproj")));
 		m_projectPath.clear();
 		m_projectName.clear();
 		return;
