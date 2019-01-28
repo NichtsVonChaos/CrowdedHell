@@ -400,6 +400,19 @@
       </spacer>
      </item>
      <item>
+      <widget class="QPushButton" name="buttonToZero">
+       <property name="toolTip">
+        <string>To zero position.</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/To Zero.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="buttonPrev50Frames">
        <property name="toolTip">
         <string>Previous 50 frames</string>
@@ -502,7 +515,7 @@
         <string>Muted</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Volumn.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Deep Blue/Icons/Volumn-Muted.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Volume.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Deep Blue/Icons/Volume-Muted.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
        </property>
        <property name="text">
         <string/>
@@ -518,6 +531,13 @@
        </property>
        <property name="checked">
         <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="volumeSliderBar">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </item>
@@ -784,7 +804,7 @@
      <x>0</x>
      <y>0</y>
      <width>1400</width>
-     <height>30</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="styleSheet">

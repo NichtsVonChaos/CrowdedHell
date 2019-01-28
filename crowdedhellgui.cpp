@@ -33,6 +33,12 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	// Initialize audio player.
 	m_audioPlayer = new AudioPlayer(ui->audioSlider, this);
 
+	// Set volume bar.
+	ui->volumeSliderBar->setMinimum(0);
+	ui->volumeSliderBar->setMaximum(100);
+	ui->volumeSliderBar->setValue(int(m_audioPlayer->getVolume() * 100));
+	connect(ui->volumeSliderBar, SIGNAL(valueChanged(int)), this, SLOT(volumeBarValueChanged(int)));
+
 	// Initialize project manager.
 	m_projectManager = new ProjectManager(this, ui->treeViewResources);
 
@@ -518,4 +524,19 @@ void CrowdedHellGUI::on_comboBoxSpeed_currentIndexChanged(int index)
 void CrowdedHellGUI::on_actionHideInfo_changed()
 {
 	__updateSettings();
+}
+
+void CrowdedHellGUI::volumeBarValueChanged(int value)
+{
+	m_audioPlayer->changeVolume(float(value / 100.0));
+}
+
+void CrowdedHellGUI::on_buttonMute_toggled(bool checked)
+{
+	m_audioPlayer->mute(checked);
+}
+
+void CrowdedHellGUI::on_buttonToZero_pressed()
+{
+	m_audioPlayer->changePosition(0);
 }

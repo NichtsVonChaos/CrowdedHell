@@ -66,15 +66,21 @@ public:
 
 	/**
 	 * @brief getMusicLength
-	 * Get music length (miliseconds),
+	 * Get music length (miliseconds).
 	 */
 	unsigned int getMusicLength();
 
 	/**
 	 * @brief getSpeed
-	 * Get music speed;
+	 * Get music speed.
 	 */
 	float getSpeed();
+
+	/**
+	 * @brief getvolume
+	 * Get music volume.
+	 */
+	float getVolume();
 
 	/**
 	 * @brief isPlaying
@@ -126,8 +132,22 @@ public slots:
 	 */
 	void changeSpeed(float speed);
 
+	/**
+	 * @brief changeVolume
+	 * Change music volume.
+	 */
+	void changeVolume(float volume);
+
+	/**
+	 * @brief mute
+	 * Mute or not.
+	 */
+	void mute(bool mute);
+
 private:
 	bool m_fmodNotInit;
+
+	bool m_muted;
 
 	unsigned int m_pos, m_length;
 

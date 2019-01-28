@@ -18,6 +18,7 @@ void AudioPlayerSlider::mousePressEvent(QMouseEvent *event)
 	{
 		m_audioPlayer->playOrPause(false);
 		int pos = int(1000.0 * (double(event->x()) / width()));
+		pos = __limit(pos, 0, 1000);
 		if(pos != sliderPosition())
 		{
 			setValue(pos);
@@ -46,5 +47,15 @@ void AudioPlayerSlider::mouseReleaseEvent(QMouseEvent *event)
 	{
 		m_leftButtonPressing = false;
 	}
+}
+
+int AudioPlayerSlider::__limit(int value, int min, int max)
+{
+	if(value < min)
+		return min;
+	else if(value > max)
+		return max;
+	else
+		return value;
 };
 

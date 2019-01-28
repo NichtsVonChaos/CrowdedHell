@@ -24,7 +24,10 @@
         <file>Themes/Deep Blue/Icons/Tree-Vline.png</file>
         <file>Themes/Deep Blue/Icons/Slider-Bar.png</file>
         <file>Themes/Deep Blue/Icons/Slider-Button.png</file>
-        <file>Themes/Deep Blue/Icons/Volumn-Muted.png</file>
-        <file>Themes/Deep Blue/Icons/Volumn.png</file>
+        <file>Themes/Deep Blue/Icons/Volume.png</file>
+        <file>Themes/Deep Blue/Icons/Volume-Bar.png</file>
+        <file>Themes/Deep Blue/Icons/Volume-Button.png</file>
+        <file>Themes/Deep Blue/Icons/Volume-Muted.png</file>
+        <file>Themes/Deep Blue/Icons/To Zero.png</file>
     </qresource>
 </RCC>

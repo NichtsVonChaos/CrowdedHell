@@ -69,6 +69,8 @@ public slots:
 
 	void musicPlayedOrPaused(bool play);
 
+	void sendMessage(MessageType type, QString module, QString message);
+
 private slots:
 	void on_actionSimplifiedChinese_triggered();
 
@@ -81,8 +83,6 @@ private slots:
 	void on_actionAddSoundEffect_triggered();
 
 	void on_actionReselectMusic_triggered();
-
-	void sendMessage(MessageType type, QString module, QString message);
 
 	void on_buttonPause_toggled(bool checked);
 
@@ -107,6 +107,12 @@ private slots:
 	void on_comboBoxSpeed_currentIndexChanged(int index);
 
 	void on_actionHideInfo_changed();
+
+	void volumeBarValueChanged(int value);
+
+	void on_buttonMute_toggled(bool checked);
+
+	void on_buttonToZero_pressed();
 
 private:
 	Ui::CrowdedHellGUI *ui;

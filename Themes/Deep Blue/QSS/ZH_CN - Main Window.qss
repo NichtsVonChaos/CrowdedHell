@@ -119,6 +119,13 @@ AudioPlayerSlider::handle:horizontal {
         image: url(:/Themes/Deep Blue/Icons/Slider-Button.png);
 }
 
+QSlider#volumeSliderBar::groove:horizontal {
+        image: url(:/Themes/Deep Blue/Icons/Volume-Bar.png);
+}
+QSlider#volumeSliderBar::handle:horizontal {
+        image: url(:/Themes/Deep Blue/Icons/Volume-Button.png);
+}
+
 /***********房间编辑视窗***********/
 QGraphicsView {
         border: none;

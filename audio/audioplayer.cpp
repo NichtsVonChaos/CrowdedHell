@@ -1,7 +1,7 @@
 #include "audioplayer.h"
 
 AudioPlayer::AudioPlayer(AudioPlayerSlider *slider, CrowdedHellGUI *parent) :
-	m_fmodNotInit(true), m_pos(0), m_length(0), m_speed(1.0f), m_volume(0.6f), m_parent(parent), m_slider(slider), m_fmodSystem(nullptr), m_music(nullptr), m_channel(nullptr)
+	m_fmodNotInit(true), m_muted(false), m_pos(0), m_length(0), m_speed(1.0f), m_volume(0.6f), m_parent(parent), m_slider(slider), m_fmodSystem(nullptr), m_music(nullptr), m_channel(nullptr)
 {
 	connect(this, SIGNAL(sendMessage(MessageType, QString, QString)),
 			parent, SLOT(sendMessage(MessageType, QString, QString)));
@@ -150,6 +150,11 @@ float AudioPlayer::getSpeed()
 	return m_speed;
 }
 
+float AudioPlayer::getVolume()
+{
+	return m_volume;
+}
+
 bool AudioPlayer::isPlaying()
 {
 	if(m_music == nullptr)
@@ -219,6 +224,34 @@ void AudioPlayer::playOrPause(bool play)
 				emit sendMessage(MessageType::Info, "FMOD", tr("Set volume to %1 percent successful.").arg(QString::number(double(m_volume * 100))));
 		}
 
+		bool mute;
+		result = m_channel->getMute(&mute);
+		if(result != FMOD_OK)
+		{
+			emit sendMessage(MessageType::Error, "FMOD", tr("Failed to get mute."));
+			emit playedOrPaused(false);
+			return;
+		}
+
+		if(mute != m_muted)
+		{
+			result = m_channel->setMute(m_muted);
+			if(m_muted)
+			{
+				if(result != FMOD_OK)
+					sendMessage(MessageType::Error, "FMOD", tr("Failed to mute music."));
+				else
+					emit sendMessage(MessageType::Info, "FMOD", tr("Mute music."));
+			}
+			else
+			{
+				if(result != FMOD_OK)
+					sendMessage(MessageType::Error, "FMOD", tr("Failed to unmute music."));
+				else
+					emit sendMessage(MessageType::Info, "FMOD", tr("Unmute music."));
+			}
+		}
+
 		if(m_pos >= m_length)
 		{
 			emit sendMessage(MessageType::Warning, "FMOD", tr("Music is at the end."));
@@ -239,7 +272,6 @@ void AudioPlayer::playOrPause(bool play)
 		}
 		else
 			emit sendMessage(MessageType::Info, "FMOD", tr("Set position to %1 miliseconds successfully while the length of music is %2 miliseconds.").arg(QString::number(m_pos), QString::number(m_length)));
-
 
 		result = m_channel->setPaused(false);
 		if(result != FMOD_OK)
@@ -356,16 +388,53 @@ void AudioPlayer::changeSpeed(float speed)
 	{
 		FMOD_RESULT result = m_channel->setPitch(m_speed);
 		if(result != FMOD_OK)
-		{
 			emit sendMessage(MessageType::Error, "FMOD", tr("Failed to set music speed to x%1.").arg(QString::number(double(m_speed), 'g', 2)));
-			emit playedOrPaused(false);
-			return;
-		}
 		else
 			emit sendMessage(MessageType::Info, "FMOD", tr("Set music speed to x%1.").arg(QString::number(double(m_speed), 'g', 2)));
 	}
 
 	emit speedChanged(speed);
+}
+
+void AudioPlayer::changeVolume(float volume)
+{
+	m_volume = volume;
+	if(m_channel != nullptr)
+	{
+		FMOD_RESULT result = m_channel->setVolume(volume);
+		if(result != FMOD_OK)
+			emit sendMessage(MessageType::Error, "FMOD", tr("Failed to set music volume to %1/100.").arg(QString::number(int(m_volume * 100))));
+		else
+			emit sendMessage(MessageType::Info, "FMOD", tr("Set music volume to %1/100.").arg(QString::number(int(m_volume * 100))));
+	}
+	__updateSettings();
+}
+
+void AudioPlayer::mute(bool mute)
+{
+	if(m_muted != mute)
+	{
+		m_muted = mute;
+		if(m_channel != nullptr)
+		{
+			FMOD_RESULT result = m_channel->setMute(m_muted);
+
+			if(m_muted)
+			{
+				if(result != FMOD_OK)
+					emit sendMessage(MessageType::Error, "FMOD", tr("Failed to mute music."));
+				else
+					emit sendMessage(MessageType::Info, "FMOD", tr("Mute music."));
+			}
+			else
+			{
+				if(result != FMOD_OK)
+					emit sendMessage(MessageType::Error, "FMOD", tr("Failed to unmute music."));
+				else
+					emit sendMessage(MessageType::Info, "FMOD", tr("Unmute music."));
+			}
+		}
+	}
 };
 
 void AudioPlayer::__initializeFmodSystem()

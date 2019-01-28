@@ -30,6 +30,8 @@ private:
 	AudioPlayer *m_audioPlayer;
 
 	bool m_leftButtonPressing;
+
+	int __limit(int value, int min, int max);
 };
 
 #endif // AUDIOPLAYERSLIDER_H
