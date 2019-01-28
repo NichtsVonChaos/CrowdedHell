@@ -45,7 +45,16 @@ void AudioPlayer::timerEvent(QTimerEvent *ev)
 		}
 
 		unsigned int last_pos = m_pos;
-		m_channel->getPosition(&m_pos, FMOD_TIMEUNIT_MS);
+		FMOD_RESULT result;
+
+		result = m_channel->getPosition(&m_pos, FMOD_TIMEUNIT_MS);
+		if(result != FMOD_OK)
+		{
+			emit sendMessage(MessageType::Error, "FMOD", tr("Failed to get current position."));
+			playOrPause(true);
+			return;
+		}
+
 		if(last_pos != m_pos)
 		{
 			if(m_pos >= m_length - 5 * m_speed)
@@ -53,7 +62,13 @@ void AudioPlayer::timerEvent(QTimerEvent *ev)
 				emit sendMessage(MessageType::Info, "FMOD", tr("Music is at the end."));
 				m_pos = m_length;
 				m_channel->setPaused(true);
-				m_channel->setPosition(m_pos, FMOD_TIMEUNIT_MS);
+				result = m_channel->setPosition(m_pos, FMOD_TIMEUNIT_MS);
+				if(result != FMOD_OK)
+				{
+					emit sendMessage(MessageType::Error, "FMOD", tr("Failed to set position to %1 miliseconds while the length of music is %2 miliseconds.").arg(QString::number(m_pos), QString::number(m_length)));
+					playOrPause(true);
+					return;
+				}
 				emit playedOrPaused(false);
 			}
 			emit positionChanged(m_pos);
@@ -73,6 +88,7 @@ void AudioPlayer::reselectMusic(const QString &path)
 	m_parent->updateMusicLength(0);
 	m_pos = 0;
 	emit positionChanged(0);
+	m_slider->setValue(0);
 
 	FMOD_RESULT result;
 
@@ -261,17 +277,28 @@ void AudioPlayer::playOrPause(bool play)
 			return;
 		}
 
-		result = m_channel->setPosition(unsigned(m_pos), FMOD_TIMEUNIT_MS);
+		unsigned int currentPosition = 0;
+		result = m_channel->getPosition(&currentPosition, FMOD_TIMEUNIT_MS);
 		if(result != FMOD_OK)
 		{
-			emit sendMessage(MessageType::Error, "FMOD", tr("Failed to set position to %1 miliseconds while the length of music is %2 miliseconds.").arg(QString::number(m_pos), QString::number(m_length)));
-			m_pos = m_length;
-			emit positionChanged(m_length);
-			emit playedOrPaused(false);
+			emit sendMessage(MessageType::Error, "FMOD", tr("Failed to get current position."));
 			return;
 		}
-		else
-			emit sendMessage(MessageType::Info, "FMOD", tr("Set position to %1 miliseconds successfully while the length of music is %2 miliseconds.").arg(QString::number(m_pos), QString::number(m_length)));
+
+		if(currentPosition != m_pos)
+		{
+			result = m_channel->setPosition(unsigned(m_pos), FMOD_TIMEUNIT_MS);
+			if(result != FMOD_OK)
+			{
+				emit sendMessage(MessageType::Error, "FMOD", tr("Failed to set position to %1 miliseconds while the length of music is %2 miliseconds.").arg(QString::number(m_pos), QString::number(m_length)));
+				m_pos = m_length;
+				emit positionChanged(m_length);
+				emit playedOrPaused(false);
+				return;
+			}
+			else
+				emit sendMessage(MessageType::Info, "FMOD", tr("Set position to %1 miliseconds successfully while the length of music is %2 miliseconds.").arg(QString::number(m_pos), QString::number(m_length)));
+		}
 
 		result = m_channel->setPaused(false);
 		if(result != FMOD_OK)
@@ -364,6 +391,17 @@ void AudioPlayer::changePosition(unsigned int pos)
 		emit positionChanged(m_length);
 		return;
 	}
+
+	unsigned int currentPosition = 0;
+	result = m_channel->getPosition(&currentPosition, FMOD_TIMEUNIT_MS);
+	if(result != FMOD_OK)
+	{
+		emit sendMessage(MessageType::Error, "FMOD", tr("Failed to get current position."));
+		return;
+	}
+
+	if(currentPosition == pos)
+		return;
 
 	m_pos = pos;
 	result = m_channel->setPosition(m_pos, FMOD_TIMEUNIT_MS);

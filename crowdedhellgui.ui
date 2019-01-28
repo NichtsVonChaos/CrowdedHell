@@ -144,9 +144,9 @@
     <property name="geometry">
      <rect>
       <x>310</x>
-      <y>670</y>
-      <width>551</width>
-      <height>28</height>
+      <y>665</y>
+      <width>550</width>
+      <height>32</height>
      </rect>
     </property>
     <property name="orientation">
@@ -378,7 +378,7 @@
      <rect>
       <x>310</x>
       <y>700</y>
-      <width>551</width>
+      <width>561</width>
       <height>41</height>
      </rect>
     </property>
@@ -559,10 +559,10 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>870</x>
+      <x>880</x>
       <y>640</y>
-      <width>231</width>
-      <height>109</height>
+      <width>221</width>
+      <height>111</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -580,13 +580,19 @@
      </item>
      <item row="1" column="2">
       <widget class="QLabel" name="labelTotalTime">
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="font">
         <font>
          <pointsize>10</pointsize>
         </font>
        </property>
        <property name="text">
-        <string notr="true">/0:0.00</string>
+        <string notr="true">/0:0.000</string>
        </property>
       </widget>
      </item>
@@ -651,7 +657,7 @@
         </size>
        </property>
        <property name="text">
-        <string notr="true">0:0.00</string>
+        <string notr="true">0:0.000</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -804,7 +810,7 @@
      <x>0</x>
      <y>0</y>
      <width>1400</width>
-     <height>25</height>
+     <height>30</height>
     </rect>
    </property>
    <property name="styleSheet">

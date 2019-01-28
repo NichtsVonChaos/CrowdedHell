@@ -114,6 +114,8 @@ private slots:
 
 	void on_buttonToZero_pressed();
 
+	void on_lineEditTime_editingFinished();
+
 private:
 	Ui::CrowdedHellGUI *ui;
 

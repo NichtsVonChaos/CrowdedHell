@@ -115,7 +115,9 @@ void CrowdedHellGUI::musicPositionChanged(unsigned int miliseconds)
 	ui->lineEditFrames->setText(QString::number(miliseconds / 20));
 	QTime time(0, 0);
 	time = time.addMSecs(int(miliseconds));
-	ui->lineEditTime->setText(QString::number(time.hour() * 60 + time.minute()) + QString(":") + QString::number(time.second()) + QString(".") + QString::number(time.msec() / 10));
+	ui->lineEditTime->setText(QString::number(time.hour() * 60 + time.minute()) + QString(":") + QString::number(time.second()) + QString(".") + (QString::number(time.msec()).size() == 1 ? ("00" + QString::number(time.msec())) :
+																																															 ((QString::number(time.msec()).size() == 2 ? ("0" + QString::number(time.msec())) :
+																																																										  QString::number(time.msec())))));
 };
 
 void CrowdedHellGUI::musicPlayedOrPaused(bool play)
@@ -421,7 +423,10 @@ void CrowdedHellGUI::updateMusicLength(unsigned int miliseconds)
 	ui->labelTotalFrames->setText(QString("/") + QString::number(miliseconds / 20));
 	QTime time(0, 0);
 	time = time.addMSecs(int(miliseconds));
-	ui->labelTotalTime->setText(QString("/") + QString::number(time.hour() * 60 + time.minute()) + QString(":") + QString::number(time.second()) + QString(".") + QString::number(time.msec() / 10));
+	ui->labelTotalTime->setText(QString("/") + QString::number(time.hour() * 60 + time.minute()) + QString(":") + QString::number(time.second()) + QString(".") +
+								(QString::number(time.msec()).size() == 1 ? ("00" + QString::number(time.msec())) :
+																			((QString::number(time.msec()).size() == 2 ? ("0" + QString::number(time.msec())) :
+																														 QString::number(time.msec())))));
 };
 
 void CrowdedHellGUI::on_buttonNextFrame_clicked()
@@ -462,9 +467,10 @@ void CrowdedHellGUI::on_lineEditFrames_editingFinished()
 	{
 		sendMessage(MessageType::Warning, "MainWindow", tr("%1 is not a valid number.").arg(QString("\"") + ui->lineEditFrames->text() + QString("\"")));
 		musicPositionChanged(m_audioPlayer->getPosition());
+		return;
 	}
-	else
-		m_audioPlayer->changePosition(frames * 20);
+
+	m_audioPlayer->changePosition(frames * 20);
 }
 
 void CrowdedHellGUI::on_menuTheme_hovered(QAction *action)
@@ -539,4 +545,51 @@ void CrowdedHellGUI::on_buttonMute_toggled(bool checked)
 void CrowdedHellGUI::on_buttonToZero_pressed()
 {
 	m_audioPlayer->changePosition(0);
+}
+
+void CrowdedHellGUI::on_lineEditTime_editingFinished()
+{
+	QStringList splitForMinute = ui->lineEditTime->text().split(":");
+	if(splitForMinute.size() != 2)
+	{
+		sendMessage(MessageType::Error, "MainWindow", tr("\"%1\" is not a valid time. Plz enter valid time such as \"12:5.6\"").arg(ui->lineEditTime->text()));
+		musicPositionChanged(m_audioPlayer->getPosition());
+		return;
+	}
+
+	bool isConvertOk;
+	int minutes = splitForMinute[0].toInt(&isConvertOk);
+	if(!isConvertOk || minutes < 0)
+	{
+		sendMessage(MessageType::Warning, "MainWindow", tr("%1 is not a valid number.").arg(QString("\"") + ui->lineEditFrames->text() + QString("\"")));
+		musicPositionChanged(m_audioPlayer->getPosition());
+		return;
+	}
+
+	QStringList splitForSecond = splitForMinute[1].split(".");
+	if(splitForSecond.size() != 2)
+	{
+		sendMessage(MessageType::Error, "MainWindow", tr("\"%1\" is not a valid time. Plz enter valid time such as \"12:5.600\"").arg(ui->lineEditTime->text()));
+		musicPositionChanged(m_audioPlayer->getPosition());
+		return;
+	}
+
+	int seconds = splitForSecond[0].toInt(&isConvertOk);
+	if(!isConvertOk || seconds < 0 || seconds >= 60)
+	{
+		sendMessage(MessageType::Warning, "MainWindow", tr("%1 is not a valid number.").arg(QString("\"") + ui->lineEditFrames->text() + QString("\"")));
+		musicPositionChanged(m_audioPlayer->getPosition());
+		return;
+	}
+
+	int miliseconds = splitForSecond[1].toInt(&isConvertOk);
+	if(!isConvertOk || miliseconds < 0 || miliseconds >= 1000)
+	{
+		sendMessage(MessageType::Warning, "MainWindow", tr("%1 is not a valid number.").arg(QString("\"") + ui->lineEditFrames->text() + QString("\"")));
+		musicPositionChanged(m_audioPlayer->getPosition());
+		return;
+	}
+
+	unsigned int time = unsigned(((minutes * 60 + seconds) * 1000 + miliseconds) / 20) * 20;
+	m_audioPlayer->changePosition(time);
 }
