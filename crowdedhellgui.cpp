@@ -590,6 +590,5 @@ void CrowdedHellGUI::on_lineEditTime_editingFinished()
 		return;
 	}
 
-	unsigned int time = unsigned(((minutes * 60 + seconds) * 1000 + miliseconds) / 20) * 20;
-	m_audioPlayer->changePosition(time);
+	m_audioPlayer->changePosition(unsigned((minutes * 60 + seconds) * 1000 + miliseconds));
 }
