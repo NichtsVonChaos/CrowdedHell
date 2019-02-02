@@ -401,10 +401,7 @@ void CrowdedHellGUI::on_actionAddSoundEffect_triggered()
 void CrowdedHellGUI::on_actionReselectMusic_triggered()
 {
 	QString musicFilePath = QFileDialog::getOpenFileName(this, tr("Select Music File"), qApp->applicationDirPath(), tr("Music File(*.mp3 *.wav)"));
-	m_audioPlayer->reselectMusic(musicFilePath);
-	QString fileName = QFileInfo(musicFilePath).fileName();
-	m_currentMusicName = fileName.remove(fileName.lastIndexOf(QChar('.')), 4);
-	ui->labelMusicName->setText(tr("Background Music : ") + m_currentMusicName);
+	changeMusic(musicFilePath);
 };
 
 void CrowdedHellGUI::on_buttonPause_toggled(bool checked)
@@ -535,6 +532,14 @@ void CrowdedHellGUI::on_actionHideInfo_changed()
 void CrowdedHellGUI::volumeBarValueChanged(int value)
 {
 	m_audioPlayer->changeVolume(float(value / 100.0));
+}
+
+void CrowdedHellGUI::changeMusic(QString musicPath)
+{
+	m_audioPlayer->changeMusic(musicPath);
+	QString fileName = QFileInfo(musicPath).fileName();
+	m_currentMusicName = fileName.remove(fileName.lastIndexOf(QChar('.')), 4);
+	ui->labelMusicName->setText(tr("Background Music : ") + m_currentMusicName);
 }
 
 void CrowdedHellGUI::on_buttonMute_toggled(bool checked)

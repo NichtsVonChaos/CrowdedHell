@@ -2,6 +2,8 @@
 #define PROJECTMANAGER_H
 
 #include <QString>
+#include <QFile>
+#include <QTextStream>
 
 class ResourceManager;
 #ifndef RESOURCEMANAGER_H
@@ -55,11 +57,23 @@ public:
 	 */
 	void closeProject();
 
+	/**
+	 * @brief reselectMusic
+	 * Change background music.
+	 */
+	void reselectMusic(QString musicPath);
+
 signals:
 	/**
 	 * @see CrowdedHellGUI::sendMessage(MessageType, QString, QString);
 	 */
 	void sendMessage(MessageType type, QString module, QString message);
+
+	/**
+	 * @brief musicSelected
+	 * Send a signal for selected music when create new project.
+	 */
+	void musicSelected(QString musicPath);
 
 private:
 	CrowdedHellGUI *m_parent;

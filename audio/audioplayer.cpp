@@ -77,7 +77,7 @@ void AudioPlayer::timerEvent(QTimerEvent *ev)
 	}
 };
 
-void AudioPlayer::reselectMusic(const QString &path)
+void AudioPlayer::changeMusic(const QString &path)
 {
 	playOrPause(false);
 

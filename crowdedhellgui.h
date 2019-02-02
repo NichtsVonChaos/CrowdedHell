@@ -71,6 +71,10 @@ public slots:
 
 	void sendMessage(MessageType type, QString module, QString message);
 
+	void volumeBarValueChanged(int value);
+
+	void changeMusic(QString musicPath);
+
 private slots:
 	void on_actionSimplifiedChinese_triggered();
 
@@ -107,8 +111,6 @@ private slots:
 	void on_comboBoxSpeed_currentIndexChanged(int index);
 
 	void on_actionHideInfo_changed();
-
-	void volumeBarValueChanged(int value);
 
 	void on_buttonMute_toggled(bool checked);
 

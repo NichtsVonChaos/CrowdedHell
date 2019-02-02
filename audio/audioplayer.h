@@ -44,7 +44,7 @@ public:
 	 * @param path
 	 * File path.
 	 */
-	void reselectMusic(const QString &path);
+	void changeMusic(const QString &path);
 
 	/**
 	 * @brief forward

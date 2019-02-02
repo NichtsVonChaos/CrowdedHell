@@ -32,10 +32,13 @@ public:
 	QString getPath();
 	QString getAuthor();
 	QDateTime getDate();
+	QString getMusicPath();
 
 private slots:
 
 	void on_toolButtonSelectPath_clicked();
+
+	void on_toolButtonBackgroundMusic_pressed();
 
 private:
 	Ui::CreateProjectWizard *ui;

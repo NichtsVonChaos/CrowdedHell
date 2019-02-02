@@ -71,6 +71,11 @@ QDateTime CreateProjectWizard::getDate()
 	return m_createDate;
 }
 
+QString CreateProjectWizard::getMusicPath()
+{
+	return ui->lineEditBackgroundMusic->text();
+}
+
 void CreateProjectWizard::on_toolButtonSelectPath_clicked()
 {
 	QFileDialog *projectPathDialog = new QFileDialog(this);
@@ -87,4 +92,10 @@ void CreateProjectWizard::on_toolButtonSelectPath_clicked()
 	}
 
 	delete projectPathDialog;
+}
+
+void CreateProjectWizard::on_toolButtonBackgroundMusic_pressed()
+{
+	QString musicFilePath = QFileDialog::getOpenFileName(this, tr("Select Music File"), qApp->applicationDirPath(), tr("Music File(*.mp3 *.wav)"));
+	ui->lineEditBackgroundMusic->setText(musicFilePath);
 }
