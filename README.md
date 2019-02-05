@@ -39,8 +39,8 @@ ____
 ### About compiling
 ____
 ##### Windows:
-* 建议使用MSVC 64位套件编译，本人使用Mingw套件无法编译FMOD。  
- Suggest that use MSVC x64 kit to compile. I cannot compile FMOD when using Mingw kit.
+* 建议使用MSVC 64位套件编译，本人使用MinGW套件无法编译FMOD。  
+ Suggest that use MSVC x64 kit to compile. I cannot compile FMOD when using MinGW kit.
  ##### Linux:
  * 本人仅在Ubuntu 18.10下尝试编译成功，其他系统不保证成功。  
   I had only compiled it successfully at Ubuntu 18.10, I cannot ensure if it can be compiled at other Linux OSs.
