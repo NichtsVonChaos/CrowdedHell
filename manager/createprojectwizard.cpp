@@ -79,7 +79,7 @@ QString CreateProjectWizard::getMusicPath()
 void CreateProjectWizard::on_toolButtonSelectPath_clicked()
 {
 	QFileDialog *projectPathDialog = new QFileDialog(this);
-	projectPathDialog->setAcceptMode(QFileDialog::AcceptSave);
+	projectPathDialog->setAcceptMode(QFileDialog::AcceptOpen);
 	projectPathDialog->setFileMode(QFileDialog::DirectoryOnly);
 	projectPathDialog->setDirectory(".");
 	projectPathDialog->setWindowTitle(tr("Select a directory to save your project"));

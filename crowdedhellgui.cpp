@@ -43,7 +43,7 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	m_projectManager = new ProjectManager(this, ui->treeViewResources);
 
 	if(!ui->actionHideInfo->isChecked())
-		sendMessage(MessageType::Tips, "MainWindow", tr("You can hide all \"Info\" messages by selecting <font color=red>Window => Hide \"Info\" Messages</font>."));
+		sendMessage(MessageType::Tips, "Main Window", tr("You can hide all \"Info\" messages by selecting <font color=red>Window => Hide \"Info\" Messages</font>."));
 };
 
 CrowdedHellGUI::~CrowdedHellGUI()
@@ -202,12 +202,12 @@ void CrowdedHellGUI::__updateUi()
 			}
 			else
 			{
-				sendMessage(MessageType::Error, "MainWindow", tr("Cannot open the qss file \"%1\" for the theme \"%2\", therefore use default theme \"Deep Blue\".").arg(mainWindowQssFile).arg(m_currentTheme));
+				sendMessage(MessageType::Error, "Main Window", tr("Cannot open the qss file \"%1\" for the theme \"%2\", therefore use default theme \"Deep Blue\".").arg(mainWindowQssFile).arg(m_currentTheme));
 				__turnToDefalutTheme();
 				return;
 			}
 
-			sendMessage(MessageType::Info, "MainWindow", tr("Change language to English."));
+			sendMessage(MessageType::Info, "Main Window", tr("Change language to English."));
 		}
 		break;
 
@@ -228,11 +228,11 @@ void CrowdedHellGUI::__updateUi()
 			}
 			else
 			{
-				sendMessage(MessageType::Error, "MainWindow", tr("Cannot open the qss file \"%1\" for the theme \"%2\", therefore use default theme \"Deep Blue\".").arg(mainWindowQssFile).arg(m_currentTheme));
+				sendMessage(MessageType::Error, "Main Window", tr("Cannot open the qss file \"%1\" for the theme \"%2\", therefore use default theme \"Deep Blue\".").arg(mainWindowQssFile).arg(m_currentTheme));
 				__turnToDefalutTheme();
 				return;
 			}
-			sendMessage(MessageType::Info, "MainWindow", tr("Change language to Simpified Chinese."));
+			sendMessage(MessageType::Info, "Main Window", tr("Change language to Simpified Chinese."));
 		}
 		break;
 
@@ -253,11 +253,11 @@ void CrowdedHellGUI::__updateUi()
 			}
 			else
 			{
-				sendMessage(MessageType::Error, "MainWindow", tr("Cannot open the qss file \"%1\" for the theme \"%2\", therefore use default theme \"Deep Blue\".").arg(mainWindowQssFile).arg(m_currentTheme));
+				sendMessage(MessageType::Error, "Main Window", tr("Cannot open the qss file \"%1\" for the theme \"%2\", therefore use default theme \"Deep Blue\".").arg(mainWindowQssFile).arg(m_currentTheme));
 				__turnToDefalutTheme();
 				return;
 			}
-			sendMessage(MessageType::Info, "MainWindow", tr("Change language to Traditional Chinese."));
+			sendMessage(MessageType::Info, "Main Window", tr("Change language to Traditional Chinese."));
 		}
 		break;
 
@@ -278,11 +278,11 @@ void CrowdedHellGUI::__updateUi()
 			}
 			else
 			{
-				sendMessage(MessageType::Error, "MainWindow", tr("Cannot open the qss file \"%1\" for the theme \"%2\", therefore use default theme \"Deep Blue\".").arg(mainWindowQssFile).arg(m_currentTheme));
+				sendMessage(MessageType::Error, "Main Window", tr("Cannot open the qss file \"%1\" for the theme \"%2\", therefore use default theme \"Deep Blue\".").arg(mainWindowQssFile).arg(m_currentTheme));
 				__turnToDefalutTheme();
 				return;
 			}
-			sendMessage(MessageType::Info, "MainWindow", tr("Change language to Japanese."));
+			sendMessage(MessageType::Info, "Main Window", tr("Change language to Japanese."));
 		}
 		break;
 	}
@@ -400,12 +400,26 @@ void CrowdedHellGUI::on_actionAddSoundEffect_triggered()
 
 void CrowdedHellGUI::on_actionReselectMusic_triggered()
 {
+	if(!m_projectManager->isValid())
+	{
+		emit sendMessage(MessageType::Error, "Project Manager", tr("No project is open. Please create or open a project before."));
+		return;
+	}
+
+	m_audioPlayer->playOrPause(false);
 	QString musicFilePath = QFileDialog::getOpenFileName(this, tr("Select Music File"), qApp->applicationDirPath(), tr("Music File(*.mp3 *.wav)"));
-	changeMusic(musicFilePath);
+	m_projectManager->reselectMusic(musicFilePath);
 };
 
 void CrowdedHellGUI::on_buttonPause_toggled(bool checked)
 {
+	if(!m_projectManager->isValid() && checked)
+	{
+		emit sendMessage(MessageType::Error, "Project Manager", tr("No project is open. Please create or open a project before."));
+		ui->buttonPause->setChecked(false);
+		return;
+	}
+
 	m_audioPlayer->playOrPause(checked);
 };
 
@@ -428,41 +442,84 @@ void CrowdedHellGUI::updateMusicLength(unsigned int miliseconds)
 
 void CrowdedHellGUI::on_buttonNextFrame_clicked()
 {
+	if(!m_projectManager->isValid())
+	{
+		emit sendMessage(MessageType::Error, "Project Manager", tr("No project is open. Please create or open a project before."));
+		return;
+	}
+
 	m_audioPlayer->forward(1u);
 };
 
 void CrowdedHellGUI::on_buttonPrevFrame_clicked()
 {
+	if(!m_projectManager->isValid())
+	{
+		emit sendMessage(MessageType::Error, "Project Manager", tr("No project is open. Please create or open a project before."));
+		return;
+	}
+
 	m_audioPlayer->back(1u);
 };
 
 void CrowdedHellGUI::on_buttonNext10Frames_clicked()
 {
+	if(!m_projectManager->isValid())
+	{
+		emit sendMessage(MessageType::Error, "Project Manager", tr("No project is open. Please create or open a project before."));
+		return;
+	}
+
 	m_audioPlayer->forward(10u);
 };
 
 void CrowdedHellGUI::on_buttonPrev10Frames_clicked()
 {
+	if(!m_projectManager->isValid())
+	{
+		emit sendMessage(MessageType::Error, "Project Manager", tr("No project is open. Please create or open a project before."));
+		return;
+	}
+
 	m_audioPlayer->back(10u);
 };
 
 void CrowdedHellGUI::on_buttonNext50Frames_clicked()
 {
+	if(!m_projectManager->isValid())
+	{
+		emit sendMessage(MessageType::Error, "Project Manager", tr("No project is open. Please create or open a project before."));
+		return;
+	}
+
 	m_audioPlayer->forward(50u);
 };
 
 void CrowdedHellGUI::on_buttonPrev50Frames_clicked()
 {
+	if(!m_projectManager->isValid())
+	{
+		emit sendMessage(MessageType::Error, "Project Manager", tr("No project is open. Please create or open a project before."));
+		return;
+	}
+
 	m_audioPlayer->back(50u);
 };
 
 void CrowdedHellGUI::on_lineEditFrames_editingFinished()
 {
+	if(!m_projectManager->isValid())
+	{
+		emit sendMessage(MessageType::Error, "Project Manager", tr("No project is open. Please create or open a project before."));
+		musicPositionChanged(0);
+		return;
+	}
+
 	bool isConvertOk;
 	unsigned int frames = ui->lineEditFrames->text().toUInt(&isConvertOk);
 	if(!isConvertOk)
 	{
-		sendMessage(MessageType::Warning, "MainWindow", tr("%1 is not a valid number.").arg(QString("\"") + ui->lineEditFrames->text() + QString("\"")));
+		sendMessage(MessageType::Warning, "Main Window", tr("%1 is not a valid number.").arg(QString("\"") + ui->lineEditFrames->text() + QString("\"")));
 		musicPositionChanged(m_audioPlayer->getPosition());
 		return;
 	}
@@ -549,15 +606,28 @@ void CrowdedHellGUI::on_buttonMute_toggled(bool checked)
 
 void CrowdedHellGUI::on_buttonToZero_pressed()
 {
+	if(!m_projectManager->isValid())
+	{
+		emit sendMessage(MessageType::Error, "Project Manager", tr("No project is open. Please create or open a project before."));
+		return;
+	}
+
 	m_audioPlayer->changePosition(0);
 }
 
 void CrowdedHellGUI::on_lineEditTime_editingFinished()
 {
+	if(!m_projectManager->isValid())
+	{
+		emit sendMessage(MessageType::Error, "Project Manager", tr("No project is open. Please create or open a project before."));
+		musicPositionChanged(0);
+		return;
+	}
+
 	QStringList splitForMinute = ui->lineEditTime->text().split(":");
 	if(splitForMinute.size() != 2)
 	{
-		sendMessage(MessageType::Error, "MainWindow", tr("\"%1\" is not a valid time. Plz enter valid time such as \"12:5.6\"").arg(ui->lineEditTime->text()));
+		sendMessage(MessageType::Error, "Main Window", tr("\"%1\" is not a valid time. Plz enter valid time such as \"12:5.6\"").arg(ui->lineEditTime->text()));
 		musicPositionChanged(m_audioPlayer->getPosition());
 		return;
 	}
@@ -566,7 +636,7 @@ void CrowdedHellGUI::on_lineEditTime_editingFinished()
 	int minutes = splitForMinute[0].toInt(&isConvertOk);
 	if(!isConvertOk || minutes < 0)
 	{
-		sendMessage(MessageType::Warning, "MainWindow", tr("%1 is not a valid number.").arg(QString("\"") + ui->lineEditFrames->text() + QString("\"")));
+		sendMessage(MessageType::Warning, "Main Window", tr("%1 is not a valid number.").arg(QString("\"") + ui->lineEditFrames->text() + QString("\"")));
 		musicPositionChanged(m_audioPlayer->getPosition());
 		return;
 	}
@@ -574,7 +644,7 @@ void CrowdedHellGUI::on_lineEditTime_editingFinished()
 	QStringList splitForSecond = splitForMinute[1].split(".");
 	if(splitForSecond.size() != 2)
 	{
-		sendMessage(MessageType::Error, "MainWindow", tr("\"%1\" is not a valid time. Plz enter valid time such as \"12:5.600\"").arg(ui->lineEditTime->text()));
+		sendMessage(MessageType::Error, "Main Window", tr("\"%1\" is not a valid time. Plz enter valid time such as \"12:5.600\"").arg(ui->lineEditTime->text()));
 		musicPositionChanged(m_audioPlayer->getPosition());
 		return;
 	}
@@ -582,7 +652,7 @@ void CrowdedHellGUI::on_lineEditTime_editingFinished()
 	int seconds = splitForSecond[0].toInt(&isConvertOk);
 	if(!isConvertOk || seconds < 0 || seconds >= 60)
 	{
-		sendMessage(MessageType::Warning, "MainWindow", tr("%1 is not a valid number.").arg(QString("\"") + ui->lineEditFrames->text() + QString("\"")));
+		sendMessage(MessageType::Warning, "Main Window", tr("%1 is not a valid number.").arg(QString("\"") + ui->lineEditFrames->text() + QString("\"")));
 		musicPositionChanged(m_audioPlayer->getPosition());
 		return;
 	}
@@ -590,7 +660,7 @@ void CrowdedHellGUI::on_lineEditTime_editingFinished()
 	int miliseconds = splitForSecond[1].toInt(&isConvertOk);
 	if(!isConvertOk || miliseconds < 0 || miliseconds >= 1000)
 	{
-		sendMessage(MessageType::Warning, "MainWindow", tr("%1 is not a valid number.").arg(QString("\"") + ui->lineEditFrames->text() + QString("\"")));
+		sendMessage(MessageType::Warning, "Main Window", tr("%1 is not a valid number.").arg(QString("\"") + ui->lineEditFrames->text() + QString("\"")));
 		musicPositionChanged(m_audioPlayer->getPosition());
 		return;
 	}

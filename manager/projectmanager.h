@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QFile>
+#include <QDateTime>
 #include <QTextStream>
 
 class ResourceManager;
@@ -85,6 +86,12 @@ private:
 	QString m_projectPath;
 
 	QString m_temporaryPath;
+
+	QString m_author;
+
+	QDateTime m_date;
+
+	QString m_music;
 
 	bool m_changed;
 };
