@@ -55,9 +55,9 @@ public:
 
 	void changeEvent(QEvent *event);
 
-	QString currentTheme();
+	QString currentTheme() const;
 
-	Language currentLanguage();
+	Language currentLanguage() const;
 
 signals:
 	void languageChanged(Language language);

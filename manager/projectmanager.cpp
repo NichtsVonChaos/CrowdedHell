@@ -13,7 +13,7 @@ ProjectManager::ProjectManager(CrowdedHellGUI *parent, QTreeView *resourceView) 
 			m_parent, SLOT(projectClosed()));
 };
 
-bool ProjectManager::isValid()
+bool ProjectManager::isValid() const
 {
 	return !m_projectName.isEmpty();
 };
@@ -111,8 +111,8 @@ void ProjectManager::newProject()
 		emit sendMessage(MessageType::Info, "Project Manager", tr("Successfully copy music file from \"%1\" to \"%2\".").arg(musicPath).arg(projectPath + QString("/") + QFileInfo(musicPath).fileName()));
 
 	m_author = wizard->getAuthor();
-	m_date = wizard->getDate();
-	m_music = QFileInfo(musicPath).fileName();
+	m_createDate = wizard->getDate();
+	m_musicFile = QFileInfo(musicPath).fileName();
 
 	emit musicSelected(projectPath + QString("/") + QFileInfo(musicPath).fileName());
 
@@ -146,9 +146,9 @@ void ProjectManager::openProject()
 
 	QString projectPath = QFileInfo(projectFilePath).absolutePath();
 
-	if(!QFile(projectPath + QString("/") + m_music).exists())
+	if(!QFile(projectPath + QString("/") + m_musicFile).exists())
 	{
-		emit sendMessage(MessageType::Error, "Project Manager", tr("Cannot find the music file of project, at : \"%1\"").arg(m_projectPath + QString("/") + m_music));
+		emit sendMessage(MessageType::Error, "Project Manager", tr("Cannot find the music file of project, at : \"%1\"").arg(m_projectPath + QString("/") + m_musicFile));
 		return;
 	}
 
@@ -157,9 +157,9 @@ void ProjectManager::openProject()
 	m_projectName = QFileInfo(projectFilePath).fileName().remove(QString(".chproj"));
 	m_projectPath = QFileInfo(projectFilePath).absolutePath();
 	m_author = datas[1];
-	m_date = QDateTime::fromString(datas[2]);
-	m_music = datas[3];
-	emit musicSelected(projectPath + QString("/") + m_music);
+	m_createDate = QDateTime::fromString(datas[2]);
+	m_musicFile = datas[3];
+	emit musicSelected(projectPath + QString("/") + m_musicFile);
 };
 
 void ProjectManager::closeProject()
@@ -189,7 +189,7 @@ void ProjectManager::closeProject()
 	m_projectPath.clear();
 	m_temporaryPath.clear();
 	m_author.clear();
-	m_music.clear();
+	m_musicFile.clear();
 
 	m_changed = false;
 };
@@ -255,4 +255,34 @@ void ProjectManager::reselectMusic(QString musicPath)
 void ProjectManager::setAlwaysSave(bool save)
 {
 	m_alwaysSave = save;
+}
+
+QString ProjectManager::getTemporaryPath() const
+{
+	return m_temporaryPath;
+}
+
+QString ProjectManager::getMusicFile() const
+{
+	return m_musicFile;
+}
+
+QDateTime ProjectManager::getCreateDate() const
+{
+	return m_createDate;
+}
+
+QString ProjectManager::getAuthor() const
+{
+	return m_author;
+}
+
+QString ProjectManager::getProjectPath() const
+{
+	return m_projectPath;
+}
+
+QString ProjectManager::getProjectName() const
+{
+	return m_projectName;
 };

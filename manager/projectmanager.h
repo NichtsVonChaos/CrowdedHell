@@ -24,7 +24,7 @@ public:
 	 * @brief isValid
 	 * Return if a project is open.
 	 */
-	bool isValid();
+	bool isValid() const;
 
 	/**
 	 * @brief newProject
@@ -63,6 +63,42 @@ public:
 	 * Change background music.
 	 */
 	void reselectMusic(QString musicPath);
+
+	/**
+	 * @brief getProjectName
+	 * Return project name.
+	 */
+	QString getProjectName() const;
+
+	/**
+	 * @brief getProjectPath
+	 * Return project path with out project file name.
+	 */
+	QString getProjectPath() const;
+
+	/**
+	 * @brief getTemporaryPath
+	 * Return temporary project path.
+	 */
+	QString getTemporaryPath() const;
+
+	/**
+	 * @brief getAuthor
+	 * Return project author.
+	 */
+	QString getAuthor() const;
+
+	/**
+	 * @brief getCreateDate
+	 * Return the date when project created.
+	 */
+	QDateTime getCreateDate() const;
+
+	/**
+	 * @brief getMusicFile
+	 * Return music file name.
+	 */
+	QString getMusicFile() const;
 
 signals:
 	/**
@@ -103,9 +139,9 @@ private:
 
 	QString m_author;
 
-	QDateTime m_date;
+	QDateTime m_createDate;
 
-	QString m_music;
+	QString m_musicFile;
 
 	bool m_changed, m_alwaysSave;
 };

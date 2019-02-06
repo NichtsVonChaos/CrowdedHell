@@ -62,31 +62,31 @@ public:
 	 * @brief getPosition
 	 * Get playing position of music (miliseconds).
 	 */
-	unsigned int getPosition();
+	unsigned int getPosition() const;
 
 	/**
 	 * @brief getMusicLength
 	 * Get music length (miliseconds).
 	 */
-	unsigned int getMusicLength();
+	unsigned int getMusicLength() const;
 
 	/**
 	 * @brief getSpeed
 	 * Get music speed.
 	 */
-	float getSpeed();
+	float getSpeed() const;
 
 	/**
 	 * @brief getvolume
 	 * Get music volume.
 	 */
-	float getVolume();
+	float getVolume() const;
 
 	/**
 	 * @brief isPlaying
 	 * Return if music is playing.
 	 */
-	bool isPlaying();
+	bool isPlaying() const;
 
 	/**
 	 * @brief reset
@@ -151,7 +151,7 @@ public slots:
 	void mute(bool mute);
 
 private:
-	bool m_fmodNotInit;
+	bool m_fmodSystemNotInit;
 
 	bool m_muted;
 

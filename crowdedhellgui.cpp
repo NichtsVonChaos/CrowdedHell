@@ -98,12 +98,12 @@ void CrowdedHellGUI::changeEvent(QEvent *event)
 
 };
 
-QString CrowdedHellGUI::currentTheme()
+QString CrowdedHellGUI::currentTheme() const
 {
 	return m_currentTheme;
 };
 
-Language CrowdedHellGUI::currentLanguage()
+Language CrowdedHellGUI::currentLanguage() const
 {
 	return m_currentLanguage;
 };

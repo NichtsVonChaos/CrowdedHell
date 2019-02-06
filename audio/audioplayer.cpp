@@ -1,7 +1,7 @@
 #include "audioplayer.h"
 
 AudioPlayer::AudioPlayer(AudioPlayerSlider *slider, CrowdedHellGUI *parent) :
-	m_fmodNotInit(true), m_muted(false), m_pos(0), m_length(0), m_speed(1.0f), m_volume(0.6f), m_parent(parent), m_slider(slider), m_fmodSystem(nullptr), m_music(nullptr), m_channel(nullptr)
+	m_fmodSystemNotInit(true), m_muted(false), m_pos(0), m_length(0), m_speed(1.0f), m_volume(0.6f), m_parent(parent), m_slider(slider), m_fmodSystem(nullptr), m_music(nullptr), m_channel(nullptr)
 {
 	connect(this, SIGNAL(sendMessage(MessageType, QString, QString)),
 			parent, SLOT(sendMessage(MessageType, QString, QString)));
@@ -148,7 +148,7 @@ void AudioPlayer::back(unsigned int frames)
 		changePosition((m_pos / 20 - frames) * 20);
 };
 
-unsigned int AudioPlayer::getPosition()
+unsigned int AudioPlayer::getPosition() const
 {
 	if(m_channel == nullptr)
 		return 0;
@@ -160,22 +160,22 @@ unsigned int AudioPlayer::getPosition()
 	}
 };
 
-unsigned int AudioPlayer::getMusicLength()
+unsigned int AudioPlayer::getMusicLength() const
 {
 	return m_length;
 };
 
-float AudioPlayer::getSpeed()
+float AudioPlayer::getSpeed() const
 {
 	return m_speed;
 };
 
-float AudioPlayer::getVolume()
+float AudioPlayer::getVolume() const
 {
 	return m_volume;
 };
 
-bool AudioPlayer::isPlaying()
+bool AudioPlayer::isPlaying() const
 {
 	if(m_music == nullptr)
 		return false;
@@ -529,19 +529,19 @@ void AudioPlayer::__initializeFmodSystem()
 			emit sendMessage(MessageType::Info, "FMOD", tr("%1 sound driver(s) was found.").arg(driverCount));
 	}
 
-	if(m_fmodNotInit)
+	if(m_fmodSystemNotInit)
 	{
 		result = m_fmodSystem->init(36, FMOD_INIT_NORMAL, nullptr);
 		if (result != FMOD_OK)
 		{
 			emit sendMessage(MessageType::Error, "FMOD", tr("Failed to initialize FMOD system."));
-			m_fmodNotInit = true;
+			m_fmodSystemNotInit = true;
 			return;
 		}
 		else
 			emit sendMessage(MessageType::Info, "FMOD", tr("Initialize FMOD system successfully."));
 
-		m_fmodNotInit = false;
+		m_fmodSystemNotInit = false;
 	}
 };
 
