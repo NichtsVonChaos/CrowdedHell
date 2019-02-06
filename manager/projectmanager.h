@@ -76,6 +76,20 @@ signals:
 	 */
 	void musicSelected(QString musicPath);
 
+	/**
+	 * @brief projectClosed
+	 * Send a signal when project closed.
+	 */
+	void projectClosed();
+
+public slots:
+
+	/**
+	 * @brief setAlwaysSave
+	 * Set if always save project when close it without question.
+	 */
+	void setAlwaysSave(bool save);
+
 private:
 	CrowdedHellGUI *m_parent;
 
@@ -93,7 +107,7 @@ private:
 
 	QString m_music;
 
-	bool m_changed;
+	bool m_changed, m_alwaysSave;
 };
 
 #endif // PROJECTMANAGER_H

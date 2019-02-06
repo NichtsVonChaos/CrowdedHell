@@ -44,37 +44,37 @@ CreateProjectWizard::CreateProjectWizard(CrowdedHellGUI *parent) :
 
 	m_createDate = QDateTime::currentDateTime();
 	ui->labelRealDate->setText(m_createDate.toString());
-}
+};
 
 CreateProjectWizard::~CreateProjectWizard()
 {
 	delete ui;
-}
+};
 
 QString CreateProjectWizard::getProjectName()
 {
 	return ui->lineEditProjectName->text();
-}
+};
 
 QString CreateProjectWizard::getPath()
 {
 	return ui->lineEditPath->text();
-}
+};
 
 QString CreateProjectWizard::getAuthor()
 {
 	return ui->lineEditAuthor->text();
-}
+};
 
 QDateTime CreateProjectWizard::getDate()
 {
 	return m_createDate;
-}
+};
 
 QString CreateProjectWizard::getMusicPath()
 {
 	return ui->lineEditBackgroundMusic->text();
-}
+};
 
 void CreateProjectWizard::on_toolButtonSelectPath_clicked()
 {
@@ -92,10 +92,10 @@ void CreateProjectWizard::on_toolButtonSelectPath_clicked()
 	}
 
 	delete projectPathDialog;
-}
+};
 
 void CreateProjectWizard::on_toolButtonBackgroundMusic_pressed()
 {
 	QString musicFilePath = QFileDialog::getOpenFileName(this, tr("Select Music File"), qApp->applicationDirPath(), tr("Music File(*.mp3 *.wav)"));
 	ui->lineEditBackgroundMusic->setText(musicFilePath);
-}
+};

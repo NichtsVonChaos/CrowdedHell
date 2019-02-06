@@ -28,6 +28,10 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	ui->textEditMessageBox->document()->setMaximumBlockCount(200);
 	ui->textEditMessageBox->setHtml("<font color=purple>>>></font> ");
 
+	// Initialize project manager.
+	m_projectManager = new ProjectManager(this, ui->treeViewResources);
+	connect(ui->actionAlwaysSave, SIGNAL(toggled(bool)), m_projectManager, SLOT(setAlwaysSave(bool)));
+
 	__readSettings();
 
 	// Initialize audio player.
@@ -38,9 +42,6 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	ui->volumeSliderBar->setMaximum(100);
 	ui->volumeSliderBar->setValue(int(m_audioPlayer->getVolume() * 100));
 	connect(ui->volumeSliderBar, SIGNAL(valueChanged(int)), this, SLOT(volumeBarValueChanged(int)));
-
-	// Initialize project manager.
-	m_projectManager = new ProjectManager(this, ui->treeViewResources);
 
 	if(!ui->actionHideInfo->isChecked())
 		sendMessage(MessageType::Tips, "Main Window", tr("You can hide all \"Info\" messages by selecting <font color=red>Window => Hide \"Info\" Messages</font>."));
@@ -98,12 +99,12 @@ void CrowdedHellGUI::sendMessage(MessageType type, QString module, QString messa
 void CrowdedHellGUI::changeEvent(QEvent *event)
 {
 
-}
+};
 
 QString CrowdedHellGUI::currentTheme()
 {
 	return m_currentTheme;
-}
+};
 
 Language CrowdedHellGUI::currentLanguage()
 {
@@ -300,6 +301,7 @@ void CrowdedHellGUI::__readSettings()
 	iniFile.beginGroup("Main");
 	m_currentLanguage = Language(iniFile.value("Language", 0).toInt());
 	ui->actionHideInfo->setChecked(iniFile.value("HideInfo", false).toBool());
+	ui->actionAlwaysSave->setChecked(iniFile.value("AlwaysSave", false).toBool());
 
 	// Read themes
 	m_themes.clear();
@@ -378,8 +380,9 @@ void CrowdedHellGUI::__updateSettings()
 	iniFile.setValue("Language", int(m_currentLanguage));
 	iniFile.setValue("Theme", m_currentTheme);
 	iniFile.setValue("HideInfo", ui->actionHideInfo->isChecked());
+	iniFile.setValue("AlwaysSave", ui->actionAlwaysSave->isChecked());
 	iniFile.endGroup();
-}
+};
 
 void CrowdedHellGUI::__turnToDefalutTheme()
 {
@@ -408,7 +411,9 @@ void CrowdedHellGUI::on_actionReselectMusic_triggered()
 
 	m_audioPlayer->playOrPause(false);
 	QString musicFilePath = QFileDialog::getOpenFileName(this, tr("Select Music File"), qApp->applicationDirPath(), tr("Music File(*.mp3 *.wav)"));
-	m_projectManager->reselectMusic(musicFilePath);
+
+	if(!musicFilePath.isEmpty())
+		m_projectManager->reselectMusic(musicFilePath);
 };
 
 void CrowdedHellGUI::on_buttonPause_toggled(bool checked)
@@ -525,7 +530,7 @@ void CrowdedHellGUI::on_lineEditFrames_editingFinished()
 	}
 
 	m_audioPlayer->changePosition(frames * 20);
-}
+};
 
 void CrowdedHellGUI::on_menuTheme_hovered(QAction *action)
 {
@@ -579,17 +584,17 @@ void CrowdedHellGUI::on_comboBoxSpeed_currentIndexChanged(int index)
 		default:
 			m_audioPlayer->changeSpeed(1.0f);
 	}
-}
+};
 
 void CrowdedHellGUI::on_actionHideInfo_changed()
 {
 	__updateSettings();
-}
+};
 
 void CrowdedHellGUI::volumeBarValueChanged(int value)
 {
 	m_audioPlayer->changeVolume(float(value / 100.0));
-}
+};
 
 void CrowdedHellGUI::changeMusic(QString musicPath)
 {
@@ -597,12 +602,18 @@ void CrowdedHellGUI::changeMusic(QString musicPath)
 	QString fileName = QFileInfo(musicPath).fileName();
 	m_currentMusicName = fileName.remove(fileName.lastIndexOf(QChar('.')), 4);
 	ui->labelMusicName->setText(tr("Background Music : ") + m_currentMusicName);
-}
+};
+
+void CrowdedHellGUI::projectClosed()
+{
+	m_audioPlayer->reset();
+	ui->labelMusicName->setText(tr("Background Music : Unknown - Unknown"));
+};
 
 void CrowdedHellGUI::on_buttonMute_toggled(bool checked)
 {
 	m_audioPlayer->mute(checked);
-}
+};
 
 void CrowdedHellGUI::on_buttonToZero_pressed()
 {
@@ -613,7 +624,7 @@ void CrowdedHellGUI::on_buttonToZero_pressed()
 	}
 
 	m_audioPlayer->changePosition(0);
-}
+};
 
 void CrowdedHellGUI::on_lineEditTime_editingFinished()
 {
@@ -666,4 +677,14 @@ void CrowdedHellGUI::on_lineEditTime_editingFinished()
 	}
 
 	m_audioPlayer->changePosition(unsigned((minutes * 60 + seconds) * 1000 + miliseconds));
-}
+};
+
+void CrowdedHellGUI::on_actionAlwaysSave_changed()
+{
+	__updateSettings();
+};
+
+void CrowdedHellGUI::on_actionOpenProject_triggered()
+{
+	m_projectManager->openProject();
+};

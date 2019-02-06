@@ -1,8 +1,7 @@
 #include "projectmanager.h"
 
-
 ProjectManager::ProjectManager(CrowdedHellGUI *parent, QTreeView *resourceView) :
-	QObject(parent)
+	QObject(parent), m_changed(false), m_alwaysSave(false)
 {
 	m_resouceManager = new ResourceManager(parent, resourceView);
 	m_parent = parent;
@@ -10,18 +9,24 @@ ProjectManager::ProjectManager(CrowdedHellGUI *parent, QTreeView *resourceView) 
 			m_parent, SLOT(sendMessage(MessageType, QString, QString)));
 	connect(this, SIGNAL(musicSelected(QString)),
 			m_parent, SLOT(changeMusic(QString)));
-}
+	connect(this, SIGNAL(projectClosed()),
+			m_parent, SLOT(projectClosed()));
+};
 
 bool ProjectManager::isValid()
 {
 	return !m_projectName.isEmpty();
-}
+};
 
 void ProjectManager::newProject()
 {
 	CreateProjectWizard *wizard = new CreateProjectWizard(m_parent);
 	if(wizard->exec() != QWizard::Accepted)
+	{
+		delete wizard;
 		return;
+	}
+
 	QString projectPath = wizard->getPath() + QString("/") + wizard->getProjectName();
 
 	QString musicPath = wizard->getMusicPath();
@@ -50,7 +55,7 @@ void ProjectManager::newProject()
 
 	if(!QDir().mkpath(projectPath + QString("/sprites")))
 	{
-		sendMessage(MessageType::Error, "Project Manager", tr("Make selected directory failed, at : \"%1\".").arg(projectPath) + QString("/sprites"));
+		emit sendMessage(MessageType::Error, "Project Manager", tr("Make selected directory failed, at : \"%1\".").arg(projectPath) + QString("/sprites"));
 		delete wizard;
 		return;
 	}
@@ -114,15 +119,14 @@ void ProjectManager::newProject()
 	emit sendMessage(MessageType::Info, "Project Manager", tr("Create project finished."));
 
 	delete wizard;
-}
+};
 
 void ProjectManager::openProject()
 {
-	int shouldSave = QMessageBox::No;
-	if(m_changed)
-		shouldSave = QMessageBox::question(nullptr, tr("Confirm"), tr("Would you like to save your project before close it?"), QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel, QMessageBox::Yes);
-
 	QString projectFilePath = QFileDialog::getOpenFileName(nullptr, tr("Select a project"), ".", "Crowded Hell Project(*.chproj)");
+	if(projectFilePath.isEmpty())
+		return;
+
 	QFile projectFile(projectFilePath);
 	if(!projectFile.open(QIODevice::ReadOnly | QIODevice::Text))
 	{
@@ -130,8 +134,65 @@ void ProjectManager::openProject()
 		return;
 	}
 
+	QTextStream textStream(&projectFile);
+	QStringList datas = textStream.readAll().split("\n");
+	projectFile.close();
 
-}
+	if(datas.size() < 4)
+	{
+		emit sendMessage(MessageType::Error, "Project Manager", tr("Project file format abnormal."));
+		return;
+	}
+
+	QString projectPath = QFileInfo(projectFilePath).absolutePath();
+
+	if(!QFile(projectPath + QString("/") + m_music).exists())
+	{
+		emit sendMessage(MessageType::Error, "Project Manager", tr("Cannot find the music file of project, at : \"%1\"").arg(m_projectPath + QString("/") + m_music));
+		return;
+	}
+
+	closeProject();
+
+	m_projectName = QFileInfo(projectFilePath).fileName().remove(QString(".chproj"));
+	m_projectPath = QFileInfo(projectFilePath).absolutePath();
+	m_author = datas[1];
+	m_date = QDateTime::fromString(datas[2]);
+	m_music = datas[3];
+	emit musicSelected(projectPath + QString("/") + m_music);
+};
+
+void ProjectManager::closeProject()
+{
+	if(!isValid())
+		return;
+
+	if(m_changed)
+	{
+		int shouldSave = QMessageBox::No;
+		if(!m_alwaysSave)
+			shouldSave = QMessageBox::question(nullptr, tr("Confirm"), tr("Would you like to save your project before close it?"), QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel, QMessageBox::Yes);
+
+		if(shouldSave == QMessageBox::Cancel)
+			return;
+
+		if(m_alwaysSave || shouldSave == QMessageBox::Yes)
+		{
+
+		}
+	}
+
+	emit sendMessage(MessageType::Info, "Project Manager", tr("Project \"%1\" closed.").arg(m_projectName));
+	emit projectClosed();
+
+	m_projectName.clear();
+	m_projectPath.clear();
+	m_temporaryPath.clear();
+	m_author.clear();
+	m_music.clear();
+
+	m_changed = false;
+};
 
 void ProjectManager::reselectMusic(QString musicPath)
 {
@@ -172,7 +233,7 @@ void ProjectManager::reselectMusic(QString musicPath)
 
 	if(QFile(m_projectPath + "/" + datas[3]).exists())
 		if(!QFile(m_projectPath + "/" + datas[3]).remove())
-			sendMessage(MessageType::Warning, "Project Manager", tr("Failed remove music file \"%1\".").arg(m_projectPath + "/" + datas[3]));
+			emit sendMessage(MessageType::Warning, "Project Manager", tr("Failed remove music file \"%1\".").arg(m_projectPath + "/" + datas[3]));
 
 	datas[3] = QFileInfo(musicPath).fileName();
 
@@ -189,4 +250,9 @@ void ProjectManager::reselectMusic(QString musicPath)
 	emit musicSelected(m_projectPath + QString("/") + QFileInfo(musicPath).fileName());
 
 	return;
+};
+
+void ProjectManager::setAlwaysSave(bool save)
+{
+	m_alwaysSave = save;
 };

@@ -5,12 +5,12 @@ AudioPlayerSlider::AudioPlayerSlider(QWidget *parent) :
 {
 	setMinimum(0);
 	setMaximum(1000);
-}
+};
 
 void AudioPlayerSlider::setAudioPlayer(AudioPlayer *audioPlayer)
 {
 	m_audioPlayer = audioPlayer;
-}
+};
 
 void AudioPlayerSlider::mousePressEvent(QMouseEvent *event)
 {
@@ -26,7 +26,7 @@ void AudioPlayerSlider::mousePressEvent(QMouseEvent *event)
 		}
 		m_leftButtonPressing = true;
 	}
-}
+};
 
 void AudioPlayerSlider::mouseMoveEvent(QMouseEvent *event)
 {
@@ -39,7 +39,7 @@ void AudioPlayerSlider::mouseMoveEvent(QMouseEvent *event)
 			m_audioPlayer->changePosition(unsigned((pos/1000.0) * m_audioPlayer->getMusicLength()));
 		}
 	}
-}
+};
 
 void AudioPlayerSlider::mouseReleaseEvent(QMouseEvent *event)
 {
@@ -47,7 +47,7 @@ void AudioPlayerSlider::mouseReleaseEvent(QMouseEvent *event)
 	{
 		m_leftButtonPressing = false;
 	}
-}
+};
 
 int AudioPlayerSlider::__limit(int value, int min, int max)
 {

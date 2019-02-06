@@ -88,6 +88,12 @@ public:
 	 */
 	bool isPlaying();
 
+	/**
+	 * @brief reset
+	 * Reset to null.
+	 */
+	void reset();
+
 signals:
 	/**
 	 * @see CrowdedHellGUI::sendMessage(MessageType, QString, QString);

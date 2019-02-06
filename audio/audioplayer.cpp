@@ -17,7 +17,7 @@ AudioPlayer::AudioPlayer(AudioPlayerSlider *slider, CrowdedHellGUI *parent) :
 	__initializeFmodSystem();
 
 	m_timer = QObject::startTimer(5);
-}
+};
 
 AudioPlayer::~AudioPlayer()
 {
@@ -84,6 +84,10 @@ void AudioPlayer::changeMusic(const QString &path)
 	if(m_music != nullptr)
 		m_music->release();
 	m_music = nullptr;
+
+	if(m_channel != nullptr)
+		delete m_channel;
+	m_channel = nullptr;
 
 	m_parent->updateMusicLength(0);
 	m_pos = 0;
@@ -154,22 +158,22 @@ unsigned int AudioPlayer::getPosition()
 		m_channel->getPosition(&pos, FMOD_TIMEUNIT_MS);
 		return pos;
 	}
-}
+};
 
 unsigned int AudioPlayer::getMusicLength()
 {
 	return m_length;
-}
+};
 
 float AudioPlayer::getSpeed()
 {
 	return m_speed;
-}
+};
 
 float AudioPlayer::getVolume()
 {
 	return m_volume;
-}
+};
 
 bool AudioPlayer::isPlaying()
 {
@@ -181,6 +185,24 @@ bool AudioPlayer::isPlaying()
 		m_channel->isPlaying(&isPlaying);
 		return isPlaying;
 	}
+};
+
+void AudioPlayer::reset()
+{
+	playOrPause(false);
+
+	if(m_music != nullptr)
+		m_music->release();
+	m_music = nullptr;
+
+	if(m_channel != nullptr)
+		delete m_channel;
+	m_channel = nullptr;
+
+	m_parent->updateMusicLength(0);
+	m_pos = 0;
+	emit positionChanged(0);
+	m_slider->setValue(0);
 };
 
 void AudioPlayer::playOrPause(bool play)
@@ -320,7 +342,7 @@ void AudioPlayer::playOrPause(bool play)
 
 		if(m_channel == nullptr)
 		{
-			emit sendMessage(MessageType::Error, "FMOD", tr("If you have met this message, it means that my codes have logic error. Please report to me, thanks!"));
+			emit sendMessage(MessageType::Error, "FMOD", tr("If you have met this message, it means that my codes have logic error. Please report to me detailedly, thanks!"));
 			emit playedOrPaused(false);
 			return;
 		}
@@ -417,7 +439,7 @@ void AudioPlayer::changePosition(unsigned int pos)
 	m_slider->setValue(int(double(m_pos) * 1000 / double(m_length)));
 	emit sendMessage(MessageType::Info, "FMOD", tr("Set position to %1 miliseconds successfully while the length of music is %2 miliseconds.").arg(QString::number(m_pos), QString::number(m_length)));
 	emit positionChanged(pos);
-}
+};
 
 void AudioPlayer::changeSpeed(float speed)
 {
@@ -432,7 +454,7 @@ void AudioPlayer::changeSpeed(float speed)
 	}
 
 	emit speedChanged(speed);
-}
+};
 
 void AudioPlayer::changeVolume(float volume)
 {
@@ -445,8 +467,9 @@ void AudioPlayer::changeVolume(float volume)
 		else
 			emit sendMessage(MessageType::Info, "FMOD", tr("Set music volume to %1/100.").arg(QString::number(int(m_volume * 100))));
 	}
+
 	__updateSettings();
-}
+};
 
 void AudioPlayer::mute(bool mute)
 {
@@ -481,7 +504,6 @@ void AudioPlayer::__initializeFmodSystem()
 
 	if(m_fmodSystem == nullptr)
 	{
-		emit sendMessage(MessageType::Info, "FMOD", tr("Trying to create FMOD system..."));
 		result = FMOD::System_Create(&m_fmodSystem);
 
 		if (result != FMOD_OK)
@@ -493,7 +515,6 @@ void AudioPlayer::__initializeFmodSystem()
 		else
 			emit sendMessage(MessageType::Info, "FMOD", tr("Created FMOD system successfully."));
 
-		emit sendMessage(MessageType::Info, "FMOD", tr("Trying to load sound drivers..."));
 		int driverCount = 0;
 		m_fmodSystem->getNumDrivers(&driverCount);
 
@@ -510,7 +531,6 @@ void AudioPlayer::__initializeFmodSystem()
 
 	if(m_fmodNotInit)
 	{
-		emit sendMessage(MessageType::Info, "FMOD", tr("Trying to initialize FMOD system..."));
 		result = m_fmodSystem->init(36, FMOD_INIT_NORMAL, nullptr);
 		if (result != FMOD_OK)
 		{
@@ -523,7 +543,7 @@ void AudioPlayer::__initializeFmodSystem()
 
 		m_fmodNotInit = false;
 	}
-}
+};
 
 void AudioPlayer::__readSettings()
 {
@@ -531,7 +551,7 @@ void AudioPlayer::__readSettings()
 	iniFile.beginGroup("Audio");
 	m_volume = iniFile.value("Volume", 0.6f).toFloat();
 	iniFile.endGroup();
-}
+};
 
 void AudioPlayer::__updateSettings()
 {

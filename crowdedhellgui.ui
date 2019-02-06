@@ -810,7 +810,7 @@
      <x>0</x>
      <y>0</y>
      <width>1400</width>
-     <height>30</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -835,6 +835,7 @@
     <addaction name="separator"/>
     <addaction name="actionClose"/>
     <addaction name="actionSaveAndClose"/>
+    <addaction name="actionAlwaysSave"/>
     <addaction name="separator"/>
     <addaction name="actionEixt"/>
    </widget>
@@ -988,6 +989,14 @@
    </property>
    <property name="text">
     <string>Hide &quot;Info&quot; Messages</string>
+   </property>
+  </action>
+  <action name="actionAlwaysSave">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Always Save  When Close</string>
    </property>
   </action>
  </widget>

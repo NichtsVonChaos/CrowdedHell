@@ -75,6 +75,8 @@ public slots:
 
 	void changeMusic(QString musicPath);
 
+	void projectClosed();
+
 private slots:
 	void on_actionSimplifiedChinese_triggered();
 
@@ -117,6 +119,10 @@ private slots:
 	void on_buttonToZero_pressed();
 
 	void on_lineEditTime_editingFinished();
+
+	void on_actionAlwaysSave_changed();
+
+	void on_actionOpenProject_triggered();
 
 private:
 	Ui::CrowdedHellGUI *ui;
