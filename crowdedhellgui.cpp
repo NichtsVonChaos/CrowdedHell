@@ -24,15 +24,16 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	m_displayWidget->setFixedSize(QSize(800, 608));
 	m_displayWidget->hide();
 
+	__readSettings();
+
 	// Initialize message box.
 	ui->textEditMessageBox->document()->setMaximumBlockCount(100);
-	ui->textEditMessageBox->setHtml("<font color=purple>>>></font>");
+	ui->textEditMessageBox->setHtml("<font color=purple>>>></font> ");
 
 	// Initialize project manager.
 	m_projectManager = new ProjectManager(this, ui->treeViewResources);
+	m_projectManager->setAlwaysSave(ui->actionAlwaysSave->isChecked());
 	connect(ui->actionAlwaysSave, SIGNAL(toggled(bool)), m_projectManager, SLOT(setAlwaysSave(bool)));
-
-	__readSettings();
 
 	// Initialize audio player.
 	m_audioPlayer = new AudioPlayer(ui->audioSlider, this);
@@ -689,5 +690,5 @@ void CrowdedHellGUI::on_actionOpenProject_triggered()
 void CrowdedHellGUI::on_actionClearMessages_triggered()
 {
 	ui->textEditMessageBox->clear();
-	ui->textEditMessageBox->setHtml("<font color=purple>>>></font> ");
+	ui->textEditMessageBox->setHtml("<font color=purple>>>> </font>");
 }
