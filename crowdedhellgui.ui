@@ -861,6 +861,7 @@
     <addaction name="menuTheme"/>
     <addaction name="separator"/>
     <addaction name="actionHideInfo"/>
+    <addaction name="actionClearMessages"/>
    </widget>
    <widget class="QMenu" name="menuResources">
     <property name="title">
@@ -997,6 +998,11 @@
    </property>
    <property name="text">
     <string>Always Save  When Close</string>
+   </property>
+  </action>
+  <action name="actionClearMessages">
+   <property name="text">
+    <string>Clear Messages</string>
    </property>
   </action>
  </widget>

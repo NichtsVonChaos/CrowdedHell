@@ -25,8 +25,8 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	m_displayWidget->hide();
 
 	// Initialize message box.
-	ui->textEditMessageBox->document()->setMaximumBlockCount(200);
-	ui->textEditMessageBox->setHtml("<font color=purple>>>></font> ");
+	ui->textEditMessageBox->document()->setMaximumBlockCount(100);
+	ui->textEditMessageBox->setHtml("<font color=purple>>>></font>");
 
 	// Initialize project manager.
 	m_projectManager = new ProjectManager(this, ui->treeViewResources);
@@ -54,46 +54,43 @@ CrowdedHellGUI::~CrowdedHellGUI()
 
 void CrowdedHellGUI::sendMessage(MessageType type, QString module, QString message)
 {
+	QString messageHtml = "<p>";
 	switch(type)
 	{
 		case MessageType::Info:
 		{
 			if(ui->actionHideInfo->isChecked())
 				return;
-			ui->textEditMessageBox->moveCursor(QTextCursor::End);
-			ui->textEditMessageBox->insertHtml(QString("<font color=black><b>[ <font color=green>") + tr("Info") + QString("</font> ]</b></font> "));
+			messageHtml += QString("<font color=black><b>[ <font color=green>") + tr("Info") + QString("</font> ]</b></font> ");
 		}
 		break;
 
 		case MessageType::Error:
 		{
-			ui->textEditMessageBox->moveCursor(QTextCursor::End);
-			ui->textEditMessageBox->insertHtml(QString("<font color=black><b>[ <font color=red>") + tr("Error") + QString("</font> ]</b></font> "));
+			messageHtml += QString("<font color=black><b>[ <font color=red>") + tr("Error") + QString("</font> ]</b></font> ");
 		}
 		break;
 
 		case MessageType::Warning:
 		{
-			ui->textEditMessageBox->moveCursor(QTextCursor::End);
-			ui->textEditMessageBox->insertHtml(QString("<font color=black><b>[ <font color=orange>") + tr("Warning") + QString("</font> ]</b></font> "));
+			messageHtml += QString("<font color=black><b>[ <font color=orange>") + tr("Warning") + QString("</font> ]</b></font> ");
 		}
 		break;
 
 		case MessageType::Tips:
 		{
-			ui->textEditMessageBox->moveCursor(QTextCursor::End);
-			ui->textEditMessageBox->insertHtml(QString("<font color=black><b>[ <font color=blue>") + tr("Tips") + QString("</font> ]</b></font> "));
+			messageHtml += QString("<font color=black><b>[ <font color=blue>") + tr("Tips") + QString("</font> ]</b></font> ");
 		}
 		break;
 	}
 
+	messageHtml += QString(tr("In module %1 : ")).arg(QString("<font color=purple><u>") + module + QString("</u></font>"));
+	messageHtml += QString("<font color=black>") + message + QString("</font></p><font color=purple>>>> </font>");
+
+	qDebug() << messageHtml << endl;
+
 	ui->textEditMessageBox->moveCursor(QTextCursor::End);
-	ui->textEditMessageBox->insertHtml(QString(tr("In module %1 : ")).arg(QString("<font color=purple><u>") + module + QString("</font></u>")));
-	ui->textEditMessageBox->setFontUnderline(false);
-	ui->textEditMessageBox->moveCursor(QTextCursor::End);
-	ui->textEditMessageBox->insertHtml(QString("<font color=black>") + message + QString("</font><br />"));
-	ui->textEditMessageBox->moveCursor(QTextCursor::End);
-	ui->textEditMessageBox->insertHtml("<font color=purple>>>></font> ");
+	ui->textEditMessageBox->textCursor().insertHtml(messageHtml);
 };
 
 void CrowdedHellGUI::changeEvent(QEvent *event)
@@ -688,3 +685,9 @@ void CrowdedHellGUI::on_actionOpenProject_triggered()
 {
 	m_projectManager->openProject();
 };
+
+void CrowdedHellGUI::on_actionClearMessages_triggered()
+{
+	ui->textEditMessageBox->clear();
+	ui->textEditMessageBox->setHtml("<font color=purple>>>></font> ");
+}

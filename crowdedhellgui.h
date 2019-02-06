@@ -124,6 +124,8 @@ private slots:
 
 	void on_actionOpenProject_triggered();
 
+	void on_actionClearMessages_triggered();
+
 private:
 	Ui::CrowdedHellGUI *ui;
 
