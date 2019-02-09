@@ -28,16 +28,20 @@ public:
 	virtual void setString(int attribute, QString value) = 0;
 	virtual void setPointer(int attribute, void *value) = 0;
 
-	static void restart();
-
 public slots:
 	virtual void infer(QTime time) = 0;
 	virtual void prevFrame() = 0;
 	virtual void nextFrame() = 0;
+	virtual void prev(unsigned int frames) = 0;
+	virtual void next(unsigned int frames) = 0;
+
+	static void reset();
+	static void setPlaySpeed(float speed);
+	static unsigned int getBarrageNumber();
 
 protected:
-	static int m_barrageNumber;
-	static double m_globalPlaySpeed;
+	static unsigned int m_barrageNumber;
+	static float m_globalPlaySpeed;
 };
 
 #endif // METABARRAGE_H

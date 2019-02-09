@@ -19,6 +19,8 @@ enum class Language;
 #include "crowdedhellgui.h"
 #endif
 
+#include "barrage/metabarrage.h"
+
 /**
  * @brief The AudioPlayer class
  * The audio control center.
