@@ -22,6 +22,8 @@ public:
 
 	QStringList getSpriteNames();
 	QString getSpriteFile(QString name);
+	QString getSpriteFile(int index);
+	QString getSpriteIndex(QString name);
 	bool addSprite(QString name, QString filePath);
 	bool removeSprite(QString name);
 	bool renameSprite(QString name);

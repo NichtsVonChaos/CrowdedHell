@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui opengl multimedia
+QT       += core gui opengl
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -34,24 +34,26 @@ SOURCES += \
         main.cpp \
         crowdedhellgui.cpp \
     display/avoidancedisplaywidget.cpp \
-    barrage/metabarrage.cpp \
     audio/audioplayerslider.cpp \
     audio/audioplayer.cpp \
     manager/resourcemanager.cpp \
     manager/projectmanager.cpp \
     manager/resourcetreeview.cpp \
-    manager/createprojectwizard.cpp
+    manager/createprojectwizard.cpp \
+    barrage/normalbarrage.cpp \
+    barrage/metagmobject.cpp
 
 HEADERS += \
         crowdedhellgui.h \
     display/avoidancedisplaywidget.h \
-    barrage/metabarrage.h \
     audio/audioplayerslider.h \
     audio/audioplayer.h \
     manager/projectmanager.h \
     manager/resourcemanager.h \
     manager/resourcetreeview.h \
-    manager/createprojectwizard.h
+    manager/createprojectwizard.h \
+    barrage/normalbarrage.h \
+    barrage/metagmobject.h
 
 FORMS += \
         crowdedhellgui.ui \

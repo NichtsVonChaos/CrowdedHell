@@ -453,7 +453,7 @@ void AudioPlayer::changeSpeed(float speed)
 			emit sendMessage(MessageType::Info, "FMOD", tr("Set music speed to x%1.").arg(QString::number(double(m_speed), 'g', 2)));
 	}
 
-	MetaBarrage::setPlaySpeed(speed);
+	MetaGMObject::setPlaySpeed(speed);
 
 	emit speedChanged(speed);
 };

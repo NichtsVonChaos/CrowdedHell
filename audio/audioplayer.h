@@ -19,7 +19,9 @@ enum class Language;
 #include "crowdedhellgui.h"
 #endif
 
-#include "barrage/metabarrage.h"
+#ifndef METAGMOBJECT_H
+#include "barrage/metagmobject.h"
+#endif
 
 /**
  * @brief The AudioPlayer class
