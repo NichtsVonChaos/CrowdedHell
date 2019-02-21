@@ -39,6 +39,14 @@ public:
 	void openProject();
 
 	/**
+	 * @brief openProject
+	 * Open a existing project.
+	 * @param projectFilePath
+	 * *.chproj file path.
+	 */
+	void openProject(QString projectFilePath);
+
+	/**
 	 * @brief saveChange
 	 * Save all changes of project.
 	 */

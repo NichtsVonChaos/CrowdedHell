@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui opengl
+QT       += core gui opengl sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -22,6 +22,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+win32:QMAKE_LFLAGS += /MANIFESTUAC:\"level=\'requireAdministrator\' uiAccess=\'false\'\"
+
 CONFIG += c++17
 
 INCLUDEPATH += \
@@ -29,6 +31,8 @@ INCLUDEPATH += \
 
 win32: LIBS += -L$$PWD/FMOD/lib/ -lfmod64_vc -lfmodL64_vc
 else:unix: LIBS += -L$$PWD/FMOD/lib/ -lfmod -lfmodL
+
+win32: LIBS += -lAdvapi32
 
 SOURCES += \
         main.cpp \
@@ -41,7 +45,8 @@ SOURCES += \
     manager/resourcetreeview.cpp \
     manager/createprojectwizard.cpp \
     barrage/normalbarrage.cpp \
-    barrage/metagmobject.cpp
+    barrage/metagmobject.cpp \
+    sqlite/sqlitedatabase.cpp
 
 HEADERS += \
         crowdedhellgui.h \
@@ -53,7 +58,8 @@ HEADERS += \
     manager/resourcetreeview.h \
     manager/createprojectwizard.h \
     barrage/normalbarrage.h \
-    barrage/metagmobject.h
+    barrage/metagmobject.h \
+    sqlite/sqlitedatabase.h
 
 FORMS += \
         crowdedhellgui.ui \

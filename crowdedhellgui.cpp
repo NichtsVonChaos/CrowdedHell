@@ -46,6 +46,54 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 
 	if(!ui->actionHideInfo->isChecked())
 		sendMessage(MessageType::Tips, "Main Window", tr("You can hide all \"Info\" messages by selecting <font color=red>Window => Hide \"Info\" Messages</font>."));
+
+	// Deal with arguments
+	QStringList arguments = qApp->arguments();
+	if(arguments.size() > 1)
+	{
+		if(arguments[1].front() != QChar('-'))
+		{
+			m_projectManager->openProject(arguments[1]);
+		}
+	}
+
+	// Register.
+#if defined(Q_OS_WIN)
+	QString appPath = qApp->applicationFilePath() + " \"%1\"";
+	appPath = appPath.replace("/", "\\");
+	HKEY hKey;
+	if (RegOpenKeyEx(HKEY_CLASSES_ROOT, L".chproj\\Shell\\Open\\Command", 0, KEY_READ, &hKey) == ERROR_SUCCESS)
+	{
+		WCHAR value[_MAX_PATH];
+		DWORD dwSize = sizeof(value);
+		LSTATUS dwRet = RegQueryValueEx(hKey, L"", nullptr, nullptr, LPBYTE(value), &dwSize);
+
+		if(dwRet != ERROR_SUCCESS)
+			sendMessage(MessageType::Warning, "Main Window", tr("Read registry failed, at : \"%1\"").arg("HKEY_CLASSES_ROOT\\.chproj\\Shell\\Open\\Command"));
+		else if(std::wstring(value) != appPath.toStdWString())
+		{
+			RegSetValue(hKey, L"", REG_SZ, appPath.toStdWString().c_str(), long(appPath.toStdWString().size() + 1));
+			sendMessage(MessageType::Info, "Main Window", tr("Write registry succeeded, at : \"%1\"").arg("HKEY_CLASSES_ROOT\\.chproj\\Shell\\Open\\Command"));
+		}
+
+		RegCloseKey(hKey);
+	}
+	else
+	{
+		LSTATUS dwRet = RegCreateKey(HKEY_CLASSES_ROOT, L".chproj\\Shell\\Open\\Command", &hKey);
+		if(dwRet != ERROR_SUCCESS)
+			sendMessage(MessageType::Warning, "Main Window", tr("Create registry failed, at : \"%1\"").arg("HKEY_CLASSES_ROOT\\.chproj\\Shell\\Open\\Command"));
+		dwRet = RegSetValue(hKey, L"", REG_SZ, appPath.toStdWString().c_str(), long(appPath.toStdWString().size() + 1));
+		if(dwRet != ERROR_SUCCESS)
+			sendMessage(MessageType::Warning, "Main Window", tr("Write registry failed, at : \"%1\"").arg("HKEY_CLASSES_ROOT\\.chproj\\Shell\\Open\\Command"));
+		RegCloseKey(hKey);
+		sendMessage(MessageType::Info, "Main Window", tr("Write registry succeeded, at : \"%1\"").arg("HKEY_CLASSES_ROOT\\.chproj\\Shell\\Open\\Command"));
+	}
+
+#elif defined(Q_OS_LINUX)
+
+#endif
+
 };
 
 CrowdedHellGUI::~CrowdedHellGUI()
@@ -87,8 +135,6 @@ void CrowdedHellGUI::sendMessage(MessageType type, QString module, QString messa
 
 	messageHtml += QString(tr("In module %1 : ")).arg(QString("<font color=purple><u>") + module + QString("</u></font>"));
 	messageHtml += QString("<font color=black>") + message + QString("</font></p><font color=purple>>>> </font>");
-
-	qDebug() << messageHtml << endl;
 
 	ui->textEditMessageBox->moveCursor(QTextCursor::End);
 	ui->textEditMessageBox->textCursor().insertHtml(messageHtml);

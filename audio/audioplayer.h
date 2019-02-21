@@ -34,13 +34,13 @@ class AudioPlayer : public QObject
 public:
 	AudioPlayer(AudioPlayerSlider *slider, CrowdedHellGUI *parent);
 
-	~AudioPlayer();
+	~AudioPlayer() override;
 
 	/**
 	 * @brief timerEvent
 	 * Update time of music's playing per 5 miliseconds.
 	 */
-	void timerEvent(QTimerEvent *ev);
+	void timerEvent(QTimerEvent *ev) override;
 
 	/**
 	 * @brief reselectMusic

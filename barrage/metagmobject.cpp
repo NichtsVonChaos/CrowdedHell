@@ -4,7 +4,8 @@ unsigned int MetaGMObject::m_instanceNumber = 0;
 
 float MetaGMObject::m_globalPlaySpeed = 0.0f;
 
-MetaGMObject::MetaGMObject()
+MetaGMObject::MetaGMObject(ResourceManager *resourceManager) :
+	m_resourceManager(resourceManager)
 {
 	m_sprite_index = -1;
 	m_image_index = 0;
@@ -40,8 +41,12 @@ MetaGMObject::MetaGMObject()
 
 	m_visible = true;
 	m_solid = false;
-	m_existing = false;
 }
+
+MetaGMObject::~MetaGMObject()
+{
+
+};
 
 int MetaGMObject::getInteger(int attribute)
 {
@@ -106,7 +111,7 @@ int MetaGMObject::getInteger(int attribute)
 			return 0;
 		}
 	}
-}
+};
 
 double MetaGMObject::getDouble(int attribute)
 {
@@ -181,7 +186,7 @@ double MetaGMObject::getDouble(int attribute)
 		default:
 		return 0.0;
 	}
-}
+};
 
 bool MetaGMObject::getBoolean(int attribute)
 {
@@ -193,13 +198,10 @@ bool MetaGMObject::getBoolean(int attribute)
 		case SOLID:
 		return m_solid;
 
-		case EXISTING:
-		return m_existing;
-
 		default:
 		return false;
 	}
-}
+};
 
 void *MetaGMObject::getPointer(int attribute)
 {
@@ -290,7 +292,7 @@ void MetaGMObject::setInteger(int attribute, int value)
 		break;
 
 	}
-}
+};
 
 void MetaGMObject::setDouble(int attribute, double value)
 {
@@ -400,7 +402,7 @@ void MetaGMObject::setDouble(int attribute, double value)
 			m_ystart = value;
 		break;
 	}
-}
+};
 
 void MetaGMObject::setBoolean(int attribute, bool value)
 {
@@ -413,12 +415,8 @@ void MetaGMObject::setBoolean(int attribute, bool value)
 		case SOLID:
 			m_solid = value;
 		break;
-
-		case EXISTING:
-			m_existing = value;
-		break;
 	}
-}
+};
 
 void MetaGMObject::reset()
 {

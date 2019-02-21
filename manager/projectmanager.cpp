@@ -160,6 +160,43 @@ void ProjectManager::openProject()
 	m_createDate = QDateTime::fromString(datas[2]);
 	m_musicFile = datas[3];
 	emit musicSelected(projectPath + QString("/") + m_musicFile);
+}
+
+void ProjectManager::openProject(QString projectFilePath)
+{
+	QFile projectFile(projectFilePath);
+	if(!projectFile.open(QIODevice::ReadOnly | QIODevice::Text))
+	{
+		emit sendMessage(MessageType::Error, "Projcet Manager", tr("Open selected project file failed, at : \"%1\".").arg(projectFilePath));
+		return;
+	}
+
+	QTextStream textStream(&projectFile);
+	QStringList datas = textStream.readAll().split("\n");
+	projectFile.close();
+
+	if(datas.size() < 4)
+	{
+		emit sendMessage(MessageType::Error, "Project Manager", tr("Project file format abnormal."));
+		return;
+	}
+
+	QString projectPath = QFileInfo(projectFilePath).absolutePath();
+
+	if(!QFile(projectPath + QString("/") + m_musicFile).exists())
+	{
+		emit sendMessage(MessageType::Error, "Project Manager", tr("Cannot find the music file of project, at : \"%1\"").arg(m_projectPath + QString("/") + m_musicFile));
+		return;
+	}
+
+	closeProject();
+
+	m_projectName = QFileInfo(projectFilePath).fileName().remove(QString(".chproj"));
+	m_projectPath = QFileInfo(projectFilePath).absolutePath();
+	m_author = datas[1];
+	m_createDate = QDateTime::fromString(datas[2]);
+	m_musicFile = datas[3];
+	emit musicSelected(projectPath + QString("/") + m_musicFile);
 };
 
 void ProjectManager::closeProject()

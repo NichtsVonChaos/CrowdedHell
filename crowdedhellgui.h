@@ -9,7 +9,10 @@
 #include <QFile>
 #include <QTextCodec>
 #include <QDebug>
+#include <QtGlobal>
 #include <QSettings>
+
+#include <qt_windows.h>
 
 class AvoidanceDisplayWidget;
 #ifndef AVOIDANCEDISPLAYWIDGET_H
@@ -47,13 +50,13 @@ class CrowdedHellGUI : public QMainWindow
 
 public:
 	explicit CrowdedHellGUI(QWidget *parent = nullptr);
-	~CrowdedHellGUI();
+	~CrowdedHellGUI() override;
 
 	void musicInvalid();
 
 	void updateMusicLength(unsigned int miliseconds);
 
-	void changeEvent(QEvent *event);
+	void changeEvent(QEvent *event) override;
 
 	QString currentTheme() const;
 

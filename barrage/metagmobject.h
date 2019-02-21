@@ -6,6 +6,7 @@
 #include <QTime>
 #include <cmath>
 
+class ResourceManager;
 #ifndef RESOURCEMANAGER_H
 #include "manager/resourcemanager.h"
 #endif
@@ -25,7 +26,7 @@ class MetaGMObject : public QObject
 
 public:
 	MetaGMObject(ResourceManager *resourceManager);
-	virtual ~MetaGMObject() = 0;
+	virtual ~MetaGMObject();
 	virtual int getInteger(int attribute);
 	virtual double getDouble(int attribute);
 	virtual bool getBoolean(int attribute);
@@ -105,7 +106,6 @@ public:
 	// Variables of boolean number.
 	static const int VISIBLE = 0;
 	static const int SOLID = 1;
-	static const int EXISTING = 2;
 
 	// Variables of pointer.
 	static const int SELF = 0;
@@ -120,9 +120,9 @@ protected:
 	m_alpha, m_image_xscale, m_image_yscale, m_image_speed, m_image_angle,
 	m_path_position, m_path_positionprevious, m_path_orientation, m_path_scale,
 	m_x, m_y, m_xprevious, m_yprevious, m_xstart, m_ystart;
-	bool m_visible, m_solid, m_existing;
+	bool m_visible, m_solid;
 
-	ResourceManager *resourceManager;
+	ResourceManager *m_resourceManager;
 };
 
 #endif // METABARRAGE_H
