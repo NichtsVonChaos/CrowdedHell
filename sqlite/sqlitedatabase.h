@@ -18,8 +18,65 @@ class SQLiteDatabase : QObject
 	Q_OBJECT
 
 public:
-	SQLiteDatabase(QString databasePath);
+	SQLiteDatabase(const QString &databasePath);
 	~SQLiteDatabase();
+
+	enum class DataType
+	{
+		INTEGER, TEXT, REAL
+	};
+
+	/**
+	 * @brief The DataTable struct
+	 * Structure of a data table.
+	 * The column of auto increment index will named "_AutoIndex" and won't be included in the member "columns".
+	 */
+	struct DataTable
+	{
+		QString tableName;
+		QList<QPair<QString, SQLiteDatabase::DataType>> columns;
+		bool hasAutoIncrementIndex;
+		QString primaryKey;
+	};
+
+	/**
+	 * @brief isValid
+	 * Return whether database is valid.
+	 */
+	bool isValid();
+
+	/**
+	 * @brief getAllTableNames
+	 * Return a list of names of all tables in this database.
+	 */
+	QStringList getAllTableNames();
+
+	/**
+	 * @brief createTable
+	 * Create a new Table.
+	 * This function will call selectTable(table) if succesfully created this table.
+	 * @param table
+	 * Necessary information for create table.
+	 * @return
+	 * Return whether create table successfully.
+	 * If this table already exists, it will return false too.
+	 */
+	bool createTable(const DataTable &table);
+
+	/**
+	 * @brief exists
+	 * Return whether a table exists.
+	 * @param tableName
+	 * Table name.
+	 */
+	bool exists(const QString &tableName);
+
+	/**
+	 * @brief close
+	 * Close the database.
+	 * All operation will be unusable after close.
+	 */
+	void close();
 
 signals:
 	void sendMessage(MessageType type, QString module, QString message);
@@ -27,7 +84,7 @@ signals:
 private:
 	QString m_connectionName;
 
-	QString m_currentTable;
+	bool m_valid;
 };
 
 #endif // SQLITEDATABASE_H
