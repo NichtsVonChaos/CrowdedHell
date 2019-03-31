@@ -1,8 +1,8 @@
 #include "createprojectwizard.h"
 #include "ui_createprojectwizard.h"
 
-CreateProjectWizard::CreateProjectWizard(CrowdedHellGUI *parent) :
-	QWizard(parent),
+CreateProjectWizard::CreateProjectWizard() :
+	QWizard(g_mainWindow),
 	ui(new Ui::CreateProjectWizard)
 {
 	ui->setupUi(this);
@@ -11,12 +11,12 @@ CreateProjectWizard::CreateProjectWizard(CrowdedHellGUI *parent) :
 	QString QSSfile = "Theme/%1/QSS/%2 - Main Window.qss";
 
 
-	if(parent->currentTheme() == "Deep Blue")
+	if(g_mainWindow->currentTheme() == "Deep Blue")
 		QSSfile = ":/Theme/Deep Blue/QSS/%1 - Main Window.qss";
 	else
-		QSSfile = QSSfile.arg(parent->currentTheme());
+		QSSfile = QSSfile.arg(g_mainWindow->currentTheme());
 
-	switch (parent->currentLanguage())
+	switch (g_mainWindow->currentLanguage())
 	{
 		case Language::EN:
 			QSSfile = QSSfile.arg("EN");

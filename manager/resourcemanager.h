@@ -18,7 +18,7 @@ class ResourceManager : public QObject
 	Q_OBJECT
 
 public:
-	ResourceManager(CrowdedHellGUI *parent, QTreeView *resourceView);
+	ResourceManager (QTreeView *resourceView);
 
 	QStringList getSpriteNames();
 	QString getSpriteFile(QString name);
@@ -52,7 +52,7 @@ signals:
 	void sendMessage(MessageType type, QString module, QString message);
 
 public slots:
-	void changeLanguage(Language language);
+	void changeLanguage();
 
 private:
 	QStandardItemModel *m_model;

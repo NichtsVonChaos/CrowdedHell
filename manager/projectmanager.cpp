@@ -1,16 +1,12 @@
 #include "projectmanager.h"
 
-ProjectManager::ProjectManager(CrowdedHellGUI *parent, QTreeView *resourceView) :
-	QObject(parent), m_changed(false), m_alwaysSave(false)
+ProjectManager::ProjectManager(QTreeView *resourceView) :
+	QObject(g_mainWindow), m_changed(false), m_alwaysSave(false)
 {
-	m_resouceManager = new ResourceManager(parent, resourceView);
-	m_parent = parent;
-	connect(this, SIGNAL(sendMessage(MessageType, QString, QString)),
-			m_parent, SLOT(sendMessage(MessageType, QString, QString)));
-	connect(this, SIGNAL(musicSelected(QString)),
-			m_parent, SLOT(changeMusic(QString)));
-	connect(this, SIGNAL(projectClosed()),
-			m_parent, SLOT(projectClosed()));
+	m_resouceManager = new ResourceManager(resourceView);
+	connect(this, &ProjectManager::sendMessage, g_mainWindow, &CrowdedHellGUI::sendMessage);
+	connect(this, &ProjectManager::musicSelected, g_mainWindow, &CrowdedHellGUI::changeMusic);
+	connect(this, &ProjectManager::projectClosed, g_mainWindow, &CrowdedHellGUI::projectClosed);
 };
 
 bool ProjectManager::isValid() const
@@ -20,7 +16,7 @@ bool ProjectManager::isValid() const
 
 void ProjectManager::newProject()
 {
-	CreateProjectWizard *wizard = new CreateProjectWizard(m_parent);
+	CreateProjectWizard *wizard = new CreateProjectWizard;
 	if(wizard->exec() != QWizard::Accepted)
 	{
 		delete wizard;

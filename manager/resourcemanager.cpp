@@ -1,7 +1,7 @@
 #include "resourcemanager.h"
 
-ResourceManager::ResourceManager(CrowdedHellGUI *parent, QTreeView *resourceView) :
-	QObject(parent)
+ResourceManager::ResourceManager(QTreeView *resourceView) :
+	QObject(g_mainWindow)
 {
 	m_model = new QStandardItemModel(resourceView);
 	m_model->setHorizontalHeaderLabels(QStringList() << tr("Resources Tree"));
@@ -21,13 +21,13 @@ ResourceManager::ResourceManager(CrowdedHellGUI *parent, QTreeView *resourceView
 
 	resourceView->setModel(m_model);
 
-	connect(this, SIGNAL(sendMessage(MessageType, QString, QString)), parent, SLOT(sendMessage(MessageType, QString, QString)));
-	connect(parent, SIGNAL(languageChanged(Language)), this, SLOT(changeLanguage(Language)));
+	connect(this, &ResourceManager::sendMessage, g_mainWindow, &CrowdedHellGUI::sendMessage);
+	connect(g_mainWindow, &CrowdedHellGUI::languageChanged, this, &ResourceManager::changeLanguage);
 
 	emit sendMessage(MessageType::Info, "Resource Manager", tr("Initialize resouce manager complete."));
 };
 
-void ResourceManager::changeLanguage(Language language)
+void ResourceManager::changeLanguage()
 {
 	m_model->setHorizontalHeaderLabels(QStringList() << tr("Resources Tree"));
 	m_model->item(0)->setText(tr("Sprites"));

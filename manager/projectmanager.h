@@ -18,7 +18,7 @@ class ProjectManager : public QObject
 	Q_OBJECT
 
 public:
-	ProjectManager(CrowdedHellGUI *parent, QTreeView *resourceView);
+	ProjectManager(QTreeView *resourceView);
 
 	/**
 	 * @brief isValid
@@ -135,8 +135,6 @@ public slots:
 	void setAlwaysSave(bool save);
 
 private:
-	CrowdedHellGUI *m_parent;
-
 	ResourceManager *m_resouceManager;
 
 	QString m_projectName;

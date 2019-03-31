@@ -31,18 +31,18 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	ui->textEditMessageBox->setHtml("<font color=purple>>>></font> ");
 
 	// Initialize project manager.
-	m_projectManager = new ProjectManager(this, ui->treeViewResources);
+	m_projectManager = new ProjectManager(ui->treeViewResources);
 	m_projectManager->setAlwaysSave(ui->actionAlwaysSave->isChecked());
-	connect(ui->actionAlwaysSave, SIGNAL(toggled(bool)), m_projectManager, SLOT(setAlwaysSave(bool)));
+	connect(ui->actionAlwaysSave, &QAction::toggled, m_projectManager, &ProjectManager::setAlwaysSave);
 
 	// Initialize audio player.
-	m_audioPlayer = new AudioPlayer(ui->audioSlider, this);
+	m_audioPlayer = new AudioPlayer(ui->audioSlider);
 
 	// Set volume bar.
 	ui->volumeSliderBar->setMinimum(0);
 	ui->volumeSliderBar->setMaximum(100);
 	ui->volumeSliderBar->setValue(int(m_audioPlayer->getVolume() * 100));
-	connect(ui->volumeSliderBar, SIGNAL(valueChanged(int)), this, SLOT(volumeBarValueChanged(int)));
+	connect(ui->volumeSliderBar, &QSlider::valueChanged, this, &CrowdedHellGUI::volumeBarValueChanged);
 
 	if(!ui->actionHideInfo->isChecked())
 		sendMessage(MessageType::Tips, "Main Window", tr("You can hide all \"Info\" messages by selecting <font color=red>Window => Hide \"Info\" Messages</font>."));
@@ -91,7 +91,7 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	}
 
 #elif defined(Q_OS_LINUX)
-
+	// Wait for a solution.
 #endif
 
 };
@@ -138,11 +138,6 @@ void CrowdedHellGUI::sendMessage(MessageType type, QString module, QString messa
 
 	ui->textEditMessageBox->moveCursor(QTextCursor::End);
 	ui->textEditMessageBox->textCursor().insertHtml(messageHtml);
-};
-
-void CrowdedHellGUI::changeEvent(QEvent *event)
-{
-
 };
 
 QString CrowdedHellGUI::currentTheme() const

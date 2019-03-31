@@ -25,7 +25,7 @@ class CreateProjectWizard : public QWizard
 	Q_OBJECT
 
 public:
-	explicit CreateProjectWizard(CrowdedHellGUI *parent = nullptr);
+	explicit CreateProjectWizard();
 	~CreateProjectWizard() override;
 
 	QString getProjectName();

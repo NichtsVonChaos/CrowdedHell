@@ -32,7 +32,7 @@ class AudioPlayer : public QObject
 	Q_OBJECT
 
 public:
-	AudioPlayer(AudioPlayerSlider *slider, CrowdedHellGUI *parent);
+	AudioPlayer(AudioPlayerSlider *slider);
 
 	~AudioPlayer() override;
 

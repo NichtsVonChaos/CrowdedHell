@@ -1,14 +1,14 @@
 #include "audioplayer.h"
 
-AudioPlayer::AudioPlayer(AudioPlayerSlider *slider, CrowdedHellGUI *parent) :
-	m_fmodSystemNotInit(true), m_muted(false), m_pos(0), m_length(0), m_speed(1.0f), m_volume(0.6f), m_parent(parent), m_slider(slider), m_fmodSystem(nullptr), m_music(nullptr), m_channel(nullptr)
+AudioPlayer::AudioPlayer(AudioPlayerSlider *slider) :
+	m_fmodSystemNotInit(true), m_muted(false),
+	m_pos(0), m_length(0), m_speed(1.0f), m_volume(0.6f),
+	m_parent(g_mainWindow), m_slider(slider),
+	m_fmodSystem(nullptr), m_music(nullptr), m_channel(nullptr)
 {
-	connect(this, SIGNAL(sendMessage(MessageType, QString, QString)),
-			parent, SLOT(sendMessage(MessageType, QString, QString)));
-
-	connect(this, SIGNAL(playedOrPaused(bool)), parent, SLOT(musicPlayedOrPaused(bool)));
-
-	connect(this, SIGNAL(positionChanged(unsigned int)), parent, SLOT(musicPositionChanged(unsigned int)));
+	connect(this, &AudioPlayer::sendMessage, g_mainWindow, &CrowdedHellGUI::sendMessage);
+	connect(this, &AudioPlayer::playedOrPaused, g_mainWindow, &CrowdedHellGUI::musicPlayedOrPaused);
+	connect(this, &AudioPlayer::positionChanged, g_mainWindow, &CrowdedHellGUI::musicPositionChanged);
 
 	__readSettings();
 

@@ -12,7 +12,9 @@
 #include <QtGlobal>
 #include <QSettings>
 
+#ifdef Q_OS_WIN
 #include <qt_windows.h>
+#endif
 
 class AvoidanceDisplayWidget;
 #ifndef AVOIDANCEDISPLAYWIDGET_H
@@ -44,6 +46,8 @@ enum class MessageType
 	Info, Error, Warning, Tips
 };
 
+extern CrowdedHellGUI *g_mainWindow;
+
 class CrowdedHellGUI : public QMainWindow
 {
 	Q_OBJECT
@@ -55,8 +59,6 @@ public:
 	void musicInvalid();
 
 	void updateMusicLength(unsigned int miliseconds);
-
-	void changeEvent(QEvent *event) override;
 
 	QString currentTheme() const;
 
