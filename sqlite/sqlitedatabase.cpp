@@ -47,25 +47,114 @@ bool SQLiteDatabase::createTable(const SQLiteDatabase::DataTable &table)
 
 	if(exists(table.tableName))
 	{
-		sendMessage(MessageType::Warning, "SQLite", tr("Table is already exists, so it won't be created again."));
+		sendMessage(MessageType::Warning, "SQLite", tr("Table \"%1\" is already exists, so it won't be created again.").arg(table.tableName));
 		return false;
 	}
 
 	if(table.columns.size() == 0)
 	{
-		sendMessage(MessageType::Error, "SQLite", tr("Cannot create a table who has no column."));
+		sendMessage(MessageType::Error, "SQLite", tr("Cannot create table \"%1\" because it has no column.").arg(table.tableName));
 		return false;
 	}
 
-	QString sqlSentence = "CREATE TABLE IF NOT EXISTS ";
+	QString sqlSentence = "CREATE TABLE IF NOT EXISTS `";
 	sqlSentence += table.tableName;
-	sqlSentence += "(";
+	sqlSentence += "`(";
 	if(table.hasAutoIncrementIndex)
+		sqlSentence += "_AutoIndex INTEGER PRIMARY KEY AUTO INCREMENT,";
+
+	foreach(auto column, table.columns)
 	{
-		sqlSentence += "_AutoIndex INTEGER PRIMARY KEY AUTO INCREMENT, ";
+		sqlSentence += QString("`") + column.first + QString("`");
+		switch(column.second)
+		{
+			case DataType::INTEGER:
+				sqlSentence += " INTEGER ";
+			break;
+
+			case DataType::REAL:
+				sqlSentence += "REAL ";
+			break;
+
+			case DataType::TEXT:
+				sqlSentence += "TEXT ";
+			break;
+		}
+
+		if(column.first == table.primaryKey)
+			sqlSentence += "PRIMARY KEY";
+		sqlSentence += ",";
+	}
+	sqlSentence.replace(sqlSentence.length() - 1, 1, QChar(')'));
+
+	QSqlQuery query(QSqlDatabase::database(m_connectionName));
+	if(!query.exec(sqlSentence))
+	{
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1").arg(query.lastError().text()));
+		return false;
 	}
 
+	return true;
+}
 
+bool SQLiteDatabase::insert(const QString &tableName, const QVariantList &record)
+{
+	if(!isValid())
+	{
+		sendMessage(MessageType::Error, "SQLite", tr("Database is not valid."));
+		return false;
+	}
+
+	if(exists(tableName))
+	{
+		sendMessage(MessageType::Warning, "SQLite", tr("Table \"%1\" is already exists, so it won't be created again.").arg(tableName));
+		return false;
+	}
+
+	QString sqlSentence = "INSERT OR REPLACE INTO `";
+	sqlSentence += tableName;
+	sqlSentence += "` VALUES (";
+	for (int i = 0; i < record.size(); i++)
+		sqlSentence += "?,";
+	sqlSentence.replace(sqlSentence.length() - 1, 1, QChar(')'));
+
+	QSqlQuery query(QSqlDatabase::database(m_connectionName));
+	if(!query.prepare(sqlSentence))
+	{
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1").arg(query.lastError().text()));
+		return false;
+	}
+
+	foreach(auto value, record)
+		query.addBindValue(value);
+
+	if(!query.execBatch())
+	{
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1").arg(query.lastError().text()));
+		return false;
+	}
+
+	return true;
+}
+
+bool SQLiteDatabase::update(const DataTable &table, const QString &primaryKeyValue, const QString &columnName, const QVariant &value)
+{
+	QString sqlSentence = "UPDATE `%1` SET `%2`=? WHERE `%3`=%4";
+	sqlSentence = sqlSentence.arg(table.tableName).arg(columnName).arg(table.primaryKey.isEmpty() ? QString("_AutoIndex") : table.primaryKey).arg(primaryKeyValue);
+
+	QSqlQuery query(QSqlDatabase::database(m_connectionName));
+	if(!query.prepare(sqlSentence))
+	{
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1").arg(query.lastError().text()));
+		return false;
+	}
+
+	query.addBindValue(value);
+	if(!query.execBatch())
+	{
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1").arg(query.lastError().text()));
+		return false;
+	}
 
 	return true;
 };

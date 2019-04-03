@@ -30,6 +30,7 @@ public:
 	 * @brief The DataTable struct
 	 * Structure of a data table.
 	 * The column of auto increment index will named "_AutoIndex" and won't be included in the member "columns".
+	 * If hasAutoIncrementIndex is true, primaryKey can be empty or not.
 	 */
 	struct DataTable
 	{
@@ -62,6 +63,32 @@ public:
 	 * If this table already exists, it will return false too.
 	 */
 	bool createTable(const DataTable &table);
+
+	/**
+	 * @brief insert
+	 * Insert a new record or replace existed record into a table.
+	 * @param tableName
+	 * Table name.
+	 * @param record
+	 * All values of this record.
+	 * @return
+	 * return whether successfully executed.
+	 */
+	bool insert(const QString &tableName, const QVariantList &record);
+
+	/**
+	 * @brief update
+	 * Update a record.
+	 * @param tableName
+	 * Table name.
+	 * @param columnName
+	 * Column name where data will be updated.
+	 * @param value
+	 * New data.
+	 * @return
+	 * return whether successfully executed.
+	 */
+	bool update(const DataTable &table, const QString &primaryKeyValue, const QString &columnName, const QVariant &value);
 
 	/**
 	 * @brief exists
