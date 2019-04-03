@@ -91,12 +91,44 @@ public:
 	bool update(const DataTable &table, const QString &primaryKeyValue, const QString &columnName, const QVariant &value);
 
 	/**
+	 * @brief remove
+	 * Remove a record by codition.
+	 * @param tableName
+	 * Table name.
+	 * @param condition
+	 * Condition to decide which records will be removed.
+	 * @return
+	 * return whether successfully executed.
+	 */
+	bool remove(const QString &tableName, const QString &condition);
+
+	/**
 	 * @brief exists
 	 * Return whether a table exists.
 	 * @param tableName
 	 * Table name.
 	 */
 	bool exists(const QString &tableName);
+
+	/**
+	 * @brief drop
+	 * Drop a table.
+	 * @param tableName
+	 * Table name.
+	 * @return
+	 * return whether successfully executed.
+	 */
+	bool drop(const QString &tableName);
+
+	/**
+	 * @brief exec
+	 * Execute a SQL sentence directly.
+	 * @param sentence
+	 * SQL sentence.
+	 * @return
+	 * Return whether successfully executed.
+	 */
+	bool exec(const QString &sentence);
 
 	/**
 	 * @brief close

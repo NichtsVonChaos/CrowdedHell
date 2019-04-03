@@ -157,11 +157,50 @@ bool SQLiteDatabase::update(const DataTable &table, const QString &primaryKeyVal
 	}
 
 	return true;
+}
+
+bool SQLiteDatabase::remove(const QString &tableName, const QString &condition)
+{
+	QString sqlSentence = "DELETE FROM `%1` WHERE %2";
+	sqlSentence = sqlSentence.arg(tableName).arg(condition);
+
+	QSqlQuery query(QSqlDatabase::database(m_connectionName));
+	if(!query.exec(sqlSentence))
+	{
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1").arg(query.lastError().text()));
+		return false;
+	}
+
+	return true;
 };
 
 bool SQLiteDatabase::exists(const QString &tableName)
 {
 	return getAllTableNames().contains(tableName);
+}
+
+bool SQLiteDatabase::drop(const QString &tableName)
+{
+	QSqlQuery query(QSqlDatabase::database(m_connectionName));
+	if(!query.exec(QString("DROP TABLE IF EXISTS `") + tableName + QString("`")))
+	{
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1").arg(query.lastError().text()));
+		return false;
+	}
+
+	return true;
+}
+
+bool SQLiteDatabase::exec(const QString &sentence)
+{
+	QSqlQuery query(QSqlDatabase::database(m_connectionName));
+	if(!query.exec(sentence))
+	{
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1").arg(query.lastError().text()));
+		return false;
+	}
+
+	return true;
 };
 
 void SQLiteDatabase::close()
