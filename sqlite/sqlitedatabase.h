@@ -13,7 +13,7 @@ enum class Language;
 #include "crowdedhellgui.h"
 #endif
 
-class SQLiteDatabase : QObject
+class SQLiteDatabase : public QObject
 {
 	Q_OBJECT
 
@@ -67,20 +67,22 @@ public:
 	/**
 	 * @brief insert
 	 * Insert a new record or replace existed record into a table.
-	 * @param tableName
-	 * Table name.
+	 * @param table
+	 * Table which used.
 	 * @param record
 	 * All values of this record.
 	 * @return
 	 * return whether successfully executed.
 	 */
-	bool insert(const QString &tableName, const QVariantList &record);
+	bool insert(const DataTable &table, const QVariantList &record);
 
 	/**
 	 * @brief update
 	 * Update a record.
-	 * @param tableName
-	 * Table name.
+	 * @param table
+	 * Table which used.
+	 * @param primaryKeyValue
+	 * The value of primary key.
 	 * @param columnName
 	 * Column name where data will be updated.
 	 * @param value
@@ -89,6 +91,32 @@ public:
 	 * return whether successfully executed.
 	 */
 	bool update(const DataTable &table, const QString &primaryKeyValue, const QString &columnName, const QVariant &value);
+
+	/**
+	 * @brief read
+	 * Read a value from database.
+	 * @param table
+	 * Table which used.
+	 * @param primaryKeyValue
+	 * The value of primary key.
+	 * @param columnName
+	 * Column name where the data is saved.
+	 * @return
+	 * Return the specified value by primary key and column.
+	 */
+	QVariant read(const DataTable &table, const QString &primaryKeyValue, const QString &columnName);
+
+	/**
+	 * @brief read
+	 * Read a full record from database.
+	 * @param table
+	 * Table which used.
+	 * @param primaryKeyValue
+	 * The value of primary key.
+	 * @return
+	 * Return all values in a specified record.
+	 */
+	QVariantList read(const DataTable &table, const QString &primaryKeyValue);
 
 	/**
 	 * @brief remove
@@ -101,6 +129,7 @@ public:
 	 * return whether successfully executed.
 	 */
 	bool remove(const QString &tableName, const QString &condition);
+	bool remove(const DataTable &table, const QString &condition);
 
 	/**
 	 * @brief exists
@@ -109,6 +138,7 @@ public:
 	 * Table name.
 	 */
 	bool exists(const QString &tableName);
+	bool exists(const DataTable &table);
 
 	/**
 	 * @brief drop
@@ -119,6 +149,7 @@ public:
 	 * return whether successfully executed.
 	 */
 	bool drop(const QString &tableName);
+	bool drop(const DataTable &table);
 
 	/**
 	 * @brief exec

@@ -61,7 +61,7 @@ bool SQLiteDatabase::createTable(const SQLiteDatabase::DataTable &table)
 	sqlSentence += table.tableName;
 	sqlSentence += "`(";
 	if(table.hasAutoIncrementIndex)
-		sqlSentence += "_AutoIndex INTEGER PRIMARY KEY AUTO INCREMENT,";
+		sqlSentence += "_AutoIndex INTEGER PRIMARY KEY AUTOINCREMENT,";
 
 	foreach(auto column, table.columns)
 	{
@@ -90,14 +90,14 @@ bool SQLiteDatabase::createTable(const SQLiteDatabase::DataTable &table)
 	QSqlQuery query(QSqlDatabase::database(m_connectionName));
 	if(!query.exec(sqlSentence))
 	{
-		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1").arg(query.lastError().text()));
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1.").arg(query.lastError().text()));
 		return false;
 	}
 
 	return true;
 }
 
-bool SQLiteDatabase::insert(const QString &tableName, const QVariantList &record)
+bool SQLiteDatabase::insert(const SQLiteDatabase::DataTable &table, const QVariantList &record)
 {
 	if(!isValid())
 	{
@@ -105,15 +105,17 @@ bool SQLiteDatabase::insert(const QString &tableName, const QVariantList &record
 		return false;
 	}
 
-	if(exists(tableName))
+	if(!exists(table.tableName))
 	{
-		sendMessage(MessageType::Warning, "SQLite", tr("Table \"%1\" is already exists, so it won't be created again.").arg(tableName));
+		sendMessage(MessageType::Warning, "SQLite", tr("Table \"%1\" is not existing.").arg(table.tableName));
 		return false;
 	}
 
 	QString sqlSentence = "INSERT OR REPLACE INTO `";
-	sqlSentence += tableName;
+	sqlSentence += table.tableName;
 	sqlSentence += "` VALUES (";
+	if(table.hasAutoIncrementIndex)
+		sqlSentence += "NULL,";
 	for (int i = 0; i < record.size(); i++)
 		sqlSentence += "?,";
 	sqlSentence.replace(sqlSentence.length() - 1, 1, QChar(')'));
@@ -121,16 +123,16 @@ bool SQLiteDatabase::insert(const QString &tableName, const QVariantList &record
 	QSqlQuery query(QSqlDatabase::database(m_connectionName));
 	if(!query.prepare(sqlSentence))
 	{
-		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1").arg(query.lastError().text()));
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1.").arg(query.lastError().text()));
 		return false;
 	}
 
 	foreach(auto value, record)
-		query.addBindValue(value);
+		query.addBindValue(QVariantList() << value);
 
 	if(!query.execBatch())
 	{
-		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1").arg(query.lastError().text()));
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1.").arg(query.lastError().text()));
 		return false;
 	}
 
@@ -145,18 +147,28 @@ bool SQLiteDatabase::update(const DataTable &table, const QString &primaryKeyVal
 	QSqlQuery query(QSqlDatabase::database(m_connectionName));
 	if(!query.prepare(sqlSentence))
 	{
-		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1").arg(query.lastError().text()));
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1.").arg(query.lastError().text()));
 		return false;
 	}
 
-	query.addBindValue(value);
+	query.addBindValue(QVariantList() << value);
 	if(!query.execBatch())
 	{
-		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1").arg(query.lastError().text()));
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1.").arg(query.lastError().text()));
 		return false;
 	}
 
 	return true;
+}
+
+QVariant SQLiteDatabase::read(const SQLiteDatabase::DataTable &table, const QString &primaryKeyValue, const QString &columnName)
+{
+
+}
+
+QVariantList SQLiteDatabase::read(const SQLiteDatabase::DataTable &table, const QString &primaryKeyValue)
+{
+
 }
 
 bool SQLiteDatabase::remove(const QString &tableName, const QString &condition)
@@ -167,11 +179,16 @@ bool SQLiteDatabase::remove(const QString &tableName, const QString &condition)
 	QSqlQuery query(QSqlDatabase::database(m_connectionName));
 	if(!query.exec(sqlSentence))
 	{
-		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1").arg(query.lastError().text()));
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1.").arg(query.lastError().text()));
 		return false;
 	}
 
 	return true;
+}
+
+bool SQLiteDatabase::remove(const SQLiteDatabase::DataTable &table, const QString &condition)
+{
+	return remove(table.tableName, condition);
 };
 
 bool SQLiteDatabase::exists(const QString &tableName)
@@ -179,16 +196,26 @@ bool SQLiteDatabase::exists(const QString &tableName)
 	return getAllTableNames().contains(tableName);
 }
 
+bool SQLiteDatabase::exists(const SQLiteDatabase::DataTable &table)
+{
+	return exists(table.tableName);
+}
+
 bool SQLiteDatabase::drop(const QString &tableName)
 {
 	QSqlQuery query(QSqlDatabase::database(m_connectionName));
 	if(!query.exec(QString("DROP TABLE IF EXISTS `") + tableName + QString("`")))
 	{
-		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1").arg(query.lastError().text()));
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1.").arg(query.lastError().text()));
 		return false;
 	}
 
 	return true;
+}
+
+bool SQLiteDatabase::drop(const SQLiteDatabase::DataTable &table)
+{
+	return drop(table.tableName);
 }
 
 bool SQLiteDatabase::exec(const QString &sentence)
@@ -196,7 +223,7 @@ bool SQLiteDatabase::exec(const QString &sentence)
 	QSqlQuery query(QSqlDatabase::database(m_connectionName));
 	if(!query.exec(sentence))
 	{
-		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1").arg(query.lastError().text()));
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1.").arg(query.lastError().text()));
 		return false;
 	}
 

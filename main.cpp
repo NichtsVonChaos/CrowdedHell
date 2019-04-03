@@ -8,7 +8,6 @@ int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
 	CrowdedHellGUI w;
-	g_mainWindow = &w;
 	w.show();
 
 	return a.exec();

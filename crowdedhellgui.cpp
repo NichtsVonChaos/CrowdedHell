@@ -6,6 +6,7 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	ui(new Ui::CrowdedHellGUI),
 	m_currentMusicName(tr("Unknown - Unknown"))
 {
+	g_mainWindow = this;
 	ui->setupUi(this);
 
 	// Connect signals and slots.

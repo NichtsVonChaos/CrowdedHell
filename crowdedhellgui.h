@@ -32,6 +32,11 @@ class ProjectManager;
 #include "manager/projectmanager.h"
 #endif
 
+class SQLiteDatabase;
+#ifndef SQLITEDATABASE_H
+#include "sqlite/sqlitedatabase.h"
+#endif
+
 namespace Ui {
 	class CrowdedHellGUI;
 }
