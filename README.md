@@ -1,7 +1,7 @@
 # Crowded Hell 
 [![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 ### 主要信息
-### Main Informations
+##### Main Informations
 ____
 * 项目：Crowded Hell  
  Project: Crowded Hell
@@ -21,13 +21,13 @@ ____
  License: [GNU GPLv3](https://en.wikipedia.org/wiki/GNU_General_Public_License "Wikipedia: GNU General Public License")  
   
 ### 运行环境需求
-### Running enviroment requirement
+##### Running enviroment requirement
 ____
 * [Java运行环境(JRE)](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html "Java SE Runtime Environment 8 Download")高于1.6版本（GMK-Splitter需求）  
  [Java Runtime Enviroment](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html "Java SE Runtime Environment 8 Download") above version 1.6 (required by GMK-Splitter)
   
 ### 借用项目
-### Reference
+##### Reference
 ____
 ##### 本项目的诞生离不开以下开源项目。
 ##### This project cannot be without following open-source projects.
@@ -37,7 +37,7 @@ ____
 * [FMOD](https://www.fmod.com/)
   
 ### 关于编译
-### About compiling
+##### About compiling
 ____
 ##### Windows:
 * 建议使用MSVC 64位套件编译，本人使用MinGW套件无法编译FMOD。  
@@ -47,7 +47,7 @@ ____
   I had only compiled it successfully at Ubuntu 18.10, I cannot ensure if it can be compiled at other Linux OSs.
   
 ### 寻求合作
-### Cooperation Wanted
+##### Cooperation Wanted
 ____
 * 英语及日语的翻译修正。  
  Fix the tanslations of English and Japanese.
@@ -61,13 +61,13 @@ ____
  Programmers. (I'm regreted for no-pay but I'm just a student.)
   
 ### 联系方式
-### Contact to me
+##### Contact to me
 ____
 * QQ: 1009978366
 * Gmail: <NichtsVonChaos@gmail.com>
 * Tieba: [-NIHIL-](http://tieba.baidu.com/home/main?un=towanoICIT)
   
 ### 版权
-### Copyright
+##### Copyright
 ____
 Copyright© 2018 Nihil \<NichtsVonChaos@gmail.com\>
