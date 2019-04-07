@@ -19,13 +19,13 @@ ____
  Since: 2018/12/02
 * 许可：[GNU通用公共许可协议v3](https://zh.wikipedia.org/wiki/GNU%E9%80%9A%E7%94%A8%E5%85%AC%E5%85%B1%E8%AE%B8%E5%8F%AF%E8%AF%81 "维基百科：GNU通用公共许可协议")  
  License: [GNU GPLv3](https://en.wikipedia.org/wiki/GNU_General_Public_License "Wikipedia: GNU General Public License")  
-____
+  
 ### 运行环境需求
 ### Running enviroment requirement
 ____
 * [Java运行环境(JRE)](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html "Java SE Runtime Environment 8 Download")高于1.6版本（GMK-Splitter需求）  
  [Java Runtime Enviroment](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html "Java SE Runtime Environment 8 Download") above version 1.6 (required by GMK-Splitter)
-____
+  
 ### 借用项目
 ### Reference
 ____
@@ -35,7 +35,7 @@ ____
 ##### 以下项目并非开源项目，但是拥有受限的免费许可证。
 ##### Following projects are not open-source, but have limitted free license.
 * [FMOD](https://www.fmod.com/)
-____
+  
 ### 关于编译
 ### About compiling
 ____
@@ -45,7 +45,7 @@ ____
  ##### Linux:
  * 本人仅在Ubuntu 18.10下尝试编译成功，其他系统不保证成功。  
   I had only compiled it successfully at Ubuntu 18.10, I cannot ensure if it can be compiled at other Linux OSs.
-____
+  
 ### 寻求合作
 ### Cooperation Wanted
 ____
@@ -59,14 +59,14 @@ ____
  Bug test.
 * 程序员（苦工）。  
  Programmers. (I'm regreted for no-pay but I'm just a student.)
-____
+  
 ### 联系方式
 ### Contact to me
 ____
 * QQ: 1009978366
 * Gmail: <NichtsVonChaos@gmail.com>
 * Tieba: [-NIHIL-](http://tieba.baidu.com/home/main?un=towanoICIT)
-____
+  
 ### 版权
 ### Copyright
 ____
