@@ -1,4 +1,5 @@
-# Crowded Hell
+# Crowded Hell 
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 ### 主要信息
 ### Main Informations
 ____
