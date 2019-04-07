@@ -69,6 +69,8 @@ public:
 
 	Language currentLanguage() const;
 
+	ProjectManager *projectManager() const;
+
 signals:
 	void languageChanged(Language language);
 
@@ -135,6 +137,8 @@ private slots:
 	void on_actionOpenProject_triggered();
 
 	void on_actionClearMessages_triggered();
+
+	void on_actionAddSprite_triggered();
 
 private:
 	Ui::CrowdedHellGUI *ui;

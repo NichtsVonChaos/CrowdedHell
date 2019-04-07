@@ -1,7 +1,0 @@
-<?xml version='1.0'?>
-<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
-<mime-type type="qt/language">
-    <comment>Qt Language Files</comment>
-    <glob pattern="*.ts"/>
-</mime-type>
-</mime-info>

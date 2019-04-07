@@ -163,12 +163,46 @@ bool SQLiteDatabase::update(const DataTable &table, const QString &primaryKeyVal
 
 QVariant SQLiteDatabase::read(const SQLiteDatabase::DataTable &table, const QString &primaryKeyValue, const QString &columnName)
 {
+	QString sqlSentence = "SELECT `%1` FROM `%2` WHERE %3=%4";
+	sqlSentence = sqlSentence.arg(columnName).arg(table.tableName).arg(table.primaryKey.isEmpty() ? "_AutoIndex" : table.primaryKey).arg(primaryKeyValue);
 
+	QSqlQuery query(QSqlDatabase::database(m_connectionName));
+	if(!query.exec(sqlSentence))
+	{
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1.").arg(query.lastError().text()));
+		return QVariant();
+	}
+	if(!query.seek(0))
+	{
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1.").arg(query.lastError().text()));
+		return QVariant();
+	}
+
+	return query.value(0);
 }
 
 QVariantList SQLiteDatabase::read(const SQLiteDatabase::DataTable &table, const QString &primaryKeyValue)
 {
+	QString sqlSentence = "SELECT * FROM `%1` WHERE %2=%3";
+	sqlSentence = sqlSentence.arg(table.tableName).arg(table.primaryKey.isEmpty() ? "_AutoIndex" : table.primaryKey).arg(primaryKeyValue);
 
+	QSqlQuery query(QSqlDatabase::database(m_connectionName));
+	QVariantList values;
+	if(!query.exec(sqlSentence))
+	{
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1.").arg(query.lastError().text()));
+		return values;
+	}
+	if(!query.seek(0))
+	{
+		sendMessage(MessageType::Error, "SQLite", tr("Error occurred : %1.").arg(query.lastError().text()));
+		return values;
+	}
+
+	for(int i = 0; i < table.columns.size(); i++)
+		values << query.value(i);
+
+	return values;
 }
 
 bool SQLiteDatabase::remove(const QString &tableName, const QString &condition)

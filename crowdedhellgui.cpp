@@ -149,6 +149,11 @@ QString CrowdedHellGUI::currentTheme() const
 Language CrowdedHellGUI::currentLanguage() const
 {
 	return m_currentLanguage;
+}
+
+ProjectManager *CrowdedHellGUI::projectManager() const
+{
+	return m_projectManager;
 };
 
 void CrowdedHellGUI::musicPositionChanged(unsigned int miliseconds)
@@ -733,4 +738,9 @@ void CrowdedHellGUI::on_actionClearMessages_triggered()
 {
 	ui->textEditMessageBox->clear();
 	ui->textEditMessageBox->setHtml("<font color=purple>>>> </font>");
+}
+
+void CrowdedHellGUI::on_actionAddSprite_triggered()
+{
+
 }

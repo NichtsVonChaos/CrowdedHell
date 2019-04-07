@@ -25,6 +25,32 @@ ResourceManager::ResourceManager(QTreeView *resourceView) :
 	connect(g_mainWindow, &CrowdedHellGUI::languageChanged, this, &ResourceManager::changeLanguage);
 
 	emit sendMessage(MessageType::Info, "Resource Manager", tr("Initialize resouce manager complete."));
+}
+
+bool ResourceManager::addSprite(QString name, QString filePath)
+{
+	QString spriteFilePathOnProject = g_mainWindow->projectManager()->getProjectPath() + "/sprites/";
+	QFileInfo spriteFileInfo(filePath);
+	if(!spriteFileInfo.exists())
+	{
+		sendMessage(MessageType::Warning, "Resource Manager", tr("Sprite file \"%1\" does not exist, so it will not be added.").arg(filePath));
+		return false;
+	}
+
+	spriteFilePathOnProject += name + "." + spriteFileInfo.completeSuffix();
+	if(!QFile::copy(filePath, spriteFilePathOnProject))
+	{
+		sendMessage(MessageType::Error, "Resource Manager", tr("Cannot copy sprite file from \"%1\" to \"%2\", failed to add it.").arg(filePath).arg(spriteFilePathOnProject));
+		return false;
+	}
+
+	m_sprites.insert(name, spriteFilePathOnProject);
+
+	QStandardItem *item = new QStandardItem(name);
+	item->setIcon(QIcon(spriteFilePathOnProject));
+	m_model->item(0)->appendRow(item);
+
+	return true;
 };
 
 void ResourceManager::changeLanguage()
