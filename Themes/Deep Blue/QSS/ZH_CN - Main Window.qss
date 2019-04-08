@@ -141,6 +141,10 @@ QLineEdit {
         border-bottom: 1px solid #12244C;
         border-right: 1px solid #12244C;
 }
+QLineEdit::!editable {
+        background: #AAAAAA;
+        color: #777777;
+}
 
 /**********消息框***********/
 QTextEdit#textEditMessageBox {

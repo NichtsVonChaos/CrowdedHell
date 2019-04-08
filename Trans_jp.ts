@@ -203,38 +203,38 @@
 <context>
     <name>CreateProjectWizard</name>
     <message>
-        <location filename="manager/createprojectwizard.ui" line="14"/>
+        <location filename="manager/createprojectwizard.ui" line="26"/>
         <source>Wizard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/createprojectwizard.ui" line="32"/>
+        <location filename="manager/createprojectwizard.ui" line="44"/>
         <source>Project Name :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/createprojectwizard.ui" line="50"/>
+        <location filename="manager/createprojectwizard.ui" line="62"/>
         <source>Path :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/createprojectwizard.ui" line="64"/>
-        <location filename="manager/createprojectwizard.ui" line="161"/>
+        <location filename="manager/createprojectwizard.ui" line="76"/>
+        <location filename="manager/createprojectwizard.ui" line="97"/>
         <source>...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/createprojectwizard.ui" line="75"/>
+        <location filename="manager/createprojectwizard.ui" line="108"/>
         <source>Author :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/createprojectwizard.ui" line="93"/>
+        <location filename="manager/createprojectwizard.ui" line="126"/>
         <source>Create Date :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/createprojectwizard.ui" line="151"/>
+        <location filename="manager/createprojectwizard.ui" line="87"/>
         <source>Background Music :</source>
         <translation type="unfinished"></translation>
     </message>
@@ -359,186 +359,186 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="577"/>
+        <location filename="crowdedhellgui.ui" line="586"/>
         <source>Speed</source>
         <translation type="unfinished">速度</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="641"/>
+        <location filename="crowdedhellgui.ui" line="650"/>
         <source>Frames</source>
         <translation type="unfinished">フレーム</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="675"/>
+        <location filename="crowdedhellgui.ui" line="684"/>
         <source>Time</source>
         <translation type="unfinished">時間</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="709"/>
+        <location filename="crowdedhellgui.ui" line="718"/>
         <source>x 0.1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="714"/>
+        <location filename="crowdedhellgui.ui" line="723"/>
         <source>x 0.2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="719"/>
+        <location filename="crowdedhellgui.ui" line="728"/>
         <source>x 0.5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="724"/>
+        <location filename="crowdedhellgui.ui" line="733"/>
         <source>x 1.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="729"/>
+        <location filename="crowdedhellgui.ui" line="738"/>
         <source>x 1.5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="734"/>
+        <location filename="crowdedhellgui.ui" line="743"/>
         <source>x 2.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="739"/>
+        <location filename="crowdedhellgui.ui" line="748"/>
         <source>x 5.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="752"/>
+        <location filename="crowdedhellgui.ui" line="761"/>
         <source>/ x1.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="821"/>
+        <location filename="crowdedhellgui.ui" line="830"/>
         <source>File</source>
         <translation type="unfinished">ファイル</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="825"/>
+        <location filename="crowdedhellgui.ui" line="834"/>
         <source>Export</source>
         <translation type="unfinished">輸出する</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="844"/>
+        <location filename="crowdedhellgui.ui" line="853"/>
         <source>Window</source>
         <translation type="unfinished">ウィンドウ</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="848"/>
+        <location filename="crowdedhellgui.ui" line="857"/>
         <source>Language</source>
         <translation type="unfinished">言葉</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="857"/>
+        <location filename="crowdedhellgui.ui" line="866"/>
         <source>Theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="868"/>
+        <location filename="crowdedhellgui.ui" line="877"/>
         <source>Resources</source>
         <translation type="unfinished">リソース</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="888"/>
+        <location filename="crowdedhellgui.ui" line="897"/>
         <source>English</source>
         <translation type="unfinished">英語</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="896"/>
+        <location filename="crowdedhellgui.ui" line="905"/>
         <source>Simplified Chinese</source>
         <translation type="unfinished">簡体中国語</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="904"/>
+        <location filename="crowdedhellgui.ui" line="913"/>
         <source>Traditional Chinese</source>
         <translation type="unfinished">繁体中国語</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="912"/>
+        <location filename="crowdedhellgui.ui" line="921"/>
         <source>Japanese</source>
         <translation type="unfinished">日本語</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="917"/>
+        <location filename="crowdedhellgui.ui" line="926"/>
         <source>Add Sound Effect</source>
         <translation type="unfinished">効果音を加える</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="922"/>
+        <location filename="crowdedhellgui.ui" line="931"/>
         <source>Reselect Music</source>
         <translation type="unfinished">音楽を再選択する</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="927"/>
+        <location filename="crowdedhellgui.ui" line="936"/>
         <source>New Project</source>
         <translation type="unfinished">新しいプロジェクト</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="932"/>
+        <location filename="crowdedhellgui.ui" line="941"/>
         <source>Open Project</source>
         <translation type="unfinished">プロジェクトを開く</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="937"/>
+        <location filename="crowdedhellgui.ui" line="946"/>
         <source>Save</source>
         <translation type="unfinished">保存する</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="942"/>
-        <location filename="crowdedhellgui.ui" line="945"/>
-        <location filename="crowdedhellgui.ui" line="948"/>
+        <location filename="crowdedhellgui.ui" line="951"/>
+        <location filename="crowdedhellgui.ui" line="954"/>
+        <location filename="crowdedhellgui.ui" line="957"/>
         <source>Save To ...</source>
         <translation type="unfinished">...に保存する</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="953"/>
+        <location filename="crowdedhellgui.ui" line="962"/>
         <source>Close</source>
         <translation type="unfinished">閉じる</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="958"/>
-        <location filename="crowdedhellgui.ui" line="961"/>
-        <location filename="crowdedhellgui.ui" line="964"/>
+        <location filename="crowdedhellgui.ui" line="967"/>
+        <location filename="crowdedhellgui.ui" line="970"/>
+        <location filename="crowdedhellgui.ui" line="973"/>
         <source>Save and Close</source>
         <translation type="unfinished">保存して閉じる</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="969"/>
+        <location filename="crowdedhellgui.ui" line="978"/>
         <source>Eixt</source>
         <translation type="unfinished">終了する</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="974"/>
+        <location filename="crowdedhellgui.ui" line="983"/>
         <source>GM8.0 project (.gmk)</source>
         <translation type="unfinished">GM8.0 プロジェクト (.gmk)</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="979"/>
+        <location filename="crowdedhellgui.ui" line="988"/>
         <source>Add Sprite</source>
         <translation type="unfinished">スプライトを追加</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="984"/>
+        <location filename="crowdedhellgui.ui" line="993"/>
         <source>Add Background</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="992"/>
+        <location filename="crowdedhellgui.ui" line="1001"/>
         <source>Hide &quot;Info&quot; Messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="1000"/>
+        <location filename="crowdedhellgui.ui" line="1009"/>
         <source>Always Save  When Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="1005"/>
+        <location filename="crowdedhellgui.ui" line="1014"/>
         <source>Clear Messages</source>
         <translation type="unfinished"></translation>
     </message>
@@ -552,135 +552,145 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="48"/>
+        <location filename="crowdedhellgui.cpp" line="49"/>
         <source>You can hide all &quot;Info&quot; messages by selecting &lt;font color=red&gt;Window =&gt; Hide &quot;Info&quot; Messages&lt;/font&gt;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="72"/>
+        <location filename="crowdedhellgui.cpp" line="73"/>
         <source>Read registry failed, at : &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="76"/>
-        <location filename="crowdedhellgui.cpp" line="90"/>
+        <location filename="crowdedhellgui.cpp" line="77"/>
+        <location filename="crowdedhellgui.cpp" line="91"/>
         <source>Write registry succeeded, at : &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="85"/>
+        <location filename="crowdedhellgui.cpp" line="86"/>
         <source>Create registry failed, at : &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="88"/>
+        <location filename="crowdedhellgui.cpp" line="89"/>
         <source>Write registry failed, at : &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="113"/>
+        <location filename="crowdedhellgui.cpp" line="114"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="119"/>
+        <location filename="crowdedhellgui.cpp" line="120"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="125"/>
+        <location filename="crowdedhellgui.cpp" line="126"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="131"/>
+        <location filename="crowdedhellgui.cpp" line="132"/>
         <source>Tips</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="136"/>
+        <location filename="crowdedhellgui.cpp" line="137"/>
         <source>In module %1 : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="245"/>
-        <location filename="crowdedhellgui.cpp" line="271"/>
-        <location filename="crowdedhellgui.cpp" line="296"/>
-        <location filename="crowdedhellgui.cpp" line="321"/>
+        <location filename="crowdedhellgui.cpp" line="251"/>
+        <location filename="crowdedhellgui.cpp" line="277"/>
+        <location filename="crowdedhellgui.cpp" line="302"/>
+        <location filename="crowdedhellgui.cpp" line="327"/>
         <source>Cannot open the qss file &quot;%1&quot; for the theme &quot;%2&quot;, therefore use default theme &quot;Deep Blue&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="250"/>
+        <location filename="crowdedhellgui.cpp" line="256"/>
         <source>Change language to English.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="275"/>
+        <location filename="crowdedhellgui.cpp" line="281"/>
         <source>Change language to Simpified Chinese.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="300"/>
+        <location filename="crowdedhellgui.cpp" line="306"/>
         <source>Change language to Traditional Chinese.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="325"/>
+        <location filename="crowdedhellgui.cpp" line="331"/>
         <source>Change language to Japanese.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="447"/>
-        <location filename="crowdedhellgui.cpp" line="462"/>
-        <location filename="crowdedhellgui.cpp" line="491"/>
-        <location filename="crowdedhellgui.cpp" line="502"/>
-        <location filename="crowdedhellgui.cpp" line="513"/>
-        <location filename="crowdedhellgui.cpp" line="524"/>
-        <location filename="crowdedhellgui.cpp" line="535"/>
-        <location filename="crowdedhellgui.cpp" line="546"/>
-        <location filename="crowdedhellgui.cpp" line="557"/>
-        <location filename="crowdedhellgui.cpp" line="661"/>
-        <location filename="crowdedhellgui.cpp" line="672"/>
+        <location filename="crowdedhellgui.cpp" line="453"/>
+        <location filename="crowdedhellgui.cpp" line="468"/>
+        <location filename="crowdedhellgui.cpp" line="497"/>
+        <location filename="crowdedhellgui.cpp" line="508"/>
+        <location filename="crowdedhellgui.cpp" line="519"/>
+        <location filename="crowdedhellgui.cpp" line="530"/>
+        <location filename="crowdedhellgui.cpp" line="541"/>
+        <location filename="crowdedhellgui.cpp" line="552"/>
+        <location filename="crowdedhellgui.cpp" line="563"/>
+        <location filename="crowdedhellgui.cpp" line="667"/>
+        <location filename="crowdedhellgui.cpp" line="678"/>
         <source>No project is open. Please create or open a project before.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="452"/>
+        <location filename="crowdedhellgui.cpp" line="458"/>
         <source>Select Music File</source>
         <translation type="unfinished">音楽ファイルを選ぶ</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="452"/>
+        <location filename="crowdedhellgui.cpp" line="458"/>
         <source>Music File(*.mp3 *.wav)</source>
         <translation type="unfinished">音楽ファイル(*.mp3 *.wav)</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="566"/>
-        <location filename="crowdedhellgui.cpp" line="689"/>
-        <location filename="crowdedhellgui.cpp" line="705"/>
-        <location filename="crowdedhellgui.cpp" line="713"/>
+        <location filename="crowdedhellgui.cpp" line="572"/>
+        <location filename="crowdedhellgui.cpp" line="695"/>
+        <location filename="crowdedhellgui.cpp" line="711"/>
+        <location filename="crowdedhellgui.cpp" line="719"/>
         <source>%1 is not a valid number.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="649"/>
+        <location filename="crowdedhellgui.cpp" line="655"/>
         <source>Background Music : Unknown - Unknown</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="680"/>
+        <location filename="crowdedhellgui.cpp" line="686"/>
         <source>&quot;%1&quot; is not a valid time. Plz enter valid time such as &quot;12:5.6&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="697"/>
+        <location filename="crowdedhellgui.cpp" line="703"/>
         <source>&quot;%1&quot; is not a valid time. Plz enter valid time such as &quot;12:5.600&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="331"/>
-        <location filename="crowdedhellgui.cpp" line="643"/>
+        <location filename="crowdedhellgui.cpp" line="745"/>
+        <source>Select a sprite file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="crowdedhellgui.cpp" line="745"/>
+        <source>Sprite File(*.png *.jpg *.jpeg)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="crowdedhellgui.cpp" line="337"/>
+        <location filename="crowdedhellgui.cpp" line="649"/>
         <source>Background Music : </source>
         <translation type="unfinished"></translation>
     </message>
@@ -787,40 +797,73 @@
     </message>
 </context>
 <context>
+    <name>ResourceItem</name>
+    <message>
+        <location filename="manager/resourcemanager.cpp" line="127"/>
+        <source>Sprites</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/resourcemanager.cpp" line="129"/>
+        <source>Sounds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/resourcemanager.cpp" line="131"/>
+        <source>Backgrounds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/resourcemanager.cpp" line="133"/>
+        <source>Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ResourceManager</name>
     <message>
         <location filename="manager/resourcemanager.cpp" line="7"/>
-        <location filename="manager/resourcemanager.cpp" line="32"/>
+        <location filename="manager/resourcemanager.cpp" line="64"/>
         <source>Resources Tree</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="manager/resourcemanager.cpp" line="9"/>
-        <location filename="manager/resourcemanager.cpp" line="33"/>
+        <location filename="manager/resourcemanager.cpp" line="65"/>
         <source>Sprites</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/resourcemanager.cpp" line="12"/>
-        <location filename="manager/resourcemanager.cpp" line="34"/>
+        <location filename="manager/resourcemanager.cpp" line="13"/>
+        <location filename="manager/resourcemanager.cpp" line="66"/>
         <source>Sounds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/resourcemanager.cpp" line="15"/>
-        <location filename="manager/resourcemanager.cpp" line="35"/>
+        <location filename="manager/resourcemanager.cpp" line="17"/>
+        <location filename="manager/resourcemanager.cpp" line="67"/>
         <source>Backgrounds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/resourcemanager.cpp" line="18"/>
-        <location filename="manager/resourcemanager.cpp" line="36"/>
+        <location filename="manager/resourcemanager.cpp" line="21"/>
+        <location filename="manager/resourcemanager.cpp" line="68"/>
         <source>Paths</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/resourcemanager.cpp" line="27"/>
+        <location filename="manager/resourcemanager.cpp" line="31"/>
         <source>Initialize resouce manager complete.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/resourcemanager.cpp" line="40"/>
+        <source>Sprite file &quot;%1&quot; does not exist, so it will not be added.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/resourcemanager.cpp" line="47"/>
+        <source>Cannot copy sprite file from &quot;%1&quot; to &quot;%2&quot;, failed to add it.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -839,7 +882,6 @@
     </message>
     <message>
         <location filename="sqlite/sqlitedatabase.cpp" line="50"/>
-        <location filename="sqlite/sqlitedatabase.cpp" line="110"/>
         <source>Table &quot;%1&quot; is already exists, so it won&apos;t be created again.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -850,14 +892,58 @@
     </message>
     <message>
         <location filename="sqlite/sqlitedatabase.cpp" line="93"/>
-        <location filename="sqlite/sqlitedatabase.cpp" line="124"/>
-        <location filename="sqlite/sqlitedatabase.cpp" line="133"/>
-        <location filename="sqlite/sqlitedatabase.cpp" line="148"/>
-        <location filename="sqlite/sqlitedatabase.cpp" line="155"/>
-        <location filename="sqlite/sqlitedatabase.cpp" line="170"/>
-        <location filename="sqlite/sqlitedatabase.cpp" line="187"/>
-        <location filename="sqlite/sqlitedatabase.cpp" line="199"/>
-        <source>Error occurred : %1</source>
+        <location filename="sqlite/sqlitedatabase.cpp" line="126"/>
+        <location filename="sqlite/sqlitedatabase.cpp" line="135"/>
+        <location filename="sqlite/sqlitedatabase.cpp" line="150"/>
+        <location filename="sqlite/sqlitedatabase.cpp" line="157"/>
+        <location filename="sqlite/sqlitedatabase.cpp" line="172"/>
+        <location filename="sqlite/sqlitedatabase.cpp" line="177"/>
+        <location filename="sqlite/sqlitedatabase.cpp" line="193"/>
+        <location filename="sqlite/sqlitedatabase.cpp" line="198"/>
+        <location filename="sqlite/sqlitedatabase.cpp" line="216"/>
+        <location filename="sqlite/sqlitedatabase.cpp" line="243"/>
+        <location filename="sqlite/sqlitedatabase.cpp" line="260"/>
+        <source>Error occurred : %1.</source>
+        <oldsource>Error occurred : %1</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="sqlite/sqlitedatabase.cpp" line="110"/>
+        <source>Table &quot;%1&quot; is not existing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Wizard</name>
+    <message>
+        <location filename="manager/addspritewizard.ui" line="14"/>
+        <source>Wizard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/addspritewizard.ui" line="32"/>
+        <source>File :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/addspritewizard.ui" line="42"/>
+        <location filename="manager/addspritewizard.ui" line="84"/>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/addspritewizard.ui" line="53"/>
+        <source>Name :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/addspritewizard.ui" line="67"/>
+        <source>Group :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/addspritewizard.ui" line="74"/>
+        <source>Sprites</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

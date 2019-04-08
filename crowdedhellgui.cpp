@@ -742,5 +742,15 @@ void CrowdedHellGUI::on_actionClearMessages_triggered()
 
 void CrowdedHellGUI::on_actionAddSprite_triggered()
 {
+	m_projectManager->resouceManager()->addSprite();
+}
+
+void CrowdedHellGUI::on_treeViewResources_customContextMenuRequested(const QPoint &pos)
+{
+
+}
+
+void CrowdedHellGUI::on_treeViewResources_doubleClicked(const QModelIndex &index)
+{
 
 }

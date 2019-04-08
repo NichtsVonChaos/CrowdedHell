@@ -249,7 +249,7 @@ void AudioPlayer::playOrPause(bool play)
 			return;
 		}
 
-		if(abs(volume - m_volume) > 0.0001f)
+		if(fabs(double(volume - m_volume)) > 0.0001)
 		{
 			result = m_channel->setVolume(m_volume);
 			if(result != FMOD_OK)

@@ -140,6 +140,10 @@ private slots:
 
 	void on_actionAddSprite_triggered();
 
+	void on_treeViewResources_customContextMenuRequested(const QPoint &pos);
+
+	void on_treeViewResources_doubleClicked(const QModelIndex &index);
+
 private:
 	Ui::CrowdedHellGUI *ui;
 

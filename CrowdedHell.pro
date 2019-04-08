@@ -46,7 +46,8 @@ SOURCES += \
     manager/createprojectwizard.cpp \
     barrage/normalbarrage.cpp \
     barrage/metagmobject.cpp \
-    sqlite/sqlitedatabase.cpp
+    sqlite/sqlitedatabase.cpp \
+    manager/addresourcewizard.cpp
 
 HEADERS += \
         crowdedhellgui.h \
@@ -59,11 +60,13 @@ HEADERS += \
     manager/createprojectwizard.h \
     barrage/normalbarrage.h \
     barrage/metagmobject.h \
-    sqlite/sqlitedatabase.h
+    sqlite/sqlitedatabase.h \
+    manager/addresourcewizard.h
 
 FORMS += \
         crowdedhellgui.ui \
-    manager/createprojectwizard.ui
+    manager/createprojectwizard.ui \
+    manager/addresourcewizard.ui
 
 TRANSLATIONS += \
         Trans_zh_cn.ts \

@@ -108,6 +108,12 @@ public:
 	 */
 	QString getMusicFile() const;
 
+	/**
+	 * @brief resouceManager
+	 * Return resource manager.
+	 */
+	ResourceManager *resouceManager() const;
+
 signals:
 	/**
 	 * @see CrowdedHellGUI::sendMessage(MessageType, QString, QString);

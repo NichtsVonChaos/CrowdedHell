@@ -13,6 +13,37 @@ enum class Language;
 #include "crowdedhellgui.h"
 #endif
 
+class ResourceItem : public QObject, public QStandardItem
+{
+	Q_OBJECT
+
+public:
+	ResourceItem(ResourceItem *parent = Q_NULLPTR);
+	explicit ResourceItem(const QString &text, ResourceItem *parent = Q_NULLPTR);
+	ResourceItem(const QIcon &icon, const QString &text, ResourceItem *parent = Q_NULLPTR);
+	explicit ResourceItem(int rows, int columns = 1, ResourceItem *parent = Q_NULLPTR);
+	~ResourceItem();
+
+	enum class Type : bool
+	{
+		GROUP, RESOURCE
+	};
+
+	Type getType() const;
+	void setType(const Type &type);
+
+	QString getPath() const;
+
+	void setText(const QString &text);
+	void setFileName(const QString &fileName);
+
+private:
+	QString m_name;
+	QString m_fileExtension;
+	ResourceItem *m_parent;
+	Type m_type;
+};
+
 class ResourceManager : public QObject
 {
 	Q_OBJECT
@@ -24,19 +55,19 @@ public:
 	QString getSpriteFile(QString name);
 	QString getSpriteFile(int index);
 	QString getSpriteIndex(QString name);
-	bool addSprite(QString name, QString filePath);
+	bool addSprite();
 	bool removeSprite(QString name);
 	bool renameSprite(QString name);
 
 	QStringList getSoundNames();
 	QString getSoundFile(QString name);
-	bool addSound(QString name, QString filePath);
+	bool addSound();
 	bool removeSound(QString name);
 	bool renameSound(QString name);
 
 	QStringList getBackgroundNames();
 	QString getBackgroundFile(QString name);
-	bool addBackground(QString name, QString filePath);
+	bool addBackground();
 	bool removeBackground(QString name);
 	bool renameBackground(QString name);
 

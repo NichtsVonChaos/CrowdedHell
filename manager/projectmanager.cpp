@@ -49,25 +49,25 @@ void ProjectManager::newProject()
 		return;
 	}
 
-	if(!QDir().mkpath(projectPath + QString("/sprites")))
+	if(!QDir().mkpath(projectPath + QString("/Sprites")))
 	{
 		emit sendMessage(MessageType::Error, "Project Manager", tr("Make selected directory failed, at : \"%1\".").arg(projectPath) + QString("/sprites"));
 		delete wizard;
 		return;
 	}
-	if(!QDir().mkpath(projectPath + QString("/sounds")))
+	if(!QDir().mkpath(projectPath + QString("/Sounds")))
 	{
 		emit sendMessage(MessageType::Error, "Project Manager", tr("Make selected directory failed, at : \"%1\".").arg(projectPath) + QString("/sounds"));
 		delete wizard;
 		return;
 	}
-	if(!QDir().mkpath(projectPath + QString("/backgrounds")))
+	if(!QDir().mkpath(projectPath + QString("/Backgrounds")))
 	{
 		emit sendMessage(MessageType::Error, "Project Manager", tr("Make selected directory failed, at : \"%1\".").arg(projectPath) + QString("/backgrounds"));
 		delete wizard;
 		return;
 	}
-	if(!QDir().mkpath(projectPath + QString("/paths")))
+	if(!QDir().mkpath(projectPath + QString("/Paths")))
 	{
 		emit sendMessage(MessageType::Error, "Project Manager", tr("Make selected directory failed, at : \"%1\".").arg(projectPath) + QString("/paths"));
 		delete wizard;
@@ -288,6 +288,11 @@ void ProjectManager::reselectMusic(QString musicPath)
 void ProjectManager::setAlwaysSave(bool save)
 {
 	m_alwaysSave = save;
+}
+
+ResourceManager *ProjectManager::resouceManager() const
+{
+	return m_resouceManager;
 }
 
 QString ProjectManager::getTemporaryPath() const
