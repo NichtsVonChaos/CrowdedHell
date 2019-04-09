@@ -2,6 +2,52 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ja_JP" sourcelanguage="en">
 <context>
+    <name>AddResourceWizard</name>
+    <message>
+        <location filename="manager/addresourcewizard.ui" line="14"/>
+        <source>Wizard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/addresourcewizard.ui" line="32"/>
+        <source>File :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/addresourcewizard.ui" line="42"/>
+        <location filename="manager/addresourcewizard.ui" line="77"/>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/addresourcewizard.ui" line="53"/>
+        <source>Name :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/addresourcewizard.ui" line="67"/>
+        <source>Group :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/addresourcewizard.cpp" line="11"/>
+        <source>Create Resource Wizard</source>
+        <oldsource>Create Project Wizard</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/addresourcewizard.cpp" line="54"/>
+        <source>Select a sprite file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="manager/addresourcewizard.cpp" line="57"/>
+        <source>Sprite File(*.png *.jpeg *.jpg *.bmp)</source>
+        <oldsource>Sprite File(*.png *.jpeg *.jpg *.bmp</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AudioPlayer</name>
     <message>
         <location filename="audio/audioplayer.cpp" line="102"/>
@@ -558,139 +604,123 @@
     </message>
     <message>
         <location filename="crowdedhellgui.cpp" line="73"/>
-        <source>Read registry failed, at : &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="crowdedhellgui.cpp" line="77"/>
-        <location filename="crowdedhellgui.cpp" line="91"/>
-        <source>Write registry succeeded, at : &quot;%1&quot;</source>
+        <source>Read value failed in registery, key : &quot;%1&quot;.</source>
+        <oldsource>Read value failed in registery, key : &quot;%1&quot;</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="crowdedhellgui.cpp" line="86"/>
-        <source>Create registry failed, at : &quot;%1&quot;</source>
+        <source>Write value failed in registery, key : &quot;%1&quot;.</source>
+        <oldsource>Write value failed in registery, key : &quot;%1&quot;</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="89"/>
-        <source>Write registry failed, at : &quot;%1&quot;</source>
+        <location filename="crowdedhellgui.cpp" line="83"/>
+        <source>Create key failed, at : &quot;%1&quot;.</source>
+        <oldsource>Create key failed, at : &quot;%1&quot;</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="114"/>
+        <location filename="crowdedhellgui.cpp" line="110"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="120"/>
+        <location filename="crowdedhellgui.cpp" line="116"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="126"/>
+        <location filename="crowdedhellgui.cpp" line="122"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="132"/>
+        <location filename="crowdedhellgui.cpp" line="128"/>
         <source>Tips</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="137"/>
+        <location filename="crowdedhellgui.cpp" line="133"/>
         <source>In module %1 : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="251"/>
-        <location filename="crowdedhellgui.cpp" line="277"/>
-        <location filename="crowdedhellgui.cpp" line="302"/>
-        <location filename="crowdedhellgui.cpp" line="327"/>
+        <location filename="crowdedhellgui.cpp" line="247"/>
+        <location filename="crowdedhellgui.cpp" line="273"/>
+        <location filename="crowdedhellgui.cpp" line="298"/>
+        <location filename="crowdedhellgui.cpp" line="323"/>
         <source>Cannot open the qss file &quot;%1&quot; for the theme &quot;%2&quot;, therefore use default theme &quot;Deep Blue&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="256"/>
+        <location filename="crowdedhellgui.cpp" line="252"/>
         <source>Change language to English.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="281"/>
+        <location filename="crowdedhellgui.cpp" line="277"/>
         <source>Change language to Simpified Chinese.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="306"/>
+        <location filename="crowdedhellgui.cpp" line="302"/>
         <source>Change language to Traditional Chinese.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="331"/>
+        <location filename="crowdedhellgui.cpp" line="327"/>
         <source>Change language to Japanese.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="453"/>
-        <location filename="crowdedhellgui.cpp" line="468"/>
-        <location filename="crowdedhellgui.cpp" line="497"/>
-        <location filename="crowdedhellgui.cpp" line="508"/>
-        <location filename="crowdedhellgui.cpp" line="519"/>
-        <location filename="crowdedhellgui.cpp" line="530"/>
-        <location filename="crowdedhellgui.cpp" line="541"/>
-        <location filename="crowdedhellgui.cpp" line="552"/>
-        <location filename="crowdedhellgui.cpp" line="563"/>
-        <location filename="crowdedhellgui.cpp" line="667"/>
-        <location filename="crowdedhellgui.cpp" line="678"/>
+        <location filename="crowdedhellgui.cpp" line="449"/>
+        <location filename="crowdedhellgui.cpp" line="464"/>
+        <location filename="crowdedhellgui.cpp" line="493"/>
+        <location filename="crowdedhellgui.cpp" line="504"/>
+        <location filename="crowdedhellgui.cpp" line="515"/>
+        <location filename="crowdedhellgui.cpp" line="526"/>
+        <location filename="crowdedhellgui.cpp" line="537"/>
+        <location filename="crowdedhellgui.cpp" line="548"/>
+        <location filename="crowdedhellgui.cpp" line="559"/>
+        <location filename="crowdedhellgui.cpp" line="663"/>
+        <location filename="crowdedhellgui.cpp" line="674"/>
         <source>No project is open. Please create or open a project before.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="458"/>
+        <location filename="crowdedhellgui.cpp" line="454"/>
         <source>Select Music File</source>
         <translation type="unfinished">音楽ファイルを選ぶ</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="458"/>
+        <location filename="crowdedhellgui.cpp" line="454"/>
         <source>Music File(*.mp3 *.wav)</source>
         <translation type="unfinished">音楽ファイル(*.mp3 *.wav)</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="572"/>
-        <location filename="crowdedhellgui.cpp" line="695"/>
-        <location filename="crowdedhellgui.cpp" line="711"/>
-        <location filename="crowdedhellgui.cpp" line="719"/>
+        <location filename="crowdedhellgui.cpp" line="568"/>
+        <location filename="crowdedhellgui.cpp" line="691"/>
+        <location filename="crowdedhellgui.cpp" line="707"/>
+        <location filename="crowdedhellgui.cpp" line="715"/>
         <source>%1 is not a valid number.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="655"/>
+        <location filename="crowdedhellgui.cpp" line="651"/>
         <source>Background Music : Unknown - Unknown</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="686"/>
-        <source>&quot;%1&quot; is not a valid time. Plz enter valid time such as &quot;12:5.6&quot;</source>
+        <location filename="crowdedhellgui.cpp" line="682"/>
+        <location filename="crowdedhellgui.cpp" line="699"/>
+        <source>&quot;%1&quot; is not a valid time. Plz enter valid time such as &quot;12:5.6&quot;.</source>
+        <oldsource>&quot;%1&quot; is not a valid time. Plz enter valid time such as &quot;12:5.6&quot;</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.cpp" line="703"/>
-        <source>&quot;%1&quot; is not a valid time. Plz enter valid time such as &quot;12:5.600&quot;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="crowdedhellgui.cpp" line="745"/>
-        <source>Select a sprite file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="crowdedhellgui.cpp" line="745"/>
-        <source>Sprite File(*.png *.jpg *.jpeg)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="crowdedhellgui.cpp" line="337"/>
-        <location filename="crowdedhellgui.cpp" line="649"/>
+        <location filename="crowdedhellgui.cpp" line="333"/>
+        <location filename="crowdedhellgui.cpp" line="645"/>
         <source>Background Music : </source>
         <translation type="unfinished"></translation>
     </message>
@@ -699,8 +729,9 @@
     <name>ProjectManager</name>
     <message>
         <location filename="manager/projectmanager.cpp" line="31"/>
-        <location filename="manager/projectmanager.cpp" line="240"/>
-        <source>Select music file doesn&apos;t exist, at : &quot;%1&quot;</source>
+        <location filename="manager/projectmanager.cpp" line="238"/>
+        <source>Selected music file doesn&apos;t exist, at : &quot;%1&quot;.</source>
+        <oldsource>Select music file doesn&apos;t exist, at : &quot;%1&quot;</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -726,72 +757,68 @@
     </message>
     <message>
         <location filename="manager/projectmanager.cpp" line="100"/>
-        <location filename="manager/projectmanager.cpp" line="246"/>
+        <location filename="manager/projectmanager.cpp" line="244"/>
         <source>Cannot copy music file from &quot;%1&quot; to &quot;%2&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/projectmanager.cpp" line="107"/>
-        <source>Successfully copy music file from &quot;%1&quot; to &quot;%2&quot;.</source>
+        <location filename="manager/projectmanager.cpp" line="113"/>
+        <source>Create project successfully.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/projectmanager.cpp" line="115"/>
-        <source>Create project finished.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="manager/projectmanager.cpp" line="122"/>
+        <location filename="manager/projectmanager.cpp" line="120"/>
         <source>Select a project</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/projectmanager.cpp" line="129"/>
-        <location filename="manager/projectmanager.cpp" line="166"/>
+        <location filename="manager/projectmanager.cpp" line="127"/>
+        <location filename="manager/projectmanager.cpp" line="164"/>
         <source>Open selected project file failed, at : &quot;%1&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/projectmanager.cpp" line="139"/>
-        <location filename="manager/projectmanager.cpp" line="176"/>
-        <location filename="manager/projectmanager.cpp" line="263"/>
+        <location filename="manager/projectmanager.cpp" line="137"/>
+        <location filename="manager/projectmanager.cpp" line="174"/>
+        <location filename="manager/projectmanager.cpp" line="261"/>
         <source>Project file format abnormal.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/projectmanager.cpp" line="147"/>
-        <location filename="manager/projectmanager.cpp" line="184"/>
-        <source>Cannot find the music file of project, at : &quot;%1&quot;</source>
+        <location filename="manager/projectmanager.cpp" line="145"/>
+        <location filename="manager/projectmanager.cpp" line="182"/>
+        <source>Cannot find the music file of project, at : &quot;%1&quot;.</source>
+        <oldsource>Cannot find music file of project, at : &quot;%1&quot;.</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/projectmanager.cpp" line="207"/>
+        <location filename="manager/projectmanager.cpp" line="205"/>
         <source>Confirm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/projectmanager.cpp" line="207"/>
+        <location filename="manager/projectmanager.cpp" line="205"/>
         <source>Would you like to save your project before close it?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/projectmanager.cpp" line="218"/>
+        <location filename="manager/projectmanager.cpp" line="216"/>
         <source>Project &quot;%1&quot; closed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/projectmanager.cpp" line="234"/>
+        <location filename="manager/projectmanager.cpp" line="232"/>
         <source>No project is open. Please create or open a project before.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/projectmanager.cpp" line="253"/>
-        <location filename="manager/projectmanager.cpp" line="275"/>
+        <location filename="manager/projectmanager.cpp" line="251"/>
+        <location filename="manager/projectmanager.cpp" line="273"/>
         <source>Project file doesn&apos;t exist, at : &quot;%1&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/projectmanager.cpp" line="269"/>
+        <location filename="manager/projectmanager.cpp" line="267"/>
         <source>Failed remove music file &quot;%1&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -799,22 +826,22 @@
 <context>
     <name>ResourceItem</name>
     <message>
-        <location filename="manager/resourcemanager.cpp" line="127"/>
+        <location filename="manager/resourcemanager.cpp" line="126"/>
         <source>Sprites</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/resourcemanager.cpp" line="129"/>
+        <location filename="manager/resourcemanager.cpp" line="128"/>
         <source>Sounds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/resourcemanager.cpp" line="131"/>
+        <location filename="manager/resourcemanager.cpp" line="130"/>
         <source>Backgrounds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/resourcemanager.cpp" line="133"/>
+        <location filename="manager/resourcemanager.cpp" line="132"/>
         <source>Path</source>
         <translation type="unfinished"></translation>
     </message>
@@ -823,47 +850,37 @@
     <name>ResourceManager</name>
     <message>
         <location filename="manager/resourcemanager.cpp" line="7"/>
-        <location filename="manager/resourcemanager.cpp" line="64"/>
+        <location filename="manager/resourcemanager.cpp" line="61"/>
         <source>Resources Tree</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="manager/resourcemanager.cpp" line="9"/>
-        <location filename="manager/resourcemanager.cpp" line="65"/>
+        <location filename="manager/resourcemanager.cpp" line="62"/>
         <source>Sprites</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/resourcemanager.cpp" line="13"/>
-        <location filename="manager/resourcemanager.cpp" line="66"/>
+        <location filename="manager/resourcemanager.cpp" line="12"/>
+        <location filename="manager/resourcemanager.cpp" line="63"/>
         <source>Sounds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/resourcemanager.cpp" line="17"/>
-        <location filename="manager/resourcemanager.cpp" line="67"/>
+        <location filename="manager/resourcemanager.cpp" line="15"/>
+        <location filename="manager/resourcemanager.cpp" line="64"/>
         <source>Backgrounds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/resourcemanager.cpp" line="21"/>
-        <location filename="manager/resourcemanager.cpp" line="68"/>
+        <location filename="manager/resourcemanager.cpp" line="18"/>
+        <location filename="manager/resourcemanager.cpp" line="65"/>
         <source>Paths</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager/resourcemanager.cpp" line="31"/>
+        <location filename="manager/resourcemanager.cpp" line="27"/>
         <source>Initialize resouce manager complete.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="manager/resourcemanager.cpp" line="40"/>
-        <source>Sprite file &quot;%1&quot; does not exist, so it will not be added.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="manager/resourcemanager.cpp" line="47"/>
-        <source>Cannot copy sprite file from &quot;%1&quot; to &quot;%2&quot;, failed to add it.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -910,40 +927,6 @@
     <message>
         <location filename="sqlite/sqlitedatabase.cpp" line="110"/>
         <source>Table &quot;%1&quot; is not existing.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Wizard</name>
-    <message>
-        <location filename="manager/addspritewizard.ui" line="14"/>
-        <source>Wizard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="manager/addspritewizard.ui" line="32"/>
-        <source>File :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="manager/addspritewizard.ui" line="42"/>
-        <location filename="manager/addspritewizard.ui" line="84"/>
-        <source>...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="manager/addspritewizard.ui" line="53"/>
-        <source>Name :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="manager/addspritewizard.ui" line="67"/>
-        <source>Group :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="manager/addspritewizard.ui" line="74"/>
-        <source>Sprites</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

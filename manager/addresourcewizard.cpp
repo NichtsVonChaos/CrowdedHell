@@ -1,17 +1,16 @@
 #include "addresourcewizard.h"
 #include "ui_addresourcewizard.h"
 
-AddResourceWizard::AddResourceWizard(AddResourceWizard::Type resourceType, QWidget *parent) :
+AddResourceWizard::AddResourceWizard(AddResourceWizard::Type resourceType, QWidget *parent, const QString &group) :
 	QWizard(parent),
 	ui(new Ui::AddResourceWizard),
 	m_type(resourceType)
 {
 	ui->setupUi(this);
 
-	setWindowTitle(tr("Create Project Wizard"));
+	setWindowTitle(tr("Create Resource Wizard"));
 
 	QString QSSfile = "Theme/%1/QSS/%2 - Main Window.qss";
-
 
 	if(g_mainWindow->currentTheme() == "Deep Blue")
 		QSSfile = ":/Theme/Deep Blue/QSS/%1 - Main Window.qss";
@@ -43,6 +42,24 @@ AddResourceWizard::AddResourceWizard(AddResourceWizard::Type resourceType, QWidg
 		setStyleSheet(qssFile.readAll());
 		qssFile.close();
 	}
+
+	if(group.isEmpty())
+		switch(resourceType)
+		{
+			case Type::SPRITE:
+				ui->lineEditGroup->setText("Sprites/");
+			break;
+
+			case Type::SOUND:
+				ui->lineEditGroup->setText("Sounds/");
+			break;
+
+			case Type::BACKGROUND:
+				ui->lineEditGroup->setText("Backgrounds/");
+			break;
+		}
+	else
+		ui->lineEditGroup->setText(group);
 }
 
 AddResourceWizard::~AddResourceWizard()
@@ -55,7 +72,27 @@ void AddResourceWizard::on_toolButtonFile_clicked()
 	QFileDialog fileDialog(this, tr("Select a sprite file"), ".");
 	fileDialog.setAcceptMode(QFileDialog::AcceptMode::AcceptOpen);
 	fileDialog.setFileMode(QFileDialog::FileMode::ExistingFile);
-	fileDialog.setNameFilter(tr("Sprite File(*.png *.jpeg *.jpg *.bmp"));
+	fileDialog.setNameFilter(tr("Sprite File(*.png *.jpeg *.jpg *.bmp)"));
 	if(fileDialog.exec() == QFileDialog::Accepted)
 		ui->lineEditFile->setText(fileDialog.selectedFiles()[0]);
+}
+
+AddResourceWizard::Type AddResourceWizard::getType() const
+{
+	return m_type;
+}
+
+QString AddResourceWizard::getFilePath()
+{
+	return ui->lineEditFile->text();
+}
+
+QString AddResourceWizard::getName()
+{
+	return ui->lineEditName->text();
+}
+
+QString AddResourceWizard::getGroup()
+{
+	return ui->lineEditGroup->text();
 }

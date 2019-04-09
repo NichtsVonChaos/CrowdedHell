@@ -26,9 +26,16 @@ class AddResourceWizard : public QWizard
 	};
 
 public:
-	explicit AddResourceWizard(Type resourceType,QWidget *parent = nullptr);
+	explicit AddResourceWizard(Type resourceType, QWidget *parent = nullptr, const QString &group = QString());
 	~AddResourceWizard();
 
+	Type getType() const;
+
+	QString getFilePath();
+
+	QString getName();
+
+	QString getGroup();
 
 private slots:
 	void on_toolButtonFile_clicked();

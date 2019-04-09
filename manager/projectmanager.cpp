@@ -28,7 +28,7 @@ void ProjectManager::newProject()
 	QString musicPath = wizard->getMusicPath();
 	if(!QFile(musicPath).exists())
 	{
-		emit sendMessage(MessageType::Error, "Project Manager", tr("Select music file doesn't exist, at : \"%1\"").arg(musicPath));
+		emit sendMessage(MessageType::Error, "Project Manager", tr("Selected music file doesn't exist, at : \"%1\".").arg(musicPath));
 		delete wizard;
 		return;
 	}
@@ -103,8 +103,6 @@ void ProjectManager::newProject()
 		delete wizard;
 		return;
 	}
-	else
-		emit sendMessage(MessageType::Info, "Project Manager", tr("Successfully copy music file from \"%1\" to \"%2\".").arg(musicPath).arg(projectPath + QString("/") + QFileInfo(musicPath).fileName()));
 
 	m_author = wizard->getAuthor();
 	m_createDate = wizard->getDate();
@@ -112,7 +110,7 @@ void ProjectManager::newProject()
 
 	emit musicSelected(projectPath + QString("/") + QFileInfo(musicPath).fileName());
 
-	emit sendMessage(MessageType::Info, "Project Manager", tr("Create project finished."));
+	emit sendMessage(MessageType::Info, "Project Manager", tr("Create project successfully."));
 
 	delete wizard;
 };
@@ -144,7 +142,7 @@ void ProjectManager::openProject()
 
 	if(!QFile(projectPath + QString("/") + m_musicFile).exists())
 	{
-		emit sendMessage(MessageType::Error, "Project Manager", tr("Cannot find the music file of project, at : \"%1\"").arg(m_projectPath + QString("/") + m_musicFile));
+		emit sendMessage(MessageType::Error, "Project Manager", tr("Cannot find the music file of project, at : \"%1\".").arg(m_projectPath + QString("/") + m_musicFile));
 		return;
 	}
 
@@ -181,7 +179,7 @@ void ProjectManager::openProject(QString projectFilePath)
 
 	if(!QFile(projectPath + QString("/") + m_musicFile).exists())
 	{
-		emit sendMessage(MessageType::Error, "Project Manager", tr("Cannot find the music file of project, at : \"%1\"").arg(m_projectPath + QString("/") + m_musicFile));
+		emit sendMessage(MessageType::Error, "Project Manager", tr("Cannot find the music file of project, at : \"%1\".").arg(m_projectPath + QString("/") + m_musicFile));
 		return;
 	}
 
@@ -237,7 +235,7 @@ void ProjectManager::reselectMusic(QString musicPath)
 
 	if(!QFile(musicPath).exists())
 	{
-		emit sendMessage(MessageType::Error, "Project Manager", tr("Select music file doesn't exist, at : \"%1\"").arg(musicPath));
+		emit sendMessage(MessageType::Error, "Project Manager", tr("Selected music file doesn't exist, at : \"%1\".").arg(musicPath));
 		return;
 	}
 

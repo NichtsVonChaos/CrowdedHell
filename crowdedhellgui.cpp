@@ -70,12 +70,9 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 		LSTATUS dwRet = RegQueryValueEx(hKey, L"", nullptr, nullptr, LPBYTE(value), &dwSize);
 
 		if(dwRet != ERROR_SUCCESS)
-			sendMessage(MessageType::Warning, "Main Window", tr("Read registry failed, at : \"%1\"").arg("HKEY_CLASSES_ROOT\\.chproj\\Shell\\Open\\Command"));
+			sendMessage(MessageType::Warning, "Main Window", tr("Read value failed in registery, key : \"%1\".").arg("HKEY_CLASSES_ROOT\\.chproj\\Shell\\Open\\Command"));
 		else if(std::wstring(value) != appPath.toStdWString())
-		{
 			RegSetValue(hKey, L"", REG_SZ, appPath.toStdWString().c_str(), long(appPath.toStdWString().size() + 1));
-			sendMessage(MessageType::Info, "Main Window", tr("Write registry succeeded, at : \"%1\"").arg("HKEY_CLASSES_ROOT\\.chproj\\Shell\\Open\\Command"));
-		}
 
 		RegCloseKey(hKey);
 	}
@@ -83,12 +80,11 @@ CrowdedHellGUI::CrowdedHellGUI(QWidget *parent) :
 	{
 		LSTATUS dwRet = RegCreateKey(HKEY_CLASSES_ROOT, L".chproj\\Shell\\Open\\Command", &hKey);
 		if(dwRet != ERROR_SUCCESS)
-			sendMessage(MessageType::Warning, "Main Window", tr("Create registry failed, at : \"%1\"").arg("HKEY_CLASSES_ROOT\\.chproj\\Shell\\Open\\Command"));
+			sendMessage(MessageType::Warning, "Main Window", tr("Create key failed, at : \"%1\".").arg("HKEY_CLASSES_ROOT\\.chproj\\Shell\\Open\\Command"));
 		dwRet = RegSetValue(hKey, L"", REG_SZ, appPath.toStdWString().c_str(), long(appPath.toStdWString().size() + 1));
 		if(dwRet != ERROR_SUCCESS)
-			sendMessage(MessageType::Warning, "Main Window", tr("Write registry failed, at : \"%1\"").arg("HKEY_CLASSES_ROOT\\.chproj\\Shell\\Open\\Command"));
+			sendMessage(MessageType::Warning, "Main Window", tr("Write value failed in registery, key : \"%1\".").arg("HKEY_CLASSES_ROOT\\.chproj\\Shell\\Open\\Command"));
 		RegCloseKey(hKey);
-		sendMessage(MessageType::Info, "Main Window", tr("Write registry succeeded, at : \"%1\"").arg("HKEY_CLASSES_ROOT\\.chproj\\Shell\\Open\\Command"));
 	}
 
 #elif defined(Q_OS_LINUX)
@@ -683,7 +679,7 @@ void CrowdedHellGUI::on_lineEditTime_editingFinished()
 	QStringList splitForMinute = ui->lineEditTime->text().split(":");
 	if(splitForMinute.size() != 2)
 	{
-		sendMessage(MessageType::Error, "Main Window", tr("\"%1\" is not a valid time. Plz enter valid time such as \"12:5.6\"").arg(ui->lineEditTime->text()));
+		sendMessage(MessageType::Error, "Main Window", tr("\"%1\" is not a valid time. Plz enter valid time such as \"12:5.6\".").arg(ui->lineEditTime->text()));
 		musicPositionChanged(m_audioPlayer->getPosition());
 		return;
 	}
@@ -700,7 +696,7 @@ void CrowdedHellGUI::on_lineEditTime_editingFinished()
 	QStringList splitForSecond = splitForMinute[1].split(".");
 	if(splitForSecond.size() != 2)
 	{
-		sendMessage(MessageType::Error, "Main Window", tr("\"%1\" is not a valid time. Plz enter valid time such as \"12:5.600\"").arg(ui->lineEditTime->text()));
+		sendMessage(MessageType::Error, "Main Window", tr("\"%1\" is not a valid time. Plz enter valid time such as \"12:5.6\".").arg(ui->lineEditTime->text()));
 		musicPositionChanged(m_audioPlayer->getPosition());
 		return;
 	}
