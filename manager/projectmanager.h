@@ -11,7 +11,10 @@ class ResourceManager;
 #include "resourcemanager.h"
 #endif
 
+class CreateProjectWizard;
+#ifndef CREATEPROJECTWIZARD_H
 #include "createprojectwizard.h"
+#endif
 
 class ProjectManager : public QObject
 {

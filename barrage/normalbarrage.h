@@ -1,7 +1,10 @@
 #ifndef NORMALBARRAGE_H
 #define NORMALBARRAGE_H
 
+class MetaGMObject;
+#ifndef METAGMOBJECT_H
 #include "metagmobject.h"
+#endif
 
 class NormalBarrage : public MetaGMObject
 {

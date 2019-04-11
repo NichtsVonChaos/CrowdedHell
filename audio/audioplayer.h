@@ -4,21 +4,21 @@
 #include <QMessageBox>
 #include <QTime>
 
-class CrowdedHellGUI;
-class AudioPlayerSlider;
-enum class MessageType;
-enum class Language;
-
 #include "FMOD/inc/fmod.hpp"
 
+class AudioPlayerSlider;
 #ifndef AUDIOPLAYERSLIDER_H
 #include "audioplayerslider.h"
 #endif
 
+class CrowdedHellGUI;
+enum class MessageType;
+enum class Language;
 #ifndef CROWDEDHELLGUI_H
 #include "crowdedhellgui.h"
 #endif
 
+class MetaGMObject;
 #ifndef METAGMOBJECT_H
 #include "barrage/metagmobject.h"
 #endif
