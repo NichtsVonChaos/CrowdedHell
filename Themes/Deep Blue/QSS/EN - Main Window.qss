@@ -133,7 +133,7 @@ QLineEdit {
         border-bottom: 1px solid #12244C;
         border-right: 1px solid #12244C;
 }
-QLineEdit:!editable {
+QLineEdit:read-only {
         background: #AAAAAA;
         color: #777777;
 }

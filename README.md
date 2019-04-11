@@ -1,4 +1,4 @@
-# Crowded Hell 
+﻿# Crowded Hell
 [![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 ### 主要信息
 ##### Main Informations
@@ -42,8 +42,10 @@ ____
 ##### Windows:
 * 建议使用MSVC 64位套件编译，本人使用MinGW套件无法编译FMOD。  
  Suggest that use MSVC x64 kit to compile. I cannot compile FMOD when using MinGW kit.
- ##### Linux:
- * 本人仅在Ubuntu 18.10下尝试编译成功，其他系统不保证成功。  
+* 请确保{QtPath}/Tools/QtCreator/bin下的qtcreator.exe与qtcdebugger.exe拥有管理员权限，否则将无法读写注册表。
+ Plesae make sure that the qtcreator.exe and qtcdebugger.exe at {QtPath}/Tools/QtCreator/bin have the administrator privileges to operate registery.
+##### Linux:
+* 本人仅在Ubuntu 18.10下尝试编译成功，其他系统不保证成功。  
   I had only compiled it successfully at Ubuntu 18.10, I cannot ensure if it can be compiled at other Linux OSs.
   
 ### 寻求合作
