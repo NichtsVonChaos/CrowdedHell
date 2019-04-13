@@ -29,6 +29,9 @@ ResourceManager::ResourceManager(QTreeView *resourceView) :
 
 bool ResourceManager::addSprite()
 {
+	AddResourceWizard *wizard = new AddResourceWizard(AddResourceWizard::Type::SPRITE, g_mainWindow);
+	wizard->exec();
+	delete wizard;
 	/*
 	QString spriteFilePathOnProject = g_mainWindow->projectManager()->getProjectPath() + "/Sprites/";
 	QFileInfo spriteFileInfo(filePath);

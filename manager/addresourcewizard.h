@@ -20,12 +20,13 @@ class AddResourceWizard : public QWizard
 {
 	Q_OBJECT
 
+public:
+
 	enum class Type
 	{
 		SPRITE, SOUND, BACKGROUND
 	};
 
-public:
 	explicit AddResourceWizard(Type resourceType, QWidget *parent = nullptr, const QString &group = QString());
 	~AddResourceWizard();
 
@@ -39,6 +40,8 @@ public:
 
 private slots:
 	void on_toolButtonFile_clicked();
+
+	void on_toolButtonGroup_released();
 
 private:
 	Ui::AddResourceWizard *ui;

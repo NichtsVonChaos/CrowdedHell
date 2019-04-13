@@ -13,6 +13,11 @@ enum class Language;
 #include "crowdedhellgui.h"
 #endif
 
+class AddResourceWizard;
+#ifndef ADDRESOUCEWIZARD_H
+#include "addresourcewizard.h"
+#endif
+
 class ResourceItem : public QObject, public QStandardItem
 {
 	Q_OBJECT

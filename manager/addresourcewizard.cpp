@@ -96,3 +96,13 @@ QString AddResourceWizard::getGroup()
 {
 	return ui->lineEditGroup->text();
 }
+
+void AddResourceWizard::on_toolButtonGroup_released()
+{
+	QFileDialog fileDialog(this, tr("Select a sprite file"), ".");
+	fileDialog.setAcceptMode(QFileDialog::AcceptMode::AcceptOpen);
+	fileDialog.setFileMode(QFileDialog::FileMode::ExistingFile);
+	fileDialog.setNameFilter(tr("Sprite File(*.png *.jpeg *.jpg *.bmp)"));
+	if(fileDialog.exec() == QFileDialog::Accepted)
+		ui->lineEditFile->setText(fileDialog.selectedFiles()[0]);
+}

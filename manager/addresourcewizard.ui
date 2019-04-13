@@ -69,7 +69,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEditGroup"/>
+        <widget class="QLineEdit" name="lineEditGroup">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QToolButton" name="toolButtonGroup">
