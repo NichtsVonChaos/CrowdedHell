@@ -7,7 +7,6 @@
 #include <QPaintEvent>
 
 class AudioPlayer;
-
 #ifndef AUDIOPLAYER_H
 #include "audioplayer.h"
 #endif

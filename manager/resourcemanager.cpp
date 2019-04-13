@@ -57,7 +57,7 @@ bool ResourceManager::addSprite()
 	m_model->item(0)->appendRow(item);
 
 	return true;*/
-
+	return true;
 };
 
 void ResourceManager::changeLanguage()
