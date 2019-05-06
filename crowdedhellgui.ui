@@ -25,12 +25,6 @@
     <height>900</height>
    </size>
   </property>
-  <property name="maximumSize">
-   <size>
-    <width>1400</width>
-    <height>900</height>
-   </size>
-  </property>
   <property name="windowTitle">
    <string notr="true">Crowded Hell</string>
   </property>
@@ -38,786 +32,763 @@
    <string/>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QGraphicsView" name="gameView">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>31</y>
-      <width>800</width>
-      <height>608</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>800</width>
-      <height>608</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>800</width>
-      <height>608</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QTabWidget" name="tabWidget">
-    <property name="geometry">
-     <rect>
-      <x>1100</x>
-      <y>0</y>
-      <width>302</width>
-      <height>872</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="currentIndex">
+   <layout class="QHBoxLayout" name="horizontalLayout_4">
+    <property name="spacing">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="tabBarrages">
-     <attribute name="title">
-      <string>Barrages</string>
-     </attribute>
-     <widget class="QScrollArea" name="scrollArea">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>300</width>
-        <height>850</height>
-       </rect>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="ResourceTreeView" name="treeViewResources">
+      <property name="minimumSize">
+       <size>
+        <width>200</width>
+        <height>0</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <property name="leftMargin">
+         <number>4</number>
+        </property>
+        <property name="rightMargin">
+         <number>4</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="labelWidth">
+          <property name="text">
+           <string>Width</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEditWidth">
+          <property name="maximumSize">
+           <size>
+            <width>48</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string notr="true">800</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelHeight">
+          <property name="text">
+           <string>Height</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEditHeight">
+          <property name="maximumSize">
+           <size>
+            <width>48</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string notr="true">608</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="line">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lableGridX">
+          <property name="text">
+           <string>Grid-X</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEditGridX">
+          <property name="maximumSize">
+           <size>
+            <width>32</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string notr="true">32</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelGridY">
+          <property name="text">
+           <string>Grid-Y</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEditGridY">
+          <property name="maximumSize">
+           <size>
+            <width>32</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QlineEdit {width: 40;}</string>
+          </property>
+          <property name="text">
+           <string notr="true">32</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="line_2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="buttonGrid">
+          <property name="toolTip">
+           <string>Grid On/Off</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {width: 16;height: 16; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Grid.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Deep Blue/Icons/Grid - Pressed.png&quot;);}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+          <property name="flat">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="buttonGridTilt">
+          <property name="toolTip">
+           <string>Grid Tilt/Vertical</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {width: 16;height: 16; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Grid Tilt.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Deep Blue/Icons/Grid Tilt - Pressed.png&quot;);}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QGraphicsView" name="gameView">
+        <property name="minimumSize">
+         <size>
+          <width>800</width>
+          <height>608</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <property name="spacing">
+         <number>10</number>
+        </property>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <spacer name="horizontalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <widget class="QLabel" name="labelMusicName">
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Background music: </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="AudioPlayerSlider" name="audioSlider">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <item>
+               <spacer name="horizontalSpacer_5">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="buttonToZero">
+                <property name="toolTip">
+                 <string>To zero position</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/To Zero.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="buttonPrev50Frames">
+                <property name="toolTip">
+                 <string>Previous 50 frames</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Prev 50 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="buttonPrev10Frames">
+                <property name="toolTip">
+                 <string>Previous 10 frames</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Prev 10 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="buttonPrevFrame">
+                <property name="toolTip">
+                 <string>Previous 1 frame</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Prev Frame.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="buttonPause">
+                <property name="toolTip">
+                 <string>Play/Pause</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Play.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Deep Blue/Icons/Pause.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="buttonNextFrame">
+                <property name="toolTip">
+                 <string>Next 1 frame</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Next Frame.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="buttonNext10Frames">
+                <property name="toolTip">
+                 <string>Next 10 frames</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Next 10 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="buttonNext50Frames">
+                <property name="toolTip">
+                 <string>Next 50 frames</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Next 50 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="buttonMute">
+                <property name="toolTip">
+                 <string>Muted</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Volume.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Deep Blue/Icons/Volume-Muted.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>16</width>
+                  <height>61</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSlider" name="volumeSliderBar">
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+                <property name="value">
+                 <number>0</number>
+                </property>
+                <property name="sliderPosition">
+                 <number>0</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_4">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QGridLayout" name="gridLayout">
+            <item row="2" column="3">
+             <widget class="QLabel" name="labelDefaultSpeed">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>/ x1.0</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QLineEdit" name="lineEditTime">
+              <property name="minimumSize">
+               <size>
+                <width>60</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string notr="true">0:0.000</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="3">
+             <widget class="QLabel" name="labelTotalTime">
+              <property name="minimumSize">
+               <size>
+                <width>60</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string notr="true">/0:0.000</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLabel" name="labelSpeed">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Speed</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="QLabel" name="labelTotalFrames">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string notr="true">/0</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="2">
+             <widget class="QComboBox" name="comboBoxSpeed">
+              <property name="minimumSize">
+               <size>
+                <width>60</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::RightToLeft</enum>
+              </property>
+              <property name="currentText">
+               <string notr="true">x 1.0</string>
+              </property>
+              <property name="currentIndex">
+               <number>3</number>
+              </property>
+              <item>
+               <property name="text">
+                <string>x 0.1</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>x 0.2</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>x 0.5</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>x 1.0</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>x 1.5</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>x 2.0</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>x 5.0</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="labelTime">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Time</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QLineEdit" name="lineEditFrames">
+              <property name="minimumSize">
+               <size>
+                <width>60</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string notr="true">0</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="labelFrames">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Frames</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="1" column="0">
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="2" column="0">
+             <spacer name="horizontalSpacer_6">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="textEditMessageBox">
+          <property name="font">
+           <font>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">QScollArea {border:none; background-color: rgb(134, 165, 221);}</string>
+       <string notr="true"/>
       </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
+      <property name="currentIndex">
+       <number>0</number>
       </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>298</width>
-         <height>848</height>
-        </rect>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <property name="spacing">
-         <number>2</number>
+      <widget class="QWidget" name="tabBarrages">
+       <attribute name="title">
+        <string>Barrages</string>
+       </attribute>
+       <widget class="QScrollArea" name="scrollArea">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>-20</y>
+          <width>300</width>
+          <height>871</height>
+         </rect>
         </property>
-       </layout>
+        <property name="minimumSize">
+         <size>
+          <width>300</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QScollArea {border:none; background-color: rgb(134, 165, 221);}</string>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>298</width>
+           <height>869</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <property name="spacing">
+           <number>2</number>
+          </property>
+         </layout>
+        </widget>
+       </widget>
       </widget>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tabAttributes">
-     <attribute name="title">
-      <string>Attributes</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tableActions">
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <attribute name="title">
-      <string>Actions</string>
-     </attribute>
-    </widget>
-   </widget>
-   <widget class="ResourceTreeView" name="treeViewResources">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>300</width>
-      <height>870</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="AudioPlayerSlider" name="audioSlider">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>665</y>
-      <width>550</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>0</y>
-      <width>801</width>
-      <height>35</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <property name="spacing">
-      <number>4</number>
-     </property>
-     <property name="leftMargin">
-      <number>4</number>
-     </property>
-     <property name="rightMargin">
-      <number>4</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="labelWidth">
-       <property name="text">
-        <string>Width</string>
-       </property>
+      <widget class="QWidget" name="tabAttributes">
+       <attribute name="title">
+        <string>Attributes</string>
+       </attribute>
       </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="lineEditWidth">
-       <property name="maximumSize">
-        <size>
-         <width>48</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="text">
-        <string notr="true">800</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="labelHeight">
-       <property name="text">
-        <string>Height</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="lineEditHeight">
-       <property name="maximumSize">
-        <size>
-         <width>48</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="text">
-        <string notr="true">608</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="Line" name="line">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="lableGridX">
-       <property name="text">
-        <string>Grid-X</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="lineEditGridX">
-       <property name="maximumSize">
-        <size>
-         <width>32</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
+      <widget class="QWidget" name="tableActions">
        <property name="styleSheet">
         <string notr="true"/>
        </property>
-       <property name="text">
-        <string notr="true">32</string>
-       </property>
+       <attribute name="title">
+        <string>Actions</string>
+       </attribute>
       </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="labelGridY">
-       <property name="text">
-        <string>Grid-Y</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="lineEditGridY">
-       <property name="maximumSize">
-        <size>
-         <width>32</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QlineEdit {width: 40;}</string>
-       </property>
-       <property name="text">
-        <string notr="true">32</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="Line" name="line_2">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonGrid">
-       <property name="toolTip">
-        <string>Grid On/Off</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {width: 16;height: 16; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Grid.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Deep Blue/Icons/Grid - Pressed.png&quot;);}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="checkable">
-        <bool>true</bool>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
-       <property name="flat">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonGridTilt">
-       <property name="toolTip">
-        <string>Grid Tilt/Vertical</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {width: 16;height: 16; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Grid Tilt.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Deep Blue/Icons/Grid Tilt - Pressed.png&quot;);}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="checkable">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QLabel" name="labelMusicName">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>640</y>
-      <width>531</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Background music: </string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textEditMessageBox">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>750</y>
-      <width>800</width>
-      <height>120</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>9</pointsize>
-     </font>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>700</y>
-      <width>561</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <property name="spacing">
-      <number>8</number>
-     </property>
-     <item>
-      <spacer name="horizontalSpacer_5">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonToZero">
-       <property name="toolTip">
-        <string>To zero position</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/To Zero.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonPrev50Frames">
-       <property name="toolTip">
-        <string>Previous 50 frames</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Prev 50 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonPrev10Frames">
-       <property name="toolTip">
-        <string>Previous 10 frames</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Prev 10 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonPrevFrame">
-       <property name="toolTip">
-        <string>Previous 1 frame</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Prev Frame.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonPause">
-       <property name="toolTip">
-        <string>Play/Pause</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Play.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Deep Blue/Icons/Pause.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="checkable">
-        <bool>true</bool>
-       </property>
-       <property name="checked">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonNextFrame">
-       <property name="toolTip">
-        <string>Next 1 frame</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Next Frame.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonNext10Frames">
-       <property name="toolTip">
-        <string>Next 10 frames</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Next 10 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonNext50Frames">
-       <property name="toolTip">
-        <string>Next 50 frames</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Next 50 Frames.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="buttonMute">
-       <property name="toolTip">
-        <string>Muted</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {width: 32;height: 32; border: none; background-color: transparent; background-image:url(&quot;:/Themes/Deep Blue/Icons/Volume.png&quot;);} QPushButton:checked {background-image:url(&quot;:/Themes/Deep Blue/Icons/Volume-Muted.png&quot;);} QPushButton:hover {background-color: rgb(202, 216, 240);}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>16</width>
-         <height>61</height>
-        </size>
-       </property>
-       <property name="checkable">
-        <bool>true</bool>
-       </property>
-       <property name="checked">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSlider" name="volumeSliderBar">
-       <property name="maximum">
-        <number>100</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-       <property name="sliderPosition">
-        <number>0</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_4">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>880</x>
-      <y>640</y>
-      <width>221</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="2" column="0">
-      <widget class="QLabel" name="labelSpeed">
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Speed</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="2">
-      <widget class="QLabel" name="labelTotalTime">
-       <property name="minimumSize">
-        <size>
-         <width>60</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string notr="true">/0:0.000</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="lineEditFrames">
-       <property name="minimumSize">
-        <size>
-         <width>60</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>80</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="text">
-        <string notr="true">0</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-       <property name="readOnly">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="2">
-      <widget class="QLabel" name="labelTotalFrames">
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string notr="true">/0</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="labelFrames">
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Frames</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="lineEditTime">
-       <property name="minimumSize">
-        <size>
-         <width>60</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>80</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="text">
-        <string notr="true">0:0.000</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-       <property name="readOnly">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="labelTime">
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Time</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QComboBox" name="comboBoxSpeed">
-       <property name="minimumSize">
-        <size>
-         <width>60</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>80</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::RightToLeft</enum>
-       </property>
-       <property name="currentText">
-        <string notr="true">x 1.0</string>
-       </property>
-       <property name="currentIndex">
-        <number>3</number>
-       </property>
-       <item>
-        <property name="text">
-         <string>x 0.1</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>x 0.2</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>x 0.5</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>x 1.0</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>x 1.5</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>x 2.0</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>x 5.0</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="2" column="2">
-      <widget class="QLabel" name="labelDefaultSpeed">
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>/ x1.0</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="3">
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="1" column="3">
-      <spacer name="horizontalSpacer_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="2" column="3">
-      <spacer name="horizontalSpacer_6">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </widget>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -825,7 +796,7 @@
      <x>0</x>
      <y>0</y>
      <width>1400</width>
-     <height>30</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="styleSheet">
