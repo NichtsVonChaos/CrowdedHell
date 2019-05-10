@@ -47,7 +47,8 @@ SOURCES += \
     barrage/normalbarrage.cpp \
     barrage/metagmobject.cpp \
     sqlite/sqlitedatabase.cpp \
-    manager/addresourcewizard.cpp
+    manager/addresourcewizard.cpp \
+    resource/sprite.cpp
 
 HEADERS += \
         crowdedhellgui.h \
@@ -61,7 +62,9 @@ HEADERS += \
     barrage/normalbarrage.h \
     barrage/metagmobject.h \
     sqlite/sqlitedatabase.h \
-    manager/addresourcewizard.h
+    manager/addresourcewizard.h \
+    resource/sprite.h \
+    datastructrue/grid.hpp
 
 FORMS += \
         crowdedhellgui.ui \
