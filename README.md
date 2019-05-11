@@ -41,8 +41,8 @@ ____
 ##### About compiling
 ____
 ##### Requirement
-* openCV3  
---Install on windows look at here.  
+* openCV3(win=4.1 | ubuntu>=3.0)  
+--Install on windows look at [here](https://www.learnopencv.com/install-opencv3-on-windows/).  
 --Install on ubuntu look at [here](https://www.learnopencv.com/install-opencv3-on-ubuntu/).  
 ##### Windows:
 * 建议使用MSVC 64位套件编译，本人使用MinGW套件无法编译FMOD。  
