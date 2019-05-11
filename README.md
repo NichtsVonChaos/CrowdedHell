@@ -46,7 +46,7 @@ ____
 --Install on ubuntu look at [here](https://www.learnopencv.com/install-opencv3-on-ubuntu/).  
 ##### Windows:
 * 建议使用MSVC 64位套件编译，本人使用MinGW套件无法编译FMOD。  
- Suggest that use MSVC x64 kit to compile. I cannot compile FMOD when using MinGW kit.
+ Suggest that use MSVC x64 kit to compile. I cannot compile FMOD using MinGW kit.
 * 请确保{QtPath}/Tools/QtCreator/bin下的qtcreator.exe与qtcdebugger.exe拥有管理员权限，否则将无法读写注册表。  
  Plesae make sure that the qtcreator.exe and qtcdebugger.exe at {QtPath}/Tools/QtCreator/bin have the administrator privileges to operate registery.
 ##### Linux:
