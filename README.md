@@ -31,18 +31,23 @@ ____
 ____
 ##### 本项目的诞生离不开以下开源项目。
 ##### This project cannot be without following open-source projects.
-* [GMK-Splitter](https://github.com/Medo42/Gmk-Splitter)
-##### 以下项目并非开源项目，但是拥有受限的免费许可证。
+* [GMK-Splitter](https://github.com/Medo42/Gmk-Splitter)  
+* [openCV](https://opencv.org/)  
+##### 以下项目并非开源项目，但是拥有受限的免费许可证。  
 ##### Following projects are not open-source, but have limitted free license.
 * [FMOD](https://www.fmod.com/)
   
 ### 关于编译
 ##### About compiling
 ____
+##### Requirement
+* openCV3  
+--Install on windows look at here.  
+--Install on ubuntu look at [here](https://www.learnopencv.com/install-opencv3-on-ubuntu/).  
 ##### Windows:
 * 建议使用MSVC 64位套件编译，本人使用MinGW套件无法编译FMOD。  
  Suggest that use MSVC x64 kit to compile. I cannot compile FMOD when using MinGW kit.
-* 请确保{QtPath}/Tools/QtCreator/bin下的qtcreator.exe与qtcdebugger.exe拥有管理员权限，否则将无法读写注册表。
+* 请确保{QtPath}/Tools/QtCreator/bin下的qtcreator.exe与qtcdebugger.exe拥有管理员权限，否则将无法读写注册表。  
  Plesae make sure that the qtcreator.exe and qtcdebugger.exe at {QtPath}/Tools/QtCreator/bin have the administrator privileges to operate registery.
 ##### Linux:
 * 本人仅在Ubuntu 19.04下尝试编译成功，其他系统不保证成功。  
@@ -59,8 +64,10 @@ ____
  Beautify UI.
 * 运行测试。  
  Bug test.
-* 程序员（苦工）。  
+* 摸代码（苦工）。  
  Programmers. (I'm regreted for no-pay but I'm just a student.)
+* 增加对mac OS的支持  
+ Add support for mac OS.
   
 ### 联系方式
 ##### Contact to me
@@ -68,8 +75,3 @@ ____
 * QQ: 1009978366
 * Gmail: <NichtsVonChaos@gmail.com>
 * Tieba: [-NIHIL-](http://tieba.baidu.com/home/main?un=towanoICIT)
-  
-### 版权
-##### Copyright
-____
-Copyright© 2018 Nihil \<NichtsVonChaos@gmail.com\>
