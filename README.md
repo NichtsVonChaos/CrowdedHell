@@ -9,8 +9,8 @@ ____
  Description: An avoidance-making tool for GameMaker8 based on Qt and openGL.
 * 制作者：Nihil  
  Creator: Nihil
-* 开发环境：[Qt](https://www.qt.io/ )  
- IDE: [Qt](https://www.qt.io/)
+* 开发环境：[Qt5](https://www.qt.io/)(最后一次编译版本为5.12.2)  
+ IDE: [Qt5](https://www.qt.io/)(final build version is 5.12.2)
 * 支持平台：Windows, Linux  
  Platform: Windows, Linux
 * 支持语言：简体中文，繁体中文，英语，日语  
