@@ -29,14 +29,25 @@ CONFIG += c++17
 INCLUDEPATH += \
         $$PWD/FMOD/inc
 
-win32: LIBS += -L$$PWD/FMOD/lib/ -lfmod64_vc -lfmodL64_vc
-else:unix: LIBS += -L$$PWD/FMOD/lib/ -lfmod -lfmodL
+win32: LIBS += -L$$PWD/FMOD/lib/ \
+                -lfmod64_vc -lfmodL64_vc
+else:unix: LIBS += -L$$PWD/FMOD/lib/ \
+                -lfmod -lfmodL
 
 win32: LIBS += -lAdvapi32
 
-unix: QT_CONFIG -= no-pkg-config
-unix: CONFIG += link_pkgconfig
-unix: PKGCONFIG += opencv
+win32{
+    INCLUDEPATH += $$(OPENCV_PATH)/include
+    CONFIG(debug, debug|release): LIBS += -L$$(OPENCV_PATH)/x64/vc15/lib \
+                                -lopencv_world410d
+    else: LIBS += -L$$(OPENCV_PATH)/x64/vc15/lib \
+                                -lopencv_world410
+}
+else:unix{
+    QT_CONFIG -= no-pkg-config
+    CONFIG += link_pkgconfig
+    PKGCONFIG += opencv
+}
 
 SOURCES += \
         main.cpp \
