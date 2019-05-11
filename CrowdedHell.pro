@@ -34,6 +34,10 @@ else:unix: LIBS += -L$$PWD/FMOD/lib/ -lfmod -lfmodL
 
 win32: LIBS += -lAdvapi32
 
+unix: QT_CONFIG -= no-pkg-config
+unix: CONFIG += link_pkgconfig
+unix: PKGCONFIG += opencv
+
 SOURCES += \
         main.cpp \
         crowdedhellgui.cpp \

@@ -5,6 +5,7 @@
 #include <QPoint>
 #include <QVector>
 #include "datastructrue/grid.hpp"
+#include "opencv2/opencv.hpp"
 
 class Image : public QObject
 {
@@ -12,8 +13,15 @@ class Image : public QObject
 public:
 	explicit Image(QObject *parent = nullptr);
 
+	static const int BLUE = 0;
+	static const int GREEN = 1;
+	static const int RED = 2;
+	static const int ALPHA = 3;
+
 private:
 	Grid<bool> *m_mask;
+
+	QString m_filePath;
 };
 
 class Sprite : public QObject

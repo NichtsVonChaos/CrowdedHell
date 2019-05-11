@@ -1,6 +1,7 @@
 #include "crowdedhellgui.h"
 #include <QApplication>
 #include <iostream>
+#include "opencv2/opencv.hpp"
 
 CrowdedHellGUI *g_mainWindow;
 
