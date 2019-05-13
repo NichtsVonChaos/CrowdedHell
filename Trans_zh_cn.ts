@@ -9,23 +9,23 @@
         <translation>向导</translation>
     </message>
     <message>
-        <location filename="manager/addresourcewizard.ui" line="32"/>
+        <location filename="manager/addresourcewizard.ui" line="28"/>
         <source>File :</source>
         <translation>文件：</translation>
     </message>
     <message>
-        <location filename="manager/addresourcewizard.ui" line="42"/>
-        <location filename="manager/addresourcewizard.ui" line="77"/>
+        <location filename="manager/addresourcewizard.ui" line="58"/>
+        <location filename="manager/addresourcewizard.ui" line="79"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="manager/addresourcewizard.ui" line="53"/>
+        <location filename="manager/addresourcewizard.ui" line="35"/>
         <source>Name :</source>
         <translation>资源名：</translation>
     </message>
     <message>
-        <location filename="manager/addresourcewizard.ui" line="67"/>
+        <location filename="manager/addresourcewizard.ui" line="42"/>
         <source>Group :</source>
         <translation>组：</translation>
     </message>
@@ -36,12 +36,14 @@
         <translation>资源创建向导</translation>
     </message>
     <message>
-        <location filename="manager/addresourcewizard.cpp" line="54"/>
+        <location filename="manager/addresourcewizard.cpp" line="72"/>
+        <location filename="manager/addresourcewizard.cpp" line="102"/>
         <source>Select a sprite file</source>
         <translation>选择一个精灵文件</translation>
     </message>
     <message>
-        <location filename="manager/addresourcewizard.cpp" line="57"/>
+        <location filename="manager/addresourcewizard.cpp" line="75"/>
+        <location filename="manager/addresourcewizard.cpp" line="105"/>
         <source>Sprite File(*.png *.jpeg *.jpg *.bmp)</source>
         <oldsource>Sprite File(*.png *.jpeg *.jpg *.bmp</oldsource>
         <translation>精灵文件(*.png *.jpeg *.jpg *.bmp)</translation>
@@ -270,33 +272,33 @@
         <translation>向导</translation>
     </message>
     <message>
-        <location filename="manager/createprojectwizard.ui" line="44"/>
+        <location filename="manager/createprojectwizard.ui" line="40"/>
         <source>Project Name :</source>
         <translation>项目名：</translation>
     </message>
     <message>
-        <location filename="manager/createprojectwizard.ui" line="62"/>
+        <location filename="manager/createprojectwizard.ui" line="47"/>
         <source>Path :</source>
         <translation>路径：</translation>
     </message>
     <message>
-        <location filename="manager/createprojectwizard.ui" line="76"/>
-        <location filename="manager/createprojectwizard.ui" line="97"/>
+        <location filename="manager/createprojectwizard.ui" line="95"/>
+        <location filename="manager/createprojectwizard.ui" line="109"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="manager/createprojectwizard.ui" line="108"/>
+        <location filename="manager/createprojectwizard.ui" line="61"/>
         <source>Author :</source>
         <translation>作者：</translation>
     </message>
     <message>
-        <location filename="manager/createprojectwizard.ui" line="126"/>
+        <location filename="manager/createprojectwizard.ui" line="68"/>
         <source>Create Date :</source>
         <translation>创建日期：</translation>
     </message>
     <message>
-        <location filename="manager/createprojectwizard.ui" line="87"/>
+        <location filename="manager/createprojectwizard.ui" line="54"/>
         <source>Background Music :</source>
         <translation>背景音乐：</translation>
     </message>
@@ -324,283 +326,283 @@
 <context>
     <name>CrowdedHellGUI</name>
     <message>
-        <location filename="crowdedhellgui.ui" line="85"/>
+        <location filename="crowdedhellgui.ui" line="745"/>
         <source>Barrages</source>
         <translation>弹幕</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="121"/>
+        <location filename="crowdedhellgui.ui" line="787"/>
         <source>Attributes</source>
         <translation>属性</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="129"/>
+        <location filename="crowdedhellgui.ui" line="795"/>
         <source>Actions</source>
         <translation>动作</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="178"/>
+        <location filename="crowdedhellgui.ui" line="83"/>
         <source>Width</source>
         <translation>宽度</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="198"/>
+        <location filename="crowdedhellgui.ui" line="103"/>
         <source>Height</source>
         <translation>高度</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="225"/>
+        <location filename="crowdedhellgui.ui" line="130"/>
         <source>Grid-X</source>
         <translation>网格X</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="251"/>
+        <location filename="crowdedhellgui.ui" line="156"/>
         <source>Grid-Y</source>
         <translation>网格Y</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="281"/>
+        <location filename="crowdedhellgui.ui" line="186"/>
         <source>Grid On/Off</source>
         <translation>网格 打开/关闭</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="309"/>
+        <location filename="crowdedhellgui.ui" line="214"/>
         <source>Grid Tilt/Vertical</source>
         <translation>网格 斜向/垂直</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="355"/>
+        <location filename="crowdedhellgui.ui" line="285"/>
         <source>Background music: </source>
         <oldsource>Background music : Unknown - Unknown</oldsource>
-        <translation>背景音乐： </translation>
+        <translation type="unfinished">背景音乐: </translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="405"/>
+        <location filename="crowdedhellgui.ui" line="314"/>
         <source>To zero position</source>
         <oldsource>To zero position.</oldsource>
         <translation>回到音乐开始位置</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="418"/>
+        <location filename="crowdedhellgui.ui" line="327"/>
         <source>Previous 50 frames</source>
         <translation>向前50帧</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="431"/>
+        <location filename="crowdedhellgui.ui" line="340"/>
         <source>Previous 10 frames</source>
         <translation>向前10帧</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="444"/>
+        <location filename="crowdedhellgui.ui" line="353"/>
         <source>Previous 1 frame</source>
         <translation>向前一帧</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="457"/>
+        <location filename="crowdedhellgui.ui" line="366"/>
         <source>Play/Pause</source>
         <translation>播放/暂停</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="476"/>
+        <location filename="crowdedhellgui.ui" line="385"/>
         <source>Next 1 frame</source>
         <translation>向后一帧</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="489"/>
+        <location filename="crowdedhellgui.ui" line="398"/>
         <source>Next 10 frames</source>
         <translation>向后10帧</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="502"/>
+        <location filename="crowdedhellgui.ui" line="411"/>
         <source>Next 50 frames</source>
         <translation>向后50帧</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="515"/>
+        <location filename="crowdedhellgui.ui" line="424"/>
         <source>Muted</source>
         <translation>静音</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="586"/>
+        <location filename="crowdedhellgui.ui" line="538"/>
         <source>Speed</source>
         <translation>速度</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="650"/>
+        <location filename="crowdedhellgui.ui" line="652"/>
         <source>Frames</source>
         <translation>帧数</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="684"/>
+        <location filename="crowdedhellgui.ui" line="621"/>
         <source>Time</source>
         <translation>时间</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="718"/>
+        <location filename="crowdedhellgui.ui" line="578"/>
         <source>x 0.1</source>
         <translation>x 0.1</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="723"/>
+        <location filename="crowdedhellgui.ui" line="583"/>
         <source>x 0.2</source>
         <translation>x 0.2</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="728"/>
+        <location filename="crowdedhellgui.ui" line="588"/>
         <source>x 0.5</source>
         <translation>x 0.5</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="733"/>
+        <location filename="crowdedhellgui.ui" line="593"/>
         <source>x 1.0</source>
         <translation>x 1.0</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="738"/>
+        <location filename="crowdedhellgui.ui" line="598"/>
         <source>x 1.5</source>
         <translation>x 1.5</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="743"/>
+        <location filename="crowdedhellgui.ui" line="603"/>
         <source>x 2.0</source>
         <translation>x 2.0</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="748"/>
+        <location filename="crowdedhellgui.ui" line="608"/>
         <source>x 5.0</source>
         <translation>x 5.0</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="761"/>
+        <location filename="crowdedhellgui.ui" line="489"/>
         <source>/ x1.0</source>
         <translation>/ x1.0</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="830"/>
+        <location filename="crowdedhellgui.ui" line="816"/>
         <source>File</source>
         <translation>文件</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="834"/>
+        <location filename="crowdedhellgui.ui" line="820"/>
         <source>Export</source>
         <translation>导出</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="853"/>
+        <location filename="crowdedhellgui.ui" line="839"/>
         <source>Window</source>
         <translation>窗口</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="857"/>
+        <location filename="crowdedhellgui.ui" line="843"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="866"/>
+        <location filename="crowdedhellgui.ui" line="852"/>
         <source>Theme</source>
         <translation>主题</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="877"/>
+        <location filename="crowdedhellgui.ui" line="863"/>
         <source>Resources</source>
         <translation>资源</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="897"/>
+        <location filename="crowdedhellgui.ui" line="883"/>
         <source>English</source>
         <translation>英语</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="905"/>
+        <location filename="crowdedhellgui.ui" line="891"/>
         <source>Simplified Chinese</source>
         <translation>简体中文</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="913"/>
+        <location filename="crowdedhellgui.ui" line="899"/>
         <source>Traditional Chinese</source>
         <translation>繁体中文</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="921"/>
+        <location filename="crowdedhellgui.ui" line="907"/>
         <source>Japanese</source>
         <translation>日语</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="926"/>
+        <location filename="crowdedhellgui.ui" line="912"/>
         <source>Add Sound Effect</source>
         <translation>添加音效</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="931"/>
+        <location filename="crowdedhellgui.ui" line="917"/>
         <source>Reselect Music</source>
         <translation>重新选择音乐</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="936"/>
+        <location filename="crowdedhellgui.ui" line="922"/>
         <source>New Project</source>
         <translation>新建项目</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="941"/>
+        <location filename="crowdedhellgui.ui" line="927"/>
         <source>Open Project</source>
         <translation>打开项目</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="946"/>
+        <location filename="crowdedhellgui.ui" line="932"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="951"/>
-        <location filename="crowdedhellgui.ui" line="954"/>
-        <location filename="crowdedhellgui.ui" line="957"/>
+        <location filename="crowdedhellgui.ui" line="937"/>
+        <location filename="crowdedhellgui.ui" line="940"/>
+        <location filename="crowdedhellgui.ui" line="943"/>
         <source>Save To ...</source>
         <translation>保存到...</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="962"/>
+        <location filename="crowdedhellgui.ui" line="948"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="967"/>
-        <location filename="crowdedhellgui.ui" line="970"/>
-        <location filename="crowdedhellgui.ui" line="973"/>
+        <location filename="crowdedhellgui.ui" line="953"/>
+        <location filename="crowdedhellgui.ui" line="956"/>
+        <location filename="crowdedhellgui.ui" line="959"/>
         <source>Save and Close</source>
         <translation>保存并关闭</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="978"/>
+        <location filename="crowdedhellgui.ui" line="964"/>
         <source>Eixt</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="983"/>
+        <location filename="crowdedhellgui.ui" line="969"/>
         <source>GM8.0 project (.gmk)</source>
         <translation>GM8.0项目 (.gmk)</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="988"/>
+        <location filename="crowdedhellgui.ui" line="974"/>
         <source>Add Sprite</source>
         <translation>添加图像</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="993"/>
+        <location filename="crowdedhellgui.ui" line="979"/>
         <source>Add Background</source>
         <translation>添加背景图片</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="1001"/>
+        <location filename="crowdedhellgui.ui" line="987"/>
         <source>Hide &quot;Info&quot; Messages</source>
         <translation>隐藏&quot;通知&quot;信息</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="1009"/>
+        <location filename="crowdedhellgui.ui" line="995"/>
         <source>Always Save  When Close</source>
         <translation>关闭时自动保存</translation>
     </message>
     <message>
-        <location filename="crowdedhellgui.ui" line="1014"/>
+        <location filename="crowdedhellgui.ui" line="1000"/>
         <source>Clear Messages</source>
         <translation>清空消息</translation>
     </message>
@@ -851,22 +853,22 @@
 <context>
     <name>ResourceItem</name>
     <message>
-        <location filename="manager/resourcemanager.cpp" line="126"/>
+        <location filename="manager/resourcemanager.cpp" line="130"/>
         <source>Sprites</source>
         <translation>精灵</translation>
     </message>
     <message>
-        <location filename="manager/resourcemanager.cpp" line="128"/>
+        <location filename="manager/resourcemanager.cpp" line="132"/>
         <source>Sounds</source>
         <translation>音效</translation>
     </message>
     <message>
-        <location filename="manager/resourcemanager.cpp" line="130"/>
+        <location filename="manager/resourcemanager.cpp" line="134"/>
         <source>Backgrounds</source>
         <translation>背景图片</translation>
     </message>
     <message>
-        <location filename="manager/resourcemanager.cpp" line="132"/>
+        <location filename="manager/resourcemanager.cpp" line="136"/>
         <source>Path</source>
         <translation>路径</translation>
     </message>
@@ -875,31 +877,31 @@
     <name>ResourceManager</name>
     <message>
         <location filename="manager/resourcemanager.cpp" line="7"/>
-        <location filename="manager/resourcemanager.cpp" line="61"/>
+        <location filename="manager/resourcemanager.cpp" line="65"/>
         <source>Resources Tree</source>
         <translation>资源树</translation>
     </message>
     <message>
         <location filename="manager/resourcemanager.cpp" line="9"/>
-        <location filename="manager/resourcemanager.cpp" line="62"/>
+        <location filename="manager/resourcemanager.cpp" line="66"/>
         <source>Sprites</source>
         <translation>精灵</translation>
     </message>
     <message>
         <location filename="manager/resourcemanager.cpp" line="12"/>
-        <location filename="manager/resourcemanager.cpp" line="63"/>
+        <location filename="manager/resourcemanager.cpp" line="67"/>
         <source>Sounds</source>
         <translation>音效</translation>
     </message>
     <message>
         <location filename="manager/resourcemanager.cpp" line="15"/>
-        <location filename="manager/resourcemanager.cpp" line="64"/>
+        <location filename="manager/resourcemanager.cpp" line="68"/>
         <source>Backgrounds</source>
         <translation>背景图片</translation>
     </message>
     <message>
         <location filename="manager/resourcemanager.cpp" line="18"/>
-        <location filename="manager/resourcemanager.cpp" line="65"/>
+        <location filename="manager/resourcemanager.cpp" line="69"/>
         <source>Paths</source>
         <translation>路径</translation>
     </message>
