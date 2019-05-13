@@ -36,6 +36,9 @@
     <property name="spacing">
      <number>0</number>
     </property>
+    <property name="sizeConstraint">
+     <enum>QLayout::SetDefaultConstraint</enum>
+    </property>
     <property name="leftMargin">
      <number>0</number>
     </property>
@@ -720,6 +723,12 @@
     </item>
     <item>
      <widget class="QTabWidget" name="tabWidget">
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>0</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <pointsize>12</pointsize>
@@ -796,7 +805,7 @@
      <x>0</x>
      <y>0</y>
      <width>1400</width>
-     <height>25</height>
+     <height>28</height>
     </rect>
    </property>
    <property name="styleSheet">
