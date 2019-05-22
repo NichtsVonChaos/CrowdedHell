@@ -26,6 +26,11 @@ class MetaGMObject : public QObject
 
 public:
 	MetaGMObject(ResourceManager *resourceManager);
+	MetaGMObject(const MetaGMObject&) = delete;
+	MetaGMObject& operator=(const MetaGMObject&) = delete;
+	MetaGMObject(MetaGMObject&&) = delete;
+	MetaGMObject& operator=(MetaGMObject&&) = delete;
+
 	virtual ~MetaGMObject();
 	virtual int getInteger(int attribute);
 	virtual double getDouble(int attribute);

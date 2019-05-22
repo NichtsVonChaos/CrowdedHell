@@ -55,6 +55,7 @@ SOURCES += \
     display/avoidancedisplaywidget.cpp \
     audio/audioplayerslider.cpp \
     audio/audioplayer.cpp \
+    mainwindow/roomeditor.cpp \
     manager/resourcemanager.cpp \
     manager/projectmanager.cpp \
     manager/resourcetreeview.cpp \
@@ -67,9 +68,11 @@ SOURCES += \
 
 HEADERS += \
         crowdedhellgui.h \
+    datastructrue/grid.hpp \
     display/avoidancedisplaywidget.h \
     audio/audioplayerslider.h \
     audio/audioplayer.h \
+    mainwindow/roomeditor.h \
     manager/projectmanager.h \
     manager/resourcemanager.h \
     manager/resourcetreeview.h \
@@ -78,11 +81,11 @@ HEADERS += \
     barrage/metagmobject.h \
     sqlite/sqlitedatabase.h \
     manager/addresourcewizard.h \
-    resource/sprite.h \
-    datastructrue/grid.hpp
+    resource/sprite.h
 
 FORMS += \
         crowdedhellgui.ui \
+    mainwindow/roomeditor.ui \
     manager/createprojectwizard.ui \
     manager/addresourcewizard.ui
 

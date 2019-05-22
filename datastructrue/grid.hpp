@@ -1,59 +1,154 @@
 #ifndef GRID_H
 #define GRID_H
+
+/*************************************************************************
+ * File					: grid.h
+ * Class				: Grid
+ * Container Type		: STL ContiguousContainer
+ * Author				: Nihil
+ * Modified				: 5/15/2019
+ * Description			:
+	----Initialize
+		You can use :
+		Grid<int> grid =
+				{{ 1, 2, 3, 4 },
+				 { 7, 8, 9},
+				 { 5 }};
+		It will be initialized as following 4x3 grid :
+			1	2	3	4
+			7	8	9	0
+			5	0	0	0
+	----Read/Write
+		You can use grid[row][col] to read and write data, but it has no
+	check for out-of-range. For example, a access of grid[3][7] but the
+	range of grid is [0-6][0-6], you will access grid[4][0] eventually.
+		If you cannot check the range, use grid.at(row, col) instead of
+	grid[row][col], it will throw exception when out of range.
+	----Traversal
+		Expression for(auto value : grid) is supported.
+		Or, you can use grid.begin()/end()/cbegin()/cend() get the iterator
+	which is STL LegacyContiguousIterator of the container.
+	----Range Operation
+		You can specify a range for follow operation :
+			- range
+			Get a new Gird initialized by a range of datas from current Grid.
+			- count
+			Count the occurrences of specified value in a range.
+			- fill
+			Fill a range of datas with specified value.
+			- replace
+			Replace all specified values in a range of datas by another value.
+		Note :
+			- A range from (rowA, colA) to (rowB, colB) include all border.
+			It mean that range from (3, 5) to (6, 6) include (3, 5), (3, 6),
+			(4, 5), (4, 6), (5, 5), (5, 6), (6, 5), (6, 6) 8 elements.
+			- NO MATTER if rowA > rowB or colA > colB. It will automatically
+			use the range from (min(rowA, rowB), min(colA, colB)) to
+			(max(rowA, rowB), max(colA, colB).
+	----Swap() Is Faster
+		If you want to swap two Grid like :
+			Grid<Type> tmp = g1;
+			g1 = g2;
+			g2 = tmp;
+		Please use :
+			g1.swap(g2); or std::swap(g1, g2);
+		The function Grid::swap will swap their pointer but not allocate
+	memories again.
+	----STL Algorithm
+		You can use some STL algorithm function by iterator, such as
+	std::random_shuffle(grid.begin(), grid.end()).
+ *************************************************************************/
+
 #include <iterator>
 #include <initializer_list>
 #include <exception>
 #include <algorithm>
+#include <utility>
 
 // Declaration
 template<typename T>
 class Grid
 {
 public:
-	typedef class __Grid_Const_Iterator : public std::iterator<std::forward_iterator_tag, T>
+	class __Grid_Iterator ;
+	class __Grid_Const_Iterator;
+	typedef T value_type;
+
+	typedef class __Grid_Iterator : public std::iterator<std::random_access_iterator_tag, T>
+	{
+	public:
+		__Grid_Iterator(T *p);
+		__Grid_Iterator &operator =(const __Grid_Iterator &iter);
+
+		bool operator !=(const __Grid_Iterator &iter) const;
+		bool operator ==(const __Grid_Iterator &iter) const;
+		bool operator <(const __Grid_Iterator &itr) const;
+		bool operator <=(const __Grid_Iterator &itr) const;
+		bool operator >(const __Grid_Iterator &itr) const;
+		bool operator >=(const __Grid_Iterator &itr) const;
+
+		__Grid_Iterator &operator ++();
+		__Grid_Iterator operator ++(int);
+		__Grid_Iterator &operator +=(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n);
+		__Grid_Iterator operator +(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n);
+		template<typename Q>
+		friend __Grid_Iterator operator +(typename std::iterator<std::random_access_iterator_tag, Q>::difference_type n, const __Grid_Iterator &itr);
+
+		__Grid_Iterator &operator --();
+		__Grid_Iterator operator --(int);
+		__Grid_Iterator &operator -=(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n);
+		__Grid_Iterator operator -(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n);
+		template<typename Q>
+		friend __Grid_Iterator operator -(typename std::iterator<std::random_access_iterator_tag, Q>::difference_type n, const __Grid_Iterator &itr);
+		typename std::iterator<std::random_access_iterator_tag, T>::difference_type operator -(const __Grid_Iterator &itr);
+
+		const T &operator [](typename std::iterator<std::random_access_iterator_tag, T>::difference_type n) const;
+		T &operator *();
+
+		operator __Grid_Const_Iterator() const;
+
+	private:
+		T *_ptr;
+	} iterator;
+
+	typedef class __Grid_Const_Iterator : public std::iterator<std::random_access_iterator_tag, T>
 	{
 	public:
 		__Grid_Const_Iterator(T *const p);
-
 		__Grid_Const_Iterator &operator =(const __Grid_Const_Iterator &iter);
 
 		bool operator !=(const __Grid_Const_Iterator &iter) const;
-
 		bool operator ==(const __Grid_Const_Iterator &iter) const;
+		bool operator <(const __Grid_Const_Iterator &itr) const;
+		bool operator <=(const __Grid_Const_Iterator &itr) const;
+		bool operator >(const __Grid_Const_Iterator &itr) const;
+		bool operator >=(const __Grid_Const_Iterator &itr) const;
 
 		__Grid_Const_Iterator &operator ++();
-
 		__Grid_Const_Iterator operator ++(int);
+		__Grid_Const_Iterator &operator +=(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n);
+		__Grid_Const_Iterator operator +(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n);
+		template<typename Q>
+		friend __Grid_Const_Iterator operator +(typename std::iterator<std::random_access_iterator_tag, Q>::difference_type n, const __Grid_Const_Iterator &itr);
 
+		__Grid_Const_Iterator &operator --();
+		__Grid_Const_Iterator operator --(int);
+		__Grid_Const_Iterator &operator -=(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n);
+		__Grid_Const_Iterator operator -(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n);
+		template<typename Q>
+		friend __Grid_Const_Iterator operator -(typename std::iterator<std::random_access_iterator_tag, Q>::difference_type n, const __Grid_Const_Iterator &itr);
+		typename std::iterator<std::random_access_iterator_tag, T>::difference_type operator -(const __Grid_Const_Iterator &itr);
+
+		const T &operator [](typename std::iterator<std::random_access_iterator_tag, T>::difference_type n) const;
 		const T &operator *() const;
+
+		operator const __Grid_Iterator() const;
+		operator __Grid_Iterator() = delete;
 
 	private:
 		T *const _ptr;
 
 	} const_iterator;
-
-	typedef class __Grid_Iterator : public std::iterator<std::forward_iterator_tag, T>
-	{
-	public:
-		__Grid_Iterator(T *p);
-
-		__Grid_Iterator &operator =(const __Grid_Iterator &iter);
-
-		bool operator !=(const __Grid_Iterator &iter) const;
-
-		bool operator ==(const __Grid_Iterator &iter) const;
-
-		__Grid_Iterator &operator ++();
-
-		__Grid_Iterator operator ++(int);
-
-		T &operator *();
-
-		operator const_iterator() const;
-
-	private:
-		T *_ptr;
-	} iterator;
 
 	Grid();
 	Grid(size_t rows, size_t cols);
@@ -66,20 +161,22 @@ public:
 
 	void clear();
 
+	T &at(size_t row, size_t col);
 	T at(size_t row, size_t col) const;
 	T *operator [](size_t index);
 	const T *operator [](size_t index) const;
 
 	T &front();
 	const T &front() const;
-
 	T &back();
 	const T &back() const;
 
 	size_t rows() const;
 	size_t columns() const;
 	size_t size() const;
+	size_t max_size() const;
 	size_t count(const T &value) const;
+	size_t count(const T &value, size_t row1, size_t col1, size_t row2, size_t col2) const;
 	bool empty() const;
 
 	iterator begin();
@@ -104,8 +201,12 @@ public:
 	void fill(const T &value, size_t row1, size_t col1, size_t row2, size_t col2);
 	void fill(const T &value, iterator begin, iterator end);
 
+	void shuffle();
+
 	void reverse(bool top_bottom = true, bool left_right = true);
 	void swap(Grid &other);
+
+	Grid<T> range(size_t row1, size_t col1, size_t row2, size_t col2);
 
 private:
 	T *m_grid;
@@ -117,7 +218,7 @@ template<typename T>
 Grid<T>::Grid() :
 	m_grid(nullptr) ,m_columns(0), m_rows(0)
 {
-
+	std::swap(*this, *this);
 }
 
 template<typename T>
@@ -209,6 +310,16 @@ void Grid<T>::clear()
 }
 
 template<typename T>
+T &Grid<T>::at(size_t row, size_t col)
+{
+	if(row < m_rows && col < m_columns)
+		return m_grid[row * m_columns + col];
+	else
+		throw std::out_of_range(std::string("Index out of range : (") + std::to_string(row) + std::string(", ") + std::to_string(col) +
+								std::string(")/(") + std::to_string(m_rows - 1) + std::string(", ") + std::to_string(m_columns - 1) + std::string(")."));
+}
+
+template<typename T>
 T Grid<T>::at(size_t row, size_t col) const
 {
 	if(row < m_rows && col < m_columns)
@@ -291,12 +402,48 @@ size_t Grid<T>::size() const
 }
 
 template<typename T>
+size_t Grid<T>::max_size() const
+{
+	return 4294967296u / sizeof(T);
+}
+
+template<typename T>
 size_t Grid<T>::count(const T &value) const
 {
 	size_t number = 0;
 	for(size_t i = 0; i < m_rows * m_columns; i++)
 		if(m_grid[i] == value)
 			number++;
+
+	return number;
+}
+
+template<typename T>
+size_t Grid<T>::count(const T &value, size_t row1, size_t col1, size_t row2, size_t col2) const
+{
+	if(row1 > row2)
+	{
+		row1 ^= row2;
+		row2 ^= row1;
+		row1 ^= row2;
+	}
+
+	if(col1 > col2)
+	{
+		col1 ^= col2;
+		col2 ^= col1;
+		col1 ^= col2;
+	}
+
+	if(row2 >= m_rows || col2 >= m_columns)
+		throw std::out_of_range(std::string("Index out of range : (") + std::to_string(row2) + std::string(", ") + std::to_string(col2) +
+								std::string(")/(") + std::to_string(m_rows - 1) + std::string(", ") + std::to_string(m_columns - 1) + std::string(")."));
+
+	size_t number = 0;
+	for(size_t i = row1; i <= row2; i++)
+		for(size_t j = col1; j <= col2; j++)
+			if(at(i, j) == value)
+				number++;
 
 	return number;
 }
@@ -445,7 +592,7 @@ size_t Grid<T>::replace(const T &oldValue, const T &newValue, size_t row1, size_
 
 	size_t number = 0;
 	for(size_t i = row1; i <= row2; i++)
-		for(size_t j = col1; j < col2; j++)
+		for(size_t j = col1; j <= col2; j++)
 			if(m_grid[i * m_columns + j] == oldValue)
 			{
 				m_grid[i * m_columns + j] = newValue;
@@ -526,6 +673,12 @@ void Grid<T>::fill(const T &value, typename Grid<T>::iterator begin, typename Gr
 }
 
 template<typename T>
+void Grid<T>::shuffle()
+{
+	std::random_shuffle(begin(), end());
+}
+
+template<typename T>
 void Grid<T>::reverse(bool top_bottom, bool left_right)
 {
 	if(m_grid == nullptr)
@@ -561,6 +714,35 @@ void Grid<T>::reverse(bool top_bottom, bool left_right)
 		std::reverse(m_grid, m_grid + m_rows * m_columns);
 		return;
 	}
+}
+
+template<typename T>
+Grid<T> Grid<T>::range(size_t row1, size_t col1, size_t row2, size_t col2)
+{
+	if(row1 > row2)
+	{
+		row1 ^= row2;
+		row2 ^= row1;
+		row1 ^= row2;
+	}
+
+	if(col1 > col2)
+	{
+		col1 ^= col2;
+		col2 ^= col1;
+		col1 ^= col2;
+	}
+
+	if(row2 >= m_rows || col2 >= m_columns)
+		throw std::out_of_range(std::string("Index out of range : (") + std::to_string(row2) + std::string(", ") + std::to_string(col2) +
+								std::string(")/(") + std::to_string(m_rows - 1) + std::string(", ") + std::to_string(m_columns - 1) + std::string(")."));
+
+	Grid<T> tmp(row2 - row1 + 1, col2 - col1 + 1);
+	for(size_t i = 0; i < row2 - row1 + 1; i++)
+		for(size_t j = 0; j <  col2 - col1 + 1; j++)
+			tmp.at(i, j) = at(row1 + i, col1 + j);
+
+	return tmp;
 }
 
 template<typename T>
@@ -605,6 +787,30 @@ bool Grid<T>::__Grid_Iterator::operator ==(const typename Grid::__Grid_Iterator 
 }
 
 template<typename T>
+bool Grid<T>::__Grid_Iterator::operator <(const Grid<T>::__Grid_Iterator &itr) const
+{
+	return _ptr < itr._ptr;
+}
+
+template<typename T>
+bool Grid<T>::__Grid_Iterator::operator <=(const Grid<T>::__Grid_Iterator &itr) const
+{
+	return _ptr <= itr._ptr;
+}
+
+template<typename T>
+bool Grid<T>::__Grid_Iterator::operator >(const Grid<T>::__Grid_Iterator &itr) const
+{
+	return _ptr > itr._ptr;
+}
+
+template<typename T>
+bool Grid<T>::__Grid_Iterator::operator >=(const Grid<T>::__Grid_Iterator &itr) const
+{
+	return _ptr >= itr._ptr;
+}
+
+template<typename T>
 typename Grid<T>::__Grid_Iterator &Grid<T>::__Grid_Iterator::operator ++()
 {
 	_ptr++;
@@ -617,6 +823,71 @@ typename Grid<T>::__Grid_Iterator Grid<T>::__Grid_Iterator::operator ++(int)
 	__Grid_Iterator tmp = *this;
 	_ptr++;
 	return tmp;
+}
+
+template<typename T>
+typename Grid<T>::__Grid_Iterator &Grid<T>::__Grid_Iterator::operator +=(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n)
+{
+	_ptr += n;
+	return *this;
+}
+
+template<typename T>
+typename Grid<T>::__Grid_Iterator Grid<T>::__Grid_Iterator::operator +(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n)
+{
+	return __Grid_Iterator(_ptr + n);
+}
+
+template<typename T>
+typename Grid<T>::__Grid_Iterator operator +(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n, const typename Grid<T>::__Grid_Iterator &itr)
+{
+	return typename Grid<T>::__Grid_Iterator(itr._ptr + n);
+}
+
+template<typename T>
+typename Grid<T>::__Grid_Iterator &Grid<T>::__Grid_Iterator::operator --()
+{
+	_ptr--;
+	return *this;
+}
+
+template<typename T>
+typename Grid<T>::__Grid_Iterator Grid<T>::__Grid_Iterator::operator --(int)
+{
+	__Grid_Iterator tmp = *this;
+	_ptr--;
+	return tmp;
+}
+
+template<typename T>
+typename Grid<T>::__Grid_Iterator &Grid<T>::__Grid_Iterator::operator -=(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n)
+{
+	_ptr -= n;
+	return *this;
+}
+
+template<typename T>
+typename Grid<T>::__Grid_Iterator Grid<T>::__Grid_Iterator::operator -(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n)
+{
+	return __Grid_Iterator(_ptr - n);
+}
+
+template<typename T>
+typename Grid<T>::__Grid_Iterator operator -(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n, const typename Grid<T>::__Grid_Iterator &itr)
+{
+	return typename Grid<T>::__Grid_Iterator(itr._ptr - n);
+}
+
+template<typename T>
+typename std::iterator<std::random_access_iterator_tag, T>::difference_type Grid<T>::__Grid_Iterator::operator -(const Grid<T>::__Grid_Iterator &itr)
+{
+	return _ptr - itr._ptr;
+}
+
+template<typename T>
+const T &Grid<T>::__Grid_Iterator::operator [](typename std::iterator<std::random_access_iterator_tag, T>::difference_type n) const
+{
+	return *(_ptr + n);
 }
 
 template<typename T>
@@ -651,6 +922,30 @@ bool Grid<T>::__Grid_Const_Iterator::operator ==(const typename Grid<T>::__Grid_
 }
 
 template<typename T>
+bool Grid<T>::__Grid_Const_Iterator::operator <(const Grid<T>::__Grid_Const_Iterator &itr) const
+{
+	return _ptr < itr._ptr;
+}
+
+template<typename T>
+bool Grid<T>::__Grid_Const_Iterator::operator <=(const Grid<T>::__Grid_Const_Iterator &itr) const
+{
+	return _ptr <= itr._ptr;
+}
+
+template<typename T>
+bool Grid<T>::__Grid_Const_Iterator::operator >(const Grid<T>::__Grid_Const_Iterator &itr) const
+{
+	return _ptr > itr._ptr;
+}
+
+template<typename T>
+bool Grid<T>::__Grid_Const_Iterator::operator >=(const Grid<T>::__Grid_Const_Iterator &itr) const
+{
+	return _ptr >= itr._ptr;
+}
+
+template<typename T>
 typename Grid<T>::__Grid_Const_Iterator &Grid<T>::__Grid_Const_Iterator::operator ++()
 {
 	_ptr++;
@@ -666,6 +961,71 @@ typename Grid<T>::__Grid_Const_Iterator Grid<T>::__Grid_Const_Iterator::operator
 }
 
 template<typename T>
+typename Grid<T>::__Grid_Const_Iterator &Grid<T>::__Grid_Const_Iterator::operator +=(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n)
+{
+	_ptr += n;
+	return *this;
+}
+
+template<typename T>
+typename Grid<T>::__Grid_Const_Iterator Grid<T>::__Grid_Const_Iterator::operator +(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n)
+{
+	return __Grid_Const_Iterator(_ptr + n);
+}
+
+template<typename T>
+typename Grid<T>::__Grid_Const_Iterator operator +(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n, const typename Grid<T>::__Grid_Const_Iterator &itr)
+{
+	return typename Grid<T>::__Grid_Const_Iterator(itr._ptr + n);
+}
+
+template<typename T>
+typename Grid<T>::__Grid_Const_Iterator &Grid<T>::__Grid_Const_Iterator::operator --()
+{
+	_ptr--;
+	return *this;
+}
+
+template<typename T>
+typename Grid<T>::__Grid_Const_Iterator Grid<T>::__Grid_Const_Iterator::operator --(int)
+{
+	__Grid_Const_Iterator tmp = *this;
+	_ptr--;
+	return tmp;
+}
+
+template<typename T>
+typename Grid<T>::__Grid_Const_Iterator &Grid<T>::__Grid_Const_Iterator::operator -=(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n)
+{
+	_ptr -= n;
+	return *this;
+}
+
+template<typename T>
+typename Grid<T>::__Grid_Const_Iterator Grid<T>::__Grid_Const_Iterator::operator -(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n)
+{
+	return __Grid_Const_Iterator(_ptr - n);
+}
+
+template<typename T>
+typename Grid<T>::__Grid_Const_Iterator operator -(typename std::iterator<std::random_access_iterator_tag, T>::difference_type n, const typename Grid<T>::__Grid_Const_Iterator &itr)
+{
+	return typename Grid<T>::__Grid_Const_Iterator(itr._ptr - n);
+}
+
+template<typename T>
+typename std::iterator<std::random_access_iterator_tag, T>::difference_type Grid<T>::__Grid_Const_Iterator::operator -(const Grid<T>::__Grid_Const_Iterator &itr)
+{
+	return _ptr - itr._ptr;
+}
+
+template<typename T>
+const T &Grid<T>::__Grid_Const_Iterator::operator [](typename std::iterator<std::random_access_iterator_tag, T>::difference_type n) const
+{
+	return *(_ptr + n);
+}
+
+template<typename T>
 const T &Grid<T>::__Grid_Const_Iterator::operator *() const
 {
 	return *_ptr;
@@ -676,6 +1036,12 @@ Grid<T>::__Grid_Iterator::operator Grid<T>::const_iterator() const
 {
 	Grid<T>::const_iterator citr(_ptr);
 	return citr;
+}
+
+template<typename T>
+Grid<T>::__Grid_Const_Iterator::operator const Grid<T>::__Grid_Iterator() const
+{
+	return __Grid_Iterator(_ptr);
 }
 
 #endif // GRID_H

@@ -7,6 +7,9 @@
 #include "datastructrue/grid.hpp"
 #include "opencv2/opencv.hpp"
 
+extern template
+class Grid<bool>;
+
 class Image : public QObject
 {
 	Q_OBJECT
