@@ -1,10 +1,10 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2018-12-02T01:09:40
+# Project created by QtCreator 2019-06-03T13:21:12
 #
 #-------------------------------------------------
 
-QT       += core gui opengl sql
+QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -22,85 +22,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-win32:QMAKE_LFLAGS += /MANIFESTUAC:\"level=\'requireAdministrator\' uiAccess=\'false\'\"
-
-CONFIG += c++17
-
-INCLUDEPATH += \
-        $$PWD/FMOD/inc
-
-win32: LIBS += -L$$PWD/FMOD/lib/ \
-                -lfmod64_vc -lfmodL64_vc
-else:unix: LIBS += -L$$PWD/FMOD/lib/ \
-                -lfmod -lfmodL
-
-win32: LIBS += -lAdvapi32
-
-win32{
-    INCLUDEPATH += $$(OPENCV_PATH)/include
-    CONFIG(debug, debug|release): LIBS += -L$$(OPENCV_PATH)/x64/vc15/lib \
-                                -lopencv_world410d
-    else: LIBS += -L$$(OPENCV_PATH)/x64/vc15/lib \
-                                -lopencv_world410
-}
-else:unix{
-    QT_CONFIG -= no-pkg-config
-    CONFIG += link_pkgconfig
-    PKGCONFIG += opencv
-}
+CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        crowdedhellgui.cpp \
-    display/avoidancedisplaywidget.cpp \
-    audio/audioplayerslider.cpp \
-    audio/audioplayer.cpp \
-    mainwindow/roomeditor.cpp \
-    manager/resourcemanager.cpp \
-    manager/projectmanager.cpp \
-    manager/resourcetreeview.cpp \
-    manager/createprojectwizard.cpp \
-    barrage/normalbarrage.cpp \
-    barrage/metagmobject.cpp \
-    sqlite/sqlitedatabase.cpp \
-    manager/addresourcewizard.cpp \
-    resource/sprite.cpp
+        mainwindow.cpp
 
 HEADERS += \
-        crowdedhellgui.h \
-    datastructrue/grid.hpp \
-    display/avoidancedisplaywidget.h \
-    audio/audioplayerslider.h \
-    audio/audioplayer.h \
-    mainwindow/roomeditor.h \
-    manager/projectmanager.h \
-    manager/resourcemanager.h \
-    manager/resourcetreeview.h \
-    manager/createprojectwizard.h \
-    barrage/normalbarrage.h \
-    barrage/metagmobject.h \
-    sqlite/sqlitedatabase.h \
-    manager/addresourcewizard.h \
-    resource/sprite.h
+        mainwindow.h
 
 FORMS += \
-        crowdedhellgui.ui \
-    mainwindow/roomeditor.ui \
-    manager/createprojectwizard.ui \
-    manager/addresourcewizard.ui
-
-TRANSLATIONS += \
-        Trans_zh_cn.ts \
-        Trans_zh_tw.ts \
-        Trans_jp.ts
+        mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-DISTFILES +=
-
-RESOURCES += \
-    translation.qrc \
-    DefalutTheme.qrc

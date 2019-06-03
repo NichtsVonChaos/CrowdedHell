@@ -1,9 +1,0 @@
-    <?xml version="1.0" encoding="UTF-8"?>
-     <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-         <mime-type type="CrowdedHell/project">
-             <comment>Project File of Crowded Hell</comment>
-             <icon name="CrowdedHell-project"/>
-             <glob-deleteall/>
-             <glob pattern="*.chproj"/>
-         </mime-type>
-     </mime-info> 

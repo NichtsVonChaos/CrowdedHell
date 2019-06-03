@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/translations">
-        <file>Trans_zh_cn.qm</file>
-        <file>Trans_jp.qm</file>
-        <file>Trans_zh_tw.qm</file>
-    </qresource>
-</RCC>
