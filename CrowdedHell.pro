@@ -30,14 +30,15 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 FORMS += \
-    Sources/mainwindow/mainwindow.ui
+    Sources/MainWindow/mainwindow.ui
 
 HEADERS += \
-    Sources/mainwindow/mainwindow.h
+    Sources/DataStructure/grid.hpp \
+    Sources/MainWindow/mainwindow.h
 
 SOURCES += \
     Sources/main.cpp \
-    Sources/mainwindow/mainwindow.cpp
+    Sources/MainWindow/mainwindow.cpp
 
 TRANSLATIONS = Resources/Translations/zh_cn.ts \
     Resources/Translations/zh_tw.ts \
