@@ -1,4 +1,6 @@
 ﻿# Crowded Hell
+Developing. Coming soon?
+开发中。敬请期待？
 ![](https://img.shields.io/badge/platform-windows%20%7C%20linux-lightgrey.svg) [![](https://img.shields.io/badge/license-GPLv3-green.svg)](https://en.wikipedia.org/wiki/GNU_General_Public_License) [![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 ### 主要信息
 ##### Main Informations
