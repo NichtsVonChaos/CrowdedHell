@@ -23,6 +23,11 @@ signals:
 
 public slots:
     void setVolume(float volume, QObject *sender = nullptr);
+
+private:
+    FMOD::System *m_fmodSystem;
+    FMOD::Sound *m_music;
+    FMOD::Channel *m_channel;
 };
 
 #endif // MUSICPLAYER_H

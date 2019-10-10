@@ -2,7 +2,7 @@
 
 Logger *Logger::m_logger = nullptr;
 
-Logger::Logger()
+Logger::Logger(QWidget *parent): QTextEdit(parent)
 {
     if(m_logger)
         throw std::logic_error(std::string("Logger is created repeatedly. It is not your mistake, please report this bug on GitHub."));
