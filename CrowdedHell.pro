@@ -29,17 +29,27 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-FORMS += \
-    Sources/MainWindow/mainwindow.ui
-
-HEADERS += \
-    Sources/DataStructure/grid.hpp \
-    Sources/MainWindow/mainwindow.h
-
-SOURCES += \
-    Sources/main.cpp \
-    Sources/MainWindow/mainwindow.cpp
-
-TRANSLATIONS = Resources/Translations/zh_cn.ts \
+TRANSLATIONS = \
+    Resources/Translations/zh_cn.ts \
     Resources/Translations/zh_tw.ts \
     Resources/Translations/jp.ts
+
+INCLUDEPATH += \
+    Reference
+
+FORMS += \
+    Codes/MainWindow/mainwindow.ui
+
+HEADERS += \
+    Codes/DataStructure/grid.hpp \
+    Codes/MainWindow/mainwindow.h \
+    Codes/ResourceManager/Image/image.h \
+    Codes/ResourceManager/Image/mask.h \
+    Codes/ResourceManager/Image/sprite.h
+
+SOURCES += \
+    Codes/MainWindow/mainwindow.cpp \
+    Codes/ResourceManager/Image/image.cpp \
+    Codes/ResourceManager/Image/mask.cpp \
+    Codes/ResourceManager/Image/sprite.cpp \
+    Codes/main.cpp
