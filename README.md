@@ -1,7 +1,11 @@
 ﻿# Crowded Hell
-Developing. Coming soon?
+Developing. Coming soon?  
 开发中。敬请期待？
 ![](https://img.shields.io/badge/platform-windows%20%7C%20linux-lightgrey.svg) [![](https://img.shields.io/badge/license-GPLv3-green.svg)](https://en.wikipedia.org/wiki/GNU_General_Public_License) [![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+
+PS: master branch is discard. Check the new branch '还是重构吧'.   
+PS: 主分支已被抛弃。请查看新分支“还是重构吧”。
+
 ### 主要信息
 ##### Main Informations
 ____
