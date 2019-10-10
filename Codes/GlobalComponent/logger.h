@@ -19,7 +19,7 @@ public:
 signals:
 
 public slots:
-    void message(const QString &module, Type type, const QString &message);
+    void message(Type type, const QString &module, const QString &message);
 
 private:
     static Logger *m_logger;

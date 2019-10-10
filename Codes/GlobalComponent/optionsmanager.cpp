@@ -10,14 +10,14 @@ void OptionsManager::readOptions()
     QSettings iniFile("./config.ini", QSettings::IniFormat);
 
     iniFile.beginGroup("Main");
-    setLanguage(Language(iniFile.value("Language", 0).toInt()), this);
-    setTheme(iniFile.value("Theme", "Deep Blue").toString(), this);
-    setHideInfoLog(iniFile.value("HideInfoLog", false).toBool(), this);
-    setAutoSave(iniFile.value("AutoSave", false).toBool(), this);
+    m_language = Language(iniFile.value("Language", 0).toInt());
+    m_theme = iniFile.value("Theme", "Deep Blue").toString();
+    m_hideInfoLog = iniFile.value("HideInfoLog", false).toBool();
+    m_autoSave = iniFile.value("AutoSave", false).toBool();
     iniFile.endGroup();
 
     iniFile.beginGroup("Audio");
-    setVolume(iniFile.value("Volume", 0.6f).toFloat(), this);
+    m_volume = iniFile.value("Volume", 0.6f).toFloat();
     iniFile.endGroup();
 }
 

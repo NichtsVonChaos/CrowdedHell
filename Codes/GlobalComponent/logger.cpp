@@ -12,7 +12,7 @@ Logger::Logger(QWidget *parent): QTextEdit(parent)
     setHtml("<font color=purple>>>></font> ");
 }
 
-void Logger::message(const QString &module, Logger::Type type, const QString &message)
+void Logger::message(Logger::Type type, const QString &module, const QString &message)
 {
     QString messageHtml = "<p>";
     switch(type)

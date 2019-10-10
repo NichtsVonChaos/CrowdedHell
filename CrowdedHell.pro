@@ -29,6 +29,11 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+win32: LIBS += \
+    -L$$PWD/Reference/FMOD/lib/ -lfmod64_vc -lfmodL64_vc
+else:unix: LIBS += \
+    -L$$PWD/Reference/FMOD/lib/ -lfmod -lfmodL
+
 TRANSLATIONS = \
     Resources/Translations/zh_cn.ts \
     Resources/Translations/zh_tw.ts \
