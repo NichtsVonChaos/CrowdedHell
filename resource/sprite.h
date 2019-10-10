@@ -5,7 +5,7 @@
 #include <QPoint>
 #include <QVector>
 #include "datastructrue/grid.hpp"
-#include "opencv2/opencv.hpp"
+//#include "opencv2/opencv.hpp"
 
 extern template
 class Grid<bool>;

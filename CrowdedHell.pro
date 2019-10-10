@@ -36,19 +36,6 @@ else:unix: LIBS += -L$$PWD/FMOD/lib/ \
 
 win32: LIBS += -lAdvapi32
 
-win32{
-    INCLUDEPATH += $$(OPENCV_PATH)/include
-    CONFIG(debug, debug|release): LIBS += -L$$(OPENCV_PATH)/x64/vc15/lib \
-                                -lopencv_world410d
-    else: LIBS += -L$$(OPENCV_PATH)/x64/vc15/lib \
-                                -lopencv_world410
-}
-else:unix{
-    QT_CONFIG -= no-pkg-config
-    CONFIG += link_pkgconfig
-    PKGCONFIG += opencv
-}
-
 SOURCES += \
         main.cpp \
         crowdedhellgui.cpp \
