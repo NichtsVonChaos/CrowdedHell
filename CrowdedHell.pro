@@ -42,14 +42,20 @@ FORMS += \
 
 HEADERS += \
     Codes/DataStructure/grid.hpp \
+    Codes/GlobalComponent/logger.h \
+    Codes/GlobalComponent/optionsmanager.h \
     Codes/MainWindow/mainwindow.h \
     Codes/ResourceManager/Image/image.h \
     Codes/ResourceManager/Image/mask.h \
-    Codes/ResourceManager/Image/sprite.h
+    Codes/ResourceManager/Image/sprite.h \
+    Codes/ResourceManager/Music/musicplayer.h
 
 SOURCES += \
+    Codes/GlobalComponent/logger.cpp \
+    Codes/GlobalComponent/optionsmanager.cpp \
     Codes/MainWindow/mainwindow.cpp \
     Codes/ResourceManager/Image/image.cpp \
     Codes/ResourceManager/Image/mask.cpp \
     Codes/ResourceManager/Image/sprite.cpp \
+    Codes/ResourceManager/Music/musicplayer.cpp \
     Codes/main.cpp
