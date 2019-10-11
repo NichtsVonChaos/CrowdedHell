@@ -20,7 +20,7 @@ public:
     unsigned int length() const;
     float speed() const;
 
-    void changeMusic(const QString &path);
+    void setMusicFile(const QString &path);
     void forward(unsigned int frames);
     void back(unsigned int frames);
 
@@ -50,6 +50,8 @@ private:
     float m_speed;
 
     int m_timer;
+
+    bool m_timerReportError;
 };
 
 #endif // MUSICPLAYER_H
