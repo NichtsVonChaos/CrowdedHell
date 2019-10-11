@@ -15,10 +15,17 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+    <item row="1" column="0">
      <widget class="Logger" name="textEdit">
       <property name="readOnly">
        <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="MusicSlider" name="musicSlider">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
      </widget>
     </item>
@@ -48,6 +55,11 @@
    <class>Logger</class>
    <extends>QTextEdit</extends>
    <header>Codes/GlobalComponent/logger.h</header>
+  </customwidget>
+  <customwidget>
+   <class>MusicSlider</class>
+   <extends>QSlider</extends>
+   <header>Codes/MainWindow/musicslider.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

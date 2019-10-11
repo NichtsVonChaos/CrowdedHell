@@ -13,18 +13,14 @@ Project::~Project()
 
 Project::Project(QObject *parent) :
     QObject(parent),
-    m_changed(false), m_initilized(false)
+    m_changed(false)
 {
 
 }
 
-void Project::__initialze()
+void Project::initialze()
 {
-    if(!m_initilized)
-    {
-        connect(this, &Project::message, logger(), &Logger::message);
-        m_initilized = true;
-    }
+    connect(this, &Project::message, logger(), &Logger::message);
 }
 
 bool Project::isValid() const
@@ -34,8 +30,6 @@ bool Project::isValid() const
 
 void Project::newProject()
 {
-    __initialze();
-
     CreateProjectWizard *wizard = new CreateProjectWizard;
     if(wizard->exec() != QWizard::Accepted)
     {
@@ -137,8 +131,6 @@ void Project::newProject()
 
 void Project::openProject()
 {
-    __initialze();
-
     QString projectFilePath = QFileDialog::getOpenFileName(nullptr, tr("Select a project"), ".", "Crowded Hell Project(*.chproj)");
     if(projectFilePath.isEmpty())
         return;
@@ -180,8 +172,6 @@ void Project::openProject()
 
 void Project::openProject(QString projectFilePath)
 {
-    __initialze();
-
     QFile projectFile(projectFilePath);
     if(!projectFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {

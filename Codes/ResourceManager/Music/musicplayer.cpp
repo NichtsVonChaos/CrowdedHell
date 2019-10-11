@@ -51,7 +51,10 @@ void MusicPlayer::timerEvent(QTimerEvent *ev)
     FMOD_RESULT result;
     if(ev->timerId() == m_timer)
     {
-        if(m_channel == nullptr)
+        if(!m_music)
+            return;
+
+        if(!m_channel)
         {
             m_position = 0;
             emit positionChanged(0, this);

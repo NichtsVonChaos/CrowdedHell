@@ -61,6 +61,8 @@ public:
      */
     QString musicFile() const;
 
+    void initialze();
+
 signals:
     /**
      * @see CrowdedHellGUI::sendMessage(MessageType, QString, QString);
@@ -129,7 +131,6 @@ public slots:
 private:
     explicit Project(QObject *parent = nullptr);
     friend Project *project();
-    void __initialze();
 
     bool m_changed, m_initilized;
     QString m_projectName;

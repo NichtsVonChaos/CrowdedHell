@@ -7,10 +7,14 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 	ui->setupUi(this);
 
+    project()->initialze();
+
     m_musicPlayer = new MusicPlayer(this);
+    ui->musicSlider->initialze(m_musicPlayer);
 }
 
 MainWindow::~MainWindow()
 {
 	delete ui;
+    delete m_musicPlayer;
 }

@@ -22,7 +22,7 @@ public slots:
     void message(Type type, const QString &module, const QString &message);
 
 private:
-    static Logger *m_logger;
+    static Logger *m_instance;
     friend Logger *logger();
 };
 

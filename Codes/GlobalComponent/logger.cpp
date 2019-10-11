@@ -1,13 +1,13 @@
 #include "logger.h"
 
-Logger *Logger::m_logger = nullptr;
+Logger *Logger::m_instance = nullptr;
 
 Logger::Logger(QWidget *parent): QTextEdit(parent)
 {
-    if(m_logger)
+    if(m_instance)
         throw std::logic_error(std::string("Logger is created repeatedly. It is not your mistake, please report this bug on GitHub."));
 
-    m_logger = this;
+    m_instance = this;
     document()->setMaximumBlockCount(100);
     setHtml("<font color=purple>>>></font> ");
 }
@@ -25,7 +25,7 @@ void Logger::message(Logger::Type type, const QString &module, const QString &me
         }
         break;
 
-        case Type::Tip:
+        case Type::Error:
         {
             messageHtml += QString("<font color=black><b>[ <font color=red>") + tr("Error") + QString("</font> ]</b></font> ");
         }
@@ -37,9 +37,9 @@ void Logger::message(Logger::Type type, const QString &module, const QString &me
         }
         break;
 
-        case Type::Error:
+        case Type::Tip:
         {
-            messageHtml += QString("<font color=black><b>[ <font color=blue>") + tr("Tips") + QString("</font> ]</b></font> ");
+            messageHtml += QString("<font color=black><b>[ <font color=blue>") + tr("Tip") + QString("</font> ]</b></font> ");
         }
         break;
     }
@@ -53,8 +53,8 @@ void Logger::message(Logger::Type type, const QString &module, const QString &me
 
 Logger *logger()
 {
-    if(Logger::m_logger == nullptr)
+    if(Logger::m_instance == nullptr)
         throw std::logic_error(std::string("Logger is used before created. It is not your mistake, please report this bug on GitHub."));
 
-    return Logger::m_logger;
+    return Logger::m_instance;
 }
