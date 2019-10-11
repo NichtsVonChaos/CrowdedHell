@@ -1,21 +1,44 @@
 #include "image.h"
 
-Image::Image()
+Image::Image(QObject *parent):
+    Grid(0), QObject(parent)
 {
 
 }
 
-Pixel::Pixel(Color r, Color g, Color b, Color a):
-    r(r), g(g), b(b), a(a)
+Image::Image(const unsigned int *const data, size_t rows, size_t cols, QObject *parent):
+    Grid(data, rows, cols, 0), QObject(parent), mask(rows, cols)
+{
+    for(size_t i = 0; i < rows * cols; i++)
+        mask.at(i) = bool(alpha(at(i)));
+}
+
+Image::~Image()
 {
 
 }
 
-Pixel::Pixel(unsigned int abgr)
+unsigned char Image::red(unsigned int agbr) noexcept
 {
-    Color *color = reinterpret_cast<Color *>(&abgr);
-    r = color[0];
-    g = color[1];
-    b = color[2];
-    a = color[3];
+    return static_cast<unsigned char>(agbr & 0xFFU);
+}
+
+unsigned char Image::green(unsigned int agbr) noexcept
+{
+    return static_cast<unsigned char>((agbr & 0xFF00U) >> 8);
+}
+
+unsigned char Image::blue(unsigned int agbr) noexcept
+{
+    return static_cast<unsigned char>((agbr & 0xFF0000U) >> 16);
+}
+
+unsigned char Image::alpha(unsigned int agbr) noexcept
+{
+    return static_cast<unsigned char>((agbr & 0xFF000000U) >> 24);
+}
+
+unsigned int Image::color(unsigned char r, unsigned char g, unsigned char b, unsigned char a) noexcept
+{
+    return (unsigned(a) << 24u) | (unsigned(b) << 16u) | (unsigned(g) << 8u) | unsigned(r);
 }

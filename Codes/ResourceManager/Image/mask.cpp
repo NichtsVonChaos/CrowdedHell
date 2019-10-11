@@ -1,6 +1,7 @@
 #include "mask.h"
 
-Mask::Mask()
+Mask::Mask():
+    Grid(false)
 {
 
 }

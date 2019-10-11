@@ -13,7 +13,7 @@
 /*************************************************************************************************
  *                          Grid Data Structure
  * Author: Nihil
- * Last modified: Oct. 11, 2019
+ * Last modified: Oct. 12, 2019
  *
  * Usage:
  *
@@ -61,6 +61,12 @@
  *
  *      Also, you can use 'at' function to access the grid. They are equivalent.
  *          grid.at(1, 2) = 10;
+ *
+ *      More, if you provide one argument, it will be regarded as index:
+ *                      equivalent
+ *          grid.at(7)  ==========>  grid(2, 3)
+ *                      rows=3
+ *                      columns=4
  *
  *      When the index out of range, it will throw std::out_of_range.
  *
@@ -258,12 +264,12 @@ public:
     typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
 
     Grid(const value_type &empty = value_type());
-    Grid(const _Tp *const data, size_type rows, size_type cols, const value_type &empty = value_type());
+    Grid(const value_type *const data, size_type rows, size_type cols, const value_type &empty = value_type());
     Grid(size_type rows ,size_type cols, const value_type &fill = value_type(), const value_type &empty = value_type());
     Grid(std::initializer_list<std::initializer_list<value_type> > data, const value_type &empty = value_type());
     Grid(const std::vector<std::vector<_Tp> > &data, const value_type &empty = value_type());
     Grid(const Grid<_Tp, _Alloc> &another);
-    ~Grid() noexcept;
+    virtual ~Grid();
 
     Grid &operator=(std::initializer_list<std::initializer_list<value_type>> values);
     Grid &operator=(const Grid<_Tp, _Alloc> &another);
@@ -288,12 +294,16 @@ public:
     reference back();
     const_reference back() const;
 
-    bool equal(const Grid<_Tp, _Alloc> &another, bool(*equalFunc)(const _Tp &first, const _Tp &second) = nullptr) const;
+    const value_type *data() const;
+
+    bool equal(const Grid<value_type, _Alloc> &another, bool equalFunc(const value_type &first, const value_type &second) = nullptr) const;
 
     row_type operator[](size_type col);
     const row_type operator[](size_type col) const;
     reference at(size_type row, size_type col);
     const_reference at(size_type row, size_type col) const;
+    reference at(size_type index);
+    const_reference at(size_type index) const;
 
     void clear() noexcept;
     void swap(Grid &another) noexcept;
@@ -349,7 +359,7 @@ Grid<_Tp, _Alloc>::Grid(const value_type &empty):
 }
 
 template<typename _Tp, typename _Alloc>
-Grid<_Tp, _Alloc>::Grid(const _Tp *const data, Grid<_Tp, _Alloc>::size_type rows, Grid<_Tp, _Alloc>::size_type cols, const Grid<_Tp, _Alloc>::value_type &empty):
+Grid<_Tp, _Alloc>::Grid(const typename Grid<_Tp, _Alloc>::value_type *const data, Grid<_Tp, _Alloc>::size_type rows, Grid<_Tp, _Alloc>::size_type cols, const Grid<_Tp, _Alloc>::value_type &empty):
     m_grid(nullptr), m_rows(rows), m_columns(cols), m_empty(empty)
 {
     try
@@ -504,7 +514,7 @@ Grid<_Tp, _Alloc>::Grid(const Grid<_Tp, _Alloc> &another):
 }
 
 template<typename _Tp, typename _Alloc>
-Grid<_Tp, _Alloc>::~Grid() noexcept
+Grid<_Tp, _Alloc>::~Grid()
 {
     clear();
 }
@@ -710,7 +720,13 @@ typename Grid<_Tp, _Alloc>::const_reference Grid<_Tp, _Alloc>::back() const
 }
 
 template<typename _Tp, typename _Alloc>
-bool Grid<_Tp, _Alloc>::equal(const Grid<_Tp, _Alloc> &another, bool(*equalFunc)(const _Tp &, const _Tp &)) const
+const typename Grid<_Tp, _Alloc>::value_type *Grid<_Tp, _Alloc>::data() const
+{
+    return m_grid;
+}
+
+template<typename _Tp, typename _Alloc>
+bool Grid<_Tp, _Alloc>::equal(const Grid<typename Grid<_Tp, _Alloc>::value_type, _Alloc> &another, bool equalFunc(const typename Grid<_Tp, _Alloc>::value_type &, const typename Grid<_Tp, _Alloc>::value_type &)) const
 {
     if(!equalFunc)
         return this->operator==(another);
@@ -763,6 +779,22 @@ typename Grid<_Tp, _Alloc>::const_reference Grid<_Tp, _Alloc>::at(typename Grid<
     if(col >= m_columns)
         throw std::out_of_range(std::string("Grid<> : Out of range at column ") + std::to_string(col) + std::string(" of ") + std::to_string(m_columns));
     return m_grid[row * m_columns + col];
+}
+
+template<typename _Tp, typename _Alloc>
+typename Grid<_Tp, _Alloc>::reference Grid<_Tp, _Alloc>::at(Grid<_Tp, _Alloc>::size_type index)
+{
+    if(index > m_rows * m_columns)
+        throw std::out_of_range(std::string("Grid<> : Out of range at index ") + std::to_string(index) + std::string(" of ") + std::to_string(m_rows * m_columns));
+    return m_grid[index];
+}
+
+template<typename _Tp, typename _Alloc>
+typename Grid<_Tp, _Alloc>::const_reference Grid<_Tp, _Alloc>::at(Grid<_Tp, _Alloc>::size_type index) const
+{
+    if(index > m_rows * m_columns)
+        throw std::out_of_range(std::string("Grid<> : Out of range at index ") + std::to_string(index) + std::string(" of ") + std::to_string(m_rows * m_columns));
+    return m_grid[index];
 }
 
 template<typename _Tp, typename _Alloc>
