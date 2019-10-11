@@ -9,7 +9,7 @@ class Logger : public QTextEdit
 {
     Q_OBJECT
 public:
-    Logger(QWidget *parent = nullptr);
+    explicit Logger(QWidget *parent = nullptr);
 
     enum class Type
     {

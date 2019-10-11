@@ -44,7 +44,7 @@ void Logger::message(Logger::Type type, const QString &module, const QString &me
         break;
     }
 
-    messageHtml += QString(tr("In module %1 : ")).arg(QString("<font color=purple><u>") + module + QString("</u></font>"));
+    messageHtml += QString(tr(" %1 : ")).arg(QString("<font color=purple><u>") + module + QString("</u></font>"));
     messageHtml += QString("<font color=black>") + message + QString("</font></p><font color=purple>>>> </font>");
 
     moveCursor(QTextCursor::End);

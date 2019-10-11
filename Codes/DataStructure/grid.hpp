@@ -13,62 +13,62 @@
 /*************************************************************************************************
  *                          Grid Data Structure
  * Author: Nihil
- * Last modified: Oct. 10, 2019
+ * Last modified: Oct. 11, 2019
  *
  * Usage:
  *
  * 1. Initialize.
  *      The most effective initialize way may be:
- *      Grid<int> grid = {
- *          {12, 11, 7, -3},        | 12  11   7  -3|
- *          {-7, 0, 21, 10},    =>  | -7   0  21  10|
- *          {4, -1, -17, 5}};       |  4  -1 -17   5|
+ *          Grid<int> grid = {
+ *              {12, 11, 7, -3},        | 12  11   7  -3|
+ *              {-7, 0, 21, 10},    =>  | -7   0  21  10|
+ *              {4, -1, -17, 5}};       |  4  -1 -17   5|
  *      Then if you call grid[1][3], you will get the value 10.
  *
  *      Anyway, you don't need provide all data such as:
- *      Grid<int> grid = {
- *          {12, 11, 7, -3},        | 12  11   7  -3|
- *          {-7},               =>  | -7   0   0   0|
- *          {4, -1}};               |  4  -1   0   0|
+ *          Grid<int> grid = {
+ *              {12, 11, 7, -3},        | 12  11   7  -3|
+ *              {-7},               =>  | -7   0   0   0|
+ *              {4, -1}};               |  4  -1   0   0|
  *      Others will be filled by _Tp().
  *
  *      Well, if you want to define the empty object yourself, you can use:
- *      Grid<int> grid({
- *          {12, 0, 7, 3},          | 12  0   7   3|
- *          {7},                =>  |  7 -1  -1  -1|
- *          {4, 0}},                |  4  0  -1  -1|
- *          -1);
+ *          Grid<int> grid({
+ *              {12, 0, 7, 3},          | 12  0   7   3|
+ *              {7},                =>  |  7 -1  -1  -1|
+ *              {4, 0}},                |  4  0  -1  -1|
+ *              -1);
  *      or you can create grid at first and then fill data:
- *      Grid<int> grid(-1);
- *      grid = {
- *          {12, 0, 7, 3},          | 12  0   7   3|
- *          {7},                =>  |  7 -1  -1  -1|
- *          {4, 0}};                |  4  0  -1  -1|
+ *          Grid<int> grid(-1);
+ *          grid = {
+ *              {12, 0, 7, 3},          | 12  0   7   3|
+ *              {7},                =>  |  7 -1  -1  -1|
+ *              {4, 0}};                |  4  0  -1  -1|
  *
  *      Finaly, you can fill the whole grid with just one value:
- *      Gird<int> grid(4, 3, 1);
+ *          Gird<int> grid(4, 3, 1);
  *      It create a 4 rows and 3 columns grid then fill them with 1.
  *
  * 2. Access
  *      You can use the grid as a 2-D array easily.
  *      For some examples:
- *      Grid<int> grid = {
- *          {12, 11, 7, -3},        | 12  11   7  -3|
- *          {-7, 0, 21, 10},    =>  | -7   0  21  10|
- *          {4, -1, -17, 5}};       |  4  -1 -17   5|
- *      gird[1][2] = 10;
- *      int tail = grid[2][3];
+ *          Grid<int> grid = {
+ *              {12, 11, 7, -3},        | 12  11   7  -3|
+ *              {-7, 0, 21, 10},    =>  | -7   0  21  10|
+ *              {4, -1, -17, 5}};       |  4  -1 -17   5|
+ *          gird[1][2] = 10;
+ *          int tail = grid[2][3];
  *
  *      Also, you can use 'at' function to access the grid. They are equivalent.
- *      grid.at(1, 2) = 10;
+ *          grid.at(1, 2) = 10;
  *
  *      When the index out of range, it will throw std::out_of_range.
  *
  * 3. Traverse
  *      You can use the "range-based for loop" to traverse gird.
  *      That is:
- *      for(auto value : grid)
- *          std::cout << value;
+ *          for(auto value : grid)
+ *              std::cout << value;
  *
  *      Also, you can use iterators just like how you use the STL containers'.
  *
@@ -95,15 +95,15 @@
  *      Then it traverse two grid and check each element on the same position.
  *
  *      You can use your own function to judge if two element is equal by calling function "equal", such as:
- *      Grid<const char *> grid1 = {
- *          {"Hello", "World", "C++"},
- *          {"Java", "is", "rabbish"}};
- *      Grid<const char *> grid2 = {
- *          {"Hello", "World", "C++"},
- *          {"Java", "is", "rabbish"}};
- *      bool isEqual = grid1.equal(grid2, [](const char *const &first, const char *const &second) ->bool {
- *          return strcmp(first, second) == 0;
- *      });
+ *          Grid<const char *> grid1 = {
+ *              {"Hello", "World", "C++"},
+ *              {"Java", "is", "rabbish"}};
+ *          Grid<const char *> grid2 = {
+ *              {"Hello", "World", "C++"},
+ *              {"Java", "is", "rabbish"}};
+ *          bool isEqual = grid1.equal(grid2, [](const char *const &first, const char *const &second) ->bool {
+ *              return strcmp(first, second) == 0;
+ *          });
  *      Generally, the variale "isEqual" will be true.
  *      Note the custom function must be the type bool(*)(const T &first, const T &second).
  *
@@ -119,7 +119,7 @@
  *
  * 8. Sort, shuffle, and more
  *      It is easy. You can call STL algorithm what you want to use just like:
- *      std::shuffle(grid.begin(), grid.end());
+ *          std::shuffle(grid.begin(), grid.end());
  *
  * 9. Reverse
  *      To understand how the function "reverse(bool horizontal, bool vertical)" work, just see examples.
@@ -134,6 +134,17 @@
  *          | 12  11   7  -3|   reverse(true, true)     |  5 -17  -1   4|
  *          | -7   0  21  10|   ==================>     | 10  21   0  -7|
  *          |  4  -1 -17   5|                           | -3   7  11  12|
+ *
+ * 10. Swap
+ *      If you want to swap two grid, do not do that:
+ *          tmp = grid1;
+ *          gird1 = grid2;
+ *          gird2 = tmp;
+ *      Please use:
+ *          grid1.swap(grid2);
+ *      or
+ *          std::swap(grid1, grid2);
+ *      instead.
  *
  *************************************************************************************************/
 

@@ -43,24 +43,31 @@ INCLUDEPATH += \
     Reference
 
 FORMS += \
-    Codes/MainWindow/mainwindow.ui
+    Codes/MainWindow/mainwindow.ui \
+    Codes/Wizards/createprojectwizard.ui
 
 HEADERS += \
     Codes/DataStructure/grid.hpp \
     Codes/GlobalComponent/logger.h \
     Codes/GlobalComponent/optionsmanager.h \
+    Codes/GlobalComponent/project.h \
     Codes/MainWindow/mainwindow.h \
+    Codes/MainWindow/musicslider.h \
     Codes/ResourceManager/Image/image.h \
     Codes/ResourceManager/Image/mask.h \
     Codes/ResourceManager/Image/sprite.h \
-    Codes/ResourceManager/Music/musicplayer.h
+    Codes/ResourceManager/Music/musicplayer.h \
+    Codes/Wizards/createprojectwizard.h
 
 SOURCES += \
     Codes/GlobalComponent/logger.cpp \
     Codes/GlobalComponent/optionsmanager.cpp \
+    Codes/GlobalComponent/project.cpp \
     Codes/MainWindow/mainwindow.cpp \
+    Codes/MainWindow/musicslider.cpp \
     Codes/ResourceManager/Image/image.cpp \
     Codes/ResourceManager/Image/mask.cpp \
     Codes/ResourceManager/Image/sprite.cpp \
     Codes/ResourceManager/Music/musicplayer.cpp \
+    Codes/Wizards/createprojectwizard.cpp \
     Codes/main.cpp
