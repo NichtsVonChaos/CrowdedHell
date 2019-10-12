@@ -7,6 +7,7 @@
 #include <QFileDialog>
 #include <QDateTime>
 #include <QDebug>
+#include <QStandardPaths>
 
 namespace Ui {
     class CreateProjectWizard;

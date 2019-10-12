@@ -1,10 +1,10 @@
 #include "musicslider.h"
 
 MusicSlider::MusicSlider(QWidget *parent):
-    QSlider(parent), m_musicPlayer(nullptr), m_sender(this)
+    QSlider(parent), m_musicPlayer(nullptr), m_sender(this), m_leftButtonPressing(false)
 {
     setMaximum(1000);
-    connect(this, &MusicSlider::valueChanged, this, &MusicSlider::__valueChanged);
+    connect(this, &MusicSlider::valueChanged, this, &MusicSlider::__valueChanged, Qt::UniqueConnection);
 }
 
 MusicSlider::~MusicSlider()
@@ -15,11 +15,48 @@ MusicSlider::~MusicSlider()
 void MusicSlider::initialze(MusicPlayer *musicPlayer)
 {
     m_musicPlayer = musicPlayer;
-    connect(m_musicPlayer, &MusicPlayer::positionChanged, this, &MusicSlider::setPosition);
-    connect(this, &MusicSlider::positionChanged, m_musicPlayer, &MusicPlayer::setPosition);
+    connect(m_musicPlayer, &MusicPlayer::positionChanged, this, &MusicSlider::setPosition, Qt::UniqueConnection);
+    connect(this, &MusicSlider::positionChanged, m_musicPlayer, &MusicPlayer::setPosition, Qt::UniqueConnection);
 }
 
-void MusicSlider::setPosition(unsigned int pos, QObject *sender)
+void MusicSlider::mousePressEvent(QMouseEvent *event)
+{
+    if(event->button() == Qt::LeftButton)
+    {
+        disconnect(m_musicPlayer, &MusicPlayer::positionChanged, this, &MusicSlider::setPosition);
+        disconnect(this, &MusicSlider::positionChanged, m_musicPlayer, &MusicPlayer::setPosition);
+        int pos = int(1000.0 * (double(event->x()) / width()));
+        setValue(pos);
+        m_leftButtonPressing = true;
+        event->accept();
+    }
+}
+
+void MusicSlider::mouseMoveEvent(QMouseEvent *event)
+{
+    if(m_leftButtonPressing)
+    {
+        int pos = int(1000.0 * (double(event->x()) / width()));
+        setValue(pos);
+        event->accept();
+    }
+}
+
+void MusicSlider::mouseReleaseEvent(QMouseEvent *event)
+{
+    if(event->button() == Qt::LeftButton)
+    {
+        int pos = int(1000.0 * (double(event->x()) / width()));
+        connect(m_musicPlayer, &MusicPlayer::positionChanged, this, &MusicSlider::setPosition, Qt::UniqueConnection);
+        connect(this, &MusicSlider::positionChanged, m_musicPlayer, &MusicPlayer::setPosition, Qt::UniqueConnection);
+        setValue(pos);
+        __valueChanged(pos);
+        m_leftButtonPressing = false;
+        event->accept();
+    }
+}
+
+void MusicSlider::setPosition(unsigned int pos, const QObject *sender)
 {
     if(sender == this)
         return;

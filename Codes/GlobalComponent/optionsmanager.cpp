@@ -2,12 +2,17 @@
 
 OptionsManager::OptionsManager(QObject *parent) : QObject(parent)
 {
-    readOptions();
+
+}
+
+const QStringList &OptionsManager::recentProject() const
+{
+    return m_recentProject;
 }
 
 void OptionsManager::readOptions()
 {
-    QSettings iniFile("./config.ini", QSettings::IniFormat);
+    QSettings iniFile(QApplication::applicationDirPath() + "/config.ini", QSettings::IniFormat);
 
     iniFile.beginGroup("Main");
     m_language = Language(iniFile.value("Language", 0).toInt());
@@ -19,11 +24,22 @@ void OptionsManager::readOptions()
     iniFile.beginGroup("Audio");
     m_volume = iniFile.value("Volume", 0.6f).toFloat();
     iniFile.endGroup();
+
+    iniFile.beginGroup("Recent");
+    QString projectPath;
+    for(int i = 0; i < 10; i++)
+    {
+        projectPath = iniFile.value(QString("Project") + QString::number(i), QString()).toString();
+        if(projectPath.isEmpty())
+            break;
+        m_recentProject << projectPath;
+    }
+    iniFile.endGroup();
 }
 
 void OptionsManager::writeOptions()
 {
-    QSettings iniFile("./config.ini", QSettings::IniFormat);
+    QSettings iniFile(QApplication::applicationDirPath() + "/config.ini", QSettings::IniFormat);
 
     iniFile.beginGroup("Main");
     iniFile.setValue("Language", int(m_language));
@@ -33,7 +49,12 @@ void OptionsManager::writeOptions()
     iniFile.endGroup();
 
     iniFile.beginGroup("Audio");
-    iniFile.setValue("Volume", m_volume);
+    iniFile.setValue("Volume", double(m_volume));
+    iniFile.endGroup();
+
+    iniFile.beginGroup("Recent");
+    for(int i = 0; i < m_recentProject.size(); i++)
+        iniFile.setValue(QString("Project") + QString::number(i), m_recentProject[i]);
     iniFile.endGroup();
 }
 
@@ -46,6 +67,23 @@ void OptionsManager::setVolume(float volume, const QObject *sender)
 {
     m_volume = qMin(qMax(volume, 0.0f), 1.0f);
     emit volumeChanged(volume, sender);
+}
+
+void OptionsManager::addRecentProject(const QString &projectFilePath)
+{
+    int index = m_recentProject.indexOf(projectFilePath);
+    if(index != -1)
+        m_recentProject.removeAt(index);
+
+    if(m_recentProject.size() == 10)
+        m_recentProject.removeAt(9);
+
+    m_recentProject.push_front(projectFilePath);
+}
+
+void OptionsManager::clearRecentProject()
+{
+    m_recentProject.clear();
 }
 
 bool OptionsManager::autoSave() const
@@ -70,7 +108,7 @@ void OptionsManager::setHideInfoLog(bool hideInfoLog, const QObject *sender)
     emit hideInfoLogChanged(hideInfoLog, sender);
 }
 
-QString OptionsManager::theme() const
+const QString &OptionsManager::theme() const
 {
     return m_theme;
 }
@@ -94,7 +132,7 @@ void OptionsManager::setLanguage(Language language, const QObject *sender)
 
 OptionsManager::~OptionsManager()
 {
-    writeOptions();
+
 }
 
 OptionsManager *options()

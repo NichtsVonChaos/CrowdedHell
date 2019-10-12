@@ -7,6 +7,7 @@
 #include <QDir>
 #include <QTextStream>
 #include <QMessageBox>
+#include <QApplication>
 
 #include "logger.h"
 #include "optionsmanager.h"
@@ -17,7 +18,7 @@ class Project : public QObject
     Q_OBJECT
 
 public:
-    ~Project();
+    ~Project() override;
 
     /**
      * @brief isValid
@@ -29,37 +30,37 @@ public:
      * @brief getProjectName
      * Return project name.
      */
-    QString projectName() const;
+    const QString &projectName() const;
 
     /**
      * @brief getProjectPath
      * Return project path with out project file name.
      */
-    QString projectPath() const;
+    const QString &projectPath() const;
 
     /**
      * @brief getTemporaryPath
      * Return temporary project path.
      */
-    QString temporaryPath() const;
+    const QString &temporaryPath() const;
 
     /**
      * @brief getAuthor
      * Return project author.
      */
-    QString author() const;
+    const QString &author() const;
 
     /**
      * @brief getCreateDate
      * Return the date when project created.
      */
-    QDateTime createDate() const;
+    const QDateTime &createDate() const;
 
     /**
      * @brief getMusicFile
      * Return music file name.
      */
-    QString musicFile() const;
+    const QString &musicFile() const;
 
     void initialze();
 
@@ -67,13 +68,18 @@ signals:
     /**
      * @see CrowdedHellGUI::sendMessage(MessageType, QString, QString);
      */
-    void message(Logger::Type type, QString module, QString message);
+    void message(Logger::Type type, const QString &module, const QString &message);
 
     /**
      * @brief musicSelected
      * Send a signal for selected music when create new project.
      */
-    void musicSelected(QString musicPath);
+    void musicSelected(const QString &musicPath);
+
+    /**
+     * @brief projectOpened
+     */
+    void projectOpened(const QString &projectFilePath);
 
     /**
      * @brief projectClosed
@@ -100,7 +106,7 @@ public slots:
      * @param projectFilePath
      * *.chproj file path.
      */
-    void openProject(QString projectFilePath);
+    void openProject(const QString &projectFilePath);
 
     /**
      * @brief saveChange
@@ -126,7 +132,8 @@ public slots:
      * @brief reselectMusic
      * Change background music.
      */
-    void reselectMusic(QString musicPath);
+    void reselectMusic();
+    void reselectMusic(const QString &musicPath);
 
 private:
     explicit Project(QObject *parent = nullptr);

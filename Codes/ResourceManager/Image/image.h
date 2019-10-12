@@ -6,14 +6,14 @@
 #include "Codes/DataStructure/grid.hpp"
 #include "mask.h"
 
-class Image : public Grid<unsigned int>, public QObject
+class Image : public QObject, public Grid<unsigned int>
 {
     Q_OBJECT
 
 public:
     explicit Image(QObject *parent = nullptr);
     Image(const unsigned int *const data, size_t rows, size_t cols, QObject *parent = nullptr);
-    ~Image();
+    ~Image() override;
 
     inline static unsigned char red(unsigned int agbr) noexcept;
     inline static unsigned char green(unsigned int agbr) noexcept;

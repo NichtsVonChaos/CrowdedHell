@@ -1,13 +1,13 @@
 #include "image.h"
 
 Image::Image(QObject *parent):
-    Grid(0), QObject(parent)
+    QObject(parent), Grid(0)
 {
 
 }
 
 Image::Image(const unsigned int *const data, size_t rows, size_t cols, QObject *parent):
-    Grid(data, rows, cols, 0), QObject(parent), mask(rows, cols)
+    QObject(parent), Grid(data, rows, cols, 0), mask(rows, cols)
 {
     for(size_t i = 0; i < rows * cols; i++)
         mask.at(i) = bool(alpha(at(i)));

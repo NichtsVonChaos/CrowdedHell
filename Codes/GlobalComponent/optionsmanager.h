@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QSettings>
 #include <QtMath>
+#include <QApplication>
+#include <QStringList>
 
 enum class Language
 {
@@ -15,12 +17,17 @@ class OptionsManager : public QObject
     Q_OBJECT
 
 public:
-    ~OptionsManager();
+    ~OptionsManager() override;
     Language language() const;
-    QString theme() const;
+    const QString &theme() const;
     bool hideInfoLog() const;
     bool autoSave() const;
     float volume() const;
+
+    const QStringList &recentProject() const;
+
+    void readOptions();
+    void writeOptions();
 
 signals:
     void languageChanged(Language language, const QObject *sender);
@@ -38,12 +45,12 @@ public slots:
 
     void setVolume(float volume, const QObject *sender = nullptr);
 
+    void addRecentProject(const QString &projectFilePath);
+    void clearRecentProject();
+
 private:
     explicit OptionsManager(QObject *parent = nullptr);
     friend OptionsManager *options();
-
-    void readOptions();
-    void writeOptions();
 
     Language m_language;
     QString m_theme;
@@ -51,6 +58,8 @@ private:
     bool m_autoSave;
 
     float m_volume;
+
+    QStringList m_recentProject;
 };
 
 OptionsManager *options();

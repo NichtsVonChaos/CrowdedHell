@@ -2,6 +2,8 @@
 #define MUSICSLIDER_H
 
 #include <QSlider>
+#include <QMouseEvent>
+#include <QtMath>
 
 #include "Codes/GlobalComponent/logger.h"
 #include "Codes/GlobalComponent/optionsmanager.h"
@@ -14,21 +16,26 @@ class MusicSlider : public QSlider
 
 public:
     explicit MusicSlider(QWidget *parent = nullptr);
-    ~MusicSlider();
+    ~MusicSlider() override;
     void initialze(MusicPlayer *musicPlayer);
 
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
+
 signals:
-    void positionChanged(unsigned int pos, QObject *sender);
+    void positionChanged(unsigned int pos, const QObject *sender);
 
 public slots:
-    void setPosition(unsigned int pos, QObject *sender);
+    void setPosition(unsigned int pos, const QObject *sender);
 
 private slots:
     void __valueChanged(int value);
 
 private:
     MusicPlayer *m_musicPlayer;
-    QObject *m_sender;
+    const QObject *m_sender;
+    bool m_leftButtonPressing;
 };
 
 #endif // MUSICSLIDER_H

@@ -16,6 +16,13 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="1" column="0">
+     <widget class="MusicSlider" name="musicSlider">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
      <widget class="Logger" name="textEdit">
       <property name="readOnly">
        <bool>true</bool>
@@ -23,9 +30,15 @@
      </widget>
     </item>
     <item row="0" column="0">
-     <widget class="MusicSlider" name="musicSlider">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>PausePlay(Debug Usage)</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
       </property>
      </widget>
     </item>
@@ -44,10 +57,132 @@
     <property name="title">
      <string>File</string>
     </property>
+    <widget class="QMenu" name="menuRecentProject">
+     <property name="title">
+      <string>Recent project</string>
+     </property>
+    </widget>
+    <addaction name="actionNewProject"/>
+    <addaction name="actionOpenProject"/>
+    <addaction name="menuRecentProject"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSaveTo"/>
+    <addaction name="separator"/>
+    <addaction name="actionCloseProject"/>
+    <addaction name="actionSaveAndClose"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <addaction name="actionLanguage"/>
+    <addaction name="actionTheme"/>
+    <addaction name="separator"/>
+    <addaction name="actionAlwaysSaveProjectBeforeClose"/>
+    <addaction name="actionHideAllInfoTypeMessage"/>
+   </widget>
+   <widget class="QMenu" name="menuProject">
+    <property name="title">
+     <string>Project</string>
+    </property>
+    <addaction name="actionExport"/>
+    <addaction name="actionReselectMusic"/>
    </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuProject"/>
+   <addaction name="menuSettings"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionNewProject">
+   <property name="text">
+    <string>New project</string>
+   </property>
+  </action>
+  <action name="actionOpenProject">
+   <property name="text">
+    <string>Open project</string>
+   </property>
+  </action>
+  <action name="actionClearAll">
+   <property name="text">
+    <string>Clear All</string>
+   </property>
+  </action>
+  <action name="actionNoRecord">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>(No Record)</string>
+   </property>
+  </action>
+  <action name="actionCloseProject">
+   <property name="text">
+    <string>Close project</string>
+   </property>
+  </action>
+  <action name="actionSaveAndClose">
+   <property name="text">
+    <string>Save and close</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionSaveTo">
+   <property name="text">
+    <string>Save to ...</string>
+   </property>
+  </action>
+  <action name="actionAlwaysSaveProjectBeforeClose">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Always save project before close</string>
+   </property>
+  </action>
+  <action name="actionHideAllInfoTypeMessage">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Hide all &quot;Info&quot; type message</string>
+   </property>
+  </action>
+  <action name="actionTheme">
+   <property name="text">
+    <string>Theme</string>
+   </property>
+  </action>
+  <action name="actionLanguage">
+   <property name="text">
+    <string>Language</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionExport">
+   <property name="text">
+    <string>Export</string>
+   </property>
+  </action>
+  <action name="actionReselectMusic">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Reselect music</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>

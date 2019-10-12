@@ -28,17 +28,19 @@ public:
 
 signals:
     void message(Logger::Type type, const QString &module, const QString &message);
-    void paused(bool paused, QObject *sender);
-    void muted(bool muted, QObject *sender);
-    void positionChanged(unsigned int pos, QObject *sender);
-    void speedChanged(float speed, QObject *sender);
+    void paused(bool paused, const QObject *sender);
+    void muted(bool muted, const QObject *sender);
+    void positionChanged(unsigned int pos, const QObject *sender);
+    void speedChanged(float speed, const QObject *sender);
 
 public slots:
-    void setVolume(float volume, QObject *sender = nullptr);
-    void setPaused(bool paused, QObject *sender = nullptr);
-    void setMuted(bool muted, QObject *sender = nullptr);
-    void setPosition(unsigned int pos, QObject *sender = nullptr);
-    void setSpeed(float speed, QObject *sender = nullptr);
+    void setVolume(float volume, const QObject *sender = nullptr);
+    void pause();
+    void setPaused(bool paused, const QObject *sender = nullptr);
+    void setMuted(bool muted, const QObject *sender = nullptr);
+    void setPosition(unsigned int pos, const QObject *sender = nullptr);
+    void setSpeed(float speed, const QObject *sender = nullptr);
+    void reset();
 
 private:
     FMOD::System *m_fmodSystem;

@@ -6,7 +6,8 @@ MusicPlayer::MusicPlayer(QObject *parent) :
     m_muted(false), m_position(0u), m_length(0u), m_speed(1.0f),
     m_timerReportError(false)
 {
-    connect(this, &MusicPlayer::message, logger(), &Logger::message);
+    connect(this, &MusicPlayer::message, logger(), &Logger::message, Qt::UniqueConnection);
+    connect(options(), &OptionsManager::volumeChanged, this, &MusicPlayer::setVolume, Qt::UniqueConnection);
 
     FMOD_RESULT result;
 
@@ -38,9 +39,6 @@ MusicPlayer::~MusicPlayer()
 
     if(m_music != nullptr)
         m_music->release();
-
-    if(m_channel != nullptr)
-        delete m_channel;
 
     if(m_fmodSystem != nullptr)
         m_fmodSystem->release();
@@ -93,7 +91,7 @@ void MusicPlayer::timerEvent(QTimerEvent *ev)
     }
 }
 
-void MusicPlayer::setVolume(float volume, QObject *sender)
+void MusicPlayer::setVolume(float volume, const QObject *sender)
 {
     FMOD_RESULT result;
 
@@ -124,7 +122,12 @@ void MusicPlayer::setVolume(float volume, QObject *sender)
         emit message(Logger::Type::Info, "FMOD", tr("Set volume to %1.").arg(double(options()->volume())));
 }
 
-void MusicPlayer::setPaused(bool paused, QObject *sender)
+void MusicPlayer::pause()
+{
+    setPaused(true);
+}
+
+void MusicPlayer::setPaused(bool paused, const QObject *sender)
 {
     FMOD_RESULT result;
 
@@ -175,7 +178,7 @@ void MusicPlayer::setPaused(bool paused, QObject *sender)
     {
         if(!m_music)
         {
-            message(Logger::Type::Error, "FMOD", tr("Please select a music first."));
+            emit message(Logger::Type::Error, "FMOD", tr("Please create or open a project first."));
             emit this->paused(true, this);
             return;
         }
@@ -203,7 +206,6 @@ void MusicPlayer::setPaused(bool paused, QObject *sender)
             if(result != FMOD_OK)
                 emit message(Logger::Type::Warning, "FMOD", tr("Cannot access the channel. It will be reloaded. Error type: %1.").arg(result));
 
-            delete m_channel;
             m_channel = nullptr;
             result = m_fmodSystem->playSound(m_music, nullptr, true, &m_channel);
             if(result != FMOD_OK)
@@ -221,11 +223,9 @@ void MusicPlayer::setPaused(bool paused, QObject *sender)
 
         if(m_position >= m_length)
         {
-            emit message(Logger::Type::Warning, "FMOD", tr("Music is already at the end."));
-            m_position = m_length;
-            emit this->paused(true, this);
-            emit positionChanged(m_length, this);
-            return;
+            emit message(Logger::Type::Warning, "FMOD", tr("Music is already at the end, replay the music."));
+            m_position = 0;
+            emit positionChanged(0, this);
         }
 
         bool isPaused = true;
@@ -260,7 +260,7 @@ void MusicPlayer::setPaused(bool paused, QObject *sender)
     emit this->paused(paused, sender);
 }
 
-void MusicPlayer::setPosition(unsigned int pos, QObject *sender)
+void MusicPlayer::setPosition(unsigned int pos, const QObject *sender)
 {
     FMOD_RESULT result;
 
@@ -272,7 +272,7 @@ void MusicPlayer::setPosition(unsigned int pos, QObject *sender)
 
     if(!m_music)
     {
-        message(Logger::Type::Error, "FMOD", tr("Please select a music first."));
+        emit message(Logger::Type::Error, "FMOD", tr("Please create or open a project first."));
         emit positionChanged(0, this);
         return;
     }
@@ -299,7 +299,6 @@ void MusicPlayer::setPosition(unsigned int pos, QObject *sender)
         if(result != FMOD_OK)
             emit message(Logger::Type::Warning, "FMOD", tr("Cannot access the channel. It will be reloaded. Error type: %1.").arg(result));
 
-        delete m_channel;
         m_channel = nullptr;
         result = m_fmodSystem->playSound(m_music, nullptr, true, &m_channel);
         if(result != FMOD_OK)
@@ -347,11 +346,11 @@ void MusicPlayer::setPosition(unsigned int pos, QObject *sender)
         return;
     }
 
-    emit positionChanged(m_position, sender);
     emit message(Logger::Type::Info, "FMOD", tr("Set position to \"%1 ms\" of \"%2 ms\".").arg(QString::number(m_position), QString::number(m_length)));
+    emit positionChanged(m_position, sender);
 }
 
-void MusicPlayer::setSpeed(float speed, QObject *sender)
+void MusicPlayer::setSpeed(float speed, const QObject *sender)
 {
     FMOD_RESULT result;
 
@@ -387,6 +386,21 @@ void MusicPlayer::setSpeed(float speed, QObject *sender)
     emit speedChanged(m_speed, sender);
 }
 
+void MusicPlayer::reset()
+{
+    setPaused(true);
+    QApplication::processEvents();
+    emit positionChanged(0, this);
+
+    if(m_music != nullptr)
+        m_music->release();
+    m_music = nullptr;
+
+    m_channel = nullptr;
+
+    emit message(Logger::Type::Info, "FMOD", tr("Music released."));
+}
+
 float MusicPlayer::speed() const
 {
     return m_speed;
@@ -398,13 +412,11 @@ void MusicPlayer::setMusicFile(const QString &path)
 
     setPaused(true);
 
+    m_channel = nullptr;
+
     if(m_music != nullptr)
         m_music->release();
     m_music = nullptr;
-
-    if(m_channel != nullptr)
-        delete m_channel;
-    m_channel = nullptr;
 
     m_position = 0;
     emit positionChanged(0, this);
@@ -469,7 +481,7 @@ unsigned int MusicPlayer::position() const
     return m_position;
 }
 
-void MusicPlayer::setMuted(bool muted, QObject *sender)
+void MusicPlayer::setMuted(bool muted, const QObject *sender)
 {
     FMOD_RESULT result;
 

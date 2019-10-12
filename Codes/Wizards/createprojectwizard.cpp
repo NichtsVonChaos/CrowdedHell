@@ -10,6 +10,7 @@ CreateProjectWizard::CreateProjectWizard(QWidget *parent) :
 
     m_createDate = QDateTime::currentDateTime();
     ui->labelRealDate->setText(m_createDate.toString());
+    ui->lineEditPath->setText(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
 };
 
 CreateProjectWizard::~CreateProjectWizard()
