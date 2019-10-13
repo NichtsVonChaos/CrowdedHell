@@ -32,6 +32,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 win32: LIBS += \
     -L$$PWD/Reference/FMOD/lib/ -lfmod64_vc -lfmodL64_vc
 else:unix: LIBS += \
+    -luuid \
     -L$$PWD/Reference/FMOD/lib/ -lfmod -lfmodL
 
 TRANSLATIONS = \
@@ -48,9 +49,11 @@ FORMS += \
 
 HEADERS += \
     Codes/DataStructure/grid.hpp \
+    Codes/GlobalComponent/globalComponent.h \
     Codes/GlobalComponent/logger.h \
-    Codes/GlobalComponent/optionsmanager.h \
+    Codes/GlobalComponent/options.h \
     Codes/GlobalComponent/project.h \
+    Codes/GlobalComponent/utility.h \
     Codes/MainWindow/mainwindow.h \
     Codes/MainWindow/musicslider.h \
     Codes/ResourceManager/Image/image.h \
@@ -61,8 +64,9 @@ HEADERS += \
 
 SOURCES += \
     Codes/GlobalComponent/logger.cpp \
-    Codes/GlobalComponent/optionsmanager.cpp \
+    Codes/GlobalComponent/options.cpp \
     Codes/GlobalComponent/project.cpp \
+    Codes/GlobalComponent/utility.cpp \
     Codes/MainWindow/mainwindow.cpp \
     Codes/MainWindow/musicslider.cpp \
     Codes/ResourceManager/Image/image.cpp \

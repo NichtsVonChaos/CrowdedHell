@@ -11,6 +11,9 @@ MainWindow::MainWindow(QWidget *parent) :
     options()->readOptions();
     project()->initialze();
 
+    ui->actionAlwaysSaveProjectBeforeClose->setChecked(options()->autoSave());
+    ui->actionHideAllInfoTypeMessage->setChecked(options()->hideInfoLog());
+
     m_musicPlayer = new MusicPlayer(this);
     ui->musicSlider->initialze(m_musicPlayer);
 
@@ -18,12 +21,16 @@ MainWindow::MainWindow(QWidget *parent) :
     m_actionNoRecord = new QAction("(No record)");
     m_actionNoRecord->setEnabled(false);
 
-    connect(project(), &Project::projectOpened, options(), &OptionsManager::addRecentProject, Qt::UniqueConnection);
+    connect(project(), &Project::projectOpened, options(), &Options::addRecentProject, Qt::UniqueConnection);
     connect(project(), &Project::projectOpened, this, &MainWindow::projectOpened, Qt::UniqueConnection);
     connect(project(), &Project::projectClosed, this, &MainWindow::projectClosed, Qt::UniqueConnection);
     connect(project(), &Project::projectClosed, m_musicPlayer, &MusicPlayer::reset, Qt::UniqueConnection);
     connect(project(), &Project::musicSelected, m_musicPlayer, &MusicPlayer::setMusicFile, Qt::UniqueConnection);
 
+    connect(options(), &Options::hideInfoLogChanged, ui->actionHideAllInfoTypeMessage, &QAction::setChecked, Qt::UniqueConnection);
+    connect(options(), &Options::autoSaveChanged, ui->actionAlwaysSaveProjectBeforeClose, &QAction::setChecked, Qt::UniqueConnection);
+
+    connect(this, &MainWindow::message, logger(), &Logger::message);
     connect(this, &MainWindow::musicPaused, m_musicPlayer, &MusicPlayer::setPaused, Qt::UniqueConnection);
 
     connect(m_musicPlayer, &MusicPlayer::paused, this, &MainWindow::pauseMusic, Qt::UniqueConnection);
@@ -31,17 +38,18 @@ MainWindow::MainWindow(QWidget *parent) :
     // debug usage
     connect(ui->pushButton, &QPushButton::clicked, this, &MainWindow::playButtonChecked, Qt::UniqueConnection);
 
-    connect(m_actionClearRecent, &QAction::triggered, options(), &OptionsManager::clearRecentProject, Qt::UniqueConnection);
+    connect(m_actionClearRecent, &QAction::triggered, options(), &Options::clearRecentProject, Qt::UniqueConnection);
     connect(m_actionClearRecent, &QAction::triggered, this, &MainWindow::refreshRecentProject, Qt::UniqueConnection);
     connect(ui->actionNewProject, &QAction::triggered, m_musicPlayer, &MusicPlayer::pause, Qt::UniqueConnection);
     connect(ui->actionNewProject, &QAction::triggered, project(), &Project::newProject, Qt::UniqueConnection);
     connect(ui->actionOpenProject, &QAction::triggered, m_musicPlayer, &MusicPlayer::pause, Qt::UniqueConnection);
     connect(ui->actionOpenProject, &QAction::triggered, project(), static_cast<void(Project::*)()>(&Project::openProject), Qt::UniqueConnection);
     connect(ui->actionCloseProject, &QAction::triggered, project(), &Project::closeProject, Qt::UniqueConnection);
+    connect(ui->actionExit, &QAction::triggered, this, &MainWindow::close);
     connect(ui->menuRecentProject, &QMenu::triggered, this, &MainWindow::openRecentProject, Qt::UniqueConnection);
     connect(ui->actionReselectMusic, &QAction::triggered, m_musicPlayer, &MusicPlayer::pause, Qt::UniqueConnection);
     connect(ui->actionReselectMusic, &QAction::triggered, project(), static_cast<void(Project::*)()>(&Project::reselectMusic), Qt::UniqueConnection);
-
+    connect(ui->actionClearLogger, &QAction::triggered, logger(), &Logger::clear);
 
     refreshRecentProject();
 }
@@ -54,8 +62,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::closeEvent(QCloseEvent *ev)
 {
-    options()->writeOptions();
-    ev->accept();
+    if(!project()->closeProject())
+        ev->ignore();
+    else
+    {
+        options()->writeOptions();
+        ev->accept();
+    }
 }
 
 void MainWindow::pauseMusic(bool paused, const QObject *sender)
@@ -82,7 +95,14 @@ void MainWindow::refreshRecentProject()
 
 void MainWindow::openRecentProject(QAction *action)
 {
-    project()->openProject(action->text());
+    if(!QFile(action->text()).exists())
+    {
+        emit message(Logger::Type::Warning, "Main Window", tr("Project file \"%1\" does not exists, remove it from recent project list.").arg(action->text()));
+        options()->removeRecentProject(action->text());
+        refreshRecentProject();
+    }
+    else
+        project()->openProject(action->text());
 }
 
 void MainWindow::projectOpened(const QString &projectFilePath)
@@ -99,4 +119,22 @@ void MainWindow::projectClosed()
 void MainWindow::playButtonChecked(bool checked)
 {
     emit musicPaused(checked);
+}
+
+void MainWindow::on_actionHideAllInfoTypeMessage_triggered(bool checked)
+{
+    options()->setHideInfoLog(checked, ui->actionHideAllInfoTypeMessage);
+}
+
+void MainWindow::on_actionAlwaysSaveProjectBeforeClose_triggered(bool checked)
+{
+    options()->setAutoSave(checked, ui->actionAlwaysSaveProjectBeforeClose);
+}
+
+void MainWindow::on_actionExportLogToFile_triggered()
+{
+    m_musicPlayer->pause();
+    QString file = QFileDialog::getSaveFileName(nullptr, "Export Log", ".");
+    if(!file.isEmpty())
+        logger()->logToFile(file);
 }

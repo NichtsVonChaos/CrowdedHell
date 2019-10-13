@@ -7,7 +7,7 @@ MusicPlayer::MusicPlayer(QObject *parent) :
     m_timerReportError(false)
 {
     connect(this, &MusicPlayer::message, logger(), &Logger::message, Qt::UniqueConnection);
-    connect(options(), &OptionsManager::volumeChanged, this, &MusicPlayer::setVolume, Qt::UniqueConnection);
+    connect(options(), &Options::volumeChanged, this, &MusicPlayer::setVolume, Qt::UniqueConnection);
 
     FMOD_RESULT result;
 

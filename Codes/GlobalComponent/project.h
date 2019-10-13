@@ -10,7 +10,8 @@
 #include <QApplication>
 
 #include "logger.h"
-#include "optionsmanager.h"
+#include "options.h"
+#include "utility.h"
 #include "Codes/Wizards/createprojectwizard.h"
 
 class Project : public QObject
@@ -51,6 +52,12 @@ public:
     const QString &author() const;
 
     /**
+     * @brief uuid
+     * Return project UUID.
+     */
+    QString uuid() const;
+
+    /**
      * @brief getCreateDate
      * Return the date when project created.
      */
@@ -62,6 +69,10 @@ public:
      */
     const QString &musicFile() const;
 
+    /**
+     * @brief initialze
+     * Connect signals and slots.
+     */
     void initialze();
 
 signals:
@@ -126,7 +137,7 @@ public slots:
      * @brief closeProject
      * Close current project
      */
-    void closeProject();
+    bool closeProject();
 
     /**
      * @brief reselectMusic
@@ -135,11 +146,14 @@ public slots:
     void reselectMusic();
     void reselectMusic(const QString &musicPath);
 
+    void setChanged();
+
 private:
     explicit Project(QObject *parent = nullptr);
     friend Project *project();
 
     bool m_changed, m_initilized;
+    QString m_uuid;
     QString m_projectName;
     QString m_projectPath;
     QString m_temporaryPath;

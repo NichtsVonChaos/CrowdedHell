@@ -5,8 +5,7 @@
 #include <QCloseEvent>
 #include <QAction>
 
-#include "Codes/GlobalComponent/logger.h"
-#include "Codes/GlobalComponent/optionsmanager.h"
+#include "Codes/GlobalComponent/globalComponent.h"
 #include "Codes/ResourceManager/Music/musicplayer.h"
 
 namespace Ui {
@@ -36,6 +35,12 @@ public slots:
 
 private slots:
     void playButtonChecked(bool checked);
+
+    void on_actionHideAllInfoTypeMessage_triggered(bool checked);
+
+    void on_actionAlwaysSaveProjectBeforeClose_triggered(bool checked);
+
+    void on_actionExportLogToFile_triggered();
 
 private:
 	Ui::MainWindow *ui;

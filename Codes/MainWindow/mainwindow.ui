@@ -81,18 +81,28 @@
     <addaction name="actionLanguage"/>
     <addaction name="actionTheme"/>
     <addaction name="separator"/>
-    <addaction name="actionAlwaysSaveProjectBeforeClose"/>
-    <addaction name="actionHideAllInfoTypeMessage"/>
    </widget>
    <widget class="QMenu" name="menuProject">
     <property name="title">
      <string>Project</string>
     </property>
+    <addaction name="actionAlwaysSaveProjectBeforeClose"/>
+    <addaction name="separator"/>
     <addaction name="actionExport"/>
     <addaction name="actionReselectMusic"/>
    </widget>
+   <widget class="QMenu" name="menuLogger">
+    <property name="title">
+     <string>Logger</string>
+    </property>
+    <addaction name="actionHideAllInfoTypeMessage"/>
+    <addaction name="separator"/>
+    <addaction name="actionExportLogToFile"/>
+    <addaction name="actionClearLogger"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuProject"/>
+   <addaction name="menuLogger"/>
    <addaction name="menuSettings"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -104,19 +114,6 @@
   <action name="actionOpenProject">
    <property name="text">
     <string>Open project</string>
-   </property>
-  </action>
-  <action name="actionClearAll">
-   <property name="text">
-    <string>Clear All</string>
-   </property>
-  </action>
-  <action name="actionNoRecord">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>(No Record)</string>
    </property>
   </action>
   <action name="actionCloseProject">
@@ -172,7 +169,7 @@
   </action>
   <action name="actionExport">
    <property name="text">
-    <string>Export</string>
+    <string>Export as gmk</string>
    </property>
   </action>
   <action name="actionReselectMusic">
@@ -181,6 +178,16 @@
    </property>
    <property name="text">
     <string>Reselect music</string>
+   </property>
+  </action>
+  <action name="actionExportLogToFile">
+   <property name="text">
+    <string>Export log to file</string>
+   </property>
+  </action>
+  <action name="actionClearLogger">
+   <property name="text">
+    <string>Clear logger</string>
    </property>
   </action>
  </widget>

@@ -1,16 +1,16 @@
-#include "optionsmanager.h"
+#include "options.h"
 
-OptionsManager::OptionsManager(QObject *parent) : QObject(parent)
+Options::Options(QObject *parent) : QObject(parent)
 {
 
 }
 
-const QStringList &OptionsManager::recentProject() const
+const QStringList &Options::recentProject() const
 {
     return m_recentProject;
 }
 
-void OptionsManager::readOptions()
+void Options::readOptions()
 {
     QSettings iniFile(QApplication::applicationDirPath() + "/config.ini", QSettings::IniFormat);
 
@@ -37,7 +37,7 @@ void OptionsManager::readOptions()
     iniFile.endGroup();
 }
 
-void OptionsManager::writeOptions()
+void Options::writeOptions()
 {
     QSettings iniFile(QApplication::applicationDirPath() + "/config.ini", QSettings::IniFormat);
 
@@ -53,23 +53,25 @@ void OptionsManager::writeOptions()
     iniFile.endGroup();
 
     iniFile.beginGroup("Recent");
+    for(int i = m_recentProject.size(); i < 10; i++)
+        iniFile.remove(QString("Project") + QString::number(i));
     for(int i = 0; i < m_recentProject.size(); i++)
         iniFile.setValue(QString("Project") + QString::number(i), m_recentProject[i]);
     iniFile.endGroup();
 }
 
-float OptionsManager::volume() const
+float Options::volume() const
 {
     return m_volume;
 }
 
-void OptionsManager::setVolume(float volume, const QObject *sender)
+void Options::setVolume(float volume, const QObject *sender)
 {
     m_volume = qMin(qMax(volume, 0.0f), 1.0f);
     emit volumeChanged(volume, sender);
 }
 
-void OptionsManager::addRecentProject(const QString &projectFilePath)
+void Options::addRecentProject(const QString &projectFilePath)
 {
     int index = m_recentProject.indexOf(projectFilePath);
     if(index != -1)
@@ -81,62 +83,69 @@ void OptionsManager::addRecentProject(const QString &projectFilePath)
     m_recentProject.push_front(projectFilePath);
 }
 
-void OptionsManager::clearRecentProject()
+void Options::removeRecentProject(const QString &projectFilePath)
+{
+    int index = m_recentProject.indexOf(projectFilePath);
+    if(index != -1)
+        m_recentProject.removeAt(index);
+}
+
+void Options::clearRecentProject()
 {
     m_recentProject.clear();
 }
 
-bool OptionsManager::autoSave() const
+bool Options::autoSave() const
 {
     return m_autoSave;
 }
 
-void OptionsManager::setAutoSave(bool autoSave, const QObject *sender)
+void Options::setAutoSave(bool autoSave, const QObject *sender)
 {
     m_autoSave = autoSave;
     emit autoSaveChanged(autoSave, sender);
 }
 
-bool OptionsManager::hideInfoLog() const
+bool Options::hideInfoLog() const
 {
     return m_hideInfoLog;
 }
 
-void OptionsManager::setHideInfoLog(bool hideInfoLog, const QObject *sender)
+void Options::setHideInfoLog(bool hideInfoLog, const QObject *sender)
 {
     m_hideInfoLog = hideInfoLog;
     emit hideInfoLogChanged(hideInfoLog, sender);
 }
 
-const QString &OptionsManager::theme() const
+const QString &Options::theme() const
 {
     return m_theme;
 }
 
-void OptionsManager::setTheme(const QString &theme, const QObject *sender)
+void Options::setTheme(const QString &theme, const QObject *sender)
 {
     m_theme = theme;
     emit themeChanged(theme, sender);
 }
 
-Language OptionsManager::language() const
+Language Options::language() const
 {
     return m_language;
 }
 
-void OptionsManager::setLanguage(Language language, const QObject *sender)
+void Options::setLanguage(Language language, const QObject *sender)
 {
     m_language = language;
     emit languageChanged(language, sender);
 }
 
-OptionsManager::~OptionsManager()
+Options::~Options()
 {
 
 }
 
-OptionsManager *options()
+Options *options()
 {
-    static OptionsManager *uniqueOptionsManager = new OptionsManager;
+    static Options *uniqueOptionsManager = new Options;
     return uniqueOptionsManager;
 }

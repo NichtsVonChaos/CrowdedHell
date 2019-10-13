@@ -6,8 +6,7 @@
 #include <QTimerEvent>
 #include <FMOD/inc/fmod.hpp>
 
-#include "Codes/GlobalComponent/logger.h"
-#include "Codes/GlobalComponent/optionsmanager.h"
+#include "Codes/GlobalComponent/globalComponent.h"
 
 class MusicPlayer : public QObject
 {

@@ -79,7 +79,7 @@ void Logger::logToFile(const QString &filePath)
 void Logger::clear()
 {
     count = 0;
-    document()->clear();
+    setHtml("<font color=purple>>>></font> ");
     backup.clear();
 }
 

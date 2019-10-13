@@ -6,7 +6,7 @@
 #include <QTime>
 #include <QFile>
 #include <QTextStream>
-#include "optionsmanager.h"
+#include "options.h"
 
 class Logger : public QTextEdit
 {

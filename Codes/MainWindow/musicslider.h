@@ -5,9 +5,7 @@
 #include <QMouseEvent>
 #include <QtMath>
 
-#include "Codes/GlobalComponent/logger.h"
-#include "Codes/GlobalComponent/optionsmanager.h"
-#include "Codes/GlobalComponent/project.h"
+#include "Codes/GlobalComponent/globalComponent.h"
 #include "Codes/ResourceManager/Music/musicplayer.h"
 
 class MusicSlider : public QSlider

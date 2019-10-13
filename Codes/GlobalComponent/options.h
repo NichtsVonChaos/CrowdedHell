@@ -1,5 +1,5 @@
-#ifndef OPTIONSMANAGER_H
-#define OPTIONSMANAGER_H
+#ifndef OPTIONS_H
+#define OPTIONS_H
 
 #include <QObject>
 #include <QSettings>
@@ -12,12 +12,12 @@ enum class Language
     EN, ZH_CN, ZH_TW, JP
 };
 
-class OptionsManager : public QObject
+class Options : public QObject
 {
     Q_OBJECT
 
 public:
-    ~OptionsManager() override;
+    ~Options() override;
     Language language() const;
     const QString &theme() const;
     bool hideInfoLog() const;
@@ -46,11 +46,12 @@ public slots:
     void setVolume(float volume, const QObject *sender = nullptr);
 
     void addRecentProject(const QString &projectFilePath);
+    void removeRecentProject(const QString &projectFilePath);
     void clearRecentProject();
 
 private:
-    explicit OptionsManager(QObject *parent = nullptr);
-    friend OptionsManager *options();
+    explicit Options(QObject *parent = nullptr);
+    friend Options *options();
 
     Language m_language;
     QString m_theme;
@@ -62,6 +63,6 @@ private:
     QStringList m_recentProject;
 };
 
-OptionsManager *options();
+Options *options();
 
-#endif // OPTIONSMANAGER_H
+#endif // OPTIONS_H
