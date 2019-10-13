@@ -1,4 +1,4 @@
-#ifndef GRID_HPP
+﻿#ifndef GRID_HPP
 #define GRID_HPP
 
 #include <iterator>
@@ -13,7 +13,7 @@
 /*************************************************************************************************
  *                          Grid Data Structure
  * Author: Nihil
- * Last modified: Oct. 12, 2019
+ * Last modified: Oct. 13, 2019
  *
  * Usage:
  *
@@ -166,8 +166,6 @@ public:
     typedef typename _Alloc::size_type size_type;
     typedef typename _Alloc::pointer pointer;
     typedef typename _Alloc::const_pointer const_pointer;
-    class iterator;
-    class const_iterator;
 
     typedef class _Grid_Row
     {
@@ -185,7 +183,7 @@ public:
     {
     public:
         iterator() = delete;
-        iterator(typename std::iterator<std::random_access_iterator_tag, value_type>::pointer ptr);
+        iterator(pointer ptr);
         iterator(const iterator &another);
         ~iterator();
 
@@ -207,29 +205,27 @@ public:
         friend typename Grid<__Tp, __Alloc>::iterator operator+(typename Grid<__Tp, __Alloc>::size_type size, const typename Grid<__Tp, __Alloc>::iterator& iter);
         iterator &operator-=(size_type size);
         iterator operator-(size_type size) const;
-        typename std::iterator<std::random_access_iterator_tag, value_type>::difference_type operator-(const iterator &another) const;
+        difference_type operator-(const iterator &another) const;
 
-        typename std::iterator<std::random_access_iterator_tag, value_type>::reference operator*() const;
-        typename std::iterator<std::random_access_iterator_tag, value_type>::pointer operator->() const;
-        typename std::iterator<std::random_access_iterator_tag, value_type>::reference operator[](size_type offset) const;
-
-        operator const_iterator() const;
+        reference operator*() const;
+        pointer operator->() const;
+        reference operator[](size_type offset) const;
 
     private:
-        typename std::iterator<std::random_access_iterator_tag, value_type>::pointer _ptr;
+        pointer _ptr;
     };
 
     class const_iterator: public std::iterator<std::random_access_iterator_tag, value_type>
     {
     public:
         const_iterator() = delete;
-        const_iterator(typename const_iterator::const_point ptr);
+        const_iterator(const_pointer ptr);
         const_iterator(const const_iterator &another);
         const_iterator(const iterator &another);
         ~const_iterator();
 
-        const_iterator& operator=(const const_iterator &another);
-        const_iterator& operator=(const iterator &another);
+        const_iterator &operator=(const const_iterator &another);
+        const_iterator &operator=(const iterator &another);
         bool operator==(const const_iterator &another) const;
         bool operator!=(const const_iterator &another) const;
         bool operator<(const const_iterator &another) const;
@@ -247,14 +243,13 @@ public:
         friend typename Grid<__Tp, __Alloc>::const_iterator operator+(typename Grid<__Tp, __Alloc>::size_type size, const typename Grid<__Tp, __Alloc>::const_iterator &iter);
         const_iterator &operator-=(size_type size);
         const_iterator operator-(size_type size) const;
-        typename std::iterator<std::random_access_iterator_tag, value_type>::difference_type operator-(const const_iterator &another) const;
+        difference_type operator-(const const_iterator &another) const;
 
-        const typename std::iterator<std::random_access_iterator_tag, value_type>::reference operator*() const;
-        const typename std::iterator<std::random_access_iterator_tag, value_type>::pointer operator->() const;
-        const typename std::iterator<std::random_access_iterator_tag, value_type>::reference operator[](size_type offset) const;
+        const reference operator*() const;
+        const pointer operator->() const;
+        const reference operator[](size_type offset) const;
 
         operator iterator() = delete;
-        operator const iterator() const;
 
     private:
         pointer _ptr;
@@ -1219,7 +1214,7 @@ _Alloc Grid<_Tp, _Alloc>::get_allocator() const
 }
 
 template<typename _Tp, typename _Alloc>
-Grid<_Tp, _Alloc>::iterator::iterator(typename std::iterator<std::random_access_iterator_tag, typename Grid<_Tp, _Alloc>::value_type>::pointer ptr)
+Grid<_Tp, _Alloc>::iterator::iterator(pointer ptr)
 {
     _ptr = ptr;
 }
@@ -1237,43 +1232,43 @@ Grid<_Tp, _Alloc>::iterator::~iterator()
 }
 
 template<typename _Tp, typename _Alloc>
-typename Grid<_Tp, _Alloc>::iterator &Grid<_Tp, _Alloc>::iterator::operator=(const typename Grid<_Tp, _Alloc>::iterator &another)
+typename Grid<_Tp, _Alloc>::iterator &Grid<_Tp, _Alloc>::iterator::operator=(const iterator &another)
 {
     _ptr = another._ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-bool Grid<_Tp, _Alloc>::iterator::operator==(const typename Grid<_Tp, _Alloc>::iterator &another) const
+bool Grid<_Tp, _Alloc>::iterator::operator==(const iterator &another) const
 {
     return _ptr == another._ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-bool Grid<_Tp, _Alloc>::iterator::operator!=(const typename Grid<_Tp, _Alloc>::iterator &another) const
+bool Grid<_Tp, _Alloc>::iterator::operator!=(const iterator &another) const
 {
     return _ptr != another._ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-bool Grid<_Tp, _Alloc>::iterator::operator<(const typename Grid<_Tp, _Alloc>::iterator &another) const
+bool Grid<_Tp, _Alloc>::iterator::operator<(const iterator &another) const
 {
     return _ptr < another._ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-bool Grid<_Tp, _Alloc>::iterator::operator>(const typename  Grid<_Tp, _Alloc>::iterator &another) const
+bool Grid<_Tp, _Alloc>::iterator::operator>(const iterator &another) const
 {
     return _ptr > another._ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-bool Grid<_Tp, _Alloc>::iterator::operator<=(const typename Grid<_Tp, _Alloc>::iterator &another) const
+bool Grid<_Tp, _Alloc>::iterator::operator<=(const iterator &another) const
 {
     return _ptr <= another._ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-bool Grid<_Tp, _Alloc>::iterator::operator>=(const typename Grid<_Tp, _Alloc>::iterator &another) const
+bool Grid<_Tp, _Alloc>::iterator::operator>=(const iterator &another) const
 {
     return _ptr >= another._ptr;
 }
@@ -1341,49 +1336,43 @@ typename Grid<_Tp, _Alloc>::iterator Grid<_Tp, _Alloc>::iterator::operator-(type
 }
 
 template<typename _Tp, typename _Alloc>
-typename std::iterator<std::random_access_iterator_tag, typename Grid<_Tp, _Alloc>::value_type>::difference_type Grid<_Tp, _Alloc>::iterator::operator-(const typename Grid<_Tp, _Alloc>::iterator &another) const
+typename Grid<_Tp, _Alloc>::difference_type Grid<_Tp, _Alloc>::iterator::operator-(const iterator &another) const
 {
     return _ptr - another._ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-typename std::iterator<std::random_access_iterator_tag, typename Grid<_Tp, _Alloc>::value_type>::reference Grid<_Tp, _Alloc>::iterator::operator*() const
+typename Grid<_Tp, _Alloc>::reference Grid<_Tp, _Alloc>::iterator::operator*() const
 {
     return *_ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-typename std::iterator<std::random_access_iterator_tag, typename Grid<_Tp, _Alloc>::value_type>::pointer Grid<_Tp, _Alloc>::iterator::operator->() const
+typename Grid<_Tp, _Alloc>::pointer Grid<_Tp, _Alloc>::iterator::operator->() const
 {
     return _ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-typename std::iterator<std::random_access_iterator_tag, typename Grid<_Tp, _Alloc>::value_type>::reference Grid<_Tp, _Alloc>::iterator::operator[](typename Grid<_Tp, _Alloc>::size_type offset) const
+typename Grid<_Tp, _Alloc>::reference Grid<_Tp, _Alloc>::iterator::operator[](size_type offset) const
 {
     return *(_ptr + offset);
 }
 
 template<typename _Tp, typename _Alloc>
-Grid<_Tp, _Alloc>::iterator::operator Grid<_Tp, _Alloc>::const_iterator() const
-{
-    return Grid<_Tp, _Alloc>::const_iterator(_ptr);
-}
-
-template<typename _Tp, typename _Alloc>
-Grid<_Tp, _Alloc>::const_iterator::const_iterator(typename const_iterator::const_point ptr)
+Grid<_Tp, _Alloc>::const_iterator::const_iterator(const_pointer ptr)
 {
     _ptr = ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-Grid<_Tp, _Alloc>::const_iterator::const_iterator(const typename Grid<_Tp, _Alloc>::const_iterator &another)
+Grid<_Tp, _Alloc>::const_iterator::const_iterator(const const_iterator &another)
 {
     _ptr = another._ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-Grid<_Tp, _Alloc>::const_iterator::const_iterator(const typename Grid<_Tp, _Alloc>::iterator &another)
+Grid<_Tp, _Alloc>::const_iterator::const_iterator(const iterator &another)
 {
     _ptr = another._ptr;
 }
@@ -1395,49 +1384,49 @@ Grid<_Tp, _Alloc>::const_iterator::~const_iterator()
 }
 
 template<typename _Tp, typename _Alloc>
-typename Grid<_Tp, _Alloc>::const_iterator &Grid<_Tp, _Alloc>::const_iterator::operator=(const typename Grid<_Tp, _Alloc>::const_iterator &another)
+typename Grid<_Tp, _Alloc>::const_iterator &Grid<_Tp, _Alloc>::const_iterator::operator=(const const_iterator &another)
 {
     _ptr = another._ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-typename Grid<_Tp, _Alloc>::const_iterator &Grid<_Tp, _Alloc>::const_iterator::operator=(const typename Grid<_Tp, _Alloc>::iterator &another)
+typename Grid<_Tp, _Alloc>::const_iterator &Grid<_Tp, _Alloc>::const_iterator::operator=(const iterator &another)
 {
     _ptr = another._ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-bool Grid<_Tp, _Alloc>::const_iterator::operator==(const typename Grid<_Tp, _Alloc>::const_iterator &another) const
+bool Grid<_Tp, _Alloc>::const_iterator::operator==(const const_iterator &another) const
 {
     return _ptr == another._ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-bool Grid<_Tp, _Alloc>::const_iterator::operator!=(const typename Grid<_Tp, _Alloc>::const_iterator &another) const
+bool Grid<_Tp, _Alloc>::const_iterator::operator!=(const const_iterator &another) const
 {
     return _ptr != another._ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-bool Grid<_Tp, _Alloc>::const_iterator::operator<(const typename Grid<_Tp, _Alloc>::const_iterator &another) const
+bool Grid<_Tp, _Alloc>::const_iterator::operator<(const const_iterator &another) const
 {
     return _ptr < another._ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-bool Grid<_Tp, _Alloc>::const_iterator::operator>(const typename Grid<_Tp, _Alloc>::const_iterator &another) const
+bool Grid<_Tp, _Alloc>::const_iterator::operator>(const const_iterator &another) const
 {
     return _ptr > another._ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-bool Grid<_Tp, _Alloc>::const_iterator::operator<=(const typename Grid<_Tp, _Alloc>::const_iterator &another) const
+bool Grid<_Tp, _Alloc>::const_iterator::operator<=(const const_iterator &another) const
 {
     return _ptr <= another._ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-bool Grid<_Tp, _Alloc>::const_iterator::operator>=(const typename Grid<_Tp, _Alloc>::const_iterator &another) const
+bool Grid<_Tp, _Alloc>::const_iterator::operator>=(const const_iterator &another) const
 {
     return _ptr >= another._ptr;
 }
@@ -1505,35 +1494,28 @@ typename Grid<_Tp, _Alloc>::const_iterator Grid<_Tp, _Alloc>::const_iterator::op
 }
 
 template<typename _Tp, typename _Alloc>
-typename std::iterator<std::random_access_iterator_tag, typename Grid<_Tp, _Alloc>::value_type>::difference_type Grid<_Tp, _Alloc>::const_iterator::operator-(const typename Grid<_Tp, _Alloc>::const_iterator &another) const
+typename Grid<_Tp, _Alloc>::difference_type Grid<_Tp, _Alloc>::const_iterator::operator-(const typename Grid<_Tp, _Alloc>::const_iterator &another) const
 {
     return _ptr - another._ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-const typename std::iterator<std::random_access_iterator_tag, typename Grid<_Tp, _Alloc>::value_type>::reference Grid<_Tp, _Alloc>::const_iterator::operator*() const
+const typename Grid<_Tp, _Alloc>::reference Grid<_Tp, _Alloc>::const_iterator::operator*() const
 {
     return *_ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-const typename std::iterator<std::random_access_iterator_tag, typename Grid<_Tp, _Alloc>::value_type>::pointer Grid<_Tp, _Alloc>::const_iterator::operator->() const
+const typename Grid<_Tp, _Alloc>::pointer Grid<_Tp, _Alloc>::const_iterator::operator->() const
 {
     return _ptr;
 }
 
 template<typename _Tp, typename _Alloc>
-const typename std::iterator<std::random_access_iterator_tag, typename Grid<_Tp, _Alloc>::value_type>::reference Grid<_Tp, _Alloc>::const_iterator::operator[](typename Grid<_Tp, _Alloc>::size_type offset) const
+const typename Grid<_Tp, _Alloc>::reference Grid<_Tp, _Alloc>::const_iterator::operator[](typename Grid<_Tp, _Alloc>::size_type offset) const
 {
     return *(_ptr + offset);
 }
-
-template<typename _Tp, typename _Alloc>
-Grid<_Tp, _Alloc>::const_iterator::operator const Grid<_Tp, _Alloc>::iterator() const
-{
-    return Grid<_Tp, _Alloc>::iterator(_ptr);
-}
-
 
 template<typename _Tp, typename _Alloc>
 Grid<_Tp, _Alloc>::_Grid_Row::_Grid_Row(typename Grid<_Tp, _Alloc>::pointer ptr, typename Grid<_Tp, _Alloc>::size_type columns)
