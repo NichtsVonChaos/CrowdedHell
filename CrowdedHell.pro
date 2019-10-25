@@ -31,9 +31,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 include($$PWD/Reference/qtshell/qtshell.pri)
 
 win32: LIBS += \
-    -L$$PWD/Reference/FMOD/lib/ -lfmod64_vc -lfmodL64_vc
+    -L$$quote($$PWD/Reference/FMOD/lib/Windows x64) -lfmod_vc -lfmodL_vc
 else:unix: LIBS += \
-    -L$$quote($$PWD/Reference/FMOD/lib/Linux x86_64) -lfmod -lfmodL
+    -L$$quote($$PWD/Reference/FMOD/lib/Linux x64) -lfmod -lfmodL
 
 TRANSLATIONS = \
     Resources/Translations/zh_cn.ts \

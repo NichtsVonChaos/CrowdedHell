@@ -1,4 +1,4 @@
-#include "sprite.h"
+﻿#include "sprite.h"
 
 Sprite::Sprite():
     m_id(-1)
@@ -23,6 +23,7 @@ Sprite &Sprite::operator=(const Sprite &another)
     QList::operator=(another);
     m_id = another.m_id;
     m_name = another.m_name;
+    return *this;
 }
 
 Sprite &Sprite::operator <<(const Image &image)
