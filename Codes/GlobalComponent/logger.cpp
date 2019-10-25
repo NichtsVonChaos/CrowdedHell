@@ -2,6 +2,8 @@
 
 Logger *Logger::m_instance = nullptr;
 
+const QtMessageHandler Logger::QT_DEFAULT_MESSAGE_HANDLER = qInstallMessageHandler(nullptr);
+
 Logger::Logger(QWidget *parent):
     QTextEdit(parent), count(0)
 {
@@ -11,11 +13,42 @@ Logger::Logger(QWidget *parent):
     m_instance = this;
     document()->setMaximumBlockCount(100);
     setHtml("<font color=purple>>>></font> ");
+
+    qInstallMessageHandler(Logger::redirectQtMessage);
 }
 
 Logger::~Logger()
 {
+    qInstallMessageHandler(nullptr);
+}
 
+void Logger::redirectQtMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+{
+    QByteArray localMsg = msg.toLocal8Bit();
+    switch (type)
+    {
+        case QtDebugMsg:
+            QT_DEFAULT_MESSAGE_HANDLER(type, context, msg);
+        break;
+
+        case QtInfoMsg:
+            logger()->message(Logger::Type::Info, "Qt Message",
+                              QString("%1 (%2:%3, %4)").arg(localMsg.constData()).arg(context.file).arg(context.line).arg(context.function));
+        break;
+
+        case QtWarningMsg:
+            logger()->message(Logger::Type::Warning, "Qt Message",
+                              QString("%1 (%2:%3, %4)").arg(localMsg.constData()).arg(context.file).arg(context.line).arg(context.function));
+        break;
+
+        case QtCriticalMsg:
+            logger()->message(Logger::Type::Error, "Qt Message",
+                              QString("%1 (%2:%3, %4)").arg(localMsg.constData()).arg(context.file).arg(context.line).arg(context.function));
+        break;
+
+        case QtFatalMsg:
+            QT_DEFAULT_MESSAGE_HANDLER(type, context, msg);
+    }
 }
 
 void Logger::message(Logger::Type type, const QString &module, const QString &message)
@@ -53,7 +86,7 @@ void Logger::message(Logger::Type type, const QString &module, const QString &me
     }
 
     messageHtml += QString(" <font color=purple><u>") + module + QString("</u></font> :");
-    messageHtml += QString("<font color=black>") + message + QString(" </font><font color=gray>--id(") + QString::number(count) + QString(")</font></p><font color=purple>>>> </font>");
+    messageHtml += QString("<font color=black>") + message + QString(" </font><font color=gray>--log(") + QString::number(count) + QString(")</font></p><font color=purple>>>> </font>");
 
     moveCursor(QTextCursor::End);
     textCursor().insertHtml(messageHtml);

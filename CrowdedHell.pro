@@ -28,6 +28,7 @@ CONFIG += c++17
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+include($$PWD/Reference/qtshell/qtshell.pri)
 
 win32: LIBS += \
     -L$$PWD/Reference/FMOD/lib/ -lfmod64_vc -lfmodL64_vc

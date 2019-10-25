@@ -10,10 +10,16 @@
 #include <QApplication>
 #include <QUuid>
 
+#include <QtShell>
+
 #include "logger.h"
 #include "options.h"
 #include "Codes/Wizards/createprojectwizard.h"
 
+/**
+ * @brief The Project class
+ * Project manager.
+ */
 class Project : public QObject
 {
     Q_OBJECT
@@ -35,13 +41,13 @@ public:
 
     /**
      * @brief getProjectPath
-     * Return project path with out project file name.
+     * Return project path without project file name.
      */
     const QString &projectPath() const;
 
     /**
      * @brief getTemporaryPath
-     * Return temporary project path.
+     * Return temporary project path which saves temporary change.
      */
     const QString &temporaryPath() const;
 
@@ -77,24 +83,25 @@ public:
 
 signals:
     /**
-     * @see CrowdedHellGUI::sendMessage(MessageType, QString, QString);
+     * @see Logger::message.
      */
     void message(Logger::Type type, const QString &module, const QString &message);
 
     /**
      * @brief musicSelected
-     * Send a signal for selected music when create new project.
+     * Emit a signal for selected music when create new project.
      */
     void musicSelected(const QString &musicPath);
 
     /**
      * @brief projectOpened
+     * Emit a signal when a project is opened.
      */
     void projectOpened(const QString &projectFilePath);
 
     /**
      * @brief projectClosed
-     * Send a signal when project closed.
+     * Emit a signal when project closed.
      */
     void projectClosed();
 
@@ -146,6 +153,11 @@ public slots:
     void reselectMusic();
     void reselectMusic(const QString &musicPath);
 
+    /**
+     * @brief setChanged
+     * Set m_changed to true.
+     * Program will ask user to save the project when you close it if m_changed is true.
+     */
     void setChanged();
 
 private:
@@ -162,6 +174,10 @@ private:
     QString m_musicFile;
 };
 
+/**
+ * @brief project
+ * Get the unique Project instance.
+ */
 Project *project();
 
 #endif // PROJECT_H

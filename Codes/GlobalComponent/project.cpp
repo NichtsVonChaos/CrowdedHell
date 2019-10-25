@@ -110,7 +110,11 @@ void Project::newProject()
 
     m_uuid = QUuid::createUuid().toString().remove("{").remove("}").remove("-");
     m_temporaryPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QString("/Crowded-Hell-") + m_uuid;
-    QDir().mkdir(m_temporaryPath);
+
+
+    QDir tmpDir(m_temporaryPath);
+    if(tmpDir.exists())
+        QtShell::rm("-rf", m_temporaryPath);
 
     QTextStream textStream(&projectFile);
     textStream << "This is just a project file for Crowded Hell." << endl;
@@ -130,6 +134,8 @@ void Project::newProject()
         delete wizard;
         return;
     }
+
+
 
     m_author = wizard->getAuthor();
     m_createDate = wizard->getDate();

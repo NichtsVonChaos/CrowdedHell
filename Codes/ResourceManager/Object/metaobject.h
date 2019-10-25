@@ -5,6 +5,10 @@
 
 #include "../Image/sprite.h"
 
+/**
+ * @brief The MetaObject class
+ * The MetaObject is a abstract base class to emulate GM8 Object.
+ */
 class MetaObject : public QObject
 {
     Q_OBJECT
