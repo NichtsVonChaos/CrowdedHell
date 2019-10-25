@@ -35,6 +35,7 @@ ____
 ##### 本项目的诞生离不开以下开源项目。
 ##### This project cannot be without following open-source projects.
 * [GMK-Splitter](https://github.com/Medo42/Gmk-Splitter)  
+* [QtShell](https://github.com/benlau/qtshell)  
 ##### 以下项目并非开源项目，但是拥有受限的免费许可证。  
 ##### Following projects are not open-source, but have limitted free license.
 * [FMOD](https://www.fmod.com/)
@@ -44,16 +45,10 @@ ____
 ____
 ##### Windows:
 * 建议使用MSVC 64位套件编译，本人使用MinGW套件无法编译FMOD。  
- Suggest that use MSVC x64 kit to compile. I cannot compile FMOD using MinGW kit.
-* 请确保{QtPath}/Tools/QtCreator/bin下的qtcreator.exe与qtcdebugger.exe拥有管理员权限，否则将无法读写注册表。  
- Plesae make sure that the qtcreator.exe and qtcdebugger.exe at {QtPath}/Tools/QtCreator/bin have the administrator privileges to operate registery.
+ Suggest that use MSVC 64-bit kit to compile. I cannot compile FMOD using MinGW kit.
 ##### Linux:
-* 本人仅在Ubuntu 19.04下尝试编译成功，其他系统不保证成功。  
-  I had only compiled it successfully at Ubuntu 19.04, I cannot ensure if it can be compiled at other Linux OSs.
-* 安装需要的库  
-  Install libraries  
-
-        sudo apt install uuid-dev libpng-dev libjpeg-dev libgif-dev
+* 本人仅在Ubuntu 19.10下尝试编译成功，其他系统不保证成功。  
+  I had only compiled it successfully at Ubuntu 19.10, I cannot ensure if it can be compiled at other Linux OSs.
   
 ### 寻求合作
 ##### Cooperation Wanted
@@ -66,8 +61,8 @@ ____
  Beautify UI.
 * 运行测试。  
  Bug test.
-* 摸代码（苦工）。  
- Programmers. (I'm regreted for no-pay but I'm just a student.)
+* 欢迎各种Pull Request。  
+ Any Pull Request.
 * 增加对mac OS的支持  
  Add support for mac OS.
   
