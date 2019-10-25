@@ -78,8 +78,18 @@
     <property name="title">
      <string>Settings</string>
     </property>
-    <addaction name="actionLanguage"/>
-    <addaction name="actionTheme"/>
+    <widget class="QMenu" name="menuLanguage">
+     <property name="title">
+      <string>Language</string>
+     </property>
+    </widget>
+    <widget class="QMenu" name="menuTheme">
+     <property name="title">
+      <string>Theme</string>
+     </property>
+    </widget>
+    <addaction name="menuLanguage"/>
+    <addaction name="menuTheme"/>
     <addaction name="separator"/>
    </widget>
    <widget class="QMenu" name="menuProject">
@@ -150,16 +160,6 @@
    </property>
    <property name="text">
     <string>Hide all &quot;Info&quot; type message</string>
-   </property>
-  </action>
-  <action name="actionTheme">
-   <property name="text">
-    <string>Theme</string>
-   </property>
-  </action>
-  <action name="actionLanguage">
-   <property name="text">
-    <string>Language</string>
    </property>
   </action>
   <action name="actionExit">

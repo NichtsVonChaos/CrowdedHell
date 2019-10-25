@@ -4,23 +4,26 @@
 #include <QMainWindow>
 #include <QCloseEvent>
 #include <QAction>
+#include <QMap>
+#include <QTranslator>
 
 #include "Codes/GlobalComponent/globalComponent.h"
 #include "Codes/ResourceManager/Music/musicplayer.h"
 
 namespace Ui {
-	class MainWindow;
+    class MainWindow;
 }
 
 class MainWindow : public QMainWindow
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
 
     void closeEvent(QCloseEvent *ev) override;
+    void changeEvent(QEvent *ev) override;
 
 signals:
     void message(Logger::Type type, const QString &module, const QString &message);
@@ -32,9 +35,11 @@ public slots:
     void openRecentProject(QAction *action);
     void projectOpened(const QString &projectFilePath);
     void projectClosed();
+    void setLanguage(Language language, const QObject *sender = nullptr);
 
 private slots:
     void playButtonChecked(bool checked);
+    void languageButtonClicked(QAction *action);
 
     void on_actionHideAllInfoTypeMessage_triggered(bool checked);
 
@@ -43,10 +48,14 @@ private slots:
     void on_actionExportLogToFile_triggered();
 
 private:
-	Ui::MainWindow *ui;
+    Ui::MainWindow *ui;
 
     MusicPlayer *m_musicPlayer;
     QAction *m_actionClearRecent, *m_actionNoRecord;
+    QMap<Language, QAction *> m_buttonLanguageOptions;
+    QMap<Language, QString> m_translationFiles;
+    QTranslator m_translator;
+    const QObject *m_sender;
 };
 
 #endif // MAINWINDOW_H

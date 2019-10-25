@@ -232,7 +232,7 @@ void Project::saveChange()
 
     if(datas.size() < 5)
     {
-        emit message(Logger::Type::Error, "Project", tr("Project file format is abnormal."));
+        emit message(Logger::Type::Error, "Project", tr("Project file format abnormal."));
         return;
     }
 

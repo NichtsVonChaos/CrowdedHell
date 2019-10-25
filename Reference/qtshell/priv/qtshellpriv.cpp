@@ -35,7 +35,7 @@ QString QtShell::Private::canonicalPath(const QString &path, bool isWindow)
 
     QStringList res;
 
-    for (int i = 0 ; i < token.size(); i++) {
+    for (int i = 0 ; i < token.size(); ++i) {
         QString item = token[i];
 
         if (item == ".") {

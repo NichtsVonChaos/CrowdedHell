@@ -17,7 +17,7 @@ using namespace QtShell::Private;
 /// Take out "." and ".." files
 static QStringList filterLocalFiles(const QStringList& files) {
     QStringList result;
-    for (int i = 0 ; i < files.size() ; i++) {
+    for (int i = 0 ; i < files.size() ; ++i) {
         QString file = files[i];
         if (file == "." || file == "..") {
             continue;
@@ -30,7 +30,7 @@ static QStringList filterLocalFiles(const QStringList& files) {
 
 static QList<QFileInfo> filterLocalFiles(const QList<QFileInfo>& files) {
     QList<QFileInfo> result;
-    for (int i = 0 ; i < files.size() ; i++) {
+    for (int i = 0 ; i < files.size() ; ++i) {
         QFileInfo file = files[i];
         if (file.fileName() == "." || file.fileName() == "..") {
             continue;
@@ -46,7 +46,7 @@ static QStringList preservedPaths() {
     preservePaths << "/";
 
     for (int i = QStandardPaths::DesktopLocation ;
-         i <= QStandardPaths::AppConfigLocation; i++) {
+         i <= QStandardPaths::AppConfigLocation; ++i) {
         QStringList paths =  QStandardPaths::standardLocations(QStandardPaths::StandardLocation(i));
         preservePaths.append(paths);
     }
@@ -78,7 +78,7 @@ QStringList QtShell::find(const QtShell::FindOptions &options, const QString &ro
     auto match = [](const QString&fileName,const QStringList &nameFilters) {
         bool res = false;
 
-        for (int i = 0 ; i < nameFilters.size() ; i++) {
+        for (int i = 0 ; i < nameFilters.size() ; ++i) {
             const QString& filter = nameFilters.at(i);
             QRegExp rx(filter,Qt::CaseInsensitive,QRegExp::Wildcard);
             if (rx.exactMatch(fileName))  {
@@ -111,7 +111,7 @@ QStringList QtShell::find(const QtShell::FindOptions &options, const QString &ro
             continue;
         }
 
-        for (int i = 0 ; i < infos.size() ; i++) {
+        for (int i = 0 ; i < infos.size() ; ++i) {
             QFileInfo info = infos.at(i);
 
             if (info.fileName() == "." || info.fileName() == "..") {
@@ -493,7 +493,7 @@ QString QtShell::cat(const QStringList &files)
 {
     QString content;
 
-    for (int i = 0 ; i < files.size() ; i++) {
+    for (int i = 0 ; i < files.size() ; ++i) {
         if (i != 0) {
             content = content + "\n";
         }

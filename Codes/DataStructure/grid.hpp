@@ -391,7 +391,7 @@ Grid<_Tp, _Alloc>::Grid(typename Grid<_Tp, _Alloc>::size_type rows, typename Gri
         throw e;
     }
 
-    for(size_type i = 0; i < rows * cols; i++)
+    for(size_type i = 0; i < rows * cols; ++i)
         m_grid[i] = fill;
 }
 
@@ -421,7 +421,7 @@ Grid<_Tp, _Alloc>::Grid(std::initializer_list<std::initializer_list<Grid<_Tp, _A
         throw e;
     }
 
-    for(size_type i = 0; i < m_rows * m_columns; i++)
+    for(size_type i = 0; i < m_rows * m_columns; ++i)
         m_grid[i] = m_empty;
 
     size_type row = 0;
@@ -463,7 +463,7 @@ Grid<_Tp, _Alloc>::Grid(const std::vector<std::vector<_Tp> > &data, const Grid<_
         throw e;
     }
 
-    for(size_type i = 0; i < m_rows * m_columns; i++)
+    for(size_type i = 0; i < m_rows * m_columns; ++i)
         m_grid[i] = m_empty;
 
     size_type row = 0;
@@ -501,8 +501,8 @@ Grid<_Tp, _Alloc>::Grid(const Grid<_Tp, _Alloc> &another):
         throw e;
     }
 
-    for(size_t i = 0; i < m_rows; i++)
-        for(size_t j = 0; j < m_columns; j++)
+    for(size_t i = 0; i < m_rows; ++i)
+        for(size_t j = 0; j < m_columns; ++j)
             at(i, j) = another.at(i, j);
 
     m_empty = another.m_empty;
@@ -539,7 +539,7 @@ Grid<_Tp, _Alloc> &Grid<_Tp, _Alloc>::operator=(std::initializer_list<std::initi
         throw e;
     }
 
-    for(size_type i = 0; i < m_rows * m_columns; i++)
+    for(size_type i = 0; i < m_rows * m_columns; ++i)
         m_grid[i] = m_empty;
 
     size_type row = 0;
@@ -580,8 +580,8 @@ Grid<_Tp, _Alloc> &Grid<_Tp, _Alloc>::operator=(const Grid<_Tp, _Alloc> &another
         throw e;
     }
 
-    for(size_t i = 0; i < m_rows; i++)
-        for(size_t j = 0; j < m_columns; j++)
+    for(size_t i = 0; i < m_rows; ++i)
+        for(size_t j = 0; j < m_columns; ++j)
             at(i, j) = another.at(i, j);
 
     return *this;
@@ -596,8 +596,8 @@ bool Grid<_Tp, _Alloc>::operator==(const Grid<_Tp, _Alloc> &another) const
     if(m_columns != another.columns())
         return false;
 
-    for(size_type i = 0; i < m_rows; i++)
-        for(size_type j = 0; j < m_columns; j++)
+    for(size_type i = 0; i < m_rows; ++i)
+        for(size_type j = 0; j < m_columns; ++j)
             if(at(i, j) != another.at(i, j))
                 return false;
 
@@ -732,8 +732,8 @@ bool Grid<_Tp, _Alloc>::equal(const Grid<typename Grid<_Tp, _Alloc>::value_type,
     if(m_columns != another.columns())
         return false;
 
-    for(size_type i = 0; i < m_rows; i++)
-        for(size_type j = 0; j < m_columns; j++)
+    for(size_type i = 0; i < m_rows; ++i)
+        for(size_type j = 0; j < m_columns; ++j)
             if(!equalFunc(at(i, j), another.at(i, j)))
                 return false;
 
@@ -841,7 +841,7 @@ void Grid<_Tp, _Alloc>::realloc(typename Grid<_Tp, _Alloc>::size_type rows, type
         throw e;
     }
 
-    for(size_type i = 0; i < rows * cols; i++)
+    for(size_type i = 0; i < rows * cols; ++i)
         m_grid[i] = m_empty;
 }
 
@@ -864,7 +864,7 @@ void Grid<_Tp, _Alloc>::realloc(typename Grid<_Tp, _Alloc>::size_type rows, type
         throw e;
     }
 
-    for(size_type i = 0; i < rows * cols; i++)
+    for(size_type i = 0; i < rows * cols; ++i)
         m_grid[i] = value;
 }
 
@@ -931,12 +931,12 @@ void Grid<_Tp, _Alloc>::reshape(typename Grid<_Tp, _Alloc>::size_type rows, type
         throw e;
     }
 
-    for(size_type i = 0; i < std::min(old_size, m_rows * m_columns); i++)
+    for(size_type i = 0; i < std::min(old_size, m_rows * m_columns); ++i)
     {
         m_grid[i] = old_grid[i];
     }
 
-    for(size_type i = std::min(old_size, m_rows * m_columns); i < m_rows * m_columns; i++)
+    for(size_type i = std::min(old_size, m_rows * m_columns); i < m_rows * m_columns; ++i)
     {
         m_grid[i] = m_empty;
     }
@@ -971,8 +971,8 @@ void Grid<_Tp, _Alloc>::resize(Grid::size_type rows, Grid::size_type cols)
 
     fill(m_empty);
 
-    for(size_type i = 0; i < std::min(old_rows, m_rows); i++)
-        for(size_type j = 0; j < std::min(old_columns, m_columns); j++)
+    for(size_type i = 0; i < std::min(old_rows, m_rows); ++i)
+        for(size_type j = 0; j < std::min(old_columns, m_columns); ++j)
             at(i, j) = old_grid[i * old_columns + j];
 
     if(m_grid != nullptr)
@@ -995,7 +995,7 @@ template<typename _Tp, typename _Alloc>
 typename Grid<_Tp, _Alloc>::size_type Grid<_Tp, _Alloc>::count(const typename Grid<_Tp, _Alloc>::value_type &value) const noexcept
 {
     size_type count = 0;
-    for(size_type i = 0; i < m_rows * m_columns; i++)
+    for(size_type i = 0; i < m_rows * m_columns; ++i)
         if(m_grid[i] == value)
             count++;
 
@@ -1029,7 +1029,7 @@ void Grid<_Tp, _Alloc>::setEmptyObject(const typename Grid<_Tp, _Alloc>::value_t
 template<typename _Tp, typename _Alloc>
 typename Grid<_Tp, _Alloc>::size_type Grid<_Tp, _Alloc>::replace(const typename Grid<_Tp, _Alloc>::value_type &oldValue, const typename Grid<_Tp, _Alloc>::value_type &newValue)
 {
-    for(size_type i = 0; i < m_rows * m_columns; i++)
+    for(size_type i = 0; i < m_rows * m_columns; ++i)
         if(m_grid[i] == oldValue)
             m_grid[i] = newValue;
 }
@@ -1076,7 +1076,7 @@ void Grid<_Tp, _Alloc>::fillRow(typename Grid<_Tp, _Alloc>::size_type index, con
 {
     if(index >= m_rows)
         throw std::out_of_range(std::string("Grid<> : Out of range at row ") + std::to_string(index) + std::string(" of ") + std::to_string(m_rows));
-    for(size_type i = 0; i < m_columns; i++)
+    for(size_type i = 0; i < m_columns; ++i)
         at(index, i) = value;
 }
 
@@ -1085,14 +1085,14 @@ void Grid<_Tp, _Alloc>::fillColumn(typename Grid<_Tp, _Alloc>::size_type index, 
 {
     if(index >= m_columns)
         throw std::out_of_range(std::string("Grid<> : Out of range at column ") + std::to_string(index) + std::string(" of ") + std::to_string(m_columns));
-    for(size_type i = 0; i < m_rows; i++)
+    for(size_type i = 0; i < m_rows; ++i)
         at(i, index) = value;
 }
 
 template<typename _Tp, typename _Alloc>
 void Grid<_Tp, _Alloc>::fillEmpty(const typename Grid<_Tp, _Alloc>::value_type &value)
 {
-    for(size_type i = 0; i < m_rows * m_columns; i++)
+    for(size_type i = 0; i < m_rows * m_columns; ++i)
         if(m_grid[i] == m_empty)
             m_grid[i] = value;
 }
@@ -1100,7 +1100,7 @@ void Grid<_Tp, _Alloc>::fillEmpty(const typename Grid<_Tp, _Alloc>::value_type &
 template<typename _Tp, typename _Alloc>
 void Grid<_Tp, _Alloc>::fill(const typename Grid<_Tp, _Alloc>::value_type &value)
 {
-    for(size_type i = 0; i < m_rows * m_columns; i++)
+    for(size_type i = 0; i < m_rows * m_columns; ++i)
         m_grid[i] = value;
 }
 
@@ -1147,8 +1147,8 @@ void Grid<_Tp, _Alloc>::reverse(bool horizontal, bool vertical)
     else if(!vertical)
     {
         value_type tmp = m_empty;
-        for(size_type i = 0; i < m_rows; i++)
-            for(size_type j = 0; j < m_columns / 2; j++)
+        for(size_type i = 0; i < m_rows; ++i)
+            for(size_type j = 0; j < m_columns / 2; ++j)
             {
                 tmp = at(i, j);
                 at(i, j) = at(i, m_columns - j - 1);
@@ -1158,8 +1158,8 @@ void Grid<_Tp, _Alloc>::reverse(bool horizontal, bool vertical)
     else if(!horizontal)
     {
         value_type tmp = m_empty;
-        for(size_type i = 0; i < m_rows / 2; i++)
-            for(size_type j = 0; j < m_columns; j++)
+        for(size_type i = 0; i < m_rows / 2; ++i)
+            for(size_type j = 0; j < m_columns; ++j)
             {
                 tmp = at(i, j);
                 at(i, j) = at(m_rows - i - 1, j);
@@ -1169,7 +1169,7 @@ void Grid<_Tp, _Alloc>::reverse(bool horizontal, bool vertical)
     else
     {
         value_type tmp = m_empty;
-        for(size_type i = 0; i < m_rows * m_columns / 2; i++)
+        for(size_type i = 0; i < m_rows * m_columns / 2; ++i)
         {
             tmp = m_grid[i];
             m_grid[i] = m_grid[m_rows * m_columns - i - 1];

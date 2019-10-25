@@ -196,7 +196,7 @@ void MusicPlayer::setPaused(bool paused, const QObject *sender)
 
             result = m_channel->setPitch(m_speed);
             if(result != FMOD_OK)
-                emit message(Logger::Type::Warning, "FMOD", tr("Failed to set music speed to x%1. Error type: %2.").arg(QString::number(double(m_speed), 'g', 2)).arg(result));
+                emit message(Logger::Type::Warning, "FMOD", tr("Failed to set speed to x%1. Error type: %2.").arg(QString::number(double(m_speed), 'g', 2)).arg(result));
         }
 
         bool isPlaying = false;
@@ -218,7 +218,7 @@ void MusicPlayer::setPaused(bool paused, const QObject *sender)
 
             result = m_channel->setPitch(m_speed);
             if(result != FMOD_OK)
-                emit message(Logger::Type::Warning, "FMOD", tr("Failed to set music speed to x%1. Error type: %2.").arg(QString::number(double(m_speed), 'g', 2)).arg(result));
+                emit message(Logger::Type::Warning, "FMOD", tr("Failed to set speed to x%1. Error type: %2.").arg(QString::number(double(m_speed), 'g', 2)).arg(result));
         }
 
         if(m_position >= m_length)
@@ -289,7 +289,7 @@ void MusicPlayer::setPosition(unsigned int pos, const QObject *sender)
 
         result = m_channel->setPitch(m_speed);
         if(result != FMOD_OK)
-            emit message(Logger::Type::Warning, "FMOD", tr("Failed to set music speed to x%1. Error type: %2.").arg(QString::number(double(m_speed), 'g', 2)).arg(result));
+            emit message(Logger::Type::Warning, "FMOD", tr("Failed to set speed to x%1. Error type: %2.").arg(QString::number(double(m_speed), 'g', 2)).arg(result));
     }
 
     bool isPlaying = false;
@@ -310,7 +310,7 @@ void MusicPlayer::setPosition(unsigned int pos, const QObject *sender)
 
         result = m_channel->setPitch(m_speed);
         if(result != FMOD_OK)
-            emit message(Logger::Type::Warning, "FMOD", tr("Failed to set music speed to x%1. Error type: %2.").arg(QString::number(double(m_speed), 'g', 2)).arg(result));
+            emit message(Logger::Type::Warning, "FMOD", tr("Failed to set speed to x%1. Error type: %2.").arg(QString::number(double(m_speed), 'g', 2)).arg(result));
     }
 
     if(pos >= m_length)
@@ -364,7 +364,7 @@ void MusicPlayer::setSpeed(float speed, const QObject *sender)
 
     if(m_channel == nullptr)
     {
-        emit message(Logger::Type::Info, "FMOD", tr("Set speed to %1.").arg(double(m_speed)));
+        emit message(Logger::Type::Info, "FMOD", tr("Set speed to x%1.").arg(double(m_speed)));
         emit speedChanged(m_speed, sender);
         return;
     }
@@ -373,7 +373,7 @@ void MusicPlayer::setSpeed(float speed, const QObject *sender)
     result = m_channel->isPlaying(&isPlaying);
     if(result != FMOD_OK || !isPlaying)
     {
-        emit message(Logger::Type::Info, "FMOD", tr("Set speed to %1.").arg(double(m_speed)));
+        emit message(Logger::Type::Info, "FMOD", tr("Set speed to x%1.").arg(double(m_speed)));
         emit speedChanged(m_speed, sender);
         return;
     }
@@ -382,7 +382,7 @@ void MusicPlayer::setSpeed(float speed, const QObject *sender)
     if(result != FMOD_OK)
         emit message(Logger::Type::Warning, "FMOD", tr("Failed to set speed to x%1. Error type: %2.").arg(double(m_speed)).arg(result));
 
-    emit message(Logger::Type::Info, "FMOD", tr("Set speed to %1.").arg(double(m_speed)));
+    emit message(Logger::Type::Info, "FMOD", tr("Set speed to x%1.").arg(double(m_speed)));
     emit speedChanged(m_speed, sender);
 }
 
@@ -450,7 +450,7 @@ void MusicPlayer::setMusicFile(const QString &path)
 
     result = m_channel->setPitch(m_speed);
     if(result != FMOD_OK)
-        emit message(Logger::Type::Warning, "FMOD", tr("Failed to set music speed to x%1. Error type: %2.").arg(QString::number(double(m_speed), 'g', 2)).arg(result));
+        emit message(Logger::Type::Warning, "FMOD", tr("Failed to set speed to x%1. Error type: %2.").arg(QString::number(double(m_speed), 'g', 2)).arg(result));
 
     emit message(Logger::Type::Info, "FMOD", tr("Loaded music \"%1\".").arg(path));
 }

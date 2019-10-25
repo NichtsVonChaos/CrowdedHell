@@ -36,6 +36,7 @@ else:unix: LIBS += \
     -L$$quote($$PWD/Reference/FMOD/lib/Linux x64) -lfmod -lfmodL
 
 TRANSLATIONS = \
+    Resources/Translations/en.ts \
     Resources/Translations/zh_cn.ts \
     Resources/Translations/zh_tw.ts \
     Resources/Translations/jp.ts
@@ -79,3 +80,6 @@ SOURCES += \
     Codes/ResourceManager/gmglobal.cpp \
     Codes/Wizards/createprojectwizard.cpp \
     Codes/main.cpp
+
+RESOURCES += \
+    Resources/Translations/translations.qrc

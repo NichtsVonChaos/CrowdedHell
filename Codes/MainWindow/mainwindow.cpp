@@ -3,41 +3,47 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow), m_sender(this)
 {
     ui->setupUi(this);
+
     ui->actionReselectMusic->setEnabled(false);
 
-    options()->readOptions();
-    project()->initialze();
-
-    ui->actionAlwaysSaveProjectBeforeClose->setChecked(options()->autoSave());
-    ui->actionHideAllInfoTypeMessage->setChecked(options()->hideInfoLog());
-
-    m_musicPlayer = new MusicPlayer(this);
-    ui->musicSlider->initialze(m_musicPlayer);
-
-    m_actionClearRecent = new QAction("Clear all records");
-    m_actionNoRecord = new QAction("(No record)");
+    m_actionClearRecent = new QAction(tr("Clear all records"));
+    m_actionNoRecord = new QAction(tr("(No record)"));
     m_actionNoRecord->setEnabled(false);
 
-    connect(project(), &Project::projectOpened, options(), &Options::addRecentProject, Qt::UniqueConnection);
-    connect(project(), &Project::projectOpened, this, &MainWindow::projectOpened, Qt::UniqueConnection);
-    connect(project(), &Project::projectClosed, this, &MainWindow::projectClosed, Qt::UniqueConnection);
-    connect(project(), &Project::projectClosed, m_musicPlayer, &MusicPlayer::reset, Qt::UniqueConnection);
-    connect(project(), &Project::musicSelected, m_musicPlayer, &MusicPlayer::setMusicFile, Qt::UniqueConnection);
+    project()->initialze();
+
+    m_translationFiles[Language::EN] = ":/trans/en.qm";
+    m_translationFiles[Language::ZH_CN] = ":/trans/zh_cn.qm";
+    m_translationFiles[Language::ZH_TW] = ":/trans/zh_tw.qm";
+    m_translationFiles[Language::JP] = ":/trans/jp.qm";
+    m_buttonLanguageOptions[Language::EN] = new QAction(tr("English"), ui->menuLanguage);
+    m_buttonLanguageOptions[Language::ZH_CN] = new QAction(tr("Simplified Chinese"), ui->menuLanguage);
+    m_buttonLanguageOptions[Language::ZH_TW] = new QAction(tr("Traditional Chinese"), ui->menuLanguage);
+    m_buttonLanguageOptions[Language::JP] = new QAction(tr("Japanese"), ui->menuLanguage);
+    for(auto i : m_buttonLanguageOptions.values())
+        i->setCheckable(true);
+    if(m_translator.load(m_translationFiles[Language::EN]))
+        qApp->installTranslator(&m_translator);
+
+    ui->menuLanguage->addActions(m_buttonLanguageOptions.values());
 
     connect(options(), &Options::hideInfoLogChanged, ui->actionHideAllInfoTypeMessage, &QAction::setChecked, Qt::UniqueConnection);
     connect(options(), &Options::autoSaveChanged, ui->actionAlwaysSaveProjectBeforeClose, &QAction::setChecked, Qt::UniqueConnection);
-
+    connect(options(), &Options::languageChanged, this, &MainWindow::setLanguage, Qt::UniqueConnection);
     connect(this, &MainWindow::message, logger(), &Logger::message);
-    connect(this, &MainWindow::musicPaused, m_musicPlayer, &MusicPlayer::setPaused, Qt::UniqueConnection);
-
-    connect(m_musicPlayer, &MusicPlayer::paused, this, &MainWindow::pauseMusic, Qt::UniqueConnection);
 
     // debug usage
     connect(ui->pushButton, &QPushButton::clicked, this, &MainWindow::playButtonChecked, Qt::UniqueConnection);
 
+    options()->readOptions();
+    m_musicPlayer = new MusicPlayer(this);
+    ui->musicSlider->initialze(m_musicPlayer);
+
+    connect(this, &MainWindow::musicPaused, m_musicPlayer, &MusicPlayer::setPaused, Qt::UniqueConnection);
+    connect(m_musicPlayer, &MusicPlayer::paused, this, &MainWindow::pauseMusic, Qt::UniqueConnection);
     connect(m_actionClearRecent, &QAction::triggered, options(), &Options::clearRecentProject, Qt::UniqueConnection);
     connect(m_actionClearRecent, &QAction::triggered, this, &MainWindow::refreshRecentProject, Qt::UniqueConnection);
     connect(ui->actionNewProject, &QAction::triggered, m_musicPlayer, &MusicPlayer::pause, Qt::UniqueConnection);
@@ -50,6 +56,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionReselectMusic, &QAction::triggered, m_musicPlayer, &MusicPlayer::pause, Qt::UniqueConnection);
     connect(ui->actionReselectMusic, &QAction::triggered, project(), static_cast<void(Project::*)()>(&Project::reselectMusic), Qt::UniqueConnection);
     connect(ui->actionClearLogger, &QAction::triggered, logger(), &Logger::clear);
+    connect(ui->menuLanguage, &QMenu::triggered, this, &MainWindow::languageButtonClicked, Qt::UniqueConnection);
+    connect(project(), &Project::projectOpened, options(), &Options::addRecentProject, Qt::UniqueConnection);
+    connect(project(), &Project::projectOpened, this, &MainWindow::projectOpened, Qt::UniqueConnection);
+    connect(project(), &Project::projectClosed, this, &MainWindow::projectClosed, Qt::UniqueConnection);
+    connect(project(), &Project::projectClosed, m_musicPlayer, &MusicPlayer::reset, Qt::UniqueConnection);
+    connect(project(), &Project::musicSelected, m_musicPlayer, &MusicPlayer::setMusicFile, Qt::UniqueConnection);
 
     refreshRecentProject();
 }
@@ -71,6 +83,35 @@ void MainWindow::closeEvent(QCloseEvent *ev)
     }
 }
 
+void MainWindow::changeEvent(QEvent *ev)
+{
+
+    QMainWindow::changeEvent(ev);
+    switch (ev->type())
+    {
+        case QEvent::LanguageChange:
+        {
+            if(ui)
+                ui->retranslateUi(this);
+            m_buttonLanguageOptions[Language::EN]->setText(tr("English"));
+            m_buttonLanguageOptions[Language::ZH_CN]->setText(tr("Simplified Chinese"));
+            m_buttonLanguageOptions[Language::ZH_TW]->setText(tr("Traditional Chinese"));
+            m_buttonLanguageOptions[Language::JP]->setText(tr("Japanese"));
+            m_actionClearRecent->setText(tr("Clear all records"));
+            m_actionNoRecord->setText(tr("(No record)"));
+
+            if(project()->projectName().isEmpty())
+                setWindowTitle("Crowded Hell");
+            else
+                setWindowTitle(project()->projectName() + QString(" -- Crowded Hell"));
+        }
+        break;
+
+        default:
+        break;
+    }
+}
+
 void MainWindow::pauseMusic(bool paused, const QObject *sender)
 {
     if(sender == ui->pushButton)
@@ -87,7 +128,7 @@ void MainWindow::refreshRecentProject()
     ui->menuRecentProject->clear();
     if(options()->recentProject().size() == 0)
         ui->menuRecentProject->addAction(m_actionNoRecord);
-    else for(int i = 0; i < options()->recentProject().size(); i++)
+    else for(int i = 0; i < options()->recentProject().size(); ++i)
         ui->menuRecentProject->addAction(options()->recentProject()[i]);
     ui->menuRecentProject->addSeparator();
     ui->menuRecentProject->addAction(m_actionClearRecent);
@@ -109,11 +150,13 @@ void MainWindow::projectOpened(const QString &projectFilePath)
 {
     ui->actionReselectMusic->setEnabled(true);
     refreshRecentProject();
+    setWindowTitle(project()->projectName() + QString(" -- Crowded Hell"));
 }
 
 void MainWindow::projectClosed()
 {
     ui->actionReselectMusic->setEnabled(false);
+    setWindowTitle("Crowded Hell");
 }
 
 void MainWindow::playButtonChecked(bool checked)
@@ -121,14 +164,59 @@ void MainWindow::playButtonChecked(bool checked)
     emit musicPaused(checked);
 }
 
+void MainWindow::languageButtonClicked(QAction *action)
+{
+    Language language;
+    for(auto i = m_buttonLanguageOptions.constBegin(); i != m_buttonLanguageOptions.constEnd(); ++i)
+    {
+        if(i.value() == action)
+        {
+            language = i.key();
+            i.value()->setChecked(true);
+            setLanguage(language);
+        }
+        else
+            i.value()->setChecked(false);
+    }
+}
+
+void MainWindow::setLanguage(Language language, const QObject *sender)
+{
+    if(sender == this)
+        return;
+    if(sender == nullptr)
+        sender = this;
+
+    for(auto i = m_buttonLanguageOptions.constBegin(); i != m_buttonLanguageOptions.constEnd(); ++i)
+    {
+        if(i.key() == language)
+            i.value()->setChecked(true);
+        else
+            i.value()->setChecked(false);
+    }
+
+    if(m_translator.load(m_translationFiles[language]))
+    {
+        qApp->removeTranslator(&m_translator);
+        qApp->installTranslator(&m_translator);
+    }
+    else
+    {
+        message(Logger::Type::Error, "Main Window", tr("Failed to load translation file \"%1\".").arg(m_translationFiles[language]));
+        return;
+    }
+
+    options()->setLanguage(language, sender);
+}
+
 void MainWindow::on_actionHideAllInfoTypeMessage_triggered(bool checked)
 {
-    options()->setHideInfoLog(checked, ui->actionHideAllInfoTypeMessage);
+    options()->setHideInfoLog(checked, this);
 }
 
 void MainWindow::on_actionAlwaysSaveProjectBeforeClose_triggered(bool checked)
 {
-    options()->setAutoSave(checked, ui->actionAlwaysSaveProjectBeforeClose);
+    options()->setAutoSave(checked, this);
 }
 
 void MainWindow::on_actionExportLogToFile_triggered()

@@ -39,10 +39,10 @@ Mask::Mask(const Grid<bool> &another):
 QDebug operator<<(QDebug qDbg, const Mask &mask)
 {
     qDbg.nospace() << QString("Mask -- row:") + QString::number(mask.rows()) + QString(" cols:") + QString::number(mask.columns()) << endl;
-    for(size_t i = 0; i < mask.rows(); i++)
+    for(size_t i = 0; i < mask.rows(); ++i)
     {
         qDbg.nospace() << "|";
-        for(size_t j = 0; j < mask.columns(); j++)
+        for(size_t j = 0; j < mask.columns(); ++j)
         {
             qDbg.nospace() << " " << int(mask.at(i, j));
         }

@@ -15,19 +15,19 @@ void Options::readOptions()
     QSettings iniFile(QApplication::applicationDirPath() + "/config.ini", QSettings::IniFormat);
 
     iniFile.beginGroup("Main");
-    m_language = Language(iniFile.value("Language", 0).toInt());
-    m_theme = iniFile.value("Theme", "Deep Blue").toString();
-    m_hideInfoLog = iniFile.value("HideInfoLog", false).toBool();
-    m_autoSave = iniFile.value("AutoSave", false).toBool();
+    setLanguage(Language(iniFile.value("Language", 0).toInt()));
+    setTheme(iniFile.value("Theme", "Deep Blue").toString());
+    setHideInfoLog(iniFile.value("HideInfoLog", false).toBool());
+    setAutoSave(iniFile.value("AutoSave", false).toBool());
     iniFile.endGroup();
 
     iniFile.beginGroup("Audio");
-    m_volume = iniFile.value("Volume", 0.6f).toFloat();
+    setVolume(iniFile.value("Volume", 0.6f).toFloat());
     iniFile.endGroup();
 
     iniFile.beginGroup("Recent");
     QString projectPath;
-    for(int i = 0; i < 10; i++)
+    for(int i = 0; i < 10; ++i)
     {
         projectPath = iniFile.value(QString("Project") + QString::number(i), QString()).toString();
         if(projectPath.isEmpty())
@@ -53,9 +53,9 @@ void Options::writeOptions()
     iniFile.endGroup();
 
     iniFile.beginGroup("Recent");
-    for(int i = m_recentProject.size(); i < 10; i++)
+    for(int i = m_recentProject.size(); i < 10; ++i)
         iniFile.remove(QString("Project") + QString::number(i));
-    for(int i = 0; i < m_recentProject.size(); i++)
+    for(int i = 0; i < m_recentProject.size(); ++i)
         iniFile.setValue(QString("Project") + QString::number(i), m_recentProject[i]);
     iniFile.endGroup();
 }
@@ -67,6 +67,10 @@ float Options::volume() const
 
 void Options::setVolume(float volume, const QObject *sender)
 {
+    if(sender == this)
+        return;
+    if(sender == nullptr)
+        sender = this;
     m_volume = qMin(qMax(volume, 0.0f), 1.0f);
     emit volumeChanged(volume, sender);
 }
@@ -102,6 +106,10 @@ bool Options::autoSave() const
 
 void Options::setAutoSave(bool autoSave, const QObject *sender)
 {
+    if(sender == this)
+        return;
+    if(sender == nullptr)
+        sender = this;
     m_autoSave = autoSave;
     emit autoSaveChanged(autoSave, sender);
 }
@@ -113,6 +121,10 @@ bool Options::hideInfoLog() const
 
 void Options::setHideInfoLog(bool hideInfoLog, const QObject *sender)
 {
+    if(sender == this)
+        return;
+    if(sender == nullptr)
+        sender = this;
     m_hideInfoLog = hideInfoLog;
     emit hideInfoLogChanged(hideInfoLog, sender);
 }
@@ -124,6 +136,10 @@ const QString &Options::theme() const
 
 void Options::setTheme(const QString &theme, const QObject *sender)
 {
+    if(sender == this)
+        return;
+    if(sender == nullptr)
+        sender = this;
     m_theme = theme;
     emit themeChanged(theme, sender);
 }
@@ -135,6 +151,10 @@ Language Options::language() const
 
 void Options::setLanguage(Language language, const QObject *sender)
 {
+    if(sender == this)
+        return;
+    if(sender == nullptr)
+        sender = this;
     m_language = language;
     emit languageChanged(language, sender);
 }
