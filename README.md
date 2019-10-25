@@ -50,6 +50,10 @@ ____
 ##### Linux:
 * 本人仅在Ubuntu 19.04下尝试编译成功，其他系统不保证成功。  
   I had only compiled it successfully at Ubuntu 19.04, I cannot ensure if it can be compiled at other Linux OSs.
+* 安装需要的库  
+  Install libraries  
+
+        sudo apt install uuid-dev libpng-dev libjpeg-dev libgif-dev
   
 ### 寻求合作
 ##### Cooperation Wanted

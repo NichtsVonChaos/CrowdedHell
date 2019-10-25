@@ -8,10 +8,10 @@
 #include <QTextStream>
 #include <QMessageBox>
 #include <QApplication>
+#include <QUuid>
 
 #include "logger.h"
 #include "options.h"
-#include "utility.h"
 #include "Codes/Wizards/createprojectwizard.h"
 
 class Project : public QObject

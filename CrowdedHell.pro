@@ -32,8 +32,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 win32: LIBS += \
     -L$$PWD/Reference/FMOD/lib/ -lfmod64_vc -lfmodL64_vc
 else:unix: LIBS += \
-    -luuid \
-    -L$$PWD/Reference/FMOD/lib/ -lfmod -lfmodL
+    -L$$quote($$PWD/Reference/FMOD/lib/Linux x86_64) -lfmod -lfmodL
 
 TRANSLATIONS = \
     Resources/Translations/zh_cn.ts \
@@ -53,25 +52,29 @@ HEADERS += \
     Codes/GlobalComponent/logger.h \
     Codes/GlobalComponent/options.h \
     Codes/GlobalComponent/project.h \
-    Codes/GlobalComponent/utility.h \
     Codes/MainWindow/mainwindow.h \
     Codes/MainWindow/musicslider.h \
     Codes/ResourceManager/Image/image.h \
     Codes/ResourceManager/Image/mask.h \
     Codes/ResourceManager/Image/sprite.h \
     Codes/ResourceManager/Music/musicplayer.h \
+    Codes/ResourceManager/Object/metaobject.h \
+    Codes/ResourceManager/Path/path.h \
+    Codes/ResourceManager/gmglobal.h \
     Codes/Wizards/createprojectwizard.h
 
 SOURCES += \
     Codes/GlobalComponent/logger.cpp \
     Codes/GlobalComponent/options.cpp \
     Codes/GlobalComponent/project.cpp \
-    Codes/GlobalComponent/utility.cpp \
     Codes/MainWindow/mainwindow.cpp \
     Codes/MainWindow/musicslider.cpp \
     Codes/ResourceManager/Image/image.cpp \
     Codes/ResourceManager/Image/mask.cpp \
     Codes/ResourceManager/Image/sprite.cpp \
     Codes/ResourceManager/Music/musicplayer.cpp \
+    Codes/ResourceManager/Object/metaobject.cpp \
+    Codes/ResourceManager/Path/path.cpp \
+    Codes/ResourceManager/gmglobal.cpp \
     Codes/Wizards/createprojectwizard.cpp \
     Codes/main.cpp

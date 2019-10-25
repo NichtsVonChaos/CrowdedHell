@@ -108,7 +108,7 @@ void Project::newProject()
         return;
     }
 
-    m_uuid = Utility::generateUUID();
+    m_uuid = QUuid::createUuid().toString().remove("{").remove("}").remove("-");
     m_temporaryPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QString("/Crowded-Hell-") + m_uuid;
     QDir().mkdir(m_temporaryPath);
 

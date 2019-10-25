@@ -8,6 +8,20 @@ class Sprite : public QList<Image>
 {
 public:
     Sprite();
+    Sprite(long long id, QString name);
+    Sprite(const Sprite &another);
+
+    Sprite &operator=(const Sprite &another);
+    Sprite &operator<<(const Image &image);
+
+    long long id() const;
+
+    QString name() const;
+    void setName(const QString &name);
+
+private:
+    long long m_id;
+    QString m_name;
 };
 
 #endif // SPRITE_H

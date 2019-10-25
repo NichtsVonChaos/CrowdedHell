@@ -1,16 +1,27 @@
 #include "image.h"
 
 Image::Image(QObject *parent):
-    QObject(parent), Grid(0)
+    QObject(parent)
 {
 
 }
 
-Image::Image(const unsigned int *const data, size_t rows, size_t cols, QObject *parent):
-    QObject(parent), Grid(data, rows, cols, 0), mask(rows, cols)
+Image::Image(const QString &filePath, QObject *parent):
+    QObject(parent), m_qImage(filePath)
 {
-    for(size_t i = 0; i < rows * cols; i++)
-        mask.at(i) = bool(alpha(at(i)));
+
+}
+
+Image::Image(const QImage &qImage, QObject *parent):
+    QObject(parent), m_qImage(qImage)
+{
+    generateMask();
+}
+
+Image::Image(const Image &another):
+    QObject(another.parent()), m_mask(another.mask()), m_qImage(another.qImage())
+{
+
 }
 
 Image::~Image()
@@ -18,27 +29,42 @@ Image::~Image()
 
 }
 
-unsigned char Image::red(unsigned int agbr) noexcept
+Image &Image::operator=(const Image &another)
 {
-    return static_cast<unsigned char>(agbr & 0xFFU);
+    m_mask = another.mask();
+    m_qImage = another.qImage();
+    return *this;
 }
 
-unsigned char Image::green(unsigned int agbr) noexcept
+Mask &Image::mask()
 {
-    return static_cast<unsigned char>((agbr & 0xFF00U) >> 8);
+    return m_mask;
 }
 
-unsigned char Image::blue(unsigned int agbr) noexcept
+const Mask &Image::mask() const
 {
-    return static_cast<unsigned char>((agbr & 0xFF0000U) >> 16);
+    return m_mask;
 }
 
-unsigned char Image::alpha(unsigned int agbr) noexcept
+QImage &Image::qImage()
 {
-    return static_cast<unsigned char>((agbr & 0xFF000000U) >> 24);
+    return m_qImage;
 }
 
-unsigned int Image::color(unsigned char r, unsigned char g, unsigned char b, unsigned char a) noexcept
+const QImage &Image::qImage() const
 {
-    return (unsigned(a) << 24u) | (unsigned(b) << 16u) | (unsigned(g) << 8u) | unsigned(r);
+    return m_qImage;
+}
+
+QPixmap Image::qPixmap() const
+{
+    return QPixmap::fromImage(qImage());
+}
+
+void Image::generateMask(unsigned char tolerance)
+{
+    m_mask.realloc(size_t(m_qImage.height()), size_t(m_qImage.width()));
+    for(int i = 0; i < m_qImage.height(); i++)
+        for(int j = 0; j < m_qImage.width(); j++)
+            m_mask.at(size_t(i), size_t(j)) = (m_qImage.pixelColor(j, i).alpha() >= tolerance);
 }
