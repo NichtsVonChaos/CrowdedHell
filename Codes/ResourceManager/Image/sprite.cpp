@@ -18,6 +18,11 @@ Sprite::Sprite(const Sprite &another):
 
 }
 
+Sprite::~Sprite()
+{
+
+}
+
 Sprite &Sprite::operator=(const Sprite &another)
 {
     QList::operator=(another);
@@ -45,4 +50,19 @@ QString Sprite::name() const
 void Sprite::setName(const QString &name)
 {
     m_name = name;
+}
+
+void Sprite::removeImage(int index)
+{
+    if(index == -1)
+    {
+        for(auto &image : *this)
+            image.remove();
+        clear();
+    }
+    else if(index >=0 && index < size())
+    {
+        this->operator[](index).remove();
+        this->removeAt(index);
+    }
 }

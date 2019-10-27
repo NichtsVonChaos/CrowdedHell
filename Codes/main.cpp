@@ -1,12 +1,12 @@
 #include "MainWindow/mainwindow.h"
 #include <QApplication>
-#include <QDebug>
-#include <QtCore>
+#include <singleapplication.h>
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+    SingleApplication a(argc, argv);
     MainWindow w;
+    QObject::connect(&a, &SingleApplication::instanceStarted, &w, &QMainWindow::raise);
     w.show();
 
     return a.exec();

@@ -28,7 +28,10 @@ CONFIG += c++17
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
 include($$PWD/Reference/qtshell/qtshell.pri)
+include($$PWD/Reference/SingleApplication/singleapplication.pri)
+DEFINES += QAPPLICATION_CLASS=QApplication
 
 win32: LIBS += \
     -L$$quote($$PWD/Reference/FMOD/lib/Windows x64) -lfmod_vc -lfmodL_vc
@@ -60,9 +63,10 @@ HEADERS += \
     Codes/ResourceManager/Image/mask.h \
     Codes/ResourceManager/Image/sprite.h \
     Codes/ResourceManager/Music/musicplayer.h \
-    Codes/ResourceManager/Object/metaobject.h \
+    Codes/ResourceManager/Instance/metagminstance.h \
     Codes/ResourceManager/Path/path.h \
     Codes/ResourceManager/gmglobal.h \
+    Codes/SQLite/sqlitedatabase.h \
     Codes/Wizards/createprojectwizard.h
 
 SOURCES += \
@@ -75,9 +79,10 @@ SOURCES += \
     Codes/ResourceManager/Image/mask.cpp \
     Codes/ResourceManager/Image/sprite.cpp \
     Codes/ResourceManager/Music/musicplayer.cpp \
-    Codes/ResourceManager/Object/metaobject.cpp \
+    Codes/ResourceManager/Instance/metaobject.cpp \
     Codes/ResourceManager/Path/path.cpp \
     Codes/ResourceManager/gmglobal.cpp \
+    Codes/SQLite/sqlitedatabase.cpp \
     Codes/Wizards/createprojectwizard.cpp \
     Codes/main.cpp
 

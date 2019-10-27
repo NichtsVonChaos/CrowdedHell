@@ -1,5 +1,5 @@
-#ifndef METAOBJECT_H
-#define METAOBJECT_H
+#ifndef METAGMINSTANCE_H
+#define METAGMINSTANCE_H
 
 #include <QObject>
 
@@ -7,25 +7,25 @@
 
 /**
  * @brief The MetaObject class
- * The MetaObject is a abstract base class to emulate GM8 Object.
+ * The MetaObject is a abstract base class to emulate GM8 instance.
  */
-class MetaObject : public QObject
+class MetaGMInstance : public QObject
 {
     Q_OBJECT
 public:
-    explicit MetaObject(QObject *parent = nullptr);
+    explicit MetaGMInstance(QObject *parent = nullptr);
 
-    MetaObject(const MetaObject&) = delete;
-    MetaObject& operator=(const MetaObject&) = delete;
-    MetaObject(MetaObject&&) = delete;
-    MetaObject& operator=(MetaObject&&) = delete;
+    MetaGMInstance(const MetaGMInstance&) = delete;
+    MetaGMInstance& operator=(const MetaGMInstance&) = delete;
+    MetaGMInstance(MetaGMInstance&&) = delete;
+    MetaGMInstance& operator=(MetaGMInstance&&) = delete;
 
-    virtual ~MetaObject();
+    virtual ~MetaGMInstance();
 
     virtual void GMEvent_BeginStep() = 0;
     virtual void GMEvent_Alarm(unsigned int number) = 0;
     virtual void GMEvent_Step() = 0;
-    virtual void GMEvent_Collision(MetaObject *object) = 0;
+    virtual void GMEvent_Collision(MetaGMInstance *object) = 0;
     virtual void GMEvent_EndStep() = 0;
     virtual void GMEvent_Draw(QWidget* widget) = 0;
 
@@ -35,8 +35,10 @@ public:
     virtual void prev(unsigned int frames = 1) = 0;
     virtual void next(unsigned int frames = 1) = 0;
 
+    virtual void toXml() = 0;
+
 public:
-    long long sprite_index, image_index, image_blend, depth, path_index, path_endaction,
+    long long sprite_index, image_index, image_blend, path_index, path_endaction,
     alarm[12];
     double speed, direction, hspeed, vspeed, friction, gravity, gravity_direction,
     alpha, image_xscale, image_yscale, image_speed, image_angle,
@@ -50,4 +52,4 @@ public slots:
 
 };
 
-#endif // METAOBJECT_H
+#endif // METAGMINSTANCE_H

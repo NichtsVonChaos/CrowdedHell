@@ -1,0 +1,6 @@
+[submodule "Reference/SingleApplication"]
+	path = Reference/SingleApplication
+	url = https://github.com/itay-grudev/SingleApplication.git
+[submodule "Reference/qtshell"]
+	path = Reference/qtshell
+	url = https://github.com/benlau/qtshell.git

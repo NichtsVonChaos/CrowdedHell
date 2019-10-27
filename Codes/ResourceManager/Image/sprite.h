@@ -10,6 +10,7 @@ public:
     Sprite();
     Sprite(long long id, QString name);
     Sprite(const Sprite &another);
+    ~Sprite();
 
     Sprite &operator=(const Sprite &another);
     Sprite &operator<<(const Image &image);
@@ -18,6 +19,8 @@ public:
 
     QString name() const;
     void setName(const QString &name);
+
+    void removeImage(int index = -1);
 
 private:
     long long m_id;

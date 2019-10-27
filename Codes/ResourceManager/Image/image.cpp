@@ -7,7 +7,7 @@ Image::Image(QObject *parent):
 }
 
 Image::Image(const QString &filePath, QObject *parent):
-    QObject(parent), m_qImage(filePath)
+    QObject(parent), m_imageFile(filePath), m_qImage(filePath)
 {
 
 }
@@ -19,7 +19,7 @@ Image::Image(const QImage &qImage, QObject *parent):
 }
 
 Image::Image(const Image &another):
-    QObject(another.parent()), m_mask(another.mask()), m_qImage(another.qImage())
+    QObject(another.parent()), m_mask(another.mask()), m_imageFile(another.m_imageFile), m_qImage(another.qImage())
 {
 
 }
@@ -67,4 +67,11 @@ void Image::generateMask(unsigned char tolerance)
     for(int i = 0; i < m_qImage.height(); ++i)
         for(int j = 0; j < m_qImage.width(); ++j)
             m_mask.at(size_t(i), size_t(j)) = (m_qImage.pixelColor(j, i).alpha() >= tolerance);
+}
+
+void Image::remove()
+{
+    if(!m_imageFile.isEmpty())
+        if(QFile::exists(m_imageFile))
+            QFile::remove(m_imageFile);
 }

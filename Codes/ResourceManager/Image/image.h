@@ -4,6 +4,7 @@
 #include <QColor>
 #include <QImage>
 #include <QPixmap>
+#include <QFile>
 
 #include "Codes/DataStructure/grid.hpp"
 #include "mask.h"
@@ -29,8 +30,11 @@ public:
 
     void generateMask(unsigned char tolerance = 1);
 
+    void remove();
+
 private:
     Mask m_mask;
+    QString m_imageFile;
     QImage m_qImage;
 };
 

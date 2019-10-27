@@ -36,6 +36,7 @@ ____
 ##### This project cannot be without following open-source projects.
 * [GMK-Splitter](https://github.com/Medo42/Gmk-Splitter)  
 * [QtShell](https://github.com/benlau/qtshell)  
+* [SingleApplication](https://github.com/itay-grudev/SingleApplication)
 ##### 以下项目并非开源项目，但是拥有受限的免费许可证。  
 ##### Following projects are not open-source, but have limitted free license.
 * [FMOD](https://www.fmod.com/)

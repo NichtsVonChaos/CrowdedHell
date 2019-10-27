@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QMap>
 #include "Image/sprite.h"
+#include "Instance/metagminstance.h"
 
 class GMGlobal : public QObject
 {
@@ -21,6 +22,7 @@ public slots:
 
 private:
     QMap<long long, Sprite> m_sprites;
+    QMap<long long, MetaGMInstance *> m_instances;
 };
 
 #endif // GMGLOBAL_H
