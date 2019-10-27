@@ -13,7 +13,7 @@ ____
 * 制作者：Nihil  
  Creator: Nihil
 * 开发环境：[Qt5](https://www.qt.io/)(最后一次编译版本为5.13.1)  
- IDE: [Qt5](https://www.qt.io/)(final build version is 5.13.1)
+ IDE: [Qt5](https://www.qt.io/)(lastest build on 5.13.1)
 * 支持平台：Windows, Linux  
  Platform: Windows, Linux
 * 支持语言：简体中文，繁体中文，英语，日语  
@@ -47,8 +47,8 @@ ____
 * 建议使用MSVC 64位套件编译，本人使用MinGW套件无法编译FMOD。  
  Suggest that use MSVC 64-bit kit to compile. I cannot compile FMOD using MinGW kit.
 ##### Linux:
-* 本人仅在Ubuntu 19.10下尝试编译成功，其他系统不保证成功。  
-  I had only compiled it successfully at Ubuntu 19.10, I cannot ensure if it can be compiled at other Linux OSs.
+* 本人仅在Ubuntu 19.10和Arch Linux下尝试编译成功，其他Linux系统不保证能成功。  
+  I had only compiled it successfully at Ubuntu 19.10 and Arch LInux, I cannot ensure if it can be compiled at other Linux OSs.
   
 ### 寻求合作
 ##### Cooperation Wanted
@@ -66,7 +66,7 @@ ____
 * 增加对mac OS的支持  
  Add support for mac OS.
   
-### 联系方式
+### 联系作者
 ##### Contact to me
 ____
 * QQ: 1009978366
