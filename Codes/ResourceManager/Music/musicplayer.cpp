@@ -3,7 +3,7 @@
 MusicPlayer::MusicPlayer(QObject *parent) :
     QObject(parent),
     m_fmodSystem(nullptr), m_music(nullptr), m_channel(nullptr),
-    m_muted(false), m_position(0u), m_length(0u), m_speed(1.0f),
+    m_muted(false), m_position(0u), m_length(0u), m_speed(1.f),
     m_timerReportError(false)
 {
     connect(this, &MusicPlayer::message, logger(), &Logger::message, Qt::UniqueConnection);

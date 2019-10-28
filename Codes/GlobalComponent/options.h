@@ -6,6 +6,7 @@
 #include <QtMath>
 #include <QApplication>
 #include <QStringList>
+#include "customfunctions.h"
 
 /**
  * @brief The Language enum

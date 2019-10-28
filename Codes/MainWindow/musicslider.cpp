@@ -25,7 +25,7 @@ void MusicSlider::mousePressEvent(QMouseEvent *event)
     {
         disconnect(m_musicPlayer, &MusicPlayer::positionChanged, this, &MusicSlider::setPosition);
         disconnect(this, &MusicSlider::positionChanged, m_musicPlayer, &MusicPlayer::setPosition);
-        int pos = int(1000.0 * (double(event->x()) / width()));
+        int pos = limit(int(1000.0 * (double(event->x()) / width())), 0, 1000);
         setValue(pos);
         m_leftButtonPressing = true;
         event->accept();
@@ -36,7 +36,7 @@ void MusicSlider::mouseMoveEvent(QMouseEvent *event)
 {
     if(m_leftButtonPressing)
     {
-        int pos = int(1000.0 * (double(event->x()) / width()));
+        int pos = limit(int(1000.0 * (double(event->x()) / width())), 0, 1000);
         setValue(pos);
         event->accept();
     }
@@ -46,7 +46,7 @@ void MusicSlider::mouseReleaseEvent(QMouseEvent *event)
 {
     if(event->button() == Qt::LeftButton)
     {
-        int pos = int(1000.0 * (double(event->x()) / width()));
+        int pos = limit(int(1000.0 * (double(event->x()) / width())), 0, 1000);
         connect(m_musicPlayer, &MusicPlayer::positionChanged, this, &MusicSlider::setPosition, Qt::UniqueConnection);
         connect(this, &MusicSlider::positionChanged, m_musicPlayer, &MusicPlayer::setPosition, Qt::UniqueConnection);
         setValue(pos);

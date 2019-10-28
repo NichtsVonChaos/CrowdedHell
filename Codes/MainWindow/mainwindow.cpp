@@ -6,6 +6,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow), m_sender(this)
 {
     ui->setupUi(this);
+    setCorner(Qt::Corner::TopLeftCorner, Qt::DockWidgetArea::LeftDockWidgetArea);
+    setCorner(Qt::Corner::TopRightCorner, Qt::DockWidgetArea::RightDockWidgetArea);
+    setCorner(Qt::Corner::BottomLeftCorner, Qt::DockWidgetArea::LeftDockWidgetArea);
+    setCorner(Qt::Corner::BottomRightCorner, Qt::DockWidgetArea::RightDockWidgetArea);
 
     ui->actionReselectMusic->setEnabled(false);
 
@@ -33,10 +37,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(options(), &Options::hideInfoLogChanged, ui->actionHideAllInfoTypeMessage, &QAction::setChecked, Qt::UniqueConnection);
     connect(options(), &Options::autoSaveChanged, ui->actionAlwaysSaveProjectBeforeClose, &QAction::setChecked, Qt::UniqueConnection);
     connect(options(), &Options::languageChanged, this, &MainWindow::setLanguage, Qt::UniqueConnection);
-    connect(this, &MainWindow::message, logger(), &Logger::message);
-
-    // debug usage
-    connect(ui->pushButton, &QPushButton::clicked, this, &MainWindow::playButtonChecked, Qt::UniqueConnection);
+    connect(options(), &Options::volumeChanged, ui->sliderVolume, &VolumeSlider::setVolume, Qt::UniqueConnection);
+    connect(options(), &Options::volumeChanged, this, &MainWindow::updateVolumeLable, Qt::UniqueConnection);
+    connect(this, &MainWindow::message, logger(), &Logger::message, Qt::UniqueConnection);
 
     options()->readOptions();
     m_musicPlayer = new MusicPlayer(this);
@@ -55,6 +58,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->menuRecentProject, &QMenu::triggered, this, &MainWindow::openRecentProject, Qt::UniqueConnection);
     connect(ui->actionReselectMusic, &QAction::triggered, m_musicPlayer, &MusicPlayer::pause, Qt::UniqueConnection);
     connect(ui->actionReselectMusic, &QAction::triggered, project(), static_cast<void(Project::*)()>(&Project::reselectMusic), Qt::UniqueConnection);
+    connect(ui->actionShowLoggerWidget, &QAction::triggered, ui->dockWidgetLogger, &QDockWidget::setVisible, Qt::UniqueConnection);
+    connect(ui->dockWidgetLogger, &QDockWidget::visibilityChanged, ui->actionShowLoggerWidget, &QAction::setChecked, Qt::UniqueConnection);
     connect(ui->actionClearLogger, &QAction::triggered, logger(), &Logger::clear);
     connect(ui->menuLanguage, &QMenu::triggered, this, &MainWindow::languageButtonClicked, Qt::UniqueConnection);
     connect(project(), &Project::projectOpened, options(), &Options::addRecentProject, Qt::UniqueConnection);
@@ -62,6 +67,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(project(), &Project::projectClosed, this, &MainWindow::projectClosed, Qt::UniqueConnection);
     connect(project(), &Project::projectClosed, m_musicPlayer, &MusicPlayer::reset, Qt::UniqueConnection);
     connect(project(), &Project::musicSelected, m_musicPlayer, &MusicPlayer::setMusicFile, Qt::UniqueConnection);
+    connect(project(), &Project::musicSelected, this, &MainWindow::changeMusic, Qt::UniqueConnection);
 
     refreshRecentProject();
 }
@@ -72,6 +78,11 @@ MainWindow::~MainWindow()
     delete m_musicPlayer;
 }
 
+void MainWindow::showEvent(QShowEvent *ev)
+{
+    QMainWindow::showEvent(ev);
+}
+
 void MainWindow::closeEvent(QCloseEvent *ev)
 {
     if(!project()->closeProject())
@@ -79,6 +90,7 @@ void MainWindow::closeEvent(QCloseEvent *ev)
     else
     {
         options()->writeOptions();
+        QMainWindow::closeEvent(ev);
         ev->accept();
     }
 }
@@ -99,28 +111,38 @@ void MainWindow::changeEvent(QEvent *ev)
             m_buttonLanguageOptions[Language::JP]->setText(tr("Japanese"));
             m_actionClearRecent->setText(tr("Clear all records"));
             m_actionNoRecord->setText(tr("(No record)"));
+            updateVolumeLable(options()->volume());
 
             if(project()->projectName().isEmpty())
+            {
                 setWindowTitle("Crowded Hell");
+                ui->labelMusic->setText(tr("No Music"));
+            }
             else
+            {
                 setWindowTitle(project()->projectName() + QString(" -- Crowded Hell"));
+                ui->labelMusic->setText(tr("Music : ") + QFileInfo(project()->musicFile()).completeBaseName());
+            }
         }
         break;
 
         default:
         break;
     }
+
+    ev->accept();
 }
 
 void MainWindow::pauseMusic(bool paused, const QObject *sender)
 {
-    if(sender == ui->pushButton)
+    if(sender == this)
         return;
 
     if(sender == nullptr)
-        sender = ui->pushButton;
+        sender = this;
 
-    ui->pushButton->setChecked(paused);
+    ui->pushButtonPause->setChecked(paused);
+    emit musicPaused(paused, sender);
 }
 
 void MainWindow::refreshRecentProject()
@@ -151,17 +173,14 @@ void MainWindow::projectOpened(const QString &projectFilePath)
     ui->actionReselectMusic->setEnabled(true);
     refreshRecentProject();
     setWindowTitle(project()->projectName() + QString(" -- Crowded Hell"));
+    ui->labelMusic->setText(tr("Music : ") + QFileInfo(project()->musicFile()).completeBaseName());
 }
 
 void MainWindow::projectClosed()
 {
     ui->actionReselectMusic->setEnabled(false);
     setWindowTitle("Crowded Hell");
-}
-
-void MainWindow::playButtonChecked(bool checked)
-{
-    emit musicPaused(checked);
+    ui->labelMusic->setText(tr("No Music"));
 }
 
 void MainWindow::languageButtonClicked(QAction *action)
@@ -209,6 +228,16 @@ void MainWindow::setLanguage(Language language, const QObject *sender)
     options()->setLanguage(language, sender);
 }
 
+void MainWindow::updateVolumeLable(float volume)
+{
+    ui->labelVolume->setText(QString::number(int(volume * 100.f)));
+}
+
+void MainWindow::changeMusic(const QString &musicFile)
+{
+    ui->labelMusic->setText(tr("Music : ") + QFileInfo(musicFile).completeBaseName());
+}
+
 void MainWindow::on_actionHideAllInfoTypeMessage_triggered(bool checked)
 {
     options()->setHideInfoLog(checked, this);
@@ -225,4 +254,9 @@ void MainWindow::on_actionExportLogToFile_triggered()
     QString file = QFileDialog::getSaveFileName(nullptr, "Export Log", ".");
     if(!file.isEmpty())
         logger()->logToFile(file);
+}
+
+void MainWindow::on_pushButtonPause_clicked(bool checked)
+{
+    emit musicPaused(checked, this);
 }

@@ -656,9 +656,19 @@ SQLiteDatabase::Column::Column(const SQLiteDatabase::Column &another):
 
 }
 
-bool SQLiteDatabase::Column::operator==(const SQLiteDatabase::Column &another)
+bool SQLiteDatabase::Column::operator==(const SQLiteDatabase::Column &another) const
 {
     return label == another.label && dataType == another.dataType && isAutoIncrementIndex == another.isAutoIncrementIndex && isPrimaryKey == another.isPrimaryKey;
+}
+
+bool SQLiteDatabase::Column::operator<(const SQLiteDatabase::Column &another) const
+{
+    return label < another.label;
+}
+
+bool SQLiteDatabase::Column::operator>(const SQLiteDatabase::Column &another) const
+{
+    return label > another.label;
 }
 
 QList<SQLiteDatabase::Column> SQLiteDatabase::Table::primaryKeys() const

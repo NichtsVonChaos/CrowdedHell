@@ -33,7 +33,9 @@ public:
         bool isAutoIncrementIndex;
         bool isPrimaryKey;
 
-        bool operator==(const Column &another);
+        bool operator==(const Column &another) const;
+        bool operator<(const Column &another) const;
+        bool operator>(const Column &another) const;
     };
 
     typedef QMap<Column, QVariant> Record;

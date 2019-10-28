@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui sql opengl
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -53,12 +53,14 @@ FORMS += \
 
 HEADERS += \
     Codes/DataStructure/grid.hpp \
+    Codes/GlobalComponent/customfunctions.h \
     Codes/GlobalComponent/globalComponent.h \
     Codes/GlobalComponent/logger.h \
     Codes/GlobalComponent/options.h \
     Codes/GlobalComponent/project.h \
     Codes/MainWindow/mainwindow.h \
     Codes/MainWindow/musicslider.h \
+    Codes/MainWindow/volumeslider.h \
     Codes/ResourceManager/Image/image.h \
     Codes/ResourceManager/Image/mask.h \
     Codes/ResourceManager/Image/sprite.h \
@@ -75,6 +77,7 @@ SOURCES += \
     Codes/GlobalComponent/project.cpp \
     Codes/MainWindow/mainwindow.cpp \
     Codes/MainWindow/musicslider.cpp \
+    Codes/MainWindow/volumeslider.cpp \
     Codes/ResourceManager/Image/image.cpp \
     Codes/ResourceManager/Image/mask.cpp \
     Codes/ResourceManager/Image/sprite.cpp \

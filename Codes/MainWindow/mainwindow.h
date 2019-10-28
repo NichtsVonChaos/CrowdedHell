@@ -22,6 +22,7 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
 
+    void showEvent(QShowEvent *ev) override;
     void closeEvent(QCloseEvent *ev) override;
     void changeEvent(QEvent *ev) override;
 
@@ -36,9 +37,10 @@ public slots:
     void projectOpened(const QString &projectFilePath);
     void projectClosed();
     void setLanguage(Language language, const QObject *sender = nullptr);
+    void updateVolumeLable(float volume);
+    void changeMusic(const QString &musicFile);
 
 private slots:
-    void playButtonChecked(bool checked);
     void languageButtonClicked(QAction *action);
 
     void on_actionHideAllInfoTypeMessage_triggered(bool checked);
@@ -46,6 +48,8 @@ private slots:
     void on_actionAlwaysSaveProjectBeforeClose_triggered(bool checked);
 
     void on_actionExportLogToFile_triggered();
+
+    void on_pushButtonPause_clicked(bool checked);
 
 private:
     Ui::MainWindow *ui;

@@ -71,7 +71,7 @@ void Options::setVolume(float volume, const QObject *sender)
         return;
     if(sender == nullptr)
         sender = this;
-    m_volume = qMin(qMax(volume, 0.0f), 1.0f);
+    m_volume = limit(volume, 0.f, 1.f);
     emit volumeChanged(volume, sender);
 }
 
