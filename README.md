@@ -44,6 +44,12 @@ ____
 ### 关于编译
 ##### About compiling
 ____
+##### 克隆项目
+##### Clone this project
+
+    git clone https://github.com/NichtsVonChaos/CrowdedHell.git
+    git submodule init
+    git submodule update
 ##### Windows:
 * 建议使用MSVC 64位套件编译，本人使用MinGW套件无法编译FMOD。  
  Suggest that use MSVC 64-bit kit to compile. I cannot compile FMOD using MinGW kit.

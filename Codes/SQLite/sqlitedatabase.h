@@ -55,13 +55,12 @@ public:
     bool create(const Table &table);
     bool insert(const Table &table, const QList<Record> &records);
     bool remove(const Table &table, const QMap<Column, QVariant> &keysValues);
+    bool remove(const Table &table, const QString &condition);
     bool drop(const QString &tableName);
     bool drop(const Table &table);
     bool exists(const QString &tableName);
     bool exists(const Table &table);
-    QList<Record> read(const Table &table, const QMap<QString, QVariant> &keysValues);
     QList<Record> read(const Table &table, const QMap<Column, QVariant> &keysValues);
-    QList<Record> read(const Table &table, const QList<Column> requiredColumns, const QMap<QString, QVariant> &keysValues);
     QList<Record> read(const Table &table, const QList<Column> requiredColumns, const QMap<Column, QVariant> &keysValues);
     QList<Record> readAll(const Table &table);
     QList<Record> readAll(const Table &table, const QList<Column> requiredColumns);
