@@ -60,6 +60,7 @@ HEADERS += \
     Codes/GlobalComponent/project.h \
     Codes/MainWindow/mainwindow.h \
     Codes/MainWindow/musicslider.h \
+    Codes/MainWindow/perferedwidget.h \
     Codes/MainWindow/volumeslider.h \
     Codes/ResourceManager/Image/image.h \
     Codes/ResourceManager/Image/mask.h \
@@ -77,6 +78,7 @@ SOURCES += \
     Codes/GlobalComponent/project.cpp \
     Codes/MainWindow/mainwindow.cpp \
     Codes/MainWindow/musicslider.cpp \
+    Codes/MainWindow/perferedwidget.cpp \
     Codes/MainWindow/volumeslider.cpp \
     Codes/ResourceManager/Image/image.cpp \
     Codes/ResourceManager/Image/mask.cpp \

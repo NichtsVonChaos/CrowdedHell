@@ -70,6 +70,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(project(), &Project::musicSelected, this, &MainWindow::changeMusic, Qt::UniqueConnection);
 
     refreshRecentProject();
+    setWindowState(Qt::WindowMaximized);
 }
 
 MainWindow::~MainWindow()
