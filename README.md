@@ -51,7 +51,7 @@ ____
     git submodule init
     git submodule update
 ##### 编译项目
-* 下载最新版[Qt](http://download.qt.io/official_releases/qt/)并安装，使用Qt Creator打开CrowdedHell.pro，编译。
+* 下载最新版[Qt](http://download.qt.io/official_releases/qt/)并安装，使用Qt Creator打开CrowdedHell.pro，编译。  
   Download and install [Qt](http://download.qt.io/official_releases/qt/) lastest version, open 'CrodedHell.pro' with Qt Creator, then compile.
 ##### Windows:
 * 建议使用MSVC 64位套件编译，本人使用MinGW套件无法编译FMOD。  
