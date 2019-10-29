@@ -103,12 +103,12 @@
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="453"/>
         <source>x2.0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="458"/>
         <source>x5.0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="780"/>
@@ -123,7 +123,7 @@
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="801"/>
         <source>Settings</source>
-        <translation>セッティング</translation>
+        <translation>設定</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="819"/>
@@ -195,159 +195,159 @@
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="40"/>
         <source>Main Workspace</source>
-        <translation type="unfinished"></translation>
+        <translation>主作業空間</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="205"/>
         <source>Time</source>
-        <translation type="unfinished"></translation>
+        <translation>時間</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="300"/>
         <source>Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>フレーム</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="395"/>
         <source>Speed</source>
-        <translation type="unfinished"></translation>
+        <translation>スピード</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="433"/>
         <source>x0.1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="438"/>
         <source>x0.5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="443"/>
         <source>x1.0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="448"/>
         <source>x1.5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="510"/>
         <location filename="../../Codes/MainWindow/mainwindow.cpp" line="138"/>
         <location filename="../../Codes/MainWindow/mainwindow.cpp" line="213"/>
         <source>No Music</source>
-        <translation type="unfinished"></translation>
+        <translation>音楽無し</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="564"/>
         <source>Go to previous 50 frames (1s)</source>
-        <translation type="unfinished"></translation>
+        <translation>50フレーム（1秒）まえに戻ります</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="567"/>
         <source>Prev 50</source>
-        <translation type="unfinished"></translation>
+        <translation>50前</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="574"/>
         <source>Go to previous 5 frames (0.1s)</source>
-        <translation type="unfinished"></translation>
+        <translation>5フレーム（0.1秒）まえに戻ります</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="577"/>
         <source>Prev 5</source>
-        <translation type="unfinished"></translation>
+        <translation>5前</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="584"/>
         <source>Go to previous frame (0.02s)</source>
-        <translation type="unfinished"></translation>
+        <translation>1フレーム（0.02秒）まえに戻ります</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="587"/>
         <source>Prev 1</source>
-        <translation type="unfinished"></translation>
+        <translation>1前</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="594"/>
         <source>Play or pause music</source>
-        <translation type="unfinished"></translation>
+        <translation>一時停止/再生します</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="597"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>一時停止</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="610"/>
         <source>Go to next frame (0.02s)</source>
-        <translation type="unfinished"></translation>
+        <translation>次のフレーム（0.02秒）へ行きます</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="613"/>
         <source>Next 1</source>
-        <translation type="unfinished"></translation>
+        <translation>1後</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="620"/>
         <source>Go to next 5 frames (0.1s)</source>
-        <translation type="unfinished"></translation>
+        <translation>5フレーム（0.1秒）の後へ行きます</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="623"/>
         <source>Next 5</source>
-        <translation type="unfinished"></translation>
+        <translation>5後</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="630"/>
         <source>Go to next 50 frames (1s)</source>
-        <translation type="unfinished"></translation>
+        <translation>50フレーム（1秒）の後へ行きます</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="633"/>
         <source>Next 50</source>
-        <translation type="unfinished"></translation>
+        <translation>50後</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="640"/>
         <source>Mute or unmute music</source>
-        <translation type="unfinished"></translation>
+        <translation>ミュート/ミュート解除</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="643"/>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>ミュート</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="742"/>
         <source>Resources Edit Workspace</source>
-        <translation type="unfinished"></translation>
+        <translation>資源編集作業空間</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="837"/>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation>表示</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="953"/>
         <source>Resources</source>
-        <translation type="unfinished"></translation>
+        <translation>資源</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="995"/>
         <source>Attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>属性</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="1051"/>
         <source>Actions</source>
-        <translation type="unfinished"></translation>
+        <translation>アクション</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="1141"/>
         <source>Exit</source>
-        <translation>エグジット</translation>
+        <translation>終了</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="1146"/>
@@ -372,22 +372,22 @@
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="1175"/>
         <source>Show logger widget</source>
-        <translation type="unfinished"></translation>
+        <translation>ロガーウィジェットを表示</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="1186"/>
         <source>Show actions widget</source>
-        <translation type="unfinished"></translation>
+        <translation>アクションウィジェットを表示</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="1197"/>
         <source>Show resources widget</source>
-        <translation type="unfinished"></translation>
+        <translation>資源ウィジェットを表示</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="1208"/>
         <source>Show attributes widget</source>
-        <translation type="unfinished"></translation>
+        <translation>属性ウィジェットを表示</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.cpp" line="16"/>
@@ -424,7 +424,7 @@
         <location filename="../../Codes/MainWindow/mainwindow.cpp" line="206"/>
         <location filename="../../Codes/MainWindow/mainwindow.cpp" line="268"/>
         <source>Music : </source>
-        <translation type="unfinished"></translation>
+        <translation>音楽： </translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.cpp" line="193"/>
@@ -439,12 +439,12 @@
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.cpp" line="274"/>
         <source>Open fmod official website.</source>
-        <translation type="unfinished"></translation>
+        <translation>fmodの公式ウェブサイトを開きます。</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.cpp" line="276"/>
         <source>Cannot open fmod official website &quot;https://www.fmod.com/&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>fmodの公式ウェブサイト&quot;https://www.fmod.com/&quot;を開き失敗しました。</translation>
     </message>
 </context>
 <context>
@@ -764,7 +764,7 @@
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="12"/>
         <source>Falied to open database file &quot;%1&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>データベースファイル&quot;%1&quot;は存在しません。</translation>
     </message>
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="37"/>
@@ -775,7 +775,7 @@
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="531"/>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="592"/>
         <source>Database is invalid.</source>
-        <translation type="unfinished"></translation>
+        <translation>データベースは利用できません。</translation>
     </message>
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="43"/>
@@ -786,7 +786,7 @@
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="537"/>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="598"/>
         <source>Name of data table must be provided.</source>
-        <translation type="unfinished"></translation>
+        <translation>データテーブルのテーブル名を提供する必要があります。</translation>
     </message>
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="49"/>
@@ -797,12 +797,12 @@
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="543"/>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="604"/>
         <source>Data table &quot;%1&quot; has no column.</source>
-        <translation type="unfinished"></translation>
+        <translation>データテーブル&quot;%1&quot;は一つコラムさえありません。</translation>
     </message>
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="63"/>
         <source>Data table &quot;%1&quot; has an unnamed column. Ignore this column.</source>
-        <translation type="unfinished"></translation>
+        <translation>データテーブル&quot;%1&quot;には一つ無名コラムがあります。無視します。</translation>
     </message>
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="98"/>
@@ -816,7 +816,7 @@
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="564"/>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="625"/>
         <source>Failed to execute &quot;%1&quot;, error message : &quot;%2&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot;を実行失敗しました。エラーメッセージ：&quot;%2&quot;。</translation>
     </message>
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="138"/>
@@ -824,7 +824,7 @@
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="357"/>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="462"/>
         <source>A record has an unnamed column. Ignore this column.</source>
-        <translation type="unfinished"></translation>
+        <translation>ひとつ記録には無名コランがあります。無視します。</translation>
     </message>
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="143"/>
@@ -832,19 +832,19 @@
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="362"/>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="467"/>
         <source>Data table &quot;%1&quot; has no column named &quot;%2&quot;. Ignore this column.</source>
-        <translation type="unfinished"></translation>
+        <translation>データテーブル&quot;%1&quot;には&quot;%2&quot;と呼ぶコラムがありません。無視します。</translation>
     </message>
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="404"/>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="509"/>
         <source>Find no record with condition &quot;%1&quot; on table &quot;%2&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>データテーブル&quot;%2&quot;には条件&quot;%1&quot;を満足する記録がありません。</translation>
     </message>
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="570"/>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="631"/>
         <source>Find no record on table &quot;%1&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>データテーブル&quot;%1&quot;には記録がありません。</translation>
     </message>
 </context>
 </TS>
