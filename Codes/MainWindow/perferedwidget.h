@@ -9,6 +9,7 @@ class PerferedWidget : public QWidget
 public:
     explicit PerferedWidget(QWidget *parent = nullptr);
     QSize sizeHint() const;
+    QSize size;
 
 signals:
 

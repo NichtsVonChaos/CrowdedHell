@@ -40,6 +40,14 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(options(), &Options::volumeChanged, ui->sliderVolume, &VolumeSlider::setVolume, Qt::UniqueConnection);
     connect(options(), &Options::volumeChanged, this, &MainWindow::updateVolumeLable, Qt::UniqueConnection);
     connect(this, &MainWindow::message, logger(), &Logger::message, Qt::UniqueConnection);
+    connect(ui->actionShowLoggerWidget, &QAction::triggered, ui->dockWidgetLogger, &QDockWidget::setVisible, Qt::UniqueConnection);
+    connect(ui->dockWidgetLogger, &QDockWidget::visibilityChanged, ui->actionShowLoggerWidget, &QAction::setChecked, Qt::UniqueConnection);
+    connect(ui->actionShowResourcesWidget, &QAction::triggered, ui->dockWidgetResources, &QDockWidget::setVisible, Qt::UniqueConnection);
+    connect(ui->dockWidgetResources, &QDockWidget::visibilityChanged, ui->actionShowResourcesWidget, &QAction::setChecked, Qt::UniqueConnection);
+    connect(ui->actionShowActionsWidget, &QAction::triggered, ui->dockWidgetActions, &QDockWidget::setVisible, Qt::UniqueConnection);
+    connect(ui->dockWidgetActions, &QDockWidget::visibilityChanged, ui->actionShowActionsWidget, &QAction::setChecked, Qt::UniqueConnection);
+    connect(ui->actionShowAttributesWidget, &QAction::triggered, ui->dockWidgetAttributes, &QDockWidget::setVisible, Qt::UniqueConnection);
+    connect(ui->dockWidgetAttributes, &QDockWidget::visibilityChanged, ui->actionShowAttributesWidget, &QAction::setChecked, Qt::UniqueConnection);
 
     options()->readOptions();
     m_musicPlayer = new MusicPlayer(this);
@@ -58,8 +66,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->menuRecentProject, &QMenu::triggered, this, &MainWindow::openRecentProject, Qt::UniqueConnection);
     connect(ui->actionReselectMusic, &QAction::triggered, m_musicPlayer, &MusicPlayer::pause, Qt::UniqueConnection);
     connect(ui->actionReselectMusic, &QAction::triggered, project(), static_cast<void(Project::*)()>(&Project::reselectMusic), Qt::UniqueConnection);
-    connect(ui->actionShowLoggerWidget, &QAction::triggered, ui->dockWidgetLogger, &QDockWidget::setVisible, Qt::UniqueConnection);
-    connect(ui->dockWidgetLogger, &QDockWidget::visibilityChanged, ui->actionShowLoggerWidget, &QAction::setChecked, Qt::UniqueConnection);
     connect(ui->actionClearLogger, &QAction::triggered, logger(), &Logger::clear);
     connect(ui->menuLanguage, &QMenu::triggered, this, &MainWindow::languageButtonClicked, Qt::UniqueConnection);
     connect(project(), &Project::projectOpened, options(), &Options::addRecentProject, Qt::UniqueConnection);
@@ -70,7 +76,13 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(project(), &Project::musicSelected, this, &MainWindow::changeMusic, Qt::UniqueConnection);
 
     refreshRecentProject();
-    setWindowState(Qt::WindowMaximized);
+    if(!options()->mainWindowState().isEmpty())
+        restoreState(options()->mainWindowState());
+
+    if(options()->maxWindowStart())
+        setWindowState(Qt::WindowMaximized);
+    else if(!options()->mainWindowGeometry().isEmpty())
+        restoreGeometry(options()->mainWindowGeometry());
 }
 
 MainWindow::~MainWindow()
@@ -90,6 +102,9 @@ void MainWindow::closeEvent(QCloseEvent *ev)
         ev->ignore();
     else
     {
+        options()->setMainWindowState(saveState());
+        options()->setMainWindowGeometry(saveGeometry());
+        options()->setMaxWindowStart(isMaximized());
         options()->writeOptions();
         QMainWindow::closeEvent(ev);
         ev->accept();
@@ -102,32 +117,32 @@ void MainWindow::changeEvent(QEvent *ev)
     QMainWindow::changeEvent(ev);
     switch (ev->type())
     {
-        case QEvent::LanguageChange:
-        {
-            if(ui)
-                ui->retranslateUi(this);
-            m_buttonLanguageOptions[Language::EN]->setText(tr("English"));
-            m_buttonLanguageOptions[Language::ZH_CN]->setText(tr("Simplified Chinese"));
-            m_buttonLanguageOptions[Language::ZH_TW]->setText(tr("Traditional Chinese"));
-            m_buttonLanguageOptions[Language::JP]->setText(tr("Japanese"));
-            m_actionClearRecent->setText(tr("Clear all records"));
-            m_actionNoRecord->setText(tr("(No record)"));
-            updateVolumeLable(options()->volume());
+    case QEvent::LanguageChange:
+    {
+        if(ui)
+            ui->retranslateUi(this);
+        m_buttonLanguageOptions[Language::EN]->setText(tr("English"));
+        m_buttonLanguageOptions[Language::ZH_CN]->setText(tr("Simplified Chinese"));
+        m_buttonLanguageOptions[Language::ZH_TW]->setText(tr("Traditional Chinese"));
+        m_buttonLanguageOptions[Language::JP]->setText(tr("Japanese"));
+        m_actionClearRecent->setText(tr("Clear all records"));
+        m_actionNoRecord->setText(tr("(No record)"));
+        updateVolumeLable(options()->volume());
 
-            if(project()->projectName().isEmpty())
-            {
-                setWindowTitle("Crowded Hell");
-                ui->labelMusic->setText(tr("No Music"));
-            }
-            else
-            {
-                setWindowTitle(project()->projectName() + QString(" -- Crowded Hell"));
-                ui->labelMusic->setText(tr("Music : ") + QFileInfo(project()->musicFile()).completeBaseName());
-            }
+        if(project()->projectName().isEmpty())
+        {
+            setWindowTitle("Crowded Hell");
+            ui->labelMusic->setText(tr("No Music"));
         }
+        else
+        {
+            setWindowTitle(project()->projectName() + QString(" -- Crowded Hell"));
+            ui->labelMusic->setText(tr("Music : ") + QFileInfo(project()->musicFile()).completeBaseName());
+        }
+    }
         break;
 
-        default:
+    default:
         break;
     }
 

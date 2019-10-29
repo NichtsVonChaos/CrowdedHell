@@ -6,7 +6,9 @@
 #include <QtMath>
 #include <QApplication>
 #include <QStringList>
+#include <QDockWidget>
 #include "customfunctions.h"
+#include "Codes/MainWindow/perferedwidget.h"
 
 /**
  * @brief The Language enum
@@ -62,6 +64,12 @@ public:
     float volume() const;
 
     /**
+     * @brief maxWindowStart
+     * Get whether start with max window.
+     */
+    bool maxWindowStart() const;
+
+    /**
      * @brief recentProject
      * Get recent opened project path list.
      */
@@ -78,6 +86,12 @@ public:
      * Save options to config.ini.
      */
     void writeOptions();
+
+    QByteArray mainWindowState() const;
+    void setMainWindowState(const QByteArray &mainWindowState);
+
+    QByteArray mainWindowGeometry() const;
+    void setMainWindowGeometry(const QByteArray &mainWindowGeometry);
 
 signals:
     /**
@@ -142,6 +156,12 @@ public slots:
     void setVolume(float volume, const QObject *sender = nullptr);
 
     /**
+     * @brief setMaxWindowStart
+     * Set if start with max window.
+     */
+    void setMaxWindowStart(bool maxWindowStart);
+
+    /**
      * @brief addRecentProject
      * Add project path to recent opened project path list.
      */
@@ -167,10 +187,12 @@ private:
     QString m_theme;
     bool m_hideInfoLog;
     bool m_autoSave;
+    bool m_maxWindowStart;
 
     float m_volume;
 
     QStringList m_recentProject;
+    QByteArray m_mainWindowState, m_mainWindowGeometry;
 };
 
 /**
