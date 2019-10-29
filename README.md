@@ -1,4 +1,4 @@
-# Crowded Hell
+﻿# Crowded Hell
 Developing. Coming soon?  
 开发中。敬请期待？  
 ![](https://img.shields.io/badge/platform-windows%20%7C%20linux-lightgrey.svg) [![](https://img.shields.io/badge/license-GPLv3-green.svg)](https://en.wikipedia.org/wiki/GNU_General_Public_License) [![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
@@ -34,12 +34,20 @@ ____
 ____
 ##### 本项目的诞生离不开以下开源项目。
 ##### This project cannot be without following open-source projects.
-* [GMK-Splitter](https://github.com/Medo42/Gmk-Splitter)  
-* [QtShell](https://github.com/benlau/qtshell)  
-* [SingleApplication](https://github.com/itay-grudev/SingleApplication)
+* [Qt](https://www.qt.io/) -- LGPLv3  
+Copyright (C) 2018 The Qt Company Ltd.
+* [GMK-Splitter](https://github.com/Medo42/Gmk-Splitter) -- GPLv3  
+Copyright (C) 2010 (Medo) \<<smaxein@googlemail.com>\>  
+Copyright (C) 2008-2010 IsmAvatar \<<IsmAvatar@gmail.com>\>  
+Copyright (C) 2006-2007 Clam \<<clamisgood@gmail.com>\>  
+Copyright (C) 2008 Quadduc \<<quadduc@gmail.com>\>  
+* [QtShell](https://github.com/benlau/qtshell) -- Apache v2.0  
+* [SingleApplication](https://github.com/itay-grudev/SingleApplication) -- MIT  
+Copyright (C) 2015-2016 Itay Grudev
 ##### 以下项目并非开源项目，但是拥有受限的免费许可证。  
 ##### Following projects are not open-source, but have limitted free license.
-* [FMOD](https://www.fmod.com/)
+* [FMOD](https://www.fmod.com/) -- [FMOD License](https://www.fmod.com/licensing)  
+Copyright (C) 2019 Firelight Technologies Pty Ltd.
   
 ### 关于编译
 ##### About compiling
@@ -83,3 +91,7 @@ ____
 * QQ: 1009978366
 * Gmail: <NichtsVonChaos@gmail.com>
 * Tieba: [-NIHIL-](http://tieba.baidu.com/home/main?un=towanoICIT)
+
+### 版权
+##### Copyright
+Copyright (C) 2018-2019 Nihil \<<NichtsVonChaos@gmail.com>\>
