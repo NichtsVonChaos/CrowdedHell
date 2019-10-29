@@ -16,9 +16,9 @@ public:
     explicit VolumeSlider(QWidget *parent = nullptr);
     ~VolumeSlider() override;
 
-    void mousePressEvent(QMouseEvent *event) override;
-    void mouseMoveEvent(QMouseEvent *event) override;
-    void mouseReleaseEvent(QMouseEvent *event) override;
+    void mousePressEvent(QMouseEvent *ev) override;
+    void mouseMoveEvent(QMouseEvent *ev) override;
+    void mouseReleaseEvent(QMouseEvent *ev) override;
 
 signals:
     /**

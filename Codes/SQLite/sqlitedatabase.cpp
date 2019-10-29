@@ -656,6 +656,15 @@ SQLiteDatabase::Column::Column(const SQLiteDatabase::Column &another):
 
 }
 
+SQLiteDatabase::Column &SQLiteDatabase::Column::operator=(const SQLiteDatabase::Column &another)
+{
+    label = another.label;
+    dataType = another.dataType;
+    isAutoIncrementIndex = another.isAutoIncrementIndex;
+    isPrimaryKey = another.isPrimaryKey;
+    return *this;
+}
+
 bool SQLiteDatabase::Column::operator==(const SQLiteDatabase::Column &another) const
 {
     return label == another.label && dataType == another.dataType && isAutoIncrementIndex == another.isAutoIncrementIndex && isPrimaryKey == another.isPrimaryKey;

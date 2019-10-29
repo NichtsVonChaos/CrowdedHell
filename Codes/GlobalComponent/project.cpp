@@ -135,8 +135,6 @@ void Project::newProject()
         return;
     }
 
-
-
     m_author = wizard->getAuthor();
     m_createDate = wizard->getDate();
     m_musicFile = QFileInfo(musicPath).fileName();

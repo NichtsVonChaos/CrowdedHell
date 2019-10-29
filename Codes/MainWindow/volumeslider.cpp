@@ -13,40 +13,40 @@ VolumeSlider::~VolumeSlider()
 
 }
 
-void VolumeSlider::mousePressEvent(QMouseEvent *event)
+void VolumeSlider::mousePressEvent(QMouseEvent *ev)
 {
-    if(event->button() == Qt::LeftButton)
+    if(ev->button() == Qt::LeftButton)
     {
         disconnect(this, &VolumeSlider::volumeChanged, options(), &Options::setVolume);
         disconnect(options(), &Options::volumeChanged, this, &VolumeSlider::setVolume);
-        int pos = limit(int(100.0 * (double(event->x()) / width())), 0, 100);
+        int pos = limit(int(100.0 * (double(ev->x()) / width())), 0, 100);
         setValue(pos);
         m_leftButtonPressing = true;
-        event->accept();
+        ev->accept();
     }
 }
 
-void VolumeSlider::mouseMoveEvent(QMouseEvent *event)
+void VolumeSlider::mouseMoveEvent(QMouseEvent *ev)
 {
     if(m_leftButtonPressing)
     {
-        int pos = limit(int(100.0 * (double(event->x()) / width())), 0, 100);
+        int pos = limit(int(100.0 * (double(ev->x()) / width())), 0, 100);
         setValue(pos);
-        event->accept();
+        ev->accept();
     }
 }
 
-void VolumeSlider::mouseReleaseEvent(QMouseEvent *event)
+void VolumeSlider::mouseReleaseEvent(QMouseEvent *ev)
 {
-    if(event->button() == Qt::LeftButton)
+    if(ev->button() == Qt::LeftButton)
     {
-        int pos = limit(int(100.0 * (double(event->x()) / width())), 0, 100);
+        int pos = limit(int(100.0 * (double(ev->x()) / width())), 0, 100);
         connect(this, &VolumeSlider::volumeChanged, options(), &Options::setVolume, Qt::UniqueConnection);
         connect(options(), &Options::volumeChanged, this, &VolumeSlider::setVolume, Qt::UniqueConnection);
         setValue(pos);
         __valueChanged(pos);
         m_leftButtonPressing = false;
-        event->accept();
+        ev->accept();
     }
 }
 

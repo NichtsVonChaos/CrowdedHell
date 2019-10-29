@@ -40,21 +40,15 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(options(), &Options::volumeChanged, ui->sliderVolume, &VolumeSlider::setVolume, Qt::UniqueConnection);
     connect(options(), &Options::volumeChanged, this, &MainWindow::updateVolumeLable, Qt::UniqueConnection);
     connect(this, &MainWindow::message, logger(), &Logger::message, Qt::UniqueConnection);
-    connect(ui->actionShowLoggerWidget, &QAction::triggered, ui->dockWidgetLogger, &QDockWidget::setVisible, Qt::UniqueConnection);
-    connect(ui->dockWidgetLogger, &QDockWidget::visibilityChanged, ui->actionShowLoggerWidget, &QAction::setChecked, Qt::UniqueConnection);
-    connect(ui->actionShowResourcesWidget, &QAction::triggered, ui->dockWidgetResources, &QDockWidget::setVisible, Qt::UniqueConnection);
-    connect(ui->dockWidgetResources, &QDockWidget::visibilityChanged, ui->actionShowResourcesWidget, &QAction::setChecked, Qt::UniqueConnection);
-    connect(ui->actionShowActionsWidget, &QAction::triggered, ui->dockWidgetActions, &QDockWidget::setVisible, Qt::UniqueConnection);
-    connect(ui->dockWidgetActions, &QDockWidget::visibilityChanged, ui->actionShowActionsWidget, &QAction::setChecked, Qt::UniqueConnection);
-    connect(ui->actionShowAttributesWidget, &QAction::triggered, ui->dockWidgetAttributes, &QDockWidget::setVisible, Qt::UniqueConnection);
-    connect(ui->dockWidgetAttributes, &QDockWidget::visibilityChanged, ui->actionShowAttributesWidget, &QAction::setChecked, Qt::UniqueConnection);
 
     options()->readOptions();
     m_musicPlayer = new MusicPlayer(this);
     ui->musicSlider->initialze(m_musicPlayer);
 
     connect(this, &MainWindow::musicPaused, m_musicPlayer, &MusicPlayer::setPaused, Qt::UniqueConnection);
+    connect(this, &MainWindow::muted, m_musicPlayer, &MusicPlayer::setMuted, Qt::UniqueConnection);
     connect(m_musicPlayer, &MusicPlayer::paused, this, &MainWindow::pauseMusic, Qt::UniqueConnection);
+    connect(m_musicPlayer, &MusicPlayer::muted, this, &MainWindow::setMuted, Qt::UniqueConnection);
     connect(m_actionClearRecent, &QAction::triggered, options(), &Options::clearRecentProject, Qt::UniqueConnection);
     connect(m_actionClearRecent, &QAction::triggered, this, &MainWindow::refreshRecentProject, Qt::UniqueConnection);
     connect(ui->actionNewProject, &QAction::triggered, m_musicPlayer, &MusicPlayer::pause, Qt::UniqueConnection);
@@ -68,6 +62,15 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionReselectMusic, &QAction::triggered, project(), static_cast<void(Project::*)()>(&Project::reselectMusic), Qt::UniqueConnection);
     connect(ui->actionClearLogger, &QAction::triggered, logger(), &Logger::clear);
     connect(ui->menuLanguage, &QMenu::triggered, this, &MainWindow::languageButtonClicked, Qt::UniqueConnection);
+    connect(ui->actionShowLoggerWidget, &QAction::triggered, ui->dockWidgetLogger, &QDockWidget::setVisible, Qt::UniqueConnection);
+    connect(ui->dockWidgetLogger, &QDockWidget::visibilityChanged, ui->actionShowLoggerWidget, &QAction::setChecked, Qt::UniqueConnection);
+    connect(ui->actionShowResourcesWidget, &QAction::triggered, ui->dockWidgetResources, &QDockWidget::setVisible, Qt::UniqueConnection);
+    connect(ui->dockWidgetResources, &QDockWidget::visibilityChanged, ui->actionShowResourcesWidget, &QAction::setChecked, Qt::UniqueConnection);
+    connect(ui->actionShowActionsWidget, &QAction::triggered, ui->dockWidgetActions, &QDockWidget::setVisible, Qt::UniqueConnection);
+    connect(ui->dockWidgetActions, &QDockWidget::visibilityChanged, ui->actionShowActionsWidget, &QAction::setChecked, Qt::UniqueConnection);
+    connect(ui->actionShowAttributesWidget, &QAction::triggered, ui->dockWidgetAttributes, &QDockWidget::setVisible, Qt::UniqueConnection);
+    connect(ui->dockWidgetAttributes, &QDockWidget::visibilityChanged, ui->actionShowAttributesWidget, &QAction::setChecked, Qt::UniqueConnection);
+    connect(ui->pushButtonFmod, &QPushButton::clicked, this, &MainWindow::openFmod);
     connect(project(), &Project::projectOpened, options(), &Options::addRecentProject, Qt::UniqueConnection);
     connect(project(), &Project::projectOpened, this, &MainWindow::projectOpened, Qt::UniqueConnection);
     connect(project(), &Project::projectClosed, this, &MainWindow::projectClosed, Qt::UniqueConnection);
@@ -117,32 +120,32 @@ void MainWindow::changeEvent(QEvent *ev)
     QMainWindow::changeEvent(ev);
     switch (ev->type())
     {
-    case QEvent::LanguageChange:
-    {
-        if(ui)
-            ui->retranslateUi(this);
-        m_buttonLanguageOptions[Language::EN]->setText(tr("English"));
-        m_buttonLanguageOptions[Language::ZH_CN]->setText(tr("Simplified Chinese"));
-        m_buttonLanguageOptions[Language::ZH_TW]->setText(tr("Traditional Chinese"));
-        m_buttonLanguageOptions[Language::JP]->setText(tr("Japanese"));
-        m_actionClearRecent->setText(tr("Clear all records"));
-        m_actionNoRecord->setText(tr("(No record)"));
-        updateVolumeLable(options()->volume());
+        case QEvent::LanguageChange:
+        {
+            if(ui)
+                ui->retranslateUi(this);
+            m_buttonLanguageOptions[Language::EN]->setText(tr("English"));
+            m_buttonLanguageOptions[Language::ZH_CN]->setText(tr("Simplified Chinese"));
+            m_buttonLanguageOptions[Language::ZH_TW]->setText(tr("Traditional Chinese"));
+            m_buttonLanguageOptions[Language::JP]->setText(tr("Japanese"));
+            m_actionClearRecent->setText(tr("Clear all records"));
+            m_actionNoRecord->setText(tr("(No record)"));
+            updateVolumeLable(options()->volume());
 
-        if(project()->projectName().isEmpty())
-        {
-            setWindowTitle("Crowded Hell");
-            ui->labelMusic->setText(tr("No Music"));
+            if(project()->projectName().isEmpty())
+            {
+                setWindowTitle("Crowded Hell");
+                ui->labelMusic->setText(tr("No Music"));
+            }
+            else
+            {
+                setWindowTitle(project()->projectName() + QString(" -- Crowded Hell"));
+                ui->labelMusic->setText(tr("Music : ") + QFileInfo(project()->musicFile()).completeBaseName());
+            }
         }
-        else
-        {
-            setWindowTitle(project()->projectName() + QString(" -- Crowded Hell"));
-            ui->labelMusic->setText(tr("Music : ") + QFileInfo(project()->musicFile()).completeBaseName());
-        }
-    }
         break;
 
-    default:
+        default:
         break;
     }
 
@@ -159,6 +162,17 @@ void MainWindow::pauseMusic(bool paused, const QObject *sender)
 
     ui->pushButtonPause->setChecked(paused);
     emit musicPaused(paused, sender);
+}
+
+void MainWindow::setMuted(bool muted, const QObject *sender)
+{
+    if(sender == this)
+        return;
+
+    if(sender == nullptr)
+        sender = this;
+
+    ui->pushButtonMute->setChecked(muted);
 }
 
 void MainWindow::refreshRecentProject()
@@ -254,6 +268,14 @@ void MainWindow::changeMusic(const QString &musicFile)
     ui->labelMusic->setText(tr("Music : ") + QFileInfo(musicFile).completeBaseName());
 }
 
+void MainWindow::openFmod()
+{
+    if(QDesktopServices::openUrl(QUrl("https://www.fmod.com/")))
+        message(Logger::Type::Info, "Main Window", tr("Open fmod official website."));
+    else
+        message(Logger::Type::Warning, "Main Window", tr("Cannot open fmod official website \"https://www.fmod.com/\"."));
+}
+
 void MainWindow::on_actionHideAllInfoTypeMessage_triggered(bool checked)
 {
     options()->setHideInfoLog(checked, this);
@@ -275,4 +297,39 @@ void MainWindow::on_actionExportLogToFile_triggered()
 void MainWindow::on_pushButtonPause_clicked(bool checked)
 {
     emit musicPaused(checked, this);
+}
+
+void MainWindow::on_pushButtonMute_clicked(bool checked)
+{
+    emit muted(checked, this);
+}
+
+void MainWindow::on_pushButtonNext1_released()
+{
+    m_musicPlayer->forward();
+}
+
+void MainWindow::on_pushButtonNext5_released()
+{
+    m_musicPlayer->forward(5);
+}
+
+void MainWindow::on_pushButtonNext50_released()
+{
+    m_musicPlayer->forward(50);
+}
+
+void MainWindow::on_pushButtonPrev1_released()
+{
+    m_musicPlayer->back();
+}
+
+void MainWindow::on_pushButtonPrev5_released()
+{
+    m_musicPlayer->back(5);
+}
+
+void MainWindow::on_pushButtonPrev50_released()
+{
+    m_musicPlayer->back(50);
 }

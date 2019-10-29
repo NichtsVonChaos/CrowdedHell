@@ -50,13 +50,13 @@ public:
      * @brief forward
      * Set music position to (cur_pos / 20 + frames) * 20.
      */
-    void forward(unsigned int frames);
+    void forward(unsigned int frames = 1);
 
     /**
      * @brief back
      * Set music position to (cur_pos / 20 - frames) * 20.
      */
-    void back(unsigned int frames);
+    void back(unsigned int frames = 1);
 
     void timerEvent(QTimerEvent *ev) override;
 

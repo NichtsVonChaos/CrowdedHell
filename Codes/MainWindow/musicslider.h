@@ -3,6 +3,7 @@
 
 #include <QSlider>
 #include <QMouseEvent>
+#include <QWheelEvent>
 #include <QtMath>
 
 #include "Codes/GlobalComponent/globalComponent.h"
@@ -25,9 +26,10 @@ public:
      */
     void initialze(MusicPlayer *musicPlayer);
 
-    void mousePressEvent(QMouseEvent *event) override;
-    void mouseMoveEvent(QMouseEvent *event) override;
-    void mouseReleaseEvent(QMouseEvent *event) override;
+    void mousePressEvent(QMouseEvent *ev) override;
+    void mouseMoveEvent(QMouseEvent *ev) override;
+    void mouseReleaseEvent(QMouseEvent *ev) override;
+    void wheelEvent(QWheelEvent *ev) override;
 
 signals:
     /**

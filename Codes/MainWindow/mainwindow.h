@@ -6,6 +6,7 @@
 #include <QAction>
 #include <QMap>
 #include <QTranslator>
+#include <QDesktopServices>
 
 #include "Codes/GlobalComponent/globalComponent.h"
 #include "Codes/ResourceManager/Music/musicplayer.h"
@@ -29,9 +30,11 @@ public:
 signals:
     void message(Logger::Type type, const QString &module, const QString &message);
     void musicPaused(bool paused, const QObject *sender = nullptr);
+    void muted(bool muted, const QObject *sender = nullptr);
 
 public slots:
     void pauseMusic(bool paused, const QObject *sender);
+    void setMuted(bool muted, const QObject *sender);
     void refreshRecentProject();
     void openRecentProject(QAction *action);
     void projectOpened(const QString &projectFilePath);
@@ -39,6 +42,7 @@ public slots:
     void setLanguage(Language language, const QObject *sender = nullptr);
     void updateVolumeLable(float volume);
     void changeMusic(const QString &musicFile);
+    void openFmod();
 
 private slots:
     void languageButtonClicked(QAction *action);
@@ -50,6 +54,20 @@ private slots:
     void on_actionExportLogToFile_triggered();
 
     void on_pushButtonPause_clicked(bool checked);
+
+    void on_pushButtonMute_clicked(bool checked);
+
+    void on_pushButtonNext1_released();
+
+    void on_pushButtonNext5_released();
+
+    void on_pushButtonNext50_released();
+
+    void on_pushButtonPrev1_released();
+
+    void on_pushButtonPrev5_released();
+
+    void on_pushButtonPrev50_released();
 
 private:
     Ui::MainWindow *ui;

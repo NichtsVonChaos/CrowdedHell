@@ -1,2 +1,6 @@
-<!DOCTYPE RCC>
-<RCC version="1.0"/>
+<RCC>
+    <qresource prefix="/fmod">
+        <file alias="black.svg">FMOD Logo Black - White Background.svg</file>
+        <file alias="whte.svg">FMOD Logo White - Black Background.svg</file>
+    </qresource>
+</RCC>

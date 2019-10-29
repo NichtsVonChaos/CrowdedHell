@@ -60,21 +60,24 @@
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
           <widget class="QWidget" name="scrollAreaWidgetContents">
            <property name="geometry">
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>898</width>
-             <height>700</height>
+             <width>912</width>
+             <height>755</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout">
             <property name="leftMargin">
-             <number>5</number>
+             <number>4</number>
             </property>
             <property name="topMargin">
-             <number>5</number>
+             <number>4</number>
             </property>
             <property name="rightMargin">
              <number>0</number>
@@ -82,29 +85,17 @@
             <property name="bottomMargin">
              <number>0</number>
             </property>
-            <property name="horizontalSpacing">
+            <property name="spacing">
              <number>0</number>
             </property>
-            <property name="verticalSpacing">
-             <number>5</number>
-            </property>
-            <item row="0" column="0">
-             <widget class="QOpenGLWidget" name="openGLWidget">
-              <property name="minimumSize">
-               <size>
-                <width>800</width>
-                <height>608</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>800</width>
-                <height>608</height>
-               </size>
+            <item row="0" column="2">
+             <widget class="Line" name="line_5">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
               </property>
              </widget>
             </item>
-            <item row="3" column="0">
+            <item row="3" column="1">
              <spacer name="verticalSpacer">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
@@ -117,14 +108,440 @@
               </property>
              </spacer>
             </item>
-            <item row="2" column="0">
+            <item row="2" column="1">
+             <widget class="Line" name="line_6">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="3">
+             <widget class="Line" name="line_7">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="QWidget" name="widget" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>90</width>
+                <height>0</height>
+               </size>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_11">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="Line" name="line_10">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="verticalSpacer_2">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>462</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="Line" name="line_3">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_10">
+                 <item>
+                  <widget class="QLabel" name="label_4">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>80</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>80</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Time</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_2">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>80</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>80</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string notr="true">Unusable</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_5">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>80</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>80</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string notr="true">/0:0.0</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="Line" name="line">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_8">
+                 <item>
+                  <widget class="QLabel" name="label">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>80</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>80</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Frame</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>80</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>80</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string notr="true">Unusable</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_2">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>80</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>80</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string notr="true">/0</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="Line" name="line_2">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_9">
+                 <item>
+                  <widget class="QLabel" name="label_3">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>80</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>80</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Speed</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="comboBox">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>80</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>80</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="layoutDirection">
+                    <enum>Qt::LeftToRight</enum>
+                   </property>
+                   <property name="currentText">
+                    <string notr="true">x1.0</string>
+                   </property>
+                   <property name="currentIndex">
+                    <number>2</number>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>x0.1</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>x0.5</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>x1.0</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>x1.5</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>x2.0</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>x5.0</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="0" column="1">
              <layout class="QVBoxLayout" name="verticalLayout_6">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <item>
-               <widget class="QLabel" name="labelMusic">
-                <property name="text">
-                 <string>No Music</string>
+               <widget class="QOpenGLWidget" name="openGLWidget">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>800</width>
+                  <height>608</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>800</width>
+                  <height>608</height>
+                 </size>
                 </property>
                </widget>
+              </item>
+              <item>
+               <widget class="Line" name="line_4">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="labelMusic">
+                  <property name="text">
+                   <string>No Music</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButtonFmod">
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../../Reference/FMOD/FMOD_LOGOS/FMOD_LOGO.qrc">
+                    <normaloff>:/fmod/black.svg</normaloff>:/fmod/black.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>76</width>
+                    <height>24</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
               <item>
                <widget class="MusicSlider" name="musicSlider">
@@ -137,6 +554,9 @@
                <layout class="QHBoxLayout" name="horizontalLayout">
                 <property name="spacing">
                  <number>3</number>
+                </property>
+                <property name="sizeConstraint">
+                 <enum>QLayout::SetNoConstraint</enum>
                 </property>
                 <item>
                  <widget class="QPushButton" name="pushButtonPrev50">
@@ -273,7 +693,7 @@
                    </size>
                   </property>
                   <property name="text">
-                   <string>100</string>
+                   <string notr="true">100</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -284,7 +704,14 @@
               </item>
              </layout>
             </item>
-            <item row="0" column="1">
+            <item row="2" column="2">
+             <widget class="Line" name="line_8">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="5">
              <spacer name="horizontalSpacer">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
@@ -297,10 +724,14 @@
               </property>
              </spacer>
             </item>
+            <item row="0" column="4">
+             <widget class="Line" name="line_9">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+             </widget>
+            </item>
            </layout>
-           <zorder>openGLWidget</zorder>
-           <zorder>verticalSpacer</zorder>
-           <zorder>horizontalSpacer</zorder>
           </widget>
          </widget>
         </item>
@@ -426,7 +857,7 @@
    </property>
    <property name="minimumSize">
     <size>
-     <width>100</width>
+     <width>260</width>
      <height>121</height>
     </size>
    </property>
@@ -466,19 +897,19 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <property name="spacing">
-      <number>2</number>
+      <number>0</number>
      </property>
      <property name="leftMargin">
-      <number>2</number>
+      <number>0</number>
      </property>
      <property name="topMargin">
-      <number>2</number>
+      <number>0</number>
      </property>
      <property name="rightMargin">
-      <number>2</number>
+      <number>0</number>
      </property>
      <property name="bottomMargin">
-      <number>2</number>
+      <number>0</number>
      </property>
      <item>
       <widget class="Logger" name="logger">
@@ -527,19 +958,19 @@
    <widget class="PerferedWidget" name="perferedWidgetResources">
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <property name="spacing">
-      <number>2</number>
+      <number>0</number>
      </property>
      <property name="leftMargin">
-      <number>2</number>
+      <number>0</number>
      </property>
      <property name="topMargin">
-      <number>2</number>
+      <number>0</number>
      </property>
      <property name="rightMargin">
-      <number>2</number>
+      <number>0</number>
      </property>
      <property name="bottomMargin">
-      <number>2</number>
+      <number>0</number>
      </property>
      <item>
       <widget class="QTreeView" name="treeView"/>
@@ -568,6 +999,21 @@
    </attribute>
    <widget class="PerferedWidget" name="perferedWidgetAttriutes">
     <layout class="QVBoxLayout" name="verticalLayout_7">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <item>
       <widget class="QScrollArea" name="scrollArea_2">
        <property name="widgetResizable">
@@ -578,8 +1024,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>80</width>
-          <height>306</height>
+          <width>98</width>
+          <height>373</height>
          </rect>
         </property>
        </widget>
@@ -609,6 +1055,21 @@
    </attribute>
    <widget class="PerferedWidget" name="perferedWidgetActions">
     <layout class="QVBoxLayout" name="verticalLayout_3">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <item>
       <widget class="QScrollArea" name="scrollArea_3">
        <property name="widgetResizable">
@@ -619,8 +1080,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>80</width>
-          <height>305</height>
+          <width>98</width>
+          <height>370</height>
          </rect>
         </property>
        </widget>
@@ -776,6 +1237,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="../../Reference/FMOD/FMOD_LOGOS/FMOD_LOGO.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -19,41 +19,46 @@ void MusicSlider::initialze(MusicPlayer *musicPlayer)
     connect(this, &MusicSlider::positionChanged, m_musicPlayer, &MusicPlayer::setPosition, Qt::UniqueConnection);
 }
 
-void MusicSlider::mousePressEvent(QMouseEvent *event)
+void MusicSlider::mousePressEvent(QMouseEvent *ev)
 {
-    if(event->button() == Qt::LeftButton)
+    if(ev->button() == Qt::LeftButton)
     {
         disconnect(m_musicPlayer, &MusicPlayer::positionChanged, this, &MusicSlider::setPosition);
         disconnect(this, &MusicSlider::positionChanged, m_musicPlayer, &MusicPlayer::setPosition);
-        int pos = limit(int(1000.0 * (double(event->x()) / width())), 0, 1000);
+        int pos = limit(int(1000.0 * (double(ev->x()) / width())), 0, 1000);
         setValue(pos);
         m_leftButtonPressing = true;
-        event->accept();
+        ev->accept();
     }
 }
 
-void MusicSlider::mouseMoveEvent(QMouseEvent *event)
+void MusicSlider::mouseMoveEvent(QMouseEvent *ev)
 {
     if(m_leftButtonPressing)
     {
-        int pos = limit(int(1000.0 * (double(event->x()) / width())), 0, 1000);
+        int pos = limit(int(1000.0 * (double(ev->x()) / width())), 0, 1000);
         setValue(pos);
-        event->accept();
+        ev->accept();
     }
 }
 
-void MusicSlider::mouseReleaseEvent(QMouseEvent *event)
+void MusicSlider::mouseReleaseEvent(QMouseEvent *ev)
 {
-    if(event->button() == Qt::LeftButton)
+    if(ev->button() == Qt::LeftButton)
     {
-        int pos = limit(int(1000.0 * (double(event->x()) / width())), 0, 1000);
+        int pos = limit(int(1000.0 * (double(ev->x()) / width())), 0, 1000);
         connect(m_musicPlayer, &MusicPlayer::positionChanged, this, &MusicSlider::setPosition, Qt::UniqueConnection);
         connect(this, &MusicSlider::positionChanged, m_musicPlayer, &MusicPlayer::setPosition, Qt::UniqueConnection);
         setValue(pos);
         __valueChanged(pos);
         m_leftButtonPressing = false;
-        event->accept();
+        ev->accept();
     }
+}
+
+void MusicSlider::wheelEvent(QWheelEvent *ev)
+{
+    ev->ignore();
 }
 
 void MusicSlider::setPosition(unsigned int pos, const QObject *sender)

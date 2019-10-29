@@ -92,4 +92,5 @@ SOURCES += \
     Codes/main.cpp
 
 RESOURCES += \
+    Reference/FMOD/FMOD_LOGOS/FMOD_LOGO.qrc \
     Resources/Translations/translations.qrc

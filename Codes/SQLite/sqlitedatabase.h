@@ -33,6 +33,7 @@ public:
         bool isAutoIncrementIndex;
         bool isPrimaryKey;
 
+        Column &operator=(const Column &another);
         bool operator==(const Column &another) const;
         bool operator<(const Column &another) const;
         bool operator>(const Column &another) const;
