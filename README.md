@@ -50,9 +50,12 @@ ____
     git clone https://github.com/NichtsVonChaos/CrowdedHell.git
     git submodule init
     git submodule update
+##### 编译项目
+* 下载最新版[Qt](http://download.qt.io/official_releases/qt/)并安装，使用Qt Creator打开CrowdedHell.pro，编译。
+  Download and install [Qt](http://download.qt.io/official_releases/qt/) lastest version, open 'CrodedHell.pro' with Qt Creator, then compile.
 ##### Windows:
 * 建议使用MSVC 64位套件编译，本人使用MinGW套件无法编译FMOD。  
- Suggest that use MSVC 64-bit kit to compile. I cannot compile FMOD using MinGW kit.
+  Suggest that use MSVC 64-bit kit to compile. I cannot compile FMOD using MinGW kit.
 ##### Linux:
 * 本人仅在Ubuntu 19.10和Arch Linux下尝试编译成功，其他Linux系统不保证能成功。  
   I had only compiled it successfully at Ubuntu 19.10 and Arch LInux, I cannot ensure if it can be compiled at other Linux OSs.
