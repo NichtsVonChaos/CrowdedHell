@@ -68,8 +68,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>912</width>
-             <height>755</height>
+             <width>902</width>
+             <height>696</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout">
@@ -840,6 +840,8 @@
     <addaction name="actionShowResourcesWidget"/>
     <addaction name="actionShowActionsWidget"/>
     <addaction name="actionShowAttributesWidget"/>
+    <addaction name="separator"/>
+    <addaction name="actionResetLayout"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuProject"/>
@@ -1025,7 +1027,7 @@
           <x>0</x>
           <y>0</y>
           <width>98</width>
-          <height>373</height>
+          <height>326</height>
          </rect>
         </property>
        </widget>
@@ -1081,7 +1083,7 @@
           <x>0</x>
           <y>0</y>
           <width>98</width>
-          <height>370</height>
+          <height>325</height>
          </rect>
         </property>
        </widget>
@@ -1206,6 +1208,11 @@
    </property>
    <property name="text">
     <string>Show attributes widget</string>
+   </property>
+  </action>
+  <action name="actionResetLayout">
+   <property name="text">
+    <string>Reset layout</string>
    </property>
   </action>
   <zorder>dockWidgetAttributes</zorder>

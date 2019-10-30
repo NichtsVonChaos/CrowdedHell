@@ -69,6 +69,8 @@ private slots:
 
     void on_pushButtonPrev50_released();
 
+    void on_actionResetLayout_triggered();
+
 private:
     Ui::MainWindow *ui;
 
