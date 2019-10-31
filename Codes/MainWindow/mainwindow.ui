@@ -68,8 +68,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>902</width>
-             <height>696</height>
+             <width>916</width>
+             <height>708</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout">
@@ -210,7 +210,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_2">
+                  <widget class="QLineEdit" name="lineEditTime">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -238,7 +238,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="label_5">
+                  <widget class="QLabel" name="labelTotalTime">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                      <horstretch>0</horstretch>
@@ -305,7 +305,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit">
+                  <widget class="QLineEdit" name="lineEditFrame">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -333,7 +333,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="label_2">
+                  <widget class="QLabel" name="labelTotalFrame">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                      <horstretch>0</horstretch>
@@ -400,7 +400,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QComboBox" name="comboBox">
+                  <widget class="QComboBox" name="comboBoxSpeed">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -1027,7 +1027,7 @@
           <x>0</x>
           <y>0</y>
           <width>98</width>
-          <height>326</height>
+          <height>349</height>
          </rect>
         </property>
        </widget>
@@ -1083,7 +1083,7 @@
           <x>0</x>
           <y>0</y>
           <width>98</width>
-          <height>325</height>
+          <height>347</height>
          </rect>
         </property>
        </widget>
