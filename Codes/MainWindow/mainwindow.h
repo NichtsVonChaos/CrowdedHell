@@ -7,6 +7,7 @@
 #include <QMap>
 #include <QTranslator>
 #include <QDesktopServices>
+#include <QRegExp>
 
 #include "Codes/GlobalComponent/globalComponent.h"
 #include "Codes/ResourceManager/Music/musicplayer.h"
@@ -34,6 +35,7 @@ signals:
 
 public slots:
     void pauseMusic(bool paused, const QObject *sender);
+    void setMusicPosition(unsigned int milliseconds, const QObject *sender);
     void setMuted(bool muted, const QObject *sender);
     void refreshRecentProject();
     void openRecentProject(QAction *action);
@@ -42,7 +44,6 @@ public slots:
     void setLanguage(Language language, const QObject *sender = nullptr);
     void updateVolumeLable(float volume);
     void changeMusic(const QString &musicFile);
-    void openFmod();
 
 private slots:
     void languageButtonClicked(QAction *action);
@@ -69,6 +70,18 @@ private slots:
 
     void on_pushButtonPrev50_released();
 
+    void on_lineEditTime_editingFinished();
+
+    void on_lineEditFrame_editingFinished();
+
+    void on_comboBoxSpeed_currentIndexChanged(int index);
+
+    void on_pushButtonFmod_clicked();
+
+    void on_actionOpenProjectPath_triggered();
+
+    void on_actionOpenTemporaryPath_triggered();
+
 private:
     Ui::MainWindow *ui;
 
@@ -78,6 +91,9 @@ private:
     QMap<Language, QString> m_translationFiles;
     QTranslator m_translator;
     const QObject *m_sender;
+
+    bool __readTimeFromString(const QString &time, unsigned int &milliseconds);
+    QString __generateStringFromTime(unsigned int milliseconds);
 };
 
 #endif // MAINWINDOW_H

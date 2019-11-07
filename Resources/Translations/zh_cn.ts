@@ -101,16 +101,6 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="453"/>
-        <source>x2.0</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="458"/>
-        <source>x5.0</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="780"/>
         <source>File</source>
         <translation>文件</translation>
@@ -177,8 +167,8 @@
         <translation>隐藏所有&quot;通知&quot;类型的消息</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="26"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="127"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="28"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="130"/>
         <source>English</source>
         <translation>英语</translation>
     </message>
@@ -213,29 +203,9 @@
         <translation>速度</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="433"/>
-        <source>x0.1</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="438"/>
-        <source>x0.5</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="443"/>
-        <source>x1.0</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="448"/>
-        <source>x1.5</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="510"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="138"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="213"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="141"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="225"/>
         <source>No Music</source>
         <translation>无音乐</translation>
     </message>
@@ -390,61 +360,86 @@
         <translation>显示属性窗口</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="16"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="131"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="18"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="134"/>
         <source>Clear all records</source>
         <translation>清空记录</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="17"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="132"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="19"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="135"/>
         <source>(No record)</source>
         <translation>(没有记录)</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="27"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="128"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="29"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="131"/>
         <source>Simplified Chinese</source>
         <translation>简体中文</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="28"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="129"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="30"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="132"/>
         <source>Traditional Chinese</source>
         <translation>繁体中文</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="29"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="130"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="31"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="133"/>
         <source>Japanese</source>
         <translation>日语</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="143"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="206"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="268"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="146"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="218"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="280"/>
         <source>Music : </source>
         <translation>音乐： </translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="193"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="205"/>
         <source>Project file &quot;%1&quot; does not exists, remove it from recent project list.</source>
         <translation>项目文件&quot;%1&quot;不存在，将从最近项目列表中移除。</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="254"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="266"/>
         <source>Failed to load translation file &quot;%1&quot;.</source>
         <translation>加载翻译文件&quot;%1&quot;失败。</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="274"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="292"/>
         <source>Open fmod official website.</source>
         <translation>打开fmod官网。</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="276"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="294"/>
         <source>Cannot open fmod official website &quot;https://www.fmod.com/&quot;.</source>
         <translation>无法打开fmod官网&quot;https://www.fmod.com&quot;。</translation>
+    </message>
+    <message>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="362"/>
+        <source>Failed to parse &quot;%1&quot;. Use &quot;m:s[.ms]&quot;.</source>
+        <translation>解析&quot;%1&quot;失败。请使用&quot;分:秒[.毫秒]&quot;的形式。</translation>
+    </message>
+    <message>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="369"/>
+        <source>Value of minutes &quot;%1&quot; on &quot;%2&quot; is invalid. Use &quot;m:s[.ms]&quot;.</source>
+        <translation>&quot;%2&quot;中的分钟&quot;%1&quot;非法。请使用&quot;分:秒[.毫秒]&quot;的形式。</translation>
+    </message>
+    <message>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="376"/>
+        <source>Value of seconds &quot;%1&quot; on &quot;%2&quot; is invalid. Use &quot;m:s[.ms]&quot;.</source>
+        <translation>&quot;%2&quot;中的秒&quot;%1&quot;非法。请使用&quot;分:秒[.毫秒]&quot;的形式。</translation>
+    </message>
+    <message>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="381"/>
+        <source>Value of seconds &quot;%1&quot; on &quot;%2&quot; is bigger then 60.</source>
+        <translation>&quot;%2&quot;中的秒&quot;%1&quot;大于60。</translation>
+    </message>
+    <message>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="416"/>
+        <source>Value of frame &quot;%1&quot; is invalid.</source>
+        <translation>帧数&quot;%1&quot;非法。</translation>
     </message>
 </context>
 <context>

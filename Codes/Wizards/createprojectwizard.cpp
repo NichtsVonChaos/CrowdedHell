@@ -48,13 +48,13 @@ void CreateProjectWizard::on_toolButtonSelectPath_clicked()
     QFileDialog *projectPathDialog = new QFileDialog(this);
     projectPathDialog->setAcceptMode(QFileDialog::AcceptOpen);
     projectPathDialog->setOption(QFileDialog::ShowDirsOnly, true);
-    projectPathDialog->setDirectory(".");
+    projectPathDialog->setFileMode(QFileDialog::Directory);
+    projectPathDialog->setDirectory(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
     projectPathDialog->setWindowTitle(tr("Select a directory to save your project"));
 
     if(projectPathDialog->exec() == QFileDialog::Accepted)
     {
         QString projectPath = projectPathDialog->selectedFiles()[0];
-        qDebug() << projectPath;
         ui->lineEditPath->setText(projectPath);
     }
 
@@ -63,6 +63,6 @@ void CreateProjectWizard::on_toolButtonSelectPath_clicked()
 
 void CreateProjectWizard::on_toolButtonBackgroundMusic_pressed()
 {
-    QString musicFilePath = QFileDialog::getOpenFileName(this, tr("Select Music File"), qApp->applicationDirPath(), tr("Music File(*.mp3 *.wav)"));
+    QString musicFilePath = QFileDialog::getOpenFileName(this, tr("Select Music File"), QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation), tr("Music File(*.mp3 *.wav)"));
     ui->lineEditBackgroundMusic->setText(musicFilePath);
 };
