@@ -103,144 +103,114 @@
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="40"/>
         <source>Main Workspace</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="205"/>
         <source>Time</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="300"/>
         <source>Frame</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="395"/>
         <source>Speed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="433"/>
-        <source>x0.1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="438"/>
-        <source>x0.5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="443"/>
-        <source>x1.0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="448"/>
-        <source>x1.5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="510"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="138"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="213"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="141"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="225"/>
         <source>No Music</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="564"/>
         <source>Go to previous 50 frames (1s)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="567"/>
         <source>Prev 50</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="574"/>
         <source>Go to previous 5 frames (0.1s)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="577"/>
         <source>Prev 5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="584"/>
         <source>Go to previous frame (0.02s)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="587"/>
         <source>Prev 1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="594"/>
         <source>Play or pause music</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="597"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="610"/>
         <source>Go to next frame (0.02s)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="613"/>
         <source>Next 1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="620"/>
         <source>Go to next 5 frames (0.1s)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="623"/>
         <source>Next 5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="630"/>
         <source>Go to next 50 frames (1s)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="633"/>
         <source>Next 50</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="640"/>
         <source>Mute or unmute music</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="643"/>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="453"/>
-        <source>x2.0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="458"/>
-        <source>x5.0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="742"/>
         <source>Resources Edit Workspace</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="780"/>
@@ -281,22 +251,22 @@
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="837"/>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="953"/>
         <source>Resources</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="995"/>
         <source>Attributes</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="1051"/>
         <source>Actions</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="1095"/>
@@ -366,85 +336,110 @@
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="1175"/>
         <source>Show logger widget</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="1186"/>
         <source>Show actions widget</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="1197"/>
         <source>Show resources widget</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="1208"/>
         <source>Show attributes widget</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="16"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="131"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="18"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="134"/>
         <source>Clear all records</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="17"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="132"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="19"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="135"/>
         <source>(No record)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="26"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="127"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="28"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="130"/>
         <source>English</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="27"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="128"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="29"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="131"/>
         <source>Simplified Chinese</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="28"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="129"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="30"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="132"/>
         <source>Traditional Chinese</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="29"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="130"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="31"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="133"/>
         <source>Japanese</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="143"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="206"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="268"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="146"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="218"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="280"/>
         <source>Music : </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="193"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="205"/>
         <source>Project file &quot;%1&quot; does not exists, remove it from recent project list.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="254"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="266"/>
         <source>Failed to load translation file &quot;%1&quot;.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="274"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="292"/>
         <source>Open fmod official website.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="276"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="294"/>
         <source>Cannot open fmod official website &quot;https://www.fmod.com/&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="362"/>
+        <source>Failed to parse &quot;%1&quot;. Use &quot;m:s[.ms]&quot;.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="369"/>
+        <source>Value of minutes &quot;%1&quot; on &quot;%2&quot; is invalid. Use &quot;m:s[.ms]&quot;.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="376"/>
+        <source>Value of seconds &quot;%1&quot; on &quot;%2&quot; is invalid. Use &quot;m:s[.ms]&quot;.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="381"/>
+        <source>Value of seconds &quot;%1&quot; on &quot;%2&quot; is bigger then 60.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="416"/>
+        <source>Value of frame &quot;%1&quot; is invalid.</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -764,7 +759,7 @@
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="12"/>
         <source>Falied to open database file &quot;%1&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="37"/>
@@ -775,7 +770,7 @@
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="531"/>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="592"/>
         <source>Database is invalid.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="43"/>
@@ -786,7 +781,7 @@
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="537"/>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="598"/>
         <source>Name of data table must be provided.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="49"/>
@@ -797,12 +792,12 @@
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="543"/>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="604"/>
         <source>Data table &quot;%1&quot; has no column.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="63"/>
         <source>Data table &quot;%1&quot; has an unnamed column. Ignore this column.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="98"/>
@@ -816,7 +811,7 @@
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="564"/>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="625"/>
         <source>Failed to execute &quot;%1&quot;, error message : &quot;%2&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="138"/>
@@ -824,7 +819,7 @@
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="357"/>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="462"/>
         <source>A record has an unnamed column. Ignore this column.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="143"/>
@@ -832,19 +827,19 @@
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="362"/>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="467"/>
         <source>Data table &quot;%1&quot; has no column named &quot;%2&quot;. Ignore this column.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="404"/>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="509"/>
         <source>Find no record with condition &quot;%1&quot; on table &quot;%2&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="570"/>
         <location filename="../../Codes/SQLite/sqlitedatabase.cpp" line="631"/>
         <source>Find no record on table &quot;%1&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>

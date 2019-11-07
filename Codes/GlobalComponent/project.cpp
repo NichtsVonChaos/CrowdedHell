@@ -18,6 +18,57 @@ Project::Project(QObject *parent) :
 
 }
 
+bool Project::__loadFromTemporaryPath()
+{
+    QFile projectFile(m_temporaryPath + QString("/") + m_projectName + QString(".chproj"));
+    if(!projectFile.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        emit message(Logger::Type::Error, "Projcet Manager", tr("Open selected project file failed, at : \"%1\".").arg(m_temporaryPath + QString("/") + m_projectName + QString(".chproj")));
+        return false;
+    }
+
+    QTextStream textStream(&projectFile);
+    QStringList datas = textStream.readAll().split("\n");
+    projectFile.close();
+
+    if(datas.size() < 5)
+    {
+        emit message(Logger::Type::Error, "Project", tr("Project file format abnormal."));
+        return false;
+    }
+
+    m_author = datas[2];
+    m_musicFile = datas[4];
+
+    if(!QFile(m_temporaryPath + QString("/") + m_musicFile).exists())
+    {
+        emit message(Logger::Type::Error, "Project", tr("Cannot find the music file of project, at : \"%1\".").arg(m_temporaryPath + QString("/") + m_musicFile));
+        return false;
+    }
+
+    emit message(Logger::Type::Info, "Project", tr("Project \"%1\" opened.").arg(m_projectName));
+    emit message(Logger::Type::Info, "Project", tr("Project temporary path is \"%1\".").arg(m_temporaryPath));
+    QApplication::processEvents();
+    emit projectOpened(m_projectPath + QString("/") + m_projectName + QString(".chproj"));
+    QApplication::processEvents();
+    emit musicSelected(m_temporaryPath + QString("/") + m_musicFile);
+    setChanged();
+
+    return true;
+}
+
+void Project::__clear()
+{
+    m_projectName.clear();
+    m_projectPath.clear();
+    m_temporaryPath.clear();
+    m_changed = false;
+    m_uuid.clear();
+    m_author.clear();
+    m_musicFile.clear();
+    m_createDate = QDateTime();
+}
+
 QString Project::uuid() const
 {
     return m_uuid;
@@ -102,15 +153,13 @@ void Project::newProject()
     if(!projectFile.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
     {
         emit message(Logger::Type::Error, "Project", tr("Create project file failed, at : \"%1\".").arg(m_projectPath + QString("/") + m_projectName + QString(".chproj")));
-        m_projectPath.clear();
-        m_projectName.clear();
+        __clear();
         delete wizard;
         return;
     }
 
     m_uuid = QUuid::createUuid().toString().remove("{").remove("}").remove("-");
     m_temporaryPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QString("/Crowded-Hell-") + m_uuid;
-
 
     QDir tmpDir(m_temporaryPath);
     if(tmpDir.exists())
@@ -120,7 +169,7 @@ void Project::newProject()
     textStream << "This is just a project file for Crowded Hell." << endl;
     textStream << m_uuid << endl;
     textStream << wizard->getAuthor() << endl;
-    textStream << wizard->getDate().toString() << endl;
+    textStream << wizard->getDate().toString(Qt::ISODate) << endl;
     textStream << QFileInfo(musicPath).fileName() << endl;
 
     projectFile.flush();
@@ -128,9 +177,8 @@ void Project::newProject()
 
     if(!QFile::copy(musicPath, projectPath + QString("/") + QFileInfo(musicPath).fileName()))
     {
-        emit message(Logger::Type::Error, "Project", tr("Cannot copy music file from \"%1\" to \"%2\".").arg(musicPath).arg(projectPath + QString("/") + QFileInfo(musicPath).fileName()));
-        m_projectPath.clear();
-        m_projectName.clear();
+        emit message(Logger::Type::Error, "Project", tr("Failed to copy music file from \"%1\" to \"%2\".").arg(musicPath).arg(projectPath + QString("/") + QFileInfo(musicPath).fileName()));
+        __clear();
         delete wizard;
         return;
     }
@@ -139,20 +187,25 @@ void Project::newProject()
     m_createDate = wizard->getDate();
     m_musicFile = QFileInfo(musicPath).fileName();
 
+    if(!QtShell::cp("-a", m_projectPath, m_temporaryPath))
+    {
+        emit message(Logger::Type::Error, "Project", tr("Failed to copy project to temporary path.").arg(m_temporaryPath + QString("/") + m_musicFile));
+        __clear();
+        return;
+    }
+
     emit message(Logger::Type::Info, "Project", tr("Project \"%1\" created.").arg(m_projectName));
     emit message(Logger::Type::Info, "Project", tr("Project temporary path is \"%1\".").arg(m_temporaryPath));
     QApplication::processEvents();
     emit projectOpened(m_projectPath + QString("/") + m_projectName + QString(".chproj"));
     QApplication::processEvents();
-    emit musicSelected(projectPath + QString("/") + QFileInfo(musicPath).fileName());
+    emit musicSelected(m_temporaryPath + QString("/") + QFileInfo(musicPath).fileName());
 
     delete wizard;
 };
 
 void Project::openProject()
 {
-    closeProject();
-
     QString projectFilePath = QFileDialog::getOpenFileName(nullptr, tr("Select a project"), QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation), "Crowded Hell Project(*.chproj)");
     if(projectFilePath.isEmpty())
         return;
@@ -167,7 +220,7 @@ void Project::openProject(const QString &projectFilePath)
     QFile projectFile(projectFilePath);
     if(!projectFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        emit message(Logger::Type::Error, "Projcet Manager", tr("Open selected project file failed, at : \"%1\".").arg(projectFilePath));
+        emit message(Logger::Type::Error, "Projcet Manager", tr("Failed to open selected project file, at : \"%1\".").arg(projectFilePath));
         return;
     }
 
@@ -183,21 +236,45 @@ void Project::openProject(const QString &projectFilePath)
 
     QString projectPath = QFileInfo(projectFilePath).absolutePath();
 
-    closeProject();
-
     m_projectName = QFileInfo(projectFilePath).fileName().remove(QString(".chproj"));
     m_projectPath = QFileInfo(projectFilePath).absolutePath();
     m_uuid = datas[1];
     m_author = datas[2];
-    m_createDate = QDateTime::fromString(datas[3]);
+    m_createDate = QDateTime::fromString(datas[3], Qt::ISODate);
     m_musicFile = datas[4];
 
     m_temporaryPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QString("/Crowded-Hell-") + m_uuid;
-    QDir().mkdir(m_temporaryPath);
-
-    if(!QFile(projectPath + QString("/") + m_musicFile).exists())
+    if(QDir().exists(m_temporaryPath))
     {
-        emit message(Logger::Type::Error, "Project", tr("Cannot find the music file of project, at : \"%1\".").arg(m_projectPath + QString("/") + m_musicFile));
+        if(QMessageBox::question(nullptr, tr("Temporary path"), tr("Find temporary path of project already existed. It may be caused by program's crash without saving changes. Do you want to load project from temporary path to restore unsaved changes?")) == QMessageBox::Yes)
+        {
+            if(__loadFromTemporaryPath())
+                return;
+            else if(QMessageBox::question(nullptr, tr("Failure"), tr("Failed to load project from temporary path. Would you like to remove temporary path and open project? It will discard your unsaved changes.")) == QMessageBox::No)
+            {
+                __clear();
+                return;
+            }
+            else
+                QDir(m_temporaryPath).removeRecursively();
+            m_author = datas[2];
+            m_musicFile = datas[4];
+        }
+        else
+            QDir(m_temporaryPath).removeRecursively();
+    }
+
+    if(!QtShell::cp("-a", m_projectPath, m_temporaryPath))
+    {
+        emit message(Logger::Type::Error, "Project", tr("Failed to make temporary path \"%1\".").arg(m_temporaryPath));
+        __clear();
+        return;
+    }
+
+    if(!QFile(m_temporaryPath + QString("/") + m_musicFile).exists())
+    {
+        emit message(Logger::Type::Error, "Project", tr("Cannot find the music file of project, at : \"%1\".").arg(m_temporaryPath + QString("/") + m_musicFile));
+        __clear();
         return;
     }
 
@@ -206,61 +283,45 @@ void Project::openProject(const QString &projectFilePath)
     QApplication::processEvents();
     emit projectOpened(m_projectPath + QString("/") + m_projectName + QString(".chproj"));
     QApplication::processEvents();
-    emit musicSelected(projectPath + QString("/") + m_musicFile);
+    emit musicSelected(m_temporaryPath + QString("/") + m_musicFile);
 }
 
-void Project::saveChange()
+bool Project::saveChange()
 {
-    if(!QFile::copy(m_musicFile, m_projectPath + QString("/") + QFileInfo(m_musicFile).fileName()))
+    QtShell::rm("-rf", m_projectPath);
+    if(!QtShell::cp("-a", m_temporaryPath, m_projectPath))
     {
-        emit message(Logger::Type::Error, "Project", tr("Cannot copy music file from \"%1\" to \"%2\".").arg(m_musicFile).arg(m_projectPath + QString("/") + QFileInfo(m_musicFile).fileName()));
-        return;
+        emit message(Logger::Type::Error, "Project", tr("Failed to save project. Please back up your changes from temporary path \"%1\".").arg(m_temporaryPath));
+        return false;
     }
 
-    QFile projectFile(m_projectPath + QString("/") + m_projectName + QString(".chproj"));
-    if(!projectFile.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
-        emit message(Logger::Type::Error, "Project", tr("Project file doesn't exist, at : \"%1\".").arg(m_projectPath + QString("/") + m_projectName + QString(".chproj")));
-        return;
-    }
-
-    QTextStream textStream(&projectFile);
-    QStringList datas = textStream.readAll().split("\n");
-    projectFile.close();
-
-    if(datas.size() < 5)
-    {
-        emit message(Logger::Type::Error, "Project", tr("Project file format abnormal."));
-        return;
-    }
-
-    if(QFile(m_projectPath + "/" + datas[4]).exists())
-        if(!QFile(m_projectPath + "/" + datas[4]).remove())
-            emit message(Logger::Type::Warning, "Project", tr("Failed remove music file \"%1\".").arg(m_projectPath + "/" + datas[3]));
-
-    datas[4] = QFileInfo(m_musicFile).fileName();
-
-    if(!projectFile.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate))
-    {
-        emit message(Logger::Type::Error, "Project", tr("Project file doesn't exist, at : \"%1\".").arg(m_projectPath + QString("/") + m_projectName + QString(".chproj")));
-        return;
-    }
-
-    foreach(auto i, datas)
-        textStream << i << endl;
-    projectFile.flush();
-
+    m_changed = false;
+    return true;
 }
 
-void Project::saveTo(const QString &path)
+void Project::saveTo()
 {
+    QFileDialog *projectPathDialog = new QFileDialog;
+    projectPathDialog->setAcceptMode(QFileDialog::AcceptOpen);
+    projectPathDialog->setOption(QFileDialog::ShowDirsOnly, true);
+    projectPathDialog->setFileMode(QFileDialog::Directory);
+    projectPathDialog->setDirectory(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
+    projectPathDialog->setWindowTitle(tr("Select a directory to save"));
 
-};
+    if(projectPathDialog->exec() == QFileDialog::Accepted)
+    {
+        QString projectPath = projectPathDialog->selectedFiles()[0];
+        if(!QtShell::cp("-a", m_temporaryPath, projectPath + QString("/") + m_projectName))
+            emit message(Logger::Type::Error, "Project", tr("Failed to save project to \"%1\".").arg(projectPath + QString("/") + m_projectName));
+    }
 
-bool Project::closeProject()
+    delete projectPathDialog;
+}
+
+int Project::closeProject()
 {
     if(!isValid())
-        return true;
+        return 0;
 
     if(m_changed)
     {
@@ -269,12 +330,14 @@ bool Project::closeProject()
             shouldSave = QMessageBox::question(nullptr, tr("Confirm"), tr("Would you like to save your project before close it?"), QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel, QMessageBox::Yes);
 
         if(shouldSave == QMessageBox::Cancel)
-            return false;
+            return 1;
 
         if(options()->autoSave() || shouldSave == QMessageBox::Yes)
-            saveChange();
+            if(!saveChange())
+                return 2;
     }
 
+    emit musicResetRequire();
     QDir(m_temporaryPath).removeRecursively();
 
     emit projectClosed();
@@ -282,13 +345,7 @@ bool Project::closeProject()
     emit message(Logger::Type::Info, "Project", tr("Remove project temporary path at \"%1\".").arg(m_temporaryPath));
     emit message(Logger::Type::Info, "Project", tr("Project \"%1\" closed.").arg(m_projectName));
 
-    m_projectName.clear();
-    m_projectPath.clear();
-    m_temporaryPath.clear();
-    m_author.clear();
-    m_musicFile.clear();
-
-    m_changed = false;
+    __clear();
     return true;
 }
 
@@ -300,6 +357,7 @@ void Project::reselectMusic()
 
 void Project::reselectMusic(const QString &musicPath)
 {
+    emit musicResetRequire();
     if(!isValid())
     {
         emit message(Logger::Type::Error, "Project", tr("No project is open. Please create or open a project before."));
@@ -314,15 +372,50 @@ void Project::reselectMusic(const QString &musicPath)
 
     if(!QFile::copy(musicPath, m_temporaryPath + QString("/") + QFileInfo(musicPath).fileName()))
     {
-        emit message(Logger::Type::Error, "Project", tr("Cannot copy music file from \"%1\" to \"%2\".").arg(musicPath).arg(m_projectPath + QString("/") + QFileInfo(musicPath).fileName()));
+        emit message(Logger::Type::Error, "Project", tr("Failed to copy music file from \"%1\" to \"%2\".").arg(musicPath).arg(m_temporaryPath + QString("/") + QFileInfo(musicPath).fileName()));
         return;
     }
 
-    m_musicFile = m_temporaryPath + QString("/") + QFileInfo(musicPath).fileName();
+    QFile projectFileRead(m_temporaryPath + QString("/") + m_projectName + QString(".chproj"));
+    if(!projectFileRead.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        emit message(Logger::Type::Error, "Projcet Manager", tr("Failed to open project file on temporary path, at : \"%1\".").arg(m_temporaryPath + QString("/") + m_projectName + QString(".chproj")));
+        return;
+    }
+
+    QTextStream textStreamRead(&projectFileRead);
+    QStringList datas = textStreamRead.readAll().split("\n");
+    projectFileRead.close();
+
+    if(datas.size() < 5)
+    {
+        emit message(Logger::Type::Error, "Project", tr("Project file format abnormal."));
+        return;
+    }
+
+    datas[4] = QFileInfo(musicPath).fileName();
+
+    QFile projectFileWrite(m_temporaryPath + QString("/") + m_projectName + QString(".chproj"));
+    if(!projectFileWrite.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
+    {
+        emit message(Logger::Type::Error, "Projcet Manager", tr("Failed to open project file on temporary path, at : \"%1\".").arg(m_temporaryPath + QString("/") + m_projectName + QString(".chproj")));
+        return;
+    }
+
+    QTextStream textStreamWrite(&projectFileWrite);
+    for(int i = 0; i < 5; i++)
+        textStreamWrite << datas[i] << endl;
+
+    projectFileWrite.flush();
+    projectFileWrite.close();
+
+    if(!QFile(m_temporaryPath + QString("/") + m_musicFile).remove())
+        emit message(Logger::Type::Error, "Warning", tr("Failed to remove old music file \"%1\".").arg(m_musicFile));
+
+    m_musicFile = QFileInfo(musicPath).fileName();
 
     QApplication::processEvents();
-    emit musicSelected(m_musicFile);
-
+    emit musicSelected(m_temporaryPath + QString("/") + m_musicFile);
     setChanged();
 
     return;

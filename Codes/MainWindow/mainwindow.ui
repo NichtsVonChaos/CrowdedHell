@@ -68,8 +68,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>916</width>
-             <height>708</height>
+             <width>902</width>
+             <height>696</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout">
@@ -182,7 +182,7 @@
                <item>
                 <layout class="QVBoxLayout" name="verticalLayout_10">
                  <item>
-                  <widget class="QLabel" name="label_4">
+                  <widget class="QLabel" name="labelTime">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                      <horstretch>0</horstretch>
@@ -230,7 +230,7 @@
                     </size>
                    </property>
                    <property name="text">
-                    <string notr="true">Unusable</string>
+                    <string notr="true">0:0</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -258,7 +258,7 @@
                     </size>
                    </property>
                    <property name="text">
-                    <string notr="true">/0:0.0</string>
+                    <string notr="true">/0:0</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -277,7 +277,7 @@
                <item>
                 <layout class="QVBoxLayout" name="verticalLayout_8">
                  <item>
-                  <widget class="QLabel" name="label">
+                  <widget class="QLabel" name="labelFrame">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                      <horstretch>0</horstretch>
@@ -325,7 +325,7 @@
                     </size>
                    </property>
                    <property name="text">
-                    <string notr="true">Unusable</string>
+                    <string notr="true">0</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -372,7 +372,7 @@
                <item>
                 <layout class="QVBoxLayout" name="verticalLayout_9">
                  <item>
-                  <widget class="QLabel" name="label_3">
+                  <widget class="QLabel" name="labelSpeed">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                      <horstretch>0</horstretch>
@@ -430,32 +430,32 @@
                    </property>
                    <item>
                     <property name="text">
-                     <string>x0.1</string>
+                     <string notr="true">x0.2</string>
                     </property>
                    </item>
                    <item>
                     <property name="text">
-                     <string>x0.5</string>
+                     <string notr="true">x0.5</string>
                     </property>
                    </item>
                    <item>
                     <property name="text">
-                     <string>x1.0</string>
+                     <string notr="true">x1.0</string>
                     </property>
                    </item>
                    <item>
                     <property name="text">
-                     <string>x1.5</string>
+                     <string notr="true">x1.5</string>
                     </property>
                    </item>
                    <item>
                     <property name="text">
-                     <string>x2.0</string>
+                     <string notr="true">x2.0</string>
                     </property>
                    </item>
                    <item>
                     <property name="text">
-                     <string>x5.0</string>
+                     <string notr="true">x5.0</string>
                     </property>
                    </item>
                   </widget>
@@ -822,6 +822,9 @@
     <addaction name="separator"/>
     <addaction name="actionExport"/>
     <addaction name="actionReselectMusic"/>
+    <addaction name="separator"/>
+    <addaction name="actionOpenProjectPath"/>
+    <addaction name="actionOpenTemporaryPath"/>
    </widget>
    <widget class="QMenu" name="menuLogger">
     <property name="title">
@@ -1027,7 +1030,7 @@
           <x>0</x>
           <y>0</y>
           <width>98</width>
-          <height>349</height>
+          <height>326</height>
          </rect>
         </property>
        </widget>
@@ -1083,7 +1086,7 @@
           <x>0</x>
           <y>0</y>
           <width>98</width>
-          <height>347</height>
+          <height>325</height>
          </rect>
         </property>
        </widget>
@@ -1208,6 +1211,16 @@
    </property>
    <property name="text">
     <string>Show attributes widget</string>
+   </property>
+  </action>
+  <action name="actionOpenProjectPath">
+   <property name="text">
+    <string>Open project path</string>
+   </property>
+  </action>
+  <action name="actionOpenTemporaryPath">
+   <property name="text">
+    <string>Open temporary path</string>
    </property>
   </action>
   <action name="actionResetLayout">

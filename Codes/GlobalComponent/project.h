@@ -88,6 +88,13 @@ signals:
     void message(Logger::Type type, const QString &module, const QString &message);
 
     /**
+     * @brief musicResetRequire
+     * Before close project or reselect music, must release current music.
+     * Emit this signal let MusicPlayer release current music.
+     */
+    void musicResetRequire();
+
+    /**
      * @brief musicSelected
      * Emit a signal for selected music when create new project.
      */
@@ -130,7 +137,7 @@ public slots:
      * @brief saveChange
      * Save all changes of project.
      */
-    void saveChange();
+    bool saveChange();
 
     /**
      * @brief saveTo
@@ -138,13 +145,17 @@ public slots:
      * @param path
      * The another path to save the project.
      */
-    void saveTo(const QString &path);
+    void saveTo();
 
     /**
      * @brief closeProject
      * Close current project
+     * @return
+     * 0: Successfully.
+     * 1: Cancel.
+     * 2: Failed on save.
      */
-    bool closeProject();
+    int closeProject();
 
     /**
      * @brief reselectMusic
@@ -172,6 +183,9 @@ private:
     QString m_author;
     QDateTime m_createDate;
     QString m_musicFile;
+
+    bool __loadFromTemporaryPath();
+    void __clear();
 };
 
 /**

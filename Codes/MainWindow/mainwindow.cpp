@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent) :
     setCorner(Qt::Corner::BottomRightCorner, Qt::DockWidgetArea::RightDockWidgetArea);
 
     ui->actionReselectMusic->setEnabled(false);
+    ui->lineEditTime->setEnabled(false);
+    ui->lineEditFrame->setEnabled(false);
 
     m_actionClearRecent = new QAction(tr("Clear all records"));
     m_actionNoRecord = new QAction(tr("(No record)"));
@@ -49,12 +51,17 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this, &MainWindow::muted, m_musicPlayer, &MusicPlayer::setMuted, Qt::UniqueConnection);
     connect(m_musicPlayer, &MusicPlayer::paused, this, &MainWindow::pauseMusic, Qt::UniqueConnection);
     connect(m_musicPlayer, &MusicPlayer::muted, this, &MainWindow::setMuted, Qt::UniqueConnection);
+    connect(m_musicPlayer, &MusicPlayer::positionChanged, this, &MainWindow::setMusicPosition, Qt::UniqueConnection);
     connect(m_actionClearRecent, &QAction::triggered, options(), &Options::clearRecentProject, Qt::UniqueConnection);
     connect(m_actionClearRecent, &QAction::triggered, this, &MainWindow::refreshRecentProject, Qt::UniqueConnection);
     connect(ui->actionNewProject, &QAction::triggered, m_musicPlayer, &MusicPlayer::pause, Qt::UniqueConnection);
     connect(ui->actionNewProject, &QAction::triggered, project(), &Project::newProject, Qt::UniqueConnection);
     connect(ui->actionOpenProject, &QAction::triggered, m_musicPlayer, &MusicPlayer::pause, Qt::UniqueConnection);
     connect(ui->actionOpenProject, &QAction::triggered, project(), static_cast<void(Project::*)()>(&Project::openProject), Qt::UniqueConnection);
+    connect(ui->actionSave, &QAction::triggered, project(), &Project::saveChange, Qt::UniqueConnection);
+    connect(ui->actionSaveTo, &QAction::triggered, project(), &Project::saveTo, Qt::UniqueConnection);
+    connect(ui->actionSaveAndClose, &QAction::triggered, project(), &Project::saveChange, Qt::UniqueConnection);
+    connect(ui->actionSaveAndClose, &QAction::triggered, project(), &Project::closeProject, Qt::UniqueConnection);
     connect(ui->actionCloseProject, &QAction::triggered, project(), &Project::closeProject, Qt::UniqueConnection);
     connect(ui->actionExit, &QAction::triggered, this, &MainWindow::close);
     connect(ui->menuRecentProject, &QMenu::triggered, this, &MainWindow::openRecentProject, Qt::UniqueConnection);
@@ -70,13 +77,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->dockWidgetActions, &QDockWidget::visibilityChanged, ui->actionShowActionsWidget, &QAction::setChecked, Qt::UniqueConnection);
     connect(ui->actionShowAttributesWidget, &QAction::triggered, ui->dockWidgetAttributes, &QDockWidget::setVisible, Qt::UniqueConnection);
     connect(ui->dockWidgetAttributes, &QDockWidget::visibilityChanged, ui->actionShowAttributesWidget, &QAction::setChecked, Qt::UniqueConnection);
-    connect(ui->pushButtonFmod, &QPushButton::clicked, this, &MainWindow::openFmod);
     connect(project(), &Project::projectOpened, options(), &Options::addRecentProject, Qt::UniqueConnection);
     connect(project(), &Project::projectOpened, this, &MainWindow::projectOpened, Qt::UniqueConnection);
     connect(project(), &Project::projectClosed, this, &MainWindow::projectClosed, Qt::UniqueConnection);
-    connect(project(), &Project::projectClosed, m_musicPlayer, &MusicPlayer::reset, Qt::UniqueConnection);
     connect(project(), &Project::musicSelected, m_musicPlayer, &MusicPlayer::setMusicFile, Qt::UniqueConnection);
     connect(project(), &Project::musicSelected, this, &MainWindow::changeMusic, Qt::UniqueConnection);
+    connect(project(), &Project::musicResetRequire, m_musicPlayer, &MusicPlayer::reset, Qt::UniqueConnection);
 
     refreshRecentProject();
     if(!options()->mainWindowState().isEmpty())
@@ -101,16 +107,27 @@ void MainWindow::showEvent(QShowEvent *ev)
 
 void MainWindow::closeEvent(QCloseEvent *ev)
 {
-    if(!project()->closeProject())
-        ev->ignore();
-    else
+    switch(project()->closeProject())
     {
-        options()->setMainWindowState(saveState());
-        options()->setMainWindowGeometry(saveGeometry());
-        options()->setMaxWindowStart(isMaximized());
-        options()->writeOptions();
-        QMainWindow::closeEvent(ev);
-        ev->accept();
+        case 0:
+            options()->setMainWindowState(saveState());
+            options()->setMainWindowGeometry(saveGeometry());
+            options()->setMaxWindowStart(isMaximized());
+            options()->writeOptions();
+            QMainWindow::closeEvent(ev);
+            ev->accept();
+        break;
+
+        case 1:
+            ev->ignore();
+        break;
+
+        case 2:
+            if(QMessageBox::question(nullptr, tr("Failure"), tr("Error occurred when save project. Force exit?"), QMessageBox::StandardButtons(QMessageBox::Yes | QMessageBox::No), QMessageBox::No) == QMessageBox::No)
+                ev->ignore();
+            else
+                ev->accept();
+        break;
     }
 }
 
@@ -160,8 +177,17 @@ void MainWindow::pauseMusic(bool paused, const QObject *sender)
     if(sender == nullptr)
         sender = this;
 
-    ui->pushButtonPause->setChecked(paused);
+    if(sender != ui->pushButtonPause)
+        ui->pushButtonPause->setChecked(paused);
+    ui->lineEditTime->setEnabled(paused);
+    ui->lineEditFrame->setEnabled(paused);
     emit musicPaused(paused, sender);
+}
+
+void MainWindow::setMusicPosition(unsigned int milliseconds, const QObject *sender)
+{
+    ui->lineEditTime->setText(__generateStringFromTime(milliseconds));
+    ui->lineEditFrame->setText(QString::number(m_musicPlayer->position() / 50));
 }
 
 void MainWindow::setMuted(bool muted, const QObject *sender)
@@ -266,14 +292,12 @@ void MainWindow::updateVolumeLable(float volume)
 void MainWindow::changeMusic(const QString &musicFile)
 {
     ui->labelMusic->setText(tr("Music : ") + QFileInfo(musicFile).completeBaseName());
-}
-
-void MainWindow::openFmod()
-{
-    if(QDesktopServices::openUrl(QUrl("https://www.fmod.com/")))
-        message(Logger::Type::Info, "Main Window", tr("Open fmod official website."));
-    else
-        message(Logger::Type::Warning, "Main Window", tr("Cannot open fmod official website \"https://www.fmod.com/\"."));
+    ui->labelTotalTime->setText(QString("/") + __generateStringFromTime(m_musicPlayer->length()));
+    ui->labelTotalFrame->setText(QString("/") + QString::number(m_musicPlayer->length() / 50));
+    ui->lineEditTime->setText(__generateStringFromTime(0));
+    ui->lineEditFrame->setText(QString::number(0));
+    ui->lineEditTime->setEnabled(true);
+    ui->lineEditFrame->setEnabled(true);
 }
 
 void MainWindow::on_actionHideAllInfoTypeMessage_triggered(bool checked)
@@ -296,12 +320,12 @@ void MainWindow::on_actionExportLogToFile_triggered()
 
 void MainWindow::on_pushButtonPause_clicked(bool checked)
 {
-    emit musicPaused(checked, this);
+    emit musicPaused(checked, ui->pushButtonPause);
 }
 
 void MainWindow::on_pushButtonMute_clicked(bool checked)
 {
-    emit muted(checked, this);
+    emit muted(checked, ui->pushButtonMute);
 }
 
 void MainWindow::on_pushButtonNext1_released()
@@ -363,4 +387,107 @@ void MainWindow::on_actionResetLayout_triggered()
                             "\0\a\xff\xff\0\0\x3\x8b\0\0\x2"
                             "\xd6\0\0\0\x1\0\0\0\x2\0\0\0\x1"
                             "\0\0\0\x2\xfc\0\0\0\0", 328));
+}
+
+bool MainWindow::__readTimeFromString(const QString &time, unsigned int &milliseconds)
+{
+    bool ok = false;
+
+    QStringList timeSplitted = time.split(QRegExp("[:]"), QString::SkipEmptyParts);
+    if(timeSplitted.size() != 2)
+    {
+        emit message(Logger::Type::Error, "Main Window", tr("Failed to parse \"%1\". Use \"m:s[.ms]\".").arg(time));
+        return false;
+    }
+
+    milliseconds = timeSplitted[0].toUInt(&ok) * 60000;
+    if(!ok)
+    {
+        emit message(Logger::Type::Error, "Main Window", tr("Value of minutes \"%1\" on \"%2\" is invalid. Use \"m:s[.ms]\".").arg(timeSplitted[0]).arg(time));
+        return false;
+    }
+
+    double seconds = timeSplitted[1].toDouble(&ok);
+    if(!ok)
+    {
+        emit message(Logger::Type::Error, "Main Window", tr("Value of seconds \"%1\" on \"%2\" is invalid. Use \"m:s[.ms]\".").arg(timeSplitted[1]).arg(time));
+        return false;
+    }
+    if(seconds >= 60)
+    {
+        emit message(Logger::Type::Error, "Main Window", tr("Value of seconds \"%1\" on \"%2\" is bigger then 60.").arg(timeSplitted[1]).arg(time));
+        return false;
+    }
+    milliseconds += unsigned(seconds * 1000);
+
+    return true;
+}
+
+QString MainWindow::__generateStringFromTime(unsigned int milliseconds)
+{
+    QString time;
+    time = QString::number(milliseconds / 60000);
+    time += ":";
+    time += QString::number(double(milliseconds % 60000) / 1000.0);
+    return time;
+}
+
+void MainWindow::on_lineEditTime_editingFinished()
+{
+    unsigned int milliseconds = 0;
+    if(!__readTimeFromString(ui->lineEditTime->text(), milliseconds))
+    {
+        ui->lineEditTime->setText(__generateStringFromTime(m_musicPlayer->position()));
+        return;
+    }
+    m_musicPlayer->setPosition(milliseconds);
+}
+
+void MainWindow::on_lineEditFrame_editingFinished()
+{
+    bool ok = false;
+    unsigned int millisecond = ui->lineEditFrame->text().toUInt(&ok) * 50;
+    if(!ok)
+    {
+        ui->lineEditFrame->setText(QString::number(m_musicPlayer->position() / 50));
+        emit message(Logger::Type::Error, "Main Window", tr("Value of frame \"%1\" is invalid.").arg(ui->lineEditFrame->text()));
+        return;
+    }
+    m_musicPlayer->setPosition(millisecond);
+}
+
+void MainWindow::on_comboBoxSpeed_currentIndexChanged(int index)
+{
+    const float speed[] = {0.2f, 0.5f, 1.f, 1.5f, 2.0f, 5.0f};
+    m_musicPlayer->setSpeed(speed[index], ui->comboBoxSpeed);
+}
+
+void MainWindow::on_pushButtonFmod_clicked()
+{
+    if(QDesktopServices::openUrl(QUrl("https://www.fmod.com/")))
+        message(Logger::Type::Info, "Main Window", tr("Open fmod official website."));
+    else
+        message(Logger::Type::Warning, "Main Window", tr("Cannot open fmod official website \"https://www.fmod.com/\"."));
+}
+
+void MainWindow::on_actionOpenProjectPath_triggered()
+{
+    if(!project()->projectPath().isEmpty())
+        if(QDesktopServices::openUrl(QUrl(QString("file://") + project()->projectPath())))
+            message(Logger::Type::Info, "Main Window", tr("Open project path."));
+        else
+            message(Logger::Type::Warning, "Main Window", tr("Cannot open project path \"%1\".").arg(project()->projectPath()));
+    else
+        message(Logger::Type::Warning, "Main Window", tr("No project is open. Please create or open a project before."));
+}
+
+void MainWindow::on_actionOpenTemporaryPath_triggered()
+{
+    if(!project()->projectPath().isEmpty())
+        if(QDesktopServices::openUrl(QUrl(QString("file://") + project()->temporaryPath())))
+            message(Logger::Type::Info, "Main Window", tr("Open project temporary path."));
+        else
+            message(Logger::Type::Warning, "Main Window", tr("Cannot open project temporary path \"%1\".").arg(project()->temporaryPath()));
+    else
+        message(Logger::Type::Warning, "Main Window", tr("No project is open. Please create or open a project before."));
 }
