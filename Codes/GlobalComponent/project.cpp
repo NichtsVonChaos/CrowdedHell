@@ -80,6 +80,56 @@ void Project::initialze()
     m_initilized = true;
 }
 
+bool Project::execute(const QString &operation, const QStringList &options, const QString &target)
+{
+    const static QString tab = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+    const static QStringList validOptions =
+    {
+        "d", "discard-changes",
+        "f", "force-close",
+        "s", "save-before",
+        "x", "save-after",
+    };
+
+    for(const auto &option : options)
+        if(!validOptions.contains(option))
+        {
+            emit message(Logger::Type::Error, "Command", tr("Unknown option \"%1\" for \"%2\", use \"%2 ?\" or \"%2 help\" to learn more.").arg(option).arg("project"));
+            return false;
+        }
+
+    if(operation.isEmpty())
+        ;
+    else if(operation == "?" || operation == "help")
+    {
+        const QString help = tr("Command Line Helper") + QString("<br />") +
+                tab + tr("MODULE") + QString("<br />") +
+                tab + tab + QString("project") + QString("<br />") +
+                tab + QString("OPERATIONS") + QString("<br />") +
+                tab + tab + QString("?, help : ") + tr("List all usable commands.") + QString("<br />") +
+                tab + tab + QString("close : ") + tr("Close current project. It will raise a message box for asking whether save project, use --save-before for auto save.") + QString("<br />") +
+                tab + tab + QString("open <path> : ") + tr("Open a project. It will automatically call \"project close\" before operation if a project is open.") + QString("<br />") +
+                tab + QString("OPTIONS") + QString("<br />") +
+                tab + tab + QString("-d, --discard-changes : ") + tr("Discard all changes, cover temporary path with origin project. Note its priority is higer then --save-before and --force-close.") + QString("<br />") +
+                tab + tab + QString("-f, --force-close : ") + tr("Force close current project, without either saving changes or removing teporary path. Only usable for operation \"close\".") + QString("<br />") +
+                tab + tab + QString("-s, --save-before : ") + tr("Save project before operation.") + QString("<br />") +
+                tab + tab + QString("-x, --save-after : ") + tr("Save project after operation. Not usable for operation \"close\".") + QString("<br />");
+
+        emit message(Logger::Type::Tip, "Command", help);
+    }
+    else if(operation == "open")
+    {
+
+    }
+    else
+    {
+        emit message(Logger::Type::Error, "Command", tr("Invalid operation \"%1\" of \"%2\". Type \"%2 help\" or \"%2 ?\" to learn more.").arg(operation).arg("project"));
+        return false;
+    }
+
+    return true;
+}
+
 bool Project::isValid() const
 {
     return !m_projectName.isEmpty() && m_initilized;
@@ -403,7 +453,7 @@ void Project::reselectMusic(const QString &musicPath)
     }
 
     QTextStream textStreamWrite(&projectFileWrite);
-    for(int i = 0; i < 5; i++)
+    for(int i = 0; i < 5; ++i)
         textStreamWrite << datas[i] << endl;
 
     projectFileWrite.flush();

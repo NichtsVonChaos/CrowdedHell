@@ -8,7 +8,6 @@
 #include <QStringList>
 #include <QDockWidget>
 #include "customfunctions.h"
-#include "Codes/MainWindow/perferedwidget.h"
 
 /**
  * @brief The Language enum

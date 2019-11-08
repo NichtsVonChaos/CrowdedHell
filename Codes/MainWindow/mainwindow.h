@@ -44,44 +44,27 @@ public slots:
     void setLanguage(Language language, const QObject *sender = nullptr);
     void updateVolumeLable(float volume);
     void changeMusic(const QString &musicFile);
+    bool commandParse(const QString &command);
 
 private slots:
     void languageButtonClicked(QAction *action);
-
     void on_actionHideAllInfoTypeMessage_triggered(bool checked);
-
     void on_actionAlwaysSaveProjectBeforeClose_triggered(bool checked);
-
     void on_actionExportLogToFile_triggered();
-
     void on_pushButtonPause_clicked(bool checked);
-
     void on_pushButtonMute_clicked(bool checked);
-
     void on_pushButtonNext1_released();
-
     void on_pushButtonNext5_released();
-
     void on_pushButtonNext50_released();
-
     void on_pushButtonPrev1_released();
-
     void on_pushButtonPrev5_released();
-
     void on_pushButtonPrev50_released();
-
     void on_actionResetLayout_triggered();
-
     void on_lineEditTime_editingFinished();
-
     void on_lineEditFrame_editingFinished();
-
     void on_comboBoxSpeed_currentIndexChanged(int index);
-
     void on_pushButtonFmod_clicked();
-
     void on_actionOpenProjectPath_triggered();
-
     void on_actionOpenTemporaryPath_triggered();
 
 private:

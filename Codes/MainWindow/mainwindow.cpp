@@ -42,6 +42,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(options(), &Options::volumeChanged, ui->sliderVolume, &VolumeSlider::setVolume, Qt::UniqueConnection);
     connect(options(), &Options::volumeChanged, this, &MainWindow::updateVolumeLable, Qt::UniqueConnection);
     connect(this, &MainWindow::message, logger(), &Logger::message, Qt::UniqueConnection);
+    connect(ui->terminal->commandLineEdit(), &CommandLineEdit::sendCommand, this, &MainWindow::commandParse);
 
     options()->readOptions();
     m_musicPlayer = new MusicPlayer(this);
@@ -69,8 +70,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionReselectMusic, &QAction::triggered, project(), static_cast<void(Project::*)()>(&Project::reselectMusic), Qt::UniqueConnection);
     connect(ui->actionClearLogger, &QAction::triggered, logger(), &Logger::clear);
     connect(ui->menuLanguage, &QMenu::triggered, this, &MainWindow::languageButtonClicked, Qt::UniqueConnection);
-    connect(ui->actionShowLoggerWidget, &QAction::triggered, ui->dockWidgetLogger, &QDockWidget::setVisible, Qt::UniqueConnection);
-    connect(ui->dockWidgetLogger, &QDockWidget::visibilityChanged, ui->actionShowLoggerWidget, &QAction::setChecked, Qt::UniqueConnection);
+    connect(ui->actionShowLoggerWidget, &QAction::triggered, ui->dockWidgetTerminal, &QDockWidget::setVisible, Qt::UniqueConnection);
+    connect(ui->dockWidgetTerminal, &QDockWidget::visibilityChanged, ui->actionShowLoggerWidget, &QAction::setChecked, Qt::UniqueConnection);
     connect(ui->actionShowResourcesWidget, &QAction::triggered, ui->dockWidgetResources, &QDockWidget::setVisible, Qt::UniqueConnection);
     connect(ui->dockWidgetResources, &QDockWidget::visibilityChanged, ui->actionShowResourcesWidget, &QAction::setChecked, Qt::UniqueConnection);
     connect(ui->actionShowActionsWidget, &QAction::triggered, ui->dockWidgetActions, &QDockWidget::setVisible, Qt::UniqueConnection);
@@ -300,6 +301,334 @@ void MainWindow::changeMusic(const QString &musicFile)
     ui->lineEditFrame->setEnabled(true);
 }
 
+bool MainWindow::commandParse(const QString &command)
+{
+    const static QStringList usableCommands = {
+        "?", "help", "project", "true", "false"
+    };
+    const static QString tab = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+
+    QString modifiedCommand = command;
+
+    // Search ()
+    if(modifiedCommand.contains('('))
+    {
+        int inBracket = 0;
+        bool inQuote = false;
+        int start = 0;
+        for(int i = 0; i < modifiedCommand.size(); ++i)
+        {
+            if(modifiedCommand[i] == '\"')
+                inQuote = !inQuote;
+            else if(modifiedCommand[i] == '(' && !inQuote)
+            {
+                if(inBracket == 0)
+                    start = i + 1;
+                ++inBracket;
+            }
+            else if(modifiedCommand[i] == ')' && !inQuote)
+            {
+                if(inBracket == 0)
+                {
+                    emit message(Logger::Type::Error, "Command", tr("Mismatched bracket."));
+                    return false;
+                }
+                else if(inBracket == 1)
+                {
+                    if(i == start)
+                    {
+                        modifiedCommand = modifiedCommand.replace(start - 1, 1, QString(" true "));
+                        break;
+                    }
+                    QString inBracketCommand = modifiedCommand.mid(start, i - start);
+                    if(commandParse(inBracketCommand))
+                        modifiedCommand = modifiedCommand.replace(start - 1, i - start + 2, QString(" true "));
+                    else
+                        modifiedCommand = modifiedCommand.replace(start - 1, i - start + 2, QString(" false "));
+                    break;
+                }
+                else
+                    --inBracket;
+            }
+
+            if(i == modifiedCommand.size() - 1)
+            {
+                emit message(Logger::Type::Error, "Command", tr("Mismatched bracket."));
+                return false;
+            }
+        }
+        return commandParse(modifiedCommand);
+    }
+    else if(modifiedCommand.contains(')'))
+    {
+        emit message(Logger::Type::Error, "Command", tr("Mismatched bracket."));
+        return false;
+    }
+
+    // Search '|'
+    if(modifiedCommand.contains('|'))
+    {
+        QStringList orConditions;
+        if(modifiedCommand.contains('\"'))
+        {
+            bool inQuote = false;
+            int start = 0;
+            for(int i = 0; i < modifiedCommand.size(); ++i)
+            {
+                if(modifiedCommand[i] == '\"')
+                    inQuote = !inQuote;
+                else if(modifiedCommand[i] == '|' && !inQuote)
+                {
+                    if(i == start)
+                    {
+                        ++start;
+                        continue;
+                    }
+                    orConditions << modifiedCommand.mid(start, i - start);
+                    start = i + 1;
+                }
+            }
+        }
+        else
+            orConditions = modifiedCommand.split('|', QString::SkipEmptyParts);
+
+        for(int i = 0; i < orConditions.size(); ++i)
+            if(commandParse(orConditions[i]))
+                return true;
+        return false;
+    }
+
+    // Search '&'
+    if(modifiedCommand.contains('&'))
+    {
+        QStringList andConditions;
+        if(modifiedCommand.contains('\"'))
+        {
+            bool inQuote = false;
+            int start = 0;
+            for(int i = 0; i < modifiedCommand.size(); ++i)
+            {
+                if(modifiedCommand[i] == '\"')
+                    inQuote = !inQuote;
+                else if(modifiedCommand[i] == '&' && !inQuote)
+                {
+                    if(i == start)
+                    {
+                        ++start;
+                        continue;
+                    }
+                    andConditions << modifiedCommand.mid(start, i - start);
+                    start = i + 1;
+                }
+            }
+        }
+        else
+            andConditions = modifiedCommand.split('&', QString::SkipEmptyParts);
+
+        for(int i = 0; i < andConditions.size(); ++i)
+            if(!commandParse(andConditions[i]))
+                return false;
+        return true;
+    }
+
+    // Search '+'
+    if(modifiedCommand.contains('+'))
+    {
+        QStringList addConditions;
+        if(modifiedCommand.contains('\"'))
+        {
+            bool inQuote = false;
+            int start = 0;
+            for(int i = 0; i < modifiedCommand.size(); ++i)
+            {
+                if(modifiedCommand[i] == '\"')
+                    inQuote = !inQuote;
+                else if(modifiedCommand[i] == '+' && !inQuote)
+                {
+                    if(i == start)
+                    {
+                        ++start;
+                        continue;
+                    }
+                    addConditions << modifiedCommand.mid(start, i - start);
+                    start = i + 1;
+                }
+            }
+        }
+        else
+            addConditions = modifiedCommand.split('+', QString::SkipEmptyParts);
+
+        bool boolean = true;
+        for(int i = 0; i < addConditions.size(); ++i)
+            if(!commandParse(addConditions[i]))
+                boolean = false;
+        return boolean;
+    }
+
+    // Parse command
+    QString module, operation, target;
+    QStringList options;
+
+    if(modifiedCommand.contains('\"'))
+    {
+        bool inQuote = false;
+        int start = 0;
+        for(int i = 0; i < modifiedCommand.size(); i++)
+        {
+            if(modifiedCommand[i] == '\"')
+            {
+                QString arg = modifiedCommand.mid(start, i - start);
+                if(arg.isEmpty())
+                {
+                    if(inQuote)
+                        emit message(Logger::Type::Warning, "Command", tr("Ignored empty string."));
+                }
+                else if(module.isEmpty())
+                    module = arg;
+                else if(arg.at(0) == '-')
+                {
+                    if(arg.size() == 1)
+                        emit message(Logger::Type::Warning, "Command", tr("Ignored empty option."));
+                    else if(arg.at(1) == '-')
+                    {
+                        if(arg.size() == 2)
+                            emit message(Logger::Type::Warning, "Command", tr("Ignored empty option."));
+                        else
+                            options << arg.mid(2);
+                    }
+                    else for(int j = 1; j < arg.size(); ++j)
+                        options << arg.at(j);
+                }
+                else if(operation.isEmpty())
+                    operation = arg;
+                else if(target.isEmpty())
+                    target = arg;
+                else
+                {
+                    emit message(Logger::Type::Error, "Command", tr("Too much arguments. Type \"<module> help\" or \"<module> ?\" to learn more."));
+                    return false;
+                }
+                start = i + 1;
+                inQuote = !inQuote;
+            }
+            else if(!inQuote)
+            {
+                if(modifiedCommand[i] == ' ')
+                {
+                    QString arg = modifiedCommand.mid(start, i - start);
+                    if(!arg.isEmpty())
+                    {
+                        if(module.isEmpty())
+                            module = arg;
+                        else if(arg.at(0) == '-')
+                        {
+                            if(arg.size() == 1)
+                                emit message(Logger::Type::Warning, "Command", tr("Ignored empty option."));
+                            else if(arg.at(1) == '-')
+                            {
+                                if(arg.size() == 2)
+                                    emit message(Logger::Type::Warning, "Command", tr("Ignored empty option."));
+                                else
+                                    options << arg.mid(2);
+                            }
+                            else for(int j = 1; j < arg.size(); ++j)
+                                options << arg.at(j);
+                        }
+                        else if(operation.isEmpty())
+                            operation = arg;
+                        else if(target.isEmpty())
+                            target = arg;
+                        else
+                        {
+                            emit message(Logger::Type::Error, "Command", tr("Too much arguments. Type \"<module> help\" or \"<module> ?\" to learn more."));
+                            return false;
+                        }
+                    }
+                    start = i + 1;
+                }
+            }
+        }
+
+        if(inQuote)
+        {
+            emit message(Logger::Type::Error, "Command", tr("Mismatched quote mark."));
+            return false;
+        }
+    }
+    else
+    {
+        QStringList args = modifiedCommand.split(' ', QString::SkipEmptyParts);
+        for(const auto &arg : args)
+        {
+            if(arg.isEmpty())
+                emit message(Logger::Type::Warning, "Command", tr("Ignored empty string."));
+            else if(module.isEmpty())
+                module = arg;
+            else if(arg.at(0) == '-')
+            {
+                if(arg.size() == 1)
+                    emit message(Logger::Type::Warning, "Command", tr("Ignored empty option."));
+                else if(arg.at(1) == '-')
+                {
+                    if(arg.size() == 2)
+                        emit message(Logger::Type::Warning, "Command", tr("Ignored empty option."));
+                    else
+                        options << arg.mid(2);
+                }
+                else for(int j = 1; j < arg.size(); ++j)
+                    options << arg.at(j);
+            }
+            else if(operation.isEmpty())
+                operation = arg;
+            else if(target.isEmpty())
+                target = arg;
+            else
+            {
+                emit message(Logger::Type::Error, "Command", tr("Too much arguments. Type \"<module> help\" or \"<module> ?\" to learn more."));
+                return false;
+            }
+        }
+    }
+
+    if(module.isEmpty())
+        return true;
+
+    // Let main process deal with window refresh.
+    QApplication::processEvents();
+
+    if(usableCommands.contains(module))
+    {
+        if(module == "true")
+            return true;
+        else if(module == "false")
+            return false;
+        else if(module == "?" || module == "help")
+        {
+            const QString help = tr("Command Line Helper") + QString("<br />") +
+                    tab + tr("SYNOPSIS") + QString("<br />") +
+                    tab + tab + tr("module <opration> [options] [target]") + QString("<br />") +
+                    tab + tr("MODULES") + QString("<br />") +
+                    tab + tab + QString("?, help : ") + tr("List all usable commands.") + QString("<br />") +
+                    tab + tr("SPECIAL") + QString("<br />") +
+                    tab + tab + QString("true : ") + tr("Always return true whatever operation or options provided.") + QString("<br />") +
+                    tab + tab + QString("false : ") + tr("Always return false whatever operation or options provided.") + QString("<br />") +
+                    tab + QString("OPERATIONS/OPTIONS") + QString("<br />") +
+                    tab + tab + tr("Type \"module help\" or \"module ?\" to learn more.");
+
+            emit message(Logger::Type::Tip, "Command", help);
+        }
+        else if(module == "project")
+            return project()->execute(operation, options, target);
+    }
+    else
+    {
+        emit message(Logger::Type::Error, "Command", tr("\"%1\": Cannot find command. Type \"help\" or\"?\" to show all usable commands.").arg(module));
+        return false;
+    }
+
+    return true;
+}
+
 void MainWindow::on_actionHideAllInfoTypeMessage_triggered(bool checked)
 {
     options()->setHideInfoLog(checked, this);
@@ -467,7 +796,7 @@ void MainWindow::on_pushButtonFmod_clicked()
     if(QDesktopServices::openUrl(QUrl("https://www.fmod.com/")))
         message(Logger::Type::Info, "Main Window", tr("Open fmod official website."));
     else
-        message(Logger::Type::Warning, "Main Window", tr("Cannot open fmod official website \"https://www.fmod.com/\"."));
+        message(Logger::Type::Warning, "Main Window", tr("Failed to open fmod official website \"https://www.fmod.com/\"."));
 }
 
 void MainWindow::on_actionOpenProjectPath_triggered()
@@ -476,7 +805,7 @@ void MainWindow::on_actionOpenProjectPath_triggered()
         if(QDesktopServices::openUrl(QUrl(QString("file://") + project()->projectPath())))
             message(Logger::Type::Info, "Main Window", tr("Open project path."));
         else
-            message(Logger::Type::Warning, "Main Window", tr("Cannot open project path \"%1\".").arg(project()->projectPath()));
+            message(Logger::Type::Warning, "Main Window", tr("Failed to open project path \"%1\".").arg(project()->projectPath()));
     else
         message(Logger::Type::Warning, "Main Window", tr("No project is open. Please create or open a project before."));
 }
@@ -487,7 +816,7 @@ void MainWindow::on_actionOpenTemporaryPath_triggered()
         if(QDesktopServices::openUrl(QUrl(QString("file://") + project()->temporaryPath())))
             message(Logger::Type::Info, "Main Window", tr("Open project temporary path."));
         else
-            message(Logger::Type::Warning, "Main Window", tr("Cannot open project temporary path \"%1\".").arg(project()->temporaryPath()));
+            message(Logger::Type::Warning, "Main Window", tr("Failed to open project temporary path \"%1\".").arg(project()->temporaryPath()));
     else
         message(Logger::Type::Warning, "Main Window", tr("No project is open. Please create or open a project before."));
 }

@@ -45,7 +45,7 @@
         <translation>新建項目向導</translation>
     </message>
     <message>
-        <location filename="../../Codes/Wizards/createprojectwizard.cpp" line="52"/>
+        <location filename="../../Codes/Wizards/createprojectwizard.cpp" line="53"/>
         <source>Select a directory to save your project</source>
         <translation>選擇保存項目的路徑</translation>
     </message>
@@ -121,54 +121,54 @@
         <translation>項目</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="828"/>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="880"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="831"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="885"/>
         <source>Logger</source>
         <translation>日誌</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1095"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1100"/>
         <source>New project</source>
         <translation>新建項目</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1100"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1105"/>
         <source>Open project</source>
         <translation>打開項目</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1105"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1110"/>
         <source>Close project</source>
         <translation>關閉項目</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1110"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1115"/>
         <source>Save and close</source>
         <translation>保存並關閉</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1115"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1120"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1120"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1125"/>
         <source>Save to ...</source>
         <translation>保存到...</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1128"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1133"/>
         <source>Always save project before close</source>
         <translation>關閉前總是保存</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1136"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1141"/>
         <source>Hide all &quot;Info&quot; type message</source>
         <translation>隱藏所有&quot;通知&quot;類型的消息</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.cpp" line="28"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="130"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="144"/>
         <source>English</source>
         <translation>英語</translation>
     </message>
@@ -204,8 +204,8 @@
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.ui" line="510"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="141"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="225"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="155"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="239"/>
         <source>No Music</source>
         <translation>無音樂</translation>
     </message>
@@ -295,149 +295,204 @@
         <translation>資源編輯工作區</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="837"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="840"/>
         <source>View</source>
         <translation>視圖</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="953"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="958"/>
         <source>Resources</source>
         <translation>資源</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="995"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1000"/>
         <source>Attributes</source>
         <translation>屬性</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1051"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1056"/>
         <source>Actions</source>
         <translation>動作</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1141"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1146"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1146"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1151"/>
         <source>Export as gmk</source>
         <translation>導出為gmk</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1154"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1159"/>
         <source>Reselect music</source>
         <translation>重新選擇音樂</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1159"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1164"/>
         <source>Export log to file</source>
         <translation>導出日誌到文件</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1164"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1169"/>
         <source>Clear logger</source>
         <translation>清空日誌</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1175"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1180"/>
         <source>Show logger widget</source>
         <translation>顯示日誌窗口</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1186"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1191"/>
         <source>Show actions widget</source>
         <translation>顯示動作窗口</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1197"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1202"/>
         <source>Show resources widget</source>
         <translation>顯示資源窗口</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1208"/>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1213"/>
         <source>Show attributes widget</source>
         <translation>顯示屬性窗口</translation>
     </message>
     <message>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1218"/>
+        <source>Open project path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1223"/>
+        <source>Open temporary path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/MainWindow/mainwindow.ui" line="1228"/>
+        <source>Reset layout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../Codes/MainWindow/mainwindow.cpp" line="18"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="134"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="148"/>
         <source>Clear all records</source>
         <translation>清空記錄</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.cpp" line="19"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="135"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="149"/>
         <source>(No record)</source>
         <translation>(沒有記錄)</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.cpp" line="29"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="131"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="145"/>
         <source>Simplified Chinese</source>
         <translation>簡體中文</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.cpp" line="30"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="132"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="146"/>
         <source>Traditional Chinese</source>
         <translation>繁體中文</translation>
     </message>
     <message>
         <location filename="../../Codes/MainWindow/mainwindow.cpp" line="31"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="133"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="147"/>
         <source>Japanese</source>
         <translation>日語</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="146"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="218"/>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="280"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="126"/>
+        <source>Failure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="126"/>
+        <source>Error occurred when save project. Force exit?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="160"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="232"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="294"/>
         <source>Music : </source>
         <translation>音樂： </translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="205"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="219"/>
         <source>Project file &quot;%1&quot; does not exists, remove it from recent project list.</source>
         <translation>項目文件&quot;%1&quot;不存在，將從最近項目列表中移除。</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="266"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="280"/>
         <source>Failed to load translation file &quot;%1&quot;.</source>
         <translation>加載翻譯文件&quot;%1&quot;失敗。</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="292"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="468"/>
         <source>Open fmod official website.</source>
         <translation>打開fmod官網。</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="294"/>
-        <source>Cannot open fmod official website &quot;https://www.fmod.com/&quot;.</source>
-        <translation>無法打開fmod官網&quot;https://www.fmod.com&quot;。</translation>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="470"/>
+        <source>Failed to open fmod official website &quot;https://www.fmod.com/&quot;.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="362"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="479"/>
+        <source>Failed to open project path &quot;%1&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="490"/>
+        <source>Failed to open project temporary path &quot;%1&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open fmod official website &quot;https://www.fmod.com/&quot;.</source>
+        <translation type="vanished">無法打開fmod官網&quot;https://www.fmod.com&quot;。</translation>
+    </message>
+    <message>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="477"/>
+        <source>Open project path.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="481"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="492"/>
+        <source>No project is open. Please create or open a project before.</source>
+        <translation type="unfinished">沒有打開任何項目。請先新建或打開壹個項目。</translation>
+    </message>
+    <message>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="488"/>
+        <source>Open project temporary path.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="399"/>
         <source>Failed to parse &quot;%1&quot;. Use &quot;m:s[.ms]&quot;.</source>
         <translation>解析&quot;%1&quot;失敗。請使用&quot;分:秒[.毫秒]&quot;的形式。</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="369"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="406"/>
         <source>Value of minutes &quot;%1&quot; on &quot;%2&quot; is invalid. Use &quot;m:s[.ms]&quot;.</source>
         <translation>&quot;%2&quot;中的分鐘&quot;%1&quot;非法。請使用&quot;分:秒[.毫秒]&quot;的形式。</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="376"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="413"/>
         <source>Value of seconds &quot;%1&quot; on &quot;%2&quot; is invalid. Use &quot;m:s[.ms]&quot;.</source>
         <translation>&quot;%2&quot;中的秒&quot;%1&quot;非法。請使用&quot;分:秒[.毫秒]&quot;的形式。</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="381"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="418"/>
         <source>Value of seconds &quot;%1&quot; on &quot;%2&quot; is bigger then 60.</source>
         <translation>&quot;%2&quot;中的秒&quot;%1&quot;大於60。</translation>
     </message>
     <message>
-        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="416"/>
+        <location filename="../../Codes/MainWindow/mainwindow.cpp" line="453"/>
         <source>Value of frame &quot;%1&quot; is invalid.</source>
         <translation>幀數&quot;%1&quot;非法。</translation>
     </message>
@@ -639,119 +694,184 @@
 <context>
     <name>Project</name>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="53"/>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="311"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="104"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="369"/>
         <source>Selected music file doesn&apos;t exist, at : &quot;%1&quot;.</source>
         <translation>音樂文件&quot;%1&quot;不存在。</translation>
     </message>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="62"/>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="76"/>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="82"/>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="88"/>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="94"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="113"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="127"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="133"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="139"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="145"/>
         <source>Make selected directory failed, at : &quot;%1&quot;.</source>
         <translation>創建文件夾&quot;%1&quot;失敗。</translation>
     </message>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="69"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="120"/>
         <source>Project is already exists, at : &quot;%1&quot;.</source>
         <translation>項目&quot;%1&quot;早已存在。</translation>
     </message>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="104"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="155"/>
         <source>Create project file failed, at : &quot;%1&quot;.</source>
         <translation>創建項目文件&quot;%1&quot;失敗。</translation>
     </message>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="131"/>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="216"/>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="317"/>
         <source>Cannot copy music file from &quot;%1&quot; to &quot;%2&quot;.</source>
-        <translation>無法復制音樂文件&quot;%1&quot;到&quot;%2&quot;。</translation>
+        <translation type="vanished">無法復制音樂文件&quot;%1&quot;到&quot;%2&quot;。</translation>
     </message>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="142"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="197"/>
         <source>Project &quot;%1&quot; created.</source>
         <translation>項目&quot;%1&quot;已創建。</translation>
     </message>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="143"/>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="205"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="50"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="198"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="282"/>
         <source>Project temporary path is &quot;%1&quot;.</source>
         <translation>項目臨時目錄為&quot;%1&quot;。</translation>
     </message>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="156"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="180"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="375"/>
+        <source>Failed to copy music file from &quot;%1&quot; to &quot;%2&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="192"/>
+        <source>Failed to copy project to temporary path.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="209"/>
         <source>Select a project</source>
         <translation>選擇壹個項目</translation>
     </message>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="170"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="26"/>
         <source>Open selected project file failed, at : &quot;%1&quot;.</source>
         <translation>打開項目文件&quot;%1&quot;失敗。</translation>
     </message>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="180"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="36"/>
         <location filename="../../Codes/GlobalComponent/project.cpp" line="233"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="392"/>
         <source>Project file format abnormal.</source>
         <translation>項目文件格式異常。</translation>
     </message>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="200"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="45"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="276"/>
         <source>Cannot find the music file of project, at : &quot;%1&quot;.</source>
         <translation>無法找到項目的音樂文件&quot;%1&quot;。</translation>
     </message>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="204"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="49"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="281"/>
         <source>Project &quot;%1&quot; opened.</source>
         <translation>項目&quot;%1&quot;已打開。</translation>
     </message>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="223"/>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="245"/>
         <source>Project file doesn&apos;t exist, at : &quot;%1&quot;.</source>
-        <translation>項目文件&quot;%1&quot;不存在。</translation>
+        <translation type="vanished">項目文件&quot;%1&quot;不存在。</translation>
     </message>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="239"/>
         <source>Failed remove music file &quot;%1&quot;.</source>
-        <translation>刪除音樂文件&quot;%1&quot;失敗。</translation>
+        <translation type="vanished">刪除音樂文件&quot;%1&quot;失敗。</translation>
+    </message>
+    <message>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="223"/>
+        <source>Failed to open selected project file, at : &quot;%1&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="249"/>
+        <source>Temporary path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="249"/>
+        <source>Find temporary path of project already existed. It may be caused by program&apos;s crash without saving changes. Do you want to load project from temporary path to restore unsaved changes?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="253"/>
+        <source>Failure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="253"/>
+        <source>Failed to load project from temporary path. Would you like to remove temporary path and open project? It will discard your unsaved changes.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../Codes/GlobalComponent/project.cpp" line="269"/>
+        <source>Failed to make temporary path &quot;%1&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="294"/>
+        <source>Failed to save project. Please back up your changes from temporary path &quot;%1&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="309"/>
+        <source>Select a directory to save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="315"/>
+        <source>Failed to save project to &quot;%1&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="330"/>
         <source>Confirm</source>
         <translation>確認</translation>
     </message>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="269"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="330"/>
         <source>Would you like to save your project before close it?</source>
         <translation>在關閉項目前，是否保存現有的修改？</translation>
     </message>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="282"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="345"/>
         <source>Remove project temporary path at &quot;%1&quot;.</source>
         <translation>項目臨時目錄&quot;%1&quot;已刪除。</translation>
     </message>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="283"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="346"/>
         <source>Project &quot;%1&quot; closed.</source>
         <translation>項目&quot;%1&quot;已關閉。</translation>
     </message>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="297"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="354"/>
         <source>Select Music File</source>
         <translation>選擇音樂文件</translation>
     </message>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="297"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="354"/>
         <source>Music File(*.mp3 *.wav)</source>
         <translation>音樂文件(*.mp3 *.wav)</translation>
     </message>
     <message>
-        <location filename="../../Codes/GlobalComponent/project.cpp" line="305"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="363"/>
         <source>No project is open. Please create or open a project before.</source>
         <translation>沒有打開任何項目。請先新建或打開壹個項目。</translation>
+    </message>
+    <message>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="382"/>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="401"/>
+        <source>Failed to open project file on temporary path, at : &quot;%1&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../Codes/GlobalComponent/project.cpp" line="413"/>
+        <source>Failed to remove old music file &quot;%1&quot;.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

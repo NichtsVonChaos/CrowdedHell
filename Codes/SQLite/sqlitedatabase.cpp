@@ -408,7 +408,7 @@ QList<SQLiteDatabase::Record> SQLiteDatabase::read(const SQLiteDatabase::Table &
     do
     {
         Record record;
-        for(int i = 0; i < table.columns.size(); i++)
+        for(int i = 0; i < table.columns.size(); ++i)
             record.insert(table.columns[i], query.value(i));
         records << record;
     }
@@ -513,7 +513,7 @@ QList<SQLiteDatabase::Record> SQLiteDatabase::read(const SQLiteDatabase::Table &
     do
     {
         Record record;
-        for(int i = 0; i < requiredColumns.size(); i++)
+        for(int i = 0; i < requiredColumns.size(); ++i)
             record.insert(requiredColumns[i], query.value(i));
         records << record;
     }
@@ -574,7 +574,7 @@ QList<SQLiteDatabase::Record> SQLiteDatabase::readAll(const SQLiteDatabase::Tabl
     do
     {
         Record record;
-        for(int i = 0; i < table.columns.size(); i++)
+        for(int i = 0; i < table.columns.size(); ++i)
             record.insert(table.columns[i], query.value(i));
         records << record;
     }
@@ -635,7 +635,7 @@ QList<SQLiteDatabase::Record> SQLiteDatabase::readAll(const SQLiteDatabase::Tabl
     do
     {
         Record record;
-        for(int i = 0; i < requiredColumns.size(); i++)
+        for(int i = 0; i < requiredColumns.size(); ++i)
             record.insert(requiredColumns[i], query.value(i));
         records << record;
     }

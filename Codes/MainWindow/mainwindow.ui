@@ -14,7 +14,10 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="gridLayout_2">
+   <layout class="QVBoxLayout" name="verticalLayout_12">
+    <property name="spacing">
+     <number>0</number>
+    </property>
     <property name="leftMargin">
      <number>0</number>
     </property>
@@ -27,10 +30,7 @@
     <property name="bottomMargin">
      <number>0</number>
     </property>
-    <property name="spacing">
-     <number>0</number>
-    </property>
-    <item row="0" column="0">
+    <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
        <number>0</number>
@@ -68,8 +68,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>902</width>
-             <height>696</height>
+             <width>916</width>
+             <height>755</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout">
@@ -853,7 +853,7 @@
    <addaction name="menuSettings"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <widget class="QDockWidget" name="dockWidgetLogger">
+  <widget class="QDockWidget" name="dockWidgetTerminal">
    <property name="sizePolicy">
     <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
      <horstretch>0</horstretch>
@@ -882,12 +882,12 @@
     <set>Qt::AllDockWidgetAreas</set>
    </property>
    <property name="windowTitle">
-    <string>Logger</string>
+    <string>Terminal</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>8</number>
    </attribute>
-   <widget class="PerferedWidget" name="perferedWidgetLogger">
+   <widget class="Terminal" name="terminal">
     <property name="sizePolicy">
      <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
       <horstretch>0</horstretch>
@@ -900,42 +900,6 @@
       <height>100</height>
      </size>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <property name="spacing">
-      <number>0</number>
-     </property>
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="Logger" name="logger">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>100</height>
-        </size>
-       </property>
-       <property name="readOnly">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
    </widget>
   </widget>
   <widget class="QDockWidget" name="dockWidgetResources">
@@ -960,7 +924,7 @@
    <attribute name="dockWidgetArea">
     <number>1</number>
    </attribute>
-   <widget class="PerferedWidget" name="perferedWidgetResources">
+   <widget class="QWidget" name="perferedWidgetResources">
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <property name="spacing">
       <number>0</number>
@@ -1002,7 +966,7 @@
    <attribute name="dockWidgetArea">
     <number>2</number>
    </attribute>
-   <widget class="PerferedWidget" name="perferedWidgetAttriutes">
+   <widget class="QWidget" name="perferedWidgetAttriutes">
     <layout class="QVBoxLayout" name="verticalLayout_7">
      <property name="spacing">
       <number>0</number>
@@ -1030,7 +994,7 @@
           <x>0</x>
           <y>0</y>
           <width>98</width>
-          <height>326</height>
+          <height>372</height>
          </rect>
         </property>
        </widget>
@@ -1058,7 +1022,7 @@
    <attribute name="dockWidgetArea">
     <number>2</number>
    </attribute>
-   <widget class="PerferedWidget" name="perferedWidgetActions">
+   <widget class="QWidget" name="perferedWidgetActions">
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <property name="spacing">
       <number>0</number>
@@ -1086,7 +1050,7 @@
           <x>0</x>
           <y>0</y>
           <width>98</width>
-          <height>325</height>
+          <height>371</height>
          </rect>
         </property>
        </widget>
@@ -1230,16 +1194,11 @@
   </action>
   <zorder>dockWidgetAttributes</zorder>
   <zorder>dockWidgetResources</zorder>
-  <zorder>dockWidgetLogger</zorder>
+  <zorder>dockWidgetTerminal</zorder>
   <zorder>dockWidgetActions</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
-  <customwidget>
-   <class>Logger</class>
-   <extends>QTextEdit</extends>
-   <header>Codes/GlobalComponent/logger.h</header>
-  </customwidget>
   <customwidget>
    <class>MusicSlider</class>
    <extends>QSlider</extends>
@@ -1251,9 +1210,9 @@
    <header>Codes/MainWindow/volumeslider.h</header>
   </customwidget>
   <customwidget>
-   <class>PerferedWidget</class>
+   <class>Terminal</class>
    <extends>QWidget</extends>
-   <header>Codes/MainWindow/perferedwidget.h</header>
+   <header>Codes/MainWindow/terminal.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

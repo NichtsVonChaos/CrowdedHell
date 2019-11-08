@@ -81,6 +81,12 @@ public:
      */
     void initialze();
 
+    /**
+     * @brief execute
+     * Excute command.
+     */
+    bool execute(const QString &operation, const QStringList &options, const QString &target);
+
 signals:
     /**
      * @see Logger::message.

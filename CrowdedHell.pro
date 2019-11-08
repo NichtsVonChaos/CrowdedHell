@@ -29,7 +29,7 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-include($$PWD/Reference/qtshell/qtshell.pri)
+include($$PWD/Reference/QtShell/qtshell.pri)
 include($$PWD/Reference/SingleApplication/singleapplication.pri)
 DEFINES += QAPPLICATION_CLASS=QApplication
 
@@ -49,18 +49,21 @@ INCLUDEPATH += \
 
 FORMS += \
     Codes/MainWindow/mainwindow.ui \
+    Codes/MainWindow/terminal.ui \
     Codes/Wizards/createprojectwizard.ui
 
 HEADERS += \
     Codes/DataStructure/grid.hpp \
+    Codes/GlobalComponent/commandlinesystem.h \
     Codes/GlobalComponent/customfunctions.h \
     Codes/GlobalComponent/globalComponent.h \
     Codes/GlobalComponent/logger.h \
     Codes/GlobalComponent/options.h \
     Codes/GlobalComponent/project.h \
+    Codes/MainWindow/commandlineedit.h \
     Codes/MainWindow/mainwindow.h \
     Codes/MainWindow/musicslider.h \
-    Codes/MainWindow/perferedwidget.h \
+    Codes/MainWindow/terminal.h \
     Codes/MainWindow/volumeslider.h \
     Codes/ResourceManager/Image/image.h \
     Codes/ResourceManager/Image/mask.h \
@@ -73,12 +76,14 @@ HEADERS += \
     Codes/Wizards/createprojectwizard.h
 
 SOURCES += \
+    Codes/GlobalComponent/commandlinesystem.cpp \
     Codes/GlobalComponent/logger.cpp \
     Codes/GlobalComponent/options.cpp \
     Codes/GlobalComponent/project.cpp \
+    Codes/MainWindow/commandlineedit.cpp \
     Codes/MainWindow/mainwindow.cpp \
     Codes/MainWindow/musicslider.cpp \
-    Codes/MainWindow/perferedwidget.cpp \
+    Codes/MainWindow/terminal.cpp \
     Codes/MainWindow/volumeslider.cpp \
     Codes/ResourceManager/Image/image.cpp \
     Codes/ResourceManager/Image/mask.cpp \

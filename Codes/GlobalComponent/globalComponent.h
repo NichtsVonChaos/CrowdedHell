@@ -5,5 +5,6 @@
 #include "options.h"
 #include "project.h"
 #include "customfunctions.h"
+#include "commandlinesystem.h"
 
 #endif // GLOBALCOMPONENT_H

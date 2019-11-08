@@ -51,6 +51,12 @@ public slots:
     void message(Type type, const QString &module, const QString &message);
 
     /**
+     * @brief command
+     * Receive a command.
+     */
+    void command(const QString &command);
+
+    /**
      * @brief logToFile
      * Save log to file.
      * Note that the log saved to file is not similar as you see on main window.

@@ -11,8 +11,7 @@ Logger::Logger(QWidget *parent):
         throw std::logic_error(std::string("Logger is created repeatedly. It is not your mistake, please report this bug on GitHub."));
 
     m_instance = this;
-    document()->setMaximumBlockCount(100);
-    setHtml("<font color=purple>>>></font> ");
+    document()->setMaximumBlockCount(500);
 
     qInstallMessageHandler(Logger::redirectQtMessage);
 }
@@ -55,7 +54,7 @@ void Logger::message(Logger::Type type, const QString &module, const QString &me
 {
     count++;
     QString time = QTime::currentTime().toString();
-    QString messageHtml = QString("<p>(") + time + QString(") ");
+    QString messageHtml = QString("<font color=purple>&lt;== </font>(") + time + QString(") ");
     switch(type)
     {
         case Type::Info:
@@ -86,12 +85,18 @@ void Logger::message(Logger::Type type, const QString &module, const QString &me
     }
 
     messageHtml += QString(" <font color=purple><u>") + module + QString("</u></font> :");
-    messageHtml += QString("<font color=black>") + message + QString(" </font><font color=gray>--log(") + QString::number(count) + QString(")</font></p><font color=purple>>>> </font>");
+    messageHtml += QString("<font color=black>") + message + QString(" </font><font color=gray>--log(") + QString::number(count) + QString(")</font><br />");
 
     moveCursor(QTextCursor::End);
     textCursor().insertHtml(messageHtml);
 
     backup << QString::number(count) + QString(" (") + time + QString(") [") + QString::number(int(type)) + QString("-") + module + QString("] :") + message;
+}
+
+void Logger::command(const QString &command)
+{
+    moveCursor(QTextCursor::End);
+    textCursor().insertHtml(QString("<font color=purple>==&gt;</font>") + command + QString("<br />"));
 }
 
 void Logger::logToFile(const QString &filePath)
