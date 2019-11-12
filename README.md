@@ -32,7 +32,7 @@ ____
 ### 借用项目
 ##### Reference
 ____
-Note: following projects is not a part of this GPLv3 project, I contains them on this project just for compiling easily.
+Note: following projects is not a part of this GPLv3 project, I contains them on this project just for compiling easily.  
 注意：下面的项目并不属于该GPLv3项目的一部分，我在项目中包含它们仅仅只是方便编译。
 ##### 本项目的诞生离不开以下开源项目。
 ##### This project cannot be without following open-source projects.
